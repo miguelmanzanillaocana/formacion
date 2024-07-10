@@ -1,0 +1,18 @@
+package es.seg_social.formacion.repository;
+
+import java.util.ArrayList;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import es.seg_social.formacion.claseId.ComentarioSituacionId;
+import es.seg_social.formacion.model.ComentarioSituacion;
+
+@Repository
+public interface IComentarioSituacionRepository extends JpaRepository<ComentarioSituacion, ComentarioSituacionId>{
+	
+	@Query(value = "SELECT * FROM comentarios_situacion WHERE Situacion_ID = ?1", nativeQuery = true)
+	ArrayList<ComentarioSituacion> getComentarioSituacionByIdSit(Integer idSit);
+
+}
