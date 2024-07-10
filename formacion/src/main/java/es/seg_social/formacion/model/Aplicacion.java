@@ -1,5 +1,6 @@
 package es.seg_social.formacion.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,34 +12,75 @@ import jakarta.persistence.Table;
 public class Aplicacion {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	private String codAplic;
-	private String nombAplic;
-	private String nombArea;
-	private String subArea;
-	private String resp;
-	private String tecn;
-	private String criti;
-	private String volEvol;
-	private String volUsu;
-	private String tipo;
-	private String tecInt;
+	@Column(name = "ID_Aplicacion")
+	private Integer id;
 	
-	public Aplicacion(int id, String codAplic, String nombAplic, String nombArea, String subArea, String resp,
-			String tecn, String criti, String volEvol, String volUsu, String tipo, String tecInt) {
+	@Column(name = "Codigo_Aplicacion")
+	private String codAplic;
+	
+	@Column(name = "Nombre_Aplicacion")
+	private String nombAplic;
+	
+	@Column(name = "Nombre_Area")
+	private String nombArea;
+	
+	@Column(name = "Subarea")
+	private String subArea;
+	
+	@Column(name = "Responsable_ID")
+	private Integer resp;
+	
+	@Column(name = "Tecnologia")
+	private String tecn;
+	
+	@Column(name = "Criticidad_ID")
+	private Integer criti;
+	
+	@Column(name = "Vol_Evol_ID")
+	private Integer volEvol;
+	
+	@Column(name = "Vol_Usu_ID")
+	private Integer volUsu;
+	
+	@Column(name = "Tipo_ID")
+	private Integer tipo;
+	
+	@Column(name = "Tecnologia_Interfaz_ID")
+	private Integer tecInt;
+	
+	
+	
+	public Aplicacion() {
+		super();
+	}
+	
+	public Aplicacion(Integer id, String codAplic, String nombAplic, String nombArea, String subArea, Integer resp,
+			String tecn, Integer criti, Integer volEvol, Integer volUsu, Integer tipo, Integer tecInt) {
 		super();
 		this.id = id;
 		this.codAplic = codAplic;
 		this.nombAplic = nombAplic;
 		this.nombArea = nombArea;
 		this.subArea = subArea;
+		
+		if (resp == null) resp = 0;
 		this.resp = resp;
+		
 		this.tecn = tecn;
+		
+		if (criti == null) criti = 0;
 		this.criti = criti;
+		
+		if (volEvol == null) volEvol = 0;
 		this.volEvol = volEvol;
+		
+		if (volUsu == null) volUsu = 0;
 		this.volUsu = volUsu;
+		
+		if (tipo == null) volUsu = 0;
 		this.tipo = tipo;
+		
+		if (tecInt == null) tecInt = 0;
 		this.tecInt = tecInt;
 	}
 	public int getId() {
@@ -71,10 +113,10 @@ public class Aplicacion {
 	public void setSubArea(String subArea) {
 		this.subArea = subArea;
 	}
-	public String getResp() {
+	public int getResp() {
 		return resp;
 	}
-	public void setResp(String resp) {
+	public void setResp(int resp) {
 		this.resp = resp;
 	}
 	public String getTecn() {
@@ -83,34 +125,34 @@ public class Aplicacion {
 	public void setTecn(String tecn) {
 		this.tecn = tecn;
 	}
-	public String getCriti() {
+	public int getCriti() {
 		return criti;
 	}
-	public void setCriti(String criti) {
+	public void setCriti(int criti) {
 		this.criti = criti;
 	}
-	public String getVolEvol() {
+	public int getVolEvol() {
 		return volEvol;
 	}
-	public void setVolEvol(String volEvol) {
+	public void setVolEvol(int volEvol) {
 		this.volEvol = volEvol;
 	}
-	public String getVolUsu() {
+	public int getVolUsu() {
 		return volUsu;
 	}
-	public void setVolUsu(String volUsu) {
+	public void setVolUsu(int volUsu) {
 		this.volUsu = volUsu;
 	}
-	public String getTipo() {
+	public int getTipo() {
 		return tipo;
 	}
-	public void setTipo(String tipo) {
+	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
-	public String getTecInt() {
+	public int getTecInt() {
 		return tecInt;
 	}
-	public void setTecInt(String tecInt) {
+	public void setTecInt(int tecInt) {
 		this.tecInt = tecInt;
 	}
 	
