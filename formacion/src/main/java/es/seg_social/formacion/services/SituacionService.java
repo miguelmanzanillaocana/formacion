@@ -6,34 +6,27 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.seg_social.formacion.model.Aplicacion;
-import es.seg_social.formacion.repository.IAplicacionRepository;
+import es.seg_social.formacion.model.Situacion;
 import es.seg_social.formacion.repository.ISituacionRepository;
 
 @Service
-public class AplicacionService {
+public class SituacionService {
 	
 	@Autowired
-	IAplicacionRepository repository;
+	ISituacionRepository repository;
 	
-	@Autowired
-	SituacionService situacionService;
-	
-	public ArrayList<Aplicacion> getAllApplications(){
-		return (ArrayList<Aplicacion>) repository.findAll();
+	public ArrayList<Situacion> getAllSituacion() {
+		return (ArrayList<Situacion>) repository.findAll();
 	}
 	
-	public Aplicacion getApplicationById(Integer id) {
+	public Situacion getSituacionById(Integer id) {
 		return repository.findById(id).get();
 	}
 	
-	public boolean deleteByID(Integer id) {
+	public boolean deleteSituacionById(Integer id) {
 		boolean respuesta = false;
 		
 		if (!repository.findById(id).get().equals(Optional.empty())) {
-			
-			situacionService.deleteSituacionById(id);
-			
 			repository.deleteById(id);
 			respuesta = true;
 		}

@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `Aplicaciones`
 --
 
-CREATE TABLE `Aplicaciones` (
+CREATE TABLE `aplicaciones` (
   `ID_Aplicacion` int NOT NULL,
   `Codigo_Aplicacion` varchar(4) NOT NULL,
   `Nombre_Aplicacion` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -440,7 +440,7 @@ INSERT INTO `Servicios_Terceros_Situacion` (`Id_Servicios_Terceros`, `Servicios_
 -- Estructura de tabla para la tabla `Situacion_Aplicaciones`
 --
 
-CREATE TABLE `Situacion_Aplicaciones` (
+CREATE TABLE `situacion_aplicaciones` (
   `ID_Situacion` int NOT NULL,
   `Codigo_Aplicacion` varchar(4) DEFAULT NULL,
   `Prosa` int DEFAULT NULL,
@@ -448,7 +448,7 @@ CREATE TABLE `Situacion_Aplicaciones` (
   `Version_Master` varchar(15) DEFAULT NULL,
   `Version_Develop` varchar(15) DEFAULT NULL,
   `Actualizado_GIT` int DEFAULT NULL,
-  `Version_Producción` varchar(15) DEFAULT NULL,
+  `Version_Produccion` varchar(15) DEFAULT NULL,
   `Despliegue_ID` int DEFAULT NULL,
   `Version_WAS` int DEFAULT NULL,
   `Maven_Id` int DEFAULT NULL,
