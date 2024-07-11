@@ -41,11 +41,15 @@ public class ComentarioSituacionService {
 	public boolean deleteComentarioSituacionByIdSit(Integer SituacionId) {
 		boolean respuesta = false;
 		
-		for (ComentarioSituacion comSit : repository.getComentarioSituacionByIdSit(SituacionId)) {
+		for (ComentarioSituacion comSit : getComentarioSituacionByIdSit(SituacionId)) {
 			repository.delete(comSit);
 		}
 		
 		return respuesta;
+	}
+	
+	public ComentarioSituacion insertComentarioSituacion(ComentarioSituacion comSit) {
+		return repository.save(comSit);
 	}
 
 }

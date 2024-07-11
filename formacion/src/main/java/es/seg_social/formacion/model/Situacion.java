@@ -23,7 +23,7 @@ public class Situacion {
 	private Integer gruGit;
 	
 	@Column(name = "Version_Master")
-	private String naster;
+	private String master;
 	
 	@Column(name = "Version_Develop")
 	private String develop;
@@ -64,7 +64,27 @@ public class Situacion {
 		super();
 	}
 
-	public Situacion(Integer id, String codApli, Integer pro, Integer gruGit, String naster, String develop,
+	public Situacion(Integer id, String codApli) {
+		super();
+		this.id = id;
+		this.codApli = codApli;
+		this.pro = 0;
+		this.gruGit = 0;
+		this.master = "";
+		this.develop = "";
+		this.actualizado = 0;
+		this.produccion = "";
+		this.despl = 1;
+		this.was = 0;
+		this.maven = 1;
+		this.doc = 1;
+		this.pruebas = 1;
+		this.test = 1;
+		this.inf = 1;
+		this.terc = 1;
+	}
+
+	public Situacion(Integer id, String codApli, Integer pro, Integer gruGit, String master, String develop,
 			Integer actualizado, String produccion, Integer despl, Integer was, Integer maven, Integer doc,
 			Integer pruebas, Integer test, Integer inf, Integer terc) {
 		super();
@@ -72,7 +92,7 @@ public class Situacion {
 		this.codApli = codApli;
 		this.pro = pro;
 		this.gruGit = gruGit;
-		this.naster = naster;
+		this.master = master;
 		this.develop = develop;
 		this.actualizado = actualizado;
 		this.produccion = produccion;
@@ -118,12 +138,12 @@ public class Situacion {
 		this.gruGit = gruGit;
 	}
 
-	public String getNaster() {
-		return naster;
+	public String getMaster() {
+		return master;
 	}
 
-	public void setNaster(String naster) {
-		this.naster = naster;
+	public void setMaster(String master) {
+		this.master = master;
 	}
 
 	public String getDevelop() {
