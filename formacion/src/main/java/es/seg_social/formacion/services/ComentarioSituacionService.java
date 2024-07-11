@@ -1,6 +1,7 @@
 package es.seg_social.formacion.services;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,10 +28,22 @@ public class ComentarioSituacionService {
 		return repository.getComentarioSituacionByIdSit(id);
 	}
 	
-	public boolean deleteComentarioSituacion(Integer SituacionId) {
+	public boolean deleteComentarioSituacionById(ComentarioSituacionId comSitId) {
+		 boolean respuesta = false;
+		 
+		 if (!repository.findById(comSitId).get().equals(Optional.empty())) {
+			 repository.deleteById(comSitId);
+		 }
+		 
+		 return respuesta;
+	}
+	
+	public boolean deleteComentarioSituacionByIdSit(Integer SituacionId) {
 		boolean respuesta = false;
 		
-		
+		for (ComentarioSituacion comSit : repository.getComentarioSituacionByIdSit(SituacionId)) {
+			repository.delete(comSit);
+		}
 		
 		return respuesta;
 	}

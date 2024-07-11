@@ -3,6 +3,7 @@ package es.seg_social.formacion.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,11 @@ public class ComentarioSituacionController {
 	public ComentarioSituacion getComentarioSituacionById(@PathVariable (value = "idSit") Integer idSit, @PathVariable(value="idCom") Integer idCom) {
 		ComentarioSituacionId id = new ComentarioSituacionId(idSit, idCom);
 		return service.getComentarioSituacionById(id);
+	}
+	
+	@DeleteMapping("/delete/{idSit}/{idCom}")
+	public boolean deleteComentarioSituacionById(@PathVariable(value = "idSit") Integer idSit, @PathVariable(value = "idCom") Integer idCom) {
+		return service.deleteComentarioSituacionById(new ComentarioSituacionId(idSit, idCom));
 	}
 
 }

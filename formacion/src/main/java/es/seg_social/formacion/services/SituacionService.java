@@ -15,6 +15,9 @@ public class SituacionService {
 	@Autowired
 	ISituacionRepository repository;
 	
+	@Autowired
+	ComentarioSituacionService comSitService;
+	
 	public ArrayList<Situacion> getAllSituacion() {
 		return (ArrayList<Situacion>) repository.findAll();
 	}
@@ -27,6 +30,7 @@ public class SituacionService {
 		boolean respuesta = false;
 		
 		if (!repository.findById(id).get().equals(Optional.empty())) {
+			comSitService.deleteComentarioSituacionByIdSit(id);
 			repository.deleteById(id);
 			respuesta = true;
 		}
