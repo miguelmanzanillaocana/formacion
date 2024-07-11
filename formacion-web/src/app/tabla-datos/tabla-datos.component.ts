@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DatosService } from '../datos.service';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-tabla-datos',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './tabla-datos.component.html',
   styleUrl: './tabla-datos.component.css'
 })
