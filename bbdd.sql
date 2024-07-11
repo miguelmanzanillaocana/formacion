@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: bmrsbrril9vizgfcolxg-mysql.services.clever-cloud.com:3306
--- Tiempo de generación: 09-07-2024 a las 12:56:29
+-- Servidor: bp9wker0ykhia7ujvaz1-mysql.services.clever-cloud.com:3306
+-- Tiempo de generación: 11-07-2024 a las 07:43:02
 -- Versión del servidor: 8.0.22-13
 -- Versión de PHP: 8.2.21
 
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bmrsbrril9vizgfcolxg`
+-- Base de datos: `bp9wker0ykhia7ujvaz1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Aplicaciones`
+-- Estructura de tabla para la tabla `aplicaciones`
 --
 
 CREATE TABLE `aplicaciones` (
@@ -43,10 +43,10 @@ CREATE TABLE `aplicaciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Aplicaciones`
+-- Volcado de datos para la tabla `aplicaciones`
 --
 
-INSERT INTO `Aplicaciones` (`ID_Aplicacion`, `Codigo_Aplicacion`, `Nombre_Aplicacion`, `Nombre_Area`, `Subarea`, `Responsable_ID`, `Tecnologia`, `Criticidad_ID`, `Vol_Evol_ID`, `Vol_Usu_ID`, `Tipo_ID`, `Tecnologia_Interfaz_ID`) VALUES
+INSERT INTO `aplicaciones` (`ID_Aplicacion`, `Codigo_Aplicacion`, `Nombre_Aplicacion`, `Nombre_Area`, `Subarea`, `Responsable_ID`, `Tecnologia`, `Criticidad_ID`, `Vol_Evol_ID`, `Vol_Usu_ID`, `Tipo_ID`, `Tecnologia_Interfaz_ID`) VALUES
 (1, 'ACBA', 'Procesos Batch de Accion Social', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Java', 1, 3, 3, 1, 5),
 (2, 'ACDC', 'Gestión de los Expedientes de Accion Socal', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Java', 1, 1, 1, 4, 1),
 (3, 'ACSP', 'Sistema de Presentación de Solicitudes de Accion Social', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Pros@', 1, 3, 3, 3, 1),
@@ -70,10 +70,10 @@ INSERT INTO `Aplicaciones` (`ID_Aplicacion`, `Codigo_Aplicacion`, `Nombre_Aplica
 (21, 'SEST', 'Estructura de los Centros de Destino de la SS', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Java', 3, 2, 3, 3, 1),
 (22, 'SFUN', 'Servicios Web para la Gestión de los Datos Administrativos del Personal del Sistema SIP', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Java', 3, 2, 3, 1, 5),
 (23, 'SLET', 'Servicios Web Relativos a la Ocupación de los Servicios Jurídicos', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Java', 3, 3, 3, 3, 1),
-(24, 'SNOR', 'Gestión de Reglamentos', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Java', 6, NULL, NULL, NULL, 1),
+(24, 'SNOR', 'Gestión de Reglamentos', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Java', 6, 0, 0, 0, 1),
 (25, 'SOBA', 'Consulta por DNI de los Puestos Solicitados y Adjudicados en Concursos', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Java', 2, 3, 3, 3, 1),
 (26, 'SPAD', 'Administración de Parametros SIP', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Java', 3, 3, 3, 3, 1),
-(27, 'STEP', 'Solicitudes Telemáticas para RRHH con Registro', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Pros@', 6, NULL, NULL, NULL, 1),
+(27, 'STEP', 'Solicitudes Telemáticas para RRHH con Registro', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Pros@', 6, 0, 0, 0, 1),
 (28, 'STRN', '', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 'Java', 5, 3, 3, 1, 5),
 (29, 'ERCP', 'Envio y Recepción de Archivos RCP', 'Desarrollos Externos', 'Innovacion', 2, 'Java', 2, 3, 3, 2, 1),
 (30, 'GFAD', 'Aplicación de Gestión y Administración de la Aplicación GFOR', 'Desarrollos Externos', 'Innovacion', 2, 'Java', 2, 3, 3, 2, 1),
@@ -83,7 +83,7 @@ INSERT INTO `Aplicaciones` (`ID_Aplicacion`, `Codigo_Aplicacion`, `Nombre_Aplica
 (34, 'GEBE', 'Gestión de Empresas Colaboradoras', 'Desarrollos Externos', 'Presupuestos', 3, 'Pros@', 3, 3, 3, 3, 1),
 (35, 'NCEP', 'Comunicación y Gestión de los Partes de Enfermedades Profesionales dentro de la Seguridad Social', 'Desarrollos Externos', 'Presupuestos', 3, 'Pros@', 1, 2, 1, 5, 1),
 (36, 'SCCD', 'Servicio de Comunicación con Ciudadanos', 'Desarrollos Externos', 'Presupuestos', 3, 'Pros@', 2, 3, 3, 3, 1),
-(38, 'SCCI', 'Servicio de Comunicación con Instituciones', 'Desarrollos Externos', 'Presupuestos', 3, 'Pros@', 3, 3, 3, 3, 1),
+(37, 'SCCI', 'Servicio de Comunicación con Instituciones', 'Desarrollos Externos', 'Presupuestos', 3, 'Pros@', 3, 3, 3, 3, 1),
 (39, 'SCNO', 'SCCI Normativa', 'Desarrollos Externos', 'Presupuestos', 3, 'Pros@', 2, 3, 3, 3, 1),
 (40, 'SCPA', 'SCCI Parlamentario', 'Desarrollos Externos', 'Presupuestos', 3, 'Pros@', 2, 3, 3, 3, 1),
 (41, 'SCSE', 'Servicio Comunicación de la SESS', 'Desarrollos Externos', 'Presupuestos', 3, 'Pros@', 1, 3, 3, 3, 3),
@@ -91,16 +91,16 @@ INSERT INTO `Aplicaciones` (`ID_Aplicacion`, `Codigo_Aplicacion`, `Nombre_Aplica
 (43, 'SIPR', '', 'Desarrollos Externos', 'Presupuestos', 3, 'PL/SQL', 3, 3, 3, 3, 1),
 (44, 'SPRS', '', 'Desarrollos Externos', 'Presupuestos', 3, 'Java', 7, 3, 3, 3, 1),
 (45, 'TCON', 'Tramitación de Convenios del Gabinete de la SSP', 'Desarrollos Externos', 'Presupuestos', 3, 'Pros@', 2, 1, 3, 3, 1),
-(46, 'CNLB', '', 'Desarrollos Externos', '', NULL, 'Pros@', 4, 3, NULL, NULL, NULL),
+(46, 'CNLB', '', 'Desarrollos Externos', '', 0, 'Pros@', 4, 3, 0, 0, 0),
 (47, 'COUP', 'Consulta de Objetivos, Unidades y Provincias', 'Desarrollos Externos', '', 4, 'Pros@', 3, 3, 4, 4, 1),
 (48, 'GEPE', 'Gestión de Incidencias de Personal', 'Desarrollos Externos', '', 4, 'Pros@', 1, 2, 1, 3, 1),
 (49, 'GSII', 'Gestión de Servicios de Intercambio de Información', 'Desarrollos Externos', '', 4, 'Pros@', 1, 3, 3, 3, 1),
 (50, 'GSIN', 'Gestión de Servicios de Intercambio de Información V2', 'Desarrollos Externos', '', 4, 'Pros@', 2, 2, 2, 3, 1),
-(51, 'NE01', '', 'Desarrollos Externos', '', NULL, 'Java', 4, 3, NULL, NULL, NULL),
+(51, 'NE01', '', 'Desarrollos Externos', '', 0, 'Java', 4, 3, 0, 0, 0),
 (52, 'SALM', 'Salida de Materiales', 'Desarrollos Externos', '', 4, 'Java', 3, 3, 2, 3, 1),
-(53, 'WE01', '', 'Desarrollos Externos', '', NULL, 'Java', 4, 3, NULL, NULL, NULL),
-(54, 'WE02', '', 'Desarrollos Externos', '', NULL, 'Java', 4, 3, NULL, NULL, NULL),
-(55, 'WE10', '', 'Desarrollos Externos', '', NULL, 'Java', 4, 3, NULL, NULL, NULL),
+(53, 'WE01', '', 'Desarrollos Externos', '', 0, 'Java', 4, 3, 0, 0, 0),
+(54, 'WE02', '', 'Desarrollos Externos', '', 0, 'Java', 4, 3, 0, 0, 0),
+(55, 'WE10', '', 'Desarrollos Externos', '', 0, 'Java', 4, 3, 0, 0, 0),
 (56, 'WE11', 'Estructura de Personal', 'Desarrollos Externos', '', 4, 'Java', 2, 2, 1, 3, 1),
 (57, 'WE12', 'Acceso a Edificio sin Tarjeta', 'Desarrollos Externos', '', 4, 'Java', 2, 3, 2, 3, 1),
 (58, 'WE13', 'Visitas', 'Desarrollos Externos', '', 4, 'Java', 2, 2, 2, 3, 1),
@@ -115,10 +115,10 @@ INSERT INTO `Aplicaciones` (`ID_Aplicacion`, `Codigo_Aplicacion`, `Nombre_Aplica
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Cer_Aplicacion`
+-- Estructura de tabla para la tabla `cer_aplicacion`
 --
 
-CREATE TABLE `Cer_Aplicacion` (
+CREATE TABLE `cer_aplicacion` (
   `Codigo_Aplicacion` varchar(4) NOT NULL,
   `Cer` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -126,10 +126,10 @@ CREATE TABLE `Cer_Aplicacion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Comentarios_Aplicacion`
+-- Estructura de tabla para la tabla `comentarios_aplicacion`
 --
 
-CREATE TABLE `Comentarios_Aplicacion` (
+CREATE TABLE `comentarios_aplicacion` (
   `Codigo_Aplicacion` varchar(4) NOT NULL,
   `Comentario` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -137,20 +137,20 @@ CREATE TABLE `Comentarios_Aplicacion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Comentarios_Situacion`
+-- Estructura de tabla para la tabla `comentarios_situacion`
 --
 
-CREATE TABLE `Comentarios_Situacion` (
+CREATE TABLE `comentarios_situacion` (
   `Situacion_Id` int NOT NULL,
   `ID_Comentario` int NOT NULL,
   `Comentario` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Comentarios_Situacion`
+-- Volcado de datos para la tabla `comentarios_situacion`
 --
 
-INSERT INTO `Comentarios_Situacion` (`Situacion_Id`, `ID_Comentario`, `Comentario`) VALUES
+INSERT INTO `comentarios_situacion` (`Situacion_Id`, `ID_Comentario`, `Comentario`) VALUES
 (1, 1, 'Código sin actualizar. Luis debe pasarlo'),
 (1, 2, 'Se esta desplegando la versión 01.00.00.23.00'),
 (4, 1, 'Migrada a Pros@. PCOT'),
@@ -205,19 +205,19 @@ INSERT INTO `Comentarios_Situacion` (`Situacion_Id`, `ID_Comentario`, `Comentari
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Criticidad_Aplicacion`
+-- Estructura de tabla para la tabla `criticidad_aplicacion`
 --
 
-CREATE TABLE `Criticidad_Aplicacion` (
+CREATE TABLE `criticidad_aplicacion` (
   `ID_Criticidad` int NOT NULL,
   `Criticidad` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Criticidad_Aplicacion`
+-- Volcado de datos para la tabla `criticidad_aplicacion`
 --
 
-INSERT INTO `Criticidad_Aplicacion` (`ID_Criticidad`, `Criticidad`) VALUES
+INSERT INTO `criticidad_aplicacion` (`ID_Criticidad`, `Criticidad`) VALUES
 (1, 'Alta'),
 (2, 'Media'),
 (3, 'Baja'),
@@ -229,19 +229,19 @@ INSERT INTO `Criticidad_Aplicacion` (`ID_Criticidad`, `Criticidad`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Despliegue_Situacion`
+-- Estructura de tabla para la tabla `despliegue_situacion`
 --
 
-CREATE TABLE `Despliegue_Situacion` (
+CREATE TABLE `despliegue_situacion` (
   `Id_Despliegue` int NOT NULL,
   `Despliegue` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Despliegue_Situacion`
+-- Volcado de datos para la tabla `despliegue_situacion`
 --
 
-INSERT INTO `Despliegue_Situacion` (`Id_Despliegue`, `Despliegue`) VALUES
+INSERT INTO `despliegue_situacion` (`Id_Despliegue`, `Despliegue`) VALUES
 (1, 'PREPRODUCION'),
 (2, 'PRODUCION'),
 (3, 'INTEGRACION');
@@ -249,10 +249,10 @@ INSERT INTO `Despliegue_Situacion` (`Id_Despliegue`, `Despliegue`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Devops_Aplicacion`
+-- Estructura de tabla para la tabla `devops_aplicacion`
 --
 
-CREATE TABLE `Devops_Aplicacion` (
+CREATE TABLE `devops_aplicacion` (
   `Codigo_Aplicacion` varchar(4) NOT NULL,
   `DevOps` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -260,38 +260,38 @@ CREATE TABLE `Devops_Aplicacion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Documentacion_Situacion`
+-- Estructura de tabla para la tabla `documentacion_situacion`
 --
 
-CREATE TABLE `Documentacion_Situacion` (
+CREATE TABLE `documentacion_situacion` (
   `Id_Documentacion` int NOT NULL,
   `Documentacion` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Documentacion_Situacion`
+-- Volcado de datos para la tabla `documentacion_situacion`
 --
 
-INSERT INTO `Documentacion_Situacion` (`Id_Documentacion`, `Documentacion`) VALUES
+INSERT INTO `documentacion_situacion` (`Id_Documentacion`, `Documentacion`) VALUES
 (1, 'DM12'),
 (2, 'DM14');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Informes_Situacion`
+-- Estructura de tabla para la tabla `informes_situacion`
 --
 
-CREATE TABLE `Informes_Situacion` (
+CREATE TABLE `informes_situacion` (
   `Id_Informes` int NOT NULL,
   `Informes` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Informes_Situacion`
+-- Volcado de datos para la tabla `informes_situacion`
 --
 
-INSERT INTO `Informes_Situacion` (`Id_Informes`, `Informes`) VALUES
+INSERT INTO `informes_situacion` (`Id_Informes`, `Informes`) VALUES
 (1, 'AIFO'),
 (2, 'INTEGRADOS'),
 (3, 'NO');
@@ -299,10 +299,10 @@ INSERT INTO `Informes_Situacion` (`Id_Informes`, `Informes`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Infra_Aplicacion`
+-- Estructura de tabla para la tabla `infra_aplicacion`
 --
 
-CREATE TABLE `Infra_Aplicacion` (
+CREATE TABLE `infra_aplicacion` (
   `Codigo_Aplicacion` varchar(4) NOT NULL,
   `Infra` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -310,10 +310,10 @@ CREATE TABLE `Infra_Aplicacion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Int_Aplicacion`
+-- Estructura de tabla para la tabla `int_aplicacion`
 --
 
-CREATE TABLE `Int_Aplicacion` (
+CREATE TABLE `int_aplicacion` (
   `Codigo_Aplicacion` varchar(4) NOT NULL,
   `Int_Aplicacion` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -321,19 +321,19 @@ CREATE TABLE `Int_Aplicacion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Maven_Situacion`
+-- Estructura de tabla para la tabla `maven_situacion`
 --
 
-CREATE TABLE `Maven_Situacion` (
+CREATE TABLE `maven_situacion` (
   `Id_Maven` int NOT NULL,
   `Maven` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Maven_Situacion`
+-- Volcado de datos para la tabla `maven_situacion`
 --
 
-INSERT INTO `Maven_Situacion` (`Id_Maven`, `Maven`) VALUES
+INSERT INTO `maven_situacion` (`Id_Maven`, `Maven`) VALUES
 (1, 'SI'),
 (2, 'EN PROGRESO'),
 (3, 'NO');
@@ -341,19 +341,19 @@ INSERT INTO `Maven_Situacion` (`Id_Maven`, `Maven`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Plan_Pruebas_Situacion`
+-- Estructura de tabla para la tabla `planpruebas_situacion`
 --
 
-CREATE TABLE `Plan_Pruebas_Situacion` (
+CREATE TABLE `planpruebas_situacion` (
   `Id_Plan_Pruebas` int NOT NULL,
   `Plan_Pruebas` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Plan_Pruebas_Situacion`
+-- Volcado de datos para la tabla `planpruebas_situacion`
 --
 
-INSERT INTO `Plan_Pruebas_Situacion` (`Id_Plan_Pruebas`, `Plan_Pruebas`) VALUES
+INSERT INTO `planpruebas_situacion` (`Id_Plan_Pruebas`, `Plan_Pruebas`) VALUES
 (1, 'SI'),
 (2, 'GIT'),
 (3, 'NO');
@@ -361,10 +361,10 @@ INSERT INTO `Plan_Pruebas_Situacion` (`Id_Plan_Pruebas`, `Plan_Pruebas`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Pre_Aplicacion`
+-- Estructura de tabla para la tabla `pre_aplicacion`
 --
 
-CREATE TABLE `Pre_Aplicacion` (
+CREATE TABLE `pre_aplicacion` (
   `Codigo_Aplicacion` varchar(4) NOT NULL,
   `Pre` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -372,10 +372,10 @@ CREATE TABLE `Pre_Aplicacion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Pro_Aplicacion`
+-- Estructura de tabla para la tabla `pro_aplicacion`
 --
 
-CREATE TABLE `Pro_Aplicacion` (
+CREATE TABLE `pro_aplicacion` (
   `Codigo_Aplicacion` varchar(4) NOT NULL,
   `Pro` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -383,19 +383,20 @@ CREATE TABLE `Pro_Aplicacion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Responsable_Aplicacion`
+-- Estructura de tabla para la tabla `responsable_aplicacion`
 --
 
-CREATE TABLE `Responsable_Aplicacion` (
+CREATE TABLE `responsable_aplicacion` (
   `ID_Responsable` int NOT NULL,
   `Responsable` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Responsable_Aplicacion`
+-- Volcado de datos para la tabla `responsable_aplicacion`
 --
 
-INSERT INTO `Responsable_Aplicacion` (`ID_Responsable`, `Responsable`) VALUES
+INSERT INTO `responsable_aplicacion` (`ID_Responsable`, `Responsable`) VALUES
+(0, ''),
 (1, 'Maria Begoña Viñas Sierra'),
 (2, 'Virgilio Arias Clemente'),
 (3, 'Maria Jose Delso Aldea'),
@@ -405,10 +406,10 @@ INSERT INTO `Responsable_Aplicacion` (`ID_Responsable`, `Responsable`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Seguimiento_Aplicacion`
+-- Estructura de tabla para la tabla `seguimiento_aplicacion`
 --
 
-CREATE TABLE `Seguimiento_Aplicacion` (
+CREATE TABLE `seguimiento_aplicacion` (
   `Codigo_Aplicacion` varchar(4) NOT NULL,
   `Fecha` date NOT NULL,
   `Seguimiento` varchar(200) DEFAULT NULL
@@ -417,19 +418,19 @@ CREATE TABLE `Seguimiento_Aplicacion` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Servicios_Terceros_Situacion`
+-- Estructura de tabla para la tabla `serviciosterceros_situacion`
 --
 
-CREATE TABLE `Servicios_Terceros_Situacion` (
+CREATE TABLE `serviciosterceros_situacion` (
   `Id_Servicios_Terceros` int NOT NULL,
   `Servicios_Terceros` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Servicios_Terceros_Situacion`
+-- Volcado de datos para la tabla `serviciosterceros_situacion`
 --
 
-INSERT INTO `Servicios_Terceros_Situacion` (`Id_Servicios_Terceros`, `Servicios_Terceros`) VALUES
+INSERT INTO `serviciosterceros_situacion` (`Id_Servicios_Terceros`, `Servicios_Terceros`) VALUES
 (1, 'SI'),
 (2, 'IFIW'),
 (3, 'NO');
@@ -437,7 +438,7 @@ INSERT INTO `Servicios_Terceros_Situacion` (`Id_Servicios_Terceros`, `Servicios_
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Situacion_Aplicaciones`
+-- Estructura de tabla para la tabla `situacion_aplicaciones`
 --
 
 CREATE TABLE `situacion_aplicaciones` (
@@ -460,10 +461,10 @@ CREATE TABLE `situacion_aplicaciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Situacion_Aplicaciones`
+-- Volcado de datos para la tabla `situacion_aplicaciones`
 --
 
-INSERT INTO `Situacion_Aplicaciones` (`ID_Situacion`, `Codigo_Aplicacion`, `Prosa`, `Grupo_GIT`, `Version_Master`, `Version_Develop`, `Actualizado_GIT`, `Version_Producción`, `Despliegue_ID`, `Version_WAS`, `Maven_Id`, `Documentacion_ID`, `Plan_Pruebas_ID`, `Testing_ID`, `Informes_ID`, `Servicios_Terceros_ID`) VALUES
+INSERT INTO `situacion_aplicaciones` (`ID_Situacion`, `Codigo_Aplicacion`, `Prosa`, `Grupo_GIT`, `Version_Master`, `Version_Develop`, `Actualizado_GIT`, `Version_Produccion`, `Despliegue_ID`, `Version_WAS`, `Maven_Id`, `Documentacion_ID`, `Plan_Pruebas_ID`, `Testing_ID`, `Informes_ID`, `Servicios_Terceros_ID`) VALUES
 (1, 'ACBA', 0, 1, '01.00.00.17.00', NULL, 0, '01.00.00.22.00', 2, 9, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 'ACDC', 0, 1, '02.01.00.01.00', '02.02.00.02.00', 1, NULL, 3, 9, 2, NULL, NULL, NULL, NULL, NULL),
 (3, 'ACSP', 1, 1, '01.01.00.02.00', '01.03.02.02.00', NULL, '01.03.02.02.00', NULL, 8, NULL, NULL, NULL, NULL, 1, NULL),
@@ -532,19 +533,20 @@ INSERT INTO `Situacion_Aplicaciones` (`ID_Situacion`, `Codigo_Aplicacion`, `Pros
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Tecnología_Interfaz_Aplicacion`
+-- Estructura de tabla para la tabla `tecnologiainterfaz_aplicacion`
 --
 
-CREATE TABLE `Tecnología_Interfaz_Aplicacion` (
+CREATE TABLE `tecnologiainterfaz_aplicacion` (
   `ID_Tecnologia_Interfaz` int NOT NULL,
   `Tecnologia_Interfaz` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Tecnología_Interfaz_Aplicacion`
+-- Volcado de datos para la tabla `tecnologiainterfaz_aplicacion`
 --
 
-INSERT INTO `Tecnología_Interfaz_Aplicacion` (`ID_Tecnologia_Interfaz`, `Tecnologia_Interfaz`) VALUES
+INSERT INTO `tecnologiainterfaz_aplicacion` (`ID_Tecnologia_Interfaz`, `Tecnologia_Interfaz`) VALUES
+(0, ''),
 (1, 'Web'),
 (2, 'Móvil'),
 (3, 'Web + Movil'),
@@ -555,19 +557,19 @@ INSERT INTO `Tecnología_Interfaz_Aplicacion` (`ID_Tecnologia_Interfaz`, `Tecnol
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Testing_Situacion`
+-- Estructura de tabla para la tabla `testing_situacion`
 --
 
-CREATE TABLE `Testing_Situacion` (
+CREATE TABLE `testing_situacion` (
   `Id_Testing` int NOT NULL,
   `Testing` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Testing_Situacion`
+-- Volcado de datos para la tabla `testing_situacion`
 --
 
-INSERT INTO `Testing_Situacion` (`Id_Testing`, `Testing`) VALUES
+INSERT INTO `testing_situacion` (`Id_Testing`, `Testing`) VALUES
 (1, 'SI'),
 (2, 'EN PROCESO'),
 (3, 'NO');
@@ -575,19 +577,20 @@ INSERT INTO `Testing_Situacion` (`Id_Testing`, `Testing`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Tipo_Aplicacion`
+-- Estructura de tabla para la tabla `tipo_aplicacion`
 --
 
-CREATE TABLE `Tipo_Aplicacion` (
+CREATE TABLE `tipo_aplicacion` (
   `ID_Tipo` int NOT NULL,
   `Tipo` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Tipo_Aplicacion`
+-- Volcado de datos para la tabla `tipo_aplicacion`
 --
 
-INSERT INTO `Tipo_Aplicacion` (`ID_Tipo`, `Tipo`) VALUES
+INSERT INTO `tipo_aplicacion` (`ID_Tipo`, `Tipo`) VALUES
+(0, ''),
 (1, 'Webservice'),
 (2, 'Internet'),
 (3, 'Intranet'),
@@ -597,19 +600,20 @@ INSERT INTO `Tipo_Aplicacion` (`ID_Tipo`, `Tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Volumen_Evolutivo_Aplicacion`
+-- Estructura de tabla para la tabla `volumenevolutivo_aplicacion`
 --
 
-CREATE TABLE `Volumen_Evolutivo_Aplicacion` (
+CREATE TABLE `volumenevolutivo_aplicacion` (
   `ID_Volumen_Evolutivo` int NOT NULL,
   `Volumen_Evolutivo` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Volumen_Evolutivo_Aplicacion`
+-- Volcado de datos para la tabla `volumenevolutivo_aplicacion`
 --
 
-INSERT INTO `Volumen_Evolutivo_Aplicacion` (`ID_Volumen_Evolutivo`, `Volumen_Evolutivo`) VALUES
+INSERT INTO `volumenevolutivo_aplicacion` (`ID_Volumen_Evolutivo`, `Volumen_Evolutivo`) VALUES
+(0, ''),
 (1, 'Alto'),
 (2, 'Medio'),
 (3, 'Bajo');
@@ -617,19 +621,20 @@ INSERT INTO `Volumen_Evolutivo_Aplicacion` (`ID_Volumen_Evolutivo`, `Volumen_Evo
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Volumen_Usuarios_Aplicacion`
+-- Estructura de tabla para la tabla `volumenusuarios_aplicacion`
 --
 
-CREATE TABLE `Volumen_Usuarios_Aplicacion` (
+CREATE TABLE `volumenusuarios_aplicacion` (
   `ID_Volumen_Usuarios` int NOT NULL,
   `Volumen_Usuarios` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `Volumen_Usuarios_Aplicacion`
+-- Volcado de datos para la tabla `volumenusuarios_aplicacion`
 --
 
-INSERT INTO `Volumen_Usuarios_Aplicacion` (`ID_Volumen_Usuarios`, `Volumen_Usuarios`) VALUES
+INSERT INTO `volumenusuarios_aplicacion` (`ID_Volumen_Usuarios`, `Volumen_Usuarios`) VALUES
+(0, ''),
 (1, 'Alto'),
 (2, 'Medio'),
 (3, 'Bajo'),
@@ -640,9 +645,9 @@ INSERT INTO `Volumen_Usuarios_Aplicacion` (`ID_Volumen_Usuarios`, `Volumen_Usuar
 --
 
 --
--- Indices de la tabla `Aplicaciones`
+-- Indices de la tabla `aplicaciones`
 --
-ALTER TABLE `Aplicaciones`
+ALTER TABLE `aplicaciones`
   ADD PRIMARY KEY (`ID_Aplicacion`,`Codigo_Aplicacion`),
   ADD KEY `Responsable_ID` (`Responsable_ID`),
   ADD KEY `Criticidad_ID` (`Criticidad_ID`),
@@ -653,111 +658,111 @@ ALTER TABLE `Aplicaciones`
   ADD KEY `Codigo_Aplicacion` (`Codigo_Aplicacion`);
 
 --
--- Indices de la tabla `Cer_Aplicacion`
+-- Indices de la tabla `cer_aplicacion`
 --
-ALTER TABLE `Cer_Aplicacion`
+ALTER TABLE `cer_aplicacion`
   ADD PRIMARY KEY (`Codigo_Aplicacion`);
 
 --
--- Indices de la tabla `Comentarios_Aplicacion`
+-- Indices de la tabla `comentarios_aplicacion`
 --
-ALTER TABLE `Comentarios_Aplicacion`
+ALTER TABLE `comentarios_aplicacion`
   ADD PRIMARY KEY (`Codigo_Aplicacion`);
 
 --
--- Indices de la tabla `Comentarios_Situacion`
+-- Indices de la tabla `comentarios_situacion`
 --
-ALTER TABLE `Comentarios_Situacion`
+ALTER TABLE `comentarios_situacion`
   ADD PRIMARY KEY (`Situacion_Id`,`ID_Comentario`);
 
 --
--- Indices de la tabla `Criticidad_Aplicacion`
+-- Indices de la tabla `criticidad_aplicacion`
 --
-ALTER TABLE `Criticidad_Aplicacion`
+ALTER TABLE `criticidad_aplicacion`
   ADD PRIMARY KEY (`ID_Criticidad`);
 
 --
--- Indices de la tabla `Despliegue_Situacion`
+-- Indices de la tabla `despliegue_situacion`
 --
-ALTER TABLE `Despliegue_Situacion`
+ALTER TABLE `despliegue_situacion`
   ADD PRIMARY KEY (`Id_Despliegue`);
 
 --
--- Indices de la tabla `Devops_Aplicacion`
+-- Indices de la tabla `devops_aplicacion`
 --
-ALTER TABLE `Devops_Aplicacion`
+ALTER TABLE `devops_aplicacion`
   ADD PRIMARY KEY (`Codigo_Aplicacion`);
 
 --
--- Indices de la tabla `Documentacion_Situacion`
+-- Indices de la tabla `documentacion_situacion`
 --
-ALTER TABLE `Documentacion_Situacion`
+ALTER TABLE `documentacion_situacion`
   ADD PRIMARY KEY (`Id_Documentacion`);
 
 --
--- Indices de la tabla `Informes_Situacion`
+-- Indices de la tabla `informes_situacion`
 --
-ALTER TABLE `Informes_Situacion`
+ALTER TABLE `informes_situacion`
   ADD PRIMARY KEY (`Id_Informes`);
 
 --
--- Indices de la tabla `Infra_Aplicacion`
+-- Indices de la tabla `infra_aplicacion`
 --
-ALTER TABLE `Infra_Aplicacion`
+ALTER TABLE `infra_aplicacion`
   ADD PRIMARY KEY (`Codigo_Aplicacion`);
 
 --
--- Indices de la tabla `Int_Aplicacion`
+-- Indices de la tabla `int_aplicacion`
 --
-ALTER TABLE `Int_Aplicacion`
+ALTER TABLE `int_aplicacion`
   ADD PRIMARY KEY (`Codigo_Aplicacion`);
 
 --
--- Indices de la tabla `Maven_Situacion`
+-- Indices de la tabla `maven_situacion`
 --
-ALTER TABLE `Maven_Situacion`
+ALTER TABLE `maven_situacion`
   ADD PRIMARY KEY (`Id_Maven`);
 
 --
--- Indices de la tabla `Plan_Pruebas_Situacion`
+-- Indices de la tabla `planpruebas_situacion`
 --
-ALTER TABLE `Plan_Pruebas_Situacion`
+ALTER TABLE `planpruebas_situacion`
   ADD PRIMARY KEY (`Id_Plan_Pruebas`);
 
 --
--- Indices de la tabla `Pre_Aplicacion`
+-- Indices de la tabla `pre_aplicacion`
 --
-ALTER TABLE `Pre_Aplicacion`
+ALTER TABLE `pre_aplicacion`
   ADD PRIMARY KEY (`Codigo_Aplicacion`);
 
 --
--- Indices de la tabla `Pro_Aplicacion`
+-- Indices de la tabla `pro_aplicacion`
 --
-ALTER TABLE `Pro_Aplicacion`
+ALTER TABLE `pro_aplicacion`
   ADD PRIMARY KEY (`Codigo_Aplicacion`);
 
 --
--- Indices de la tabla `Responsable_Aplicacion`
+-- Indices de la tabla `responsable_aplicacion`
 --
-ALTER TABLE `Responsable_Aplicacion`
+ALTER TABLE `responsable_aplicacion`
   ADD PRIMARY KEY (`ID_Responsable`);
 
 --
--- Indices de la tabla `Seguimiento_Aplicacion`
+-- Indices de la tabla `seguimiento_aplicacion`
 --
-ALTER TABLE `Seguimiento_Aplicacion`
+ALTER TABLE `seguimiento_aplicacion`
   ADD PRIMARY KEY (`Codigo_Aplicacion`,`Fecha`);
 
 --
--- Indices de la tabla `Servicios_Terceros_Situacion`
+-- Indices de la tabla `serviciosterceros_situacion`
 --
-ALTER TABLE `Servicios_Terceros_Situacion`
+ALTER TABLE `serviciosterceros_situacion`
   ADD PRIMARY KEY (`Id_Servicios_Terceros`);
 
 --
--- Indices de la tabla `Situacion_Aplicaciones`
+-- Indices de la tabla `situacion_aplicaciones`
 --
-ALTER TABLE `Situacion_Aplicaciones`
+ALTER TABLE `situacion_aplicaciones`
   ADD PRIMARY KEY (`ID_Situacion`),
   ADD KEY `Codigo_Aplicacion` (`Codigo_Aplicacion`),
   ADD KEY `Despliegue_ID` (`Despliegue_ID`),
@@ -769,33 +774,33 @@ ALTER TABLE `Situacion_Aplicaciones`
   ADD KEY `Servicios_Terceros_ID` (`Servicios_Terceros_ID`);
 
 --
--- Indices de la tabla `Tecnología_Interfaz_Aplicacion`
+-- Indices de la tabla `tecnologiainterfaz_aplicacion`
 --
-ALTER TABLE `Tecnología_Interfaz_Aplicacion`
+ALTER TABLE `tecnologiainterfaz_aplicacion`
   ADD PRIMARY KEY (`ID_Tecnologia_Interfaz`);
 
 --
--- Indices de la tabla `Testing_Situacion`
+-- Indices de la tabla `testing_situacion`
 --
-ALTER TABLE `Testing_Situacion`
+ALTER TABLE `testing_situacion`
   ADD PRIMARY KEY (`Id_Testing`);
 
 --
--- Indices de la tabla `Tipo_Aplicacion`
+-- Indices de la tabla `tipo_aplicacion`
 --
-ALTER TABLE `Tipo_Aplicacion`
+ALTER TABLE `tipo_aplicacion`
   ADD PRIMARY KEY (`ID_Tipo`);
 
 --
--- Indices de la tabla `Volumen_Evolutivo_Aplicacion`
+-- Indices de la tabla `volumenevolutivo_aplicacion`
 --
-ALTER TABLE `Volumen_Evolutivo_Aplicacion`
+ALTER TABLE `volumenevolutivo_aplicacion`
   ADD PRIMARY KEY (`ID_Volumen_Evolutivo`);
 
 --
--- Indices de la tabla `Volumen_Usuarios_Aplicacion`
+-- Indices de la tabla `volumenusuarios_aplicacion`
 --
-ALTER TABLE `Volumen_Usuarios_Aplicacion`
+ALTER TABLE `volumenusuarios_aplicacion`
   ADD PRIMARY KEY (`ID_Volumen_Usuarios`);
 
 --
@@ -803,82 +808,82 @@ ALTER TABLE `Volumen_Usuarios_Aplicacion`
 --
 
 --
--- Filtros para la tabla `Aplicaciones`
+-- Filtros para la tabla `aplicaciones`
 --
-ALTER TABLE `Aplicaciones`
-  ADD CONSTRAINT `Aplicaciones_ibfk_1` FOREIGN KEY (`Responsable_ID`) REFERENCES `Responsable_Aplicacion` (`ID_Responsable`),
-  ADD CONSTRAINT `Aplicaciones_ibfk_2` FOREIGN KEY (`Criticidad_ID`) REFERENCES `Criticidad_Aplicacion` (`ID_Criticidad`),
-  ADD CONSTRAINT `Aplicaciones_ibfk_3` FOREIGN KEY (`Vol_Evol_ID`) REFERENCES `Volumen_Evolutivo_Aplicacion` (`ID_Volumen_Evolutivo`),
-  ADD CONSTRAINT `Aplicaciones_ibfk_4` FOREIGN KEY (`Vol_Usu_ID`) REFERENCES `Volumen_Usuarios_Aplicacion` (`ID_Volumen_Usuarios`),
-  ADD CONSTRAINT `Aplicaciones_ibfk_5` FOREIGN KEY (`Tipo_ID`) REFERENCES `Tipo_Aplicacion` (`ID_Tipo`),
-  ADD CONSTRAINT `Aplicaciones_ibfk_6` FOREIGN KEY (`Tecnologia_Interfaz_ID`) REFERENCES `Tecnología_Interfaz_Aplicacion` (`ID_Tecnologia_Interfaz`);
+ALTER TABLE `aplicaciones`
+  ADD CONSTRAINT `Aplicaciones_ibfk_1` FOREIGN KEY (`Responsable_ID`) REFERENCES `responsable_aplicacion` (`ID_Responsable`),
+  ADD CONSTRAINT `Aplicaciones_ibfk_2` FOREIGN KEY (`Criticidad_ID`) REFERENCES `criticidad_aplicacion` (`ID_Criticidad`),
+  ADD CONSTRAINT `Aplicaciones_ibfk_3` FOREIGN KEY (`Vol_Evol_ID`) REFERENCES `volumenevolutivo_aplicacion` (`ID_Volumen_Evolutivo`),
+  ADD CONSTRAINT `Aplicaciones_ibfk_4` FOREIGN KEY (`Vol_Usu_ID`) REFERENCES `volumenusuarios_aplicacion` (`ID_Volumen_Usuarios`),
+  ADD CONSTRAINT `Aplicaciones_ibfk_5` FOREIGN KEY (`Tipo_ID`) REFERENCES `tipo_aplicacion` (`ID_Tipo`),
+  ADD CONSTRAINT `Aplicaciones_ibfk_6` FOREIGN KEY (`Tecnologia_Interfaz_ID`) REFERENCES `tecnologiainterfaz_aplicacion` (`ID_Tecnologia_Interfaz`);
 
 --
--- Filtros para la tabla `Cer_Aplicacion`
+-- Filtros para la tabla `cer_aplicacion`
 --
-ALTER TABLE `Cer_Aplicacion`
-  ADD CONSTRAINT `Cer_Aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `Aplicaciones` (`Codigo_Aplicacion`);
+ALTER TABLE `cer_aplicacion`
+  ADD CONSTRAINT `cer_aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `aplicaciones` (`Codigo_Aplicacion`);
 
 --
--- Filtros para la tabla `Comentarios_Aplicacion`
+-- Filtros para la tabla `comentarios_aplicacion`
 --
-ALTER TABLE `Comentarios_Aplicacion`
-  ADD CONSTRAINT `Comentarios_Aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `Aplicaciones` (`Codigo_Aplicacion`);
+ALTER TABLE `comentarios_aplicacion`
+  ADD CONSTRAINT `comentarios_aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `aplicaciones` (`Codigo_Aplicacion`);
 
 --
--- Filtros para la tabla `Comentarios_Situacion`
+-- Filtros para la tabla `comentarios_situacion`
 --
-ALTER TABLE `Comentarios_Situacion`
-  ADD CONSTRAINT `Comentarios_Situacion_ibfk_1` FOREIGN KEY (`Situacion_Id`) REFERENCES `Situacion_Aplicaciones` (`ID_Situacion`);
+ALTER TABLE `comentarios_situacion`
+  ADD CONSTRAINT `comentarios_situacion_ibfk_1` FOREIGN KEY (`Situacion_Id`) REFERENCES `situacion_aplicaciones` (`ID_Situacion`);
 
 --
--- Filtros para la tabla `Devops_Aplicacion`
+-- Filtros para la tabla `devops_aplicacion`
 --
-ALTER TABLE `Devops_Aplicacion`
-  ADD CONSTRAINT `Devops_Aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `Aplicaciones` (`Codigo_Aplicacion`);
+ALTER TABLE `devops_aplicacion`
+  ADD CONSTRAINT `devops_aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `aplicaciones` (`Codigo_Aplicacion`);
 
 --
--- Filtros para la tabla `Infra_Aplicacion`
+-- Filtros para la tabla `infra_aplicacion`
 --
-ALTER TABLE `Infra_Aplicacion`
-  ADD CONSTRAINT `Infra_Aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `Aplicaciones` (`Codigo_Aplicacion`);
+ALTER TABLE `infra_aplicacion`
+  ADD CONSTRAINT `infra_aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `aplicaciones` (`Codigo_Aplicacion`);
 
 --
--- Filtros para la tabla `Int_Aplicacion`
+-- Filtros para la tabla `int_aplicacion`
 --
-ALTER TABLE `Int_Aplicacion`
-  ADD CONSTRAINT `Int_Aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `Aplicaciones` (`Codigo_Aplicacion`);
+ALTER TABLE `int_aplicacion`
+  ADD CONSTRAINT `int_aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `aplicaciones` (`Codigo_Aplicacion`);
 
 --
--- Filtros para la tabla `Pre_Aplicacion`
+-- Filtros para la tabla `pre_aplicacion`
 --
-ALTER TABLE `Pre_Aplicacion`
-  ADD CONSTRAINT `Pre_Aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `Aplicaciones` (`Codigo_Aplicacion`);
+ALTER TABLE `pre_aplicacion`
+  ADD CONSTRAINT `pre_aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `aplicaciones` (`Codigo_Aplicacion`);
 
 --
--- Filtros para la tabla `Pro_Aplicacion`
+-- Filtros para la tabla `pro_aplicacion`
 --
-ALTER TABLE `Pro_Aplicacion`
-  ADD CONSTRAINT `Pro_Aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `Aplicaciones` (`Codigo_Aplicacion`);
+ALTER TABLE `pro_aplicacion`
+  ADD CONSTRAINT `pro_aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `aplicaciones` (`Codigo_Aplicacion`);
 
 --
--- Filtros para la tabla `Seguimiento_Aplicacion`
+-- Filtros para la tabla `seguimiento_aplicacion`
 --
-ALTER TABLE `Seguimiento_Aplicacion`
-  ADD CONSTRAINT `Seguimiento_Aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `Aplicaciones` (`Codigo_Aplicacion`);
+ALTER TABLE `seguimiento_aplicacion`
+  ADD CONSTRAINT `seguimiento_aplicacion_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `aplicaciones` (`Codigo_Aplicacion`);
 
 --
--- Filtros para la tabla `Situacion_Aplicaciones`
+-- Filtros para la tabla `situacion_aplicaciones`
 --
-ALTER TABLE `Situacion_Aplicaciones`
-  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `Aplicaciones` (`Codigo_Aplicacion`),
-  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_2` FOREIGN KEY (`Despliegue_ID`) REFERENCES `Despliegue_Situacion` (`Id_Despliegue`),
-  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_3` FOREIGN KEY (`Maven_Id`) REFERENCES `Maven_Situacion` (`Id_Maven`),
-  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_4` FOREIGN KEY (`Documentacion_ID`) REFERENCES `Documentacion_Situacion` (`Id_Documentacion`),
-  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_5` FOREIGN KEY (`Plan_Pruebas_ID`) REFERENCES `Plan_Pruebas_Situacion` (`Id_Plan_Pruebas`),
-  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_6` FOREIGN KEY (`Testing_ID`) REFERENCES `Testing_Situacion` (`Id_Testing`),
-  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_7` FOREIGN KEY (`Informes_ID`) REFERENCES `Informes_Situacion` (`Id_Informes`),
-  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_8` FOREIGN KEY (`Servicios_Terceros_ID`) REFERENCES `Servicios_Terceros_Situacion` (`Id_Servicios_Terceros`);
+ALTER TABLE `situacion_aplicaciones`
+  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_1` FOREIGN KEY (`Codigo_Aplicacion`) REFERENCES `aplicaciones` (`Codigo_Aplicacion`),
+  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_2` FOREIGN KEY (`Despliegue_ID`) REFERENCES `despliegue_situacion` (`Id_Despliegue`),
+  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_3` FOREIGN KEY (`Maven_Id`) REFERENCES `maven_situacion` (`Id_Maven`),
+  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_4` FOREIGN KEY (`Documentacion_ID`) REFERENCES `documentacion_situacion` (`Id_Documentacion`),
+  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_5` FOREIGN KEY (`Plan_Pruebas_ID`) REFERENCES `planpruebas_situacion` (`Id_Plan_Pruebas`),
+  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_6` FOREIGN KEY (`Testing_ID`) REFERENCES `testing_situacion` (`Id_Testing`),
+  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_7` FOREIGN KEY (`Informes_ID`) REFERENCES `informes_situacion` (`Id_Informes`),
+  ADD CONSTRAINT `Situacion_Aplicaciones_ibfk_8` FOREIGN KEY (`Servicios_Terceros_ID`) REFERENCES `serviciosterceros_situacion` (`Id_Servicios_Terceros`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
