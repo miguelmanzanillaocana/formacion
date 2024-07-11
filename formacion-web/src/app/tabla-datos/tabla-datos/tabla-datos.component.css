@@ -4,30 +4,32 @@ table {
   }
   
   /* Estilos para la cabecera de la tabla */
-  thead {
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #ddd;
+  thead th {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+  }
+
+  thead th:hover {
+    background-color: #444;
+    cursor: pointer;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
   }
   
   th {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  /* Estilos para las celdas de la tabla */
-  td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    background-color: #f0f0f0;
   }
   
   /* Estilos para las filas pares e impares */
   tr:nth-child(even) {
     background-color: #f9f9f9;
-  }
-  
-  tr:nth-child(odd) {
-    background-color: #fff;
   }
   
   /* Estilos para el hover sobre las filas */
