@@ -48,5 +48,8 @@ public class AplicacionService {
 		return requirement;
 	}
 	
+	public Aplicacion updateAplicacion(Aplicacion ap) {
+		return repository.save(ap);
+	}
 
 }

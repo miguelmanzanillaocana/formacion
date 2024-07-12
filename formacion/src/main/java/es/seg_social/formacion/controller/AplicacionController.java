@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,11 @@ public class AplicacionController {
 	@PostMapping("/insert")
 	public Aplicacion insertApplication(@RequestBody Aplicacion ap) {
 		return service.insertAplicacion(ap);
+	}
+	
+	@PutMapping("/update")
+	public Aplicacion updateAplicacion(@RequestBody Aplicacion ap) {
+		return service.updateAplicacion(ap);
 	}
 
 }
