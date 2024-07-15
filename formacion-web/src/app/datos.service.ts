@@ -7,11 +7,20 @@ import { Observable } from 'rxjs';
 })
 export class DatosService {
 
-  private url = 'http://localhost:8080/aplicacion/all'
-
   constructor(private http: HttpClient) { }
 
-  obtenerDatos(): Observable<any[]> {
-    return this.http.get<any[]>(this.url);
+
+  obtenerAplicaciones(): Observable<any[]> {
+    return Observable.create((observer: any) => {
+      fetch('http://localhost:8080/aplicaciones/', {
+        method: 'GET',
+        mode: 'no-cors'
+      }).then((response) => response.json()).then(data => {
+        observer.next(data);
+        observer.complete();
+      }).catch(err => observer.error(err));
+      
+    })
+
   }
 }
