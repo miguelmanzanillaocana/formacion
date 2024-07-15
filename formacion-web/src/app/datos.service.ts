@@ -9,18 +9,7 @@ export class DatosService {
 
   constructor(private http: HttpClient) { }
 
-
   obtenerAplicaciones(): Observable<any[]> {
-    return Observable.create((observer: any) => {
-      fetch('http://localhost:8080/aplicaciones/', {
-        method: 'GET',
-        mode: 'no-cors'
-      }).then((response) => response.json()).then(data => {
-        observer.next(data);
-        observer.complete();
-      }).catch(err => observer.error(err));
-      
-    })
-
+    return this.http.get<any[]>('http://localhost:8080/aplicaciones/');
   }
 }
