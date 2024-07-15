@@ -28,6 +28,13 @@ public class ComentarioSituacionService {
 		return repository.getComentarioSituacionByIdSit(id);
 	}
 	
+	public boolean deleteComentariSituacioByIdSit(Integer id) {
+		for (ComentarioSituacion com : getComentarioSituacionByIdSit(id)) {
+			repository.delete(com);
+		}
+		return true;
+	}
+	
 	public boolean deleteComentarioSituacionById(ComentarioSituacionId comSitId) {
 		 boolean respuesta = false;
 		 
