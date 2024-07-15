@@ -16,3 +16,6 @@ Endpoints Spring:
   - /delete/{idSit}/{idCom} (DELETE) => borra el comentario que pertenezca a una situacion y tenga un id determinado (idSit = idSituacion, idCom = idComentario)
   - /insert (POST) => inserta un nuevo comentario, el comentario se psas en el body del request
   - WIP
+
+Errores conocidos:
+  - Al cambiar de pagina en la web se borra el array y no vuelve a cargar
