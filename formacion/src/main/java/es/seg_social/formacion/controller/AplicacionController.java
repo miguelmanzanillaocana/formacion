@@ -17,14 +17,14 @@ import es.seg_social.formacion.services.AplicacionService;
 
 
 @RestController
-@RequestMapping("/aplicacion")
+@RequestMapping("/aplicaciones")
 public class AplicacionController {
 	
 	@Autowired
 	private AplicacionService service;
 	
 	//TODO: cambiar base de datos para que int null sean 0
-	@GetMapping("/all")
+	@GetMapping("/")
 	public ArrayList<Aplicacion> getAllApplications() {
 		return service.getAllApplications();
 	}

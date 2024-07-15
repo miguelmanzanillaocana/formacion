@@ -1,16 +1,22 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { TablaDatosComponent } from "./tabla-datos/tabla-datos.component";
+import { Router, RouterOutlet } from '@angular/router';
+import { TablaDatosComponent } from "./aplicaciones/tabla-datos/tabla-datos.component";
+import { InsertFormComponent } from "./aplicaciones/insert-form/insert-form.component";
 import { NavbarComponent } from "./navbar/navbar.component";
-import { InsertFormComponent } from "./insert-form/insert-form.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TablaDatosComponent, NavbarComponent, InsertFormComponent],
+  imports: [RouterOutlet, TablaDatosComponent, InsertFormComponent, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'formacion-web';
+  title = 'Formacion';
+
+  constructor (private router: Router) {}
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => console.log(event))
+  }
 }
