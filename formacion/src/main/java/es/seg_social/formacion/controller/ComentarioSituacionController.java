@@ -38,6 +38,11 @@ public class ComentarioSituacionController {
 		return service.getComentarioSituacionById(id);
 	}
 	
+	@DeleteMapping("/delete/id/{id}")
+	public boolean deleteComentarioSituacionByIdSit(@PathVariable(value="id") Integer id) {
+		return service.deleteComentarioSituacionByIdSit(id);
+	}
+	
 	@DeleteMapping("/delete/{idSit}/{idCom}")
 	public boolean deleteComentarioSituacionById(@PathVariable(value = "idSit") Integer idSit, @PathVariable(value = "idCom") Integer idCom) {
 		return service.deleteComentarioSituacionById(new ComentarioSituacionId(idSit, idCom));
