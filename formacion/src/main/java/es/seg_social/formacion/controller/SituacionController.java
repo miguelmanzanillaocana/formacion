@@ -20,7 +20,7 @@ public class SituacionController {
 	@Autowired
 	SituacionService service;
 	
-	@GetMapping("/all")
+	@GetMapping("/")
 	public ArrayList<Situacion> getAllSituaciones(){
 		return service.getAllSituacion();
 	}

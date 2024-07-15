@@ -22,7 +22,7 @@ public class ComentarioSituacionController {
 	@Autowired
 	ComentarioSituacionService service;
 	
-	@GetMapping("/all")
+	@GetMapping("/")
 	public ArrayList<ComentarioSituacion> getAllComentarioSituacion(){
 		return service.getAllComentarioSituacion();
 	}
