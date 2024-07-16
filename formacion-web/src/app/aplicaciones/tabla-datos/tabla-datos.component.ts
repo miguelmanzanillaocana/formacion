@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { DatosService } from '../../datos.service';
 
+
 @Component({
   selector: 'app-tabla-datos',
   standalone: true,
