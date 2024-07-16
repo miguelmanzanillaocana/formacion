@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { DatosService } from '../../datos.service';
 
+
 @Component({
   selector: 'app-tabla-datos',
   standalone: true,
@@ -15,7 +16,7 @@ export class TablaDatosComponent {
 
   constructor(private datosService: DatosService){  }
 
-  ngAfterViewInit(): void{
+  ngOnInit(): void{
     this.datosService.obtenerAplicaciones().subscribe((datos: any[]) => {
       this.datos = datos as any[];
     })
