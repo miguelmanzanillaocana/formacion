@@ -7,11 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class DatosService {
 
-  private url = 'http://localhost:8080/aplicacion/all'
-
   constructor(private http: HttpClient) { }
 
-  obtenerDatos(): Observable<any[]> {
-    return this.http.get<any[]>(this.url);
+  obtenerAplicaciones(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:8080/aplicaciones/');
   }
 }

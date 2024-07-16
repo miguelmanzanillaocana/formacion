@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +22,7 @@ public class ComentarioSituacionController {
 	@Autowired
 	ComentarioSituacionService service;
 	
-	@GetMapping("/all")
+	@GetMapping("/")
 	public ArrayList<ComentarioSituacion> getAllComentarioSituacion(){
 		return service.getAllComentarioSituacion();
 	}
@@ -36,9 +38,19 @@ public class ComentarioSituacionController {
 		return service.getComentarioSituacionById(id);
 	}
 	
+	@DeleteMapping("/delete/id/{id}")
+	public boolean deleteComentarioSituacionByIdSit(@PathVariable(value="id") Integer id) {
+		return service.deleteComentarioSituacionByIdSit(id);
+	}
+	
 	@DeleteMapping("/delete/{idSit}/{idCom}")
 	public boolean deleteComentarioSituacionById(@PathVariable(value = "idSit") Integer idSit, @PathVariable(value = "idCom") Integer idCom) {
 		return service.deleteComentarioSituacionById(new ComentarioSituacionId(idSit, idCom));
+	}
+	
+	@PostMapping("/insert")
+	public ComentarioSituacion ComentarioSituacion(@RequestBody ComentarioSituacion comSit) {
+		return service.insertComentarioSituacion(comSit);
 	}
 
 }

@@ -11,13 +11,12 @@ import { DatosService } from '../../datos.service';
 })
 
 export class TablaDatosComponent {
-  
   datos: any[]=[];
 
   constructor(private datosService: DatosService){  }
 
   ngOnInit(): void{
-    this.datosService.obtenerDatos().subscribe((datos: any[]) => {
+    this.datosService.obtenerAplicaciones().subscribe((datos: any[]) => {
       this.datos = datos as any[];
     })
   }

@@ -28,6 +28,13 @@ public class ComentarioSituacionService {
 		return repository.getComentarioSituacionByIdSit(id);
 	}
 	
+	public boolean deleteComentariSituacioByIdSit(Integer id) {
+		for (ComentarioSituacion com : getComentarioSituacionByIdSit(id)) {
+			repository.delete(com);
+		}
+		return true;
+	}
+	
 	public boolean deleteComentarioSituacionById(ComentarioSituacionId comSitId) {
 		 boolean respuesta = false;
 		 
@@ -41,11 +48,15 @@ public class ComentarioSituacionService {
 	public boolean deleteComentarioSituacionByIdSit(Integer SituacionId) {
 		boolean respuesta = false;
 		
-		for (ComentarioSituacion comSit : repository.getComentarioSituacionByIdSit(SituacionId)) {
+		for (ComentarioSituacion comSit : getComentarioSituacionByIdSit(SituacionId)) {
 			repository.delete(comSit);
 		}
 		
 		return respuesta;
+	}
+	
+	public ComentarioSituacion insertComentarioSituacion(ComentarioSituacion comSit) {
+		return repository.save(comSit);
 	}
 
 }

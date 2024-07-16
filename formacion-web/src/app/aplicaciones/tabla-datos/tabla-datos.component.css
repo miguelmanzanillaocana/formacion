@@ -1,0 +1,36 @@
+/*table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead th {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 2px solid #333;
+}
+
+thead th:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}*/

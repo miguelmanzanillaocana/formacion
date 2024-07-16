@@ -1,0 +1,34 @@
+<div class="table-responsive mt-2 mx-4">
+  <table class="table table-hover table-sm ">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">Código Aplicación</th>
+        <th scope="col">Nombre Aplicación</th>
+        <th scope="col">Nombre Área</th>
+        <th scope="col">Sub Área</th>
+        <th scope="col">Responsable</th>
+        <th scope="col">Tecnología</th>
+        <th scope="col">Criticidad</th>
+        <th scope="col">Volumen Evolución</th>
+        <th scope="col">Volumen Usuarios</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Tecnología Integración</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let dato of datos">
+        <th scope="row">{{ dato.codAplic }}</th>
+        <td>{{ dato.nombAplic }}</td>
+        <td>{{ dato.nombArea }}</td>
+        <td>{{ dato.subArea }}</td>
+        <td>{{ dato.resp }}</td>
+        <td>{{ dato.tecn }}</td>
+        <td>{{ dato.criti }}</td>
+        <td>{{ dato.volEvol }}</td>
+        <td>{{ dato.volUsu }}</td>
+        <td>{{ dato.tipo }}</td>
+        <td>{{ dato.tecInt }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

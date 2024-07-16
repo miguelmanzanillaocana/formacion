@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.seg_social.formacion.model.Aplicacion;
+import es.seg_social.formacion.model.Situacion;
 import es.seg_social.formacion.repository.IAplicacionRepository;
 import es.seg_social.formacion.repository.ISituacionRepository;
 
@@ -39,6 +40,16 @@ public class AplicacionService {
 		}
 		
 		return respuesta;
+	}
+	
+	public Aplicacion insertAplicacion(Aplicacion ap) {
+		Aplicacion requirement = repository.save(ap);
+		situacionService.insertSituacion(new Situacion(ap.getId(), ap.getCodAplic()));
+		return requirement;
+	}
+	
+	public Aplicacion updateAplicacion(Aplicacion ap) {
+		return repository.save(ap);
 	}
 
 }

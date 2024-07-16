@@ -37,5 +37,9 @@ public class SituacionService {
 		
 		return respuesta;
 	}
+	
+	public Situacion insertSituacion(Situacion sit) {
+		return repository.save(sit);
+	}
 
 }
