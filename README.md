@@ -3,7 +3,7 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
 Endpoints Spring:
   - /aplicaciones/ (GET) => recibe un array en JSON con todas las apliaciones
   - /aplicaciones/id/{id} (GET) => recibe un JSON con la aplicacion que tenga el id
-  - /aplicaciones/delete/{id} (DELETE) => borra la aplicacion con ese id
+  - /aplicaciones/delete/{cod} (DELETE) => borra la aplicacion con ese codigo
   - /aplicaciones/insert (POST) => inserta nueva aplicacion, la aplicacion se pasa en el body del request
   - /aplicacion/update (PUT) => actualiza una aplicacion, los datos modificado se pasan en el body del request
   - /situacion/ (GET) => recibe un array en JSON con todas las situaciones
@@ -18,4 +18,4 @@ Endpoints Spring:
   - WIP
 
 Errores conocidos:
-  - Al cambiar de pagina en la web se borra el array y no vuelve a cargar
+  -
