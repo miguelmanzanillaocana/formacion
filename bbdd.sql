@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: bp9wker0ykhia7ujvaz1-mysql.services.clever-cloud.com:3306
--- Tiempo de generación: 11-07-2024 a las 07:43:02
+-- Tiempo de generación: 17-07-2024 a las 11:02:16
 -- Versión del servidor: 8.0.22-13
 -- Versión de PHP: 8.2.21
 
@@ -151,8 +151,6 @@ CREATE TABLE `comentarios_situacion` (
 --
 
 INSERT INTO `comentarios_situacion` (`Situacion_Id`, `ID_Comentario`, `Comentario`) VALUES
-(1, 1, 'Código sin actualizar. Luis debe pasarlo'),
-(1, 2, 'Se esta desplegando la versión 01.00.00.23.00'),
 (4, 1, 'Migrada a Pros@. PCOT'),
 (5, 1, 'Se va a decomisionar'),
 (6, 1, 'Se va a decomisionar'),
@@ -242,6 +240,7 @@ CREATE TABLE `despliegue_situacion` (
 --
 
 INSERT INTO `despliegue_situacion` (`Id_Despliegue`, `Despliegue`) VALUES
+(0, ''),
 (1, 'PREPRODUCION'),
 (2, 'PRODUCION'),
 (3, 'INTEGRACION');
@@ -273,6 +272,7 @@ CREATE TABLE `documentacion_situacion` (
 --
 
 INSERT INTO `documentacion_situacion` (`Id_Documentacion`, `Documentacion`) VALUES
+(0, ''),
 (1, 'DM12'),
 (2, 'DM14');
 
@@ -292,6 +292,7 @@ CREATE TABLE `informes_situacion` (
 --
 
 INSERT INTO `informes_situacion` (`Id_Informes`, `Informes`) VALUES
+(0, ''),
 (1, 'AIFO'),
 (2, 'INTEGRADOS'),
 (3, 'NO');
@@ -334,6 +335,7 @@ CREATE TABLE `maven_situacion` (
 --
 
 INSERT INTO `maven_situacion` (`Id_Maven`, `Maven`) VALUES
+(0, ''),
 (1, 'SI'),
 (2, 'EN PROGRESO'),
 (3, 'NO');
@@ -354,6 +356,7 @@ CREATE TABLE `planpruebas_situacion` (
 --
 
 INSERT INTO `planpruebas_situacion` (`Id_Plan_Pruebas`, `Plan_Pruebas`) VALUES
+(0, ''),
 (1, 'SI'),
 (2, 'GIT'),
 (3, 'NO');
@@ -431,6 +434,7 @@ CREATE TABLE `serviciosterceros_situacion` (
 --
 
 INSERT INTO `serviciosterceros_situacion` (`Id_Servicios_Terceros`, `Servicios_Terceros`) VALUES
+(0, ''),
 (1, 'SI'),
 (2, 'IFIW'),
 (3, 'NO');
@@ -465,70 +469,70 @@ CREATE TABLE `situacion_aplicaciones` (
 --
 
 INSERT INTO `situacion_aplicaciones` (`ID_Situacion`, `Codigo_Aplicacion`, `Prosa`, `Grupo_GIT`, `Version_Master`, `Version_Develop`, `Actualizado_GIT`, `Version_Produccion`, `Despliegue_ID`, `Version_WAS`, `Maven_Id`, `Documentacion_ID`, `Plan_Pruebas_ID`, `Testing_ID`, `Informes_ID`, `Servicios_Terceros_ID`) VALUES
-(1, 'ACBA', 0, 1, '01.00.00.17.00', NULL, 0, '01.00.00.22.00', 2, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'ACDC', 0, 1, '02.01.00.01.00', '02.02.00.02.00', 1, NULL, 3, 9, 2, NULL, NULL, NULL, NULL, NULL),
-(3, 'ACSP', 1, 1, '01.01.00.02.00', '01.03.02.02.00', NULL, '01.03.02.02.00', NULL, 8, NULL, NULL, NULL, NULL, 1, NULL),
-(4, 'BASC', 0, 0, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'CEHA', 1, 1, NULL, NULL, NULL, NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'CEJA', 0, 1, NULL, NULL, NULL, NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'COIP', 1, 1, '02.00.00.00.00', '02.00.00.00.00', 1, NULL, NULL, 9, NULL, 1, 3, 3, 3, 3),
-(8, 'COIR', 0, 1, '06.01.06.03.00', '06.02.00.03', 1, '06.02.00.03', 2, 9, NULL, NULL, NULL, NULL, 2, NULL),
-(9, 'DAOL', 0, 1, '07.00.03.00.00', '07.00.03.00.00', 0, '07.00.03.00.00', 2, 9, 2, 1, 1, NULL, 3, 3),
-(10, 'EMOP', 0, 1, NULL, NULL, NULL, '02.02.02.00.00', NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 'PCOT', 1, 1, '5.0.1', '5.0.2', 1, NULL, 2, 8, NULL, 1, NULL, NULL, 1, NULL),
-(12, 'PLPE', 1, 1, NULL, NULL, NULL, NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(13, 'PMOP', 1, 1, '03.04.00.00.01', '4.1.1', 1, NULL, 1, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(14, 'PPAG', 0, 1, '07.00.00.00.01', '07.00.00.02.00', 1, NULL, 3, 9, 1, NULL, NULL, NULL, NULL, 1),
-(15, 'PSOB', 1, 1, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(16, 'RENO', 0, 0, NULL, NULL, NULL, '09.01.01.00.00', NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(17, 'RESP', 1, 1, NULL, '1.3.3', 1, '01.02.02.00.00', 3, 8, NULL, NULL, NULL, NULL, NULL, 3),
-(18, 'SAPO', 0, 1, '03.01.00.01.00', '03.03.00.00.00', 1, NULL, 1, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(19, 'SCNF', 0, 1, '03.00.00.01.01', '03.00.00.01.04', 1, NULL, 1, 9, NULL, 1, NULL, NULL, NULL, 1),
-(20, 'SDIE', 0, 1, '04.00.00.01.00', '04.00.00.01.00', 1, '04.00.00.01.00', 2, 9, NULL, 2, 2, NULL, 3, 3),
-(21, 'SEST', 0, 1, NULL, NULL, NULL, NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(22, 'SFUN', 0, 1, '03.00.00.02.00', '03.00.00.02.00', 1, NULL, 1, 9, NULL, 1, NULL, NULL, 3, 3),
-(23, 'SLET', 0, 1, '07.00.00.03.00', '07.00.00.03.00', 1, '07.00.00.03.00', 1, 9, NULL, 2, 2, NULL, 3, 3),
-(24, 'SNOR', 0, 1, NULL, NULL, NULL, NULL, NULL, 9, 2, NULL, NULL, NULL, NULL, NULL),
-(25, 'SOBA', 0, 1, '06.04.15.06.00', '06.04.15.10.00', 1, '06.04.15.09.00', 2, 9, NULL, 1, NULL, NULL, 2, 3),
-(26, 'SPAD', 0, 1, NULL, NULL, NULL, NULL, NULL, 9, 2, NULL, NULL, NULL, NULL, NULL),
-(27, 'STEP', 1, 1, NULL, NULL, NULL, NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(28, 'STRN', 0, 0, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(29, 'ERCP', 0, 1, NULL, NULL, NULL, '03.02.00.00.00', NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(30, 'GFAD', 0, 1, NULL, NULL, NULL, '03.01.00.00.00', NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(31, 'GFOR', 0, 1, NULL, NULL, NULL, '02.55.00.17.00', NULL, 9, NULL, 1, NULL, NULL, NULL, 2),
-(32, 'CASI', 1, 1, '2.8.1', '2.8.1', 1, '2.8.1', NULL, 9, 3, 1, NULL, NULL, 3, 1),
-(33, 'FRDG', 1, 0, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(34, 'GEBE', 1, 1, NULL, NULL, NULL, NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(35, 'NCEP', 1, 1, '6.4.0', '6.4.0', 1, '6.4.0', NULL, 9, NULL, 1, 1, 2, 1, 2),
-(36, 'SCCD', 1, 0, '2.0.2', '2.0.2', 0, '2.0.2', NULL, 9, NULL, 2, NULL, NULL, 1, 3),
-(37, 'SCCI', 1, 1, NULL, NULL, 1, '03.04.02.00.00', NULL, 8, NULL, 1, NULL, NULL, 1, 3),
-(38, 'SCNO', 1, 0, 'Sin codigo', '1.5.0', 0, '01.09.00.00.00', NULL, 8, NULL, 2, NULL, NULL, 1, 3),
-(39, 'SCPA', 1, 0, '1.26.3', '1.26.3', 1, '01.26.01.00.00', NULL, 8, NULL, 2, NULL, NULL, 1, 3),
-(40, 'SCSE', 1, 1, '2.4.0', '2.4.0', 1, '2.4.0', NULL, 9, NULL, 1, NULL, NULL, 1, 3),
-(41, 'SCSG', 1, 1, '2.1.0', '2.1.0', 1, '2.1.0', NULL, 9, NULL, 1, NULL, 2, 1, 3),
-(42, 'SIPR', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(43, 'SPRS', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(44, 'TCON', 1, 1, '2.3.0', '2.3.0', 1, '2.3.0', NULL, 9, NULL, 2, NULL, 2, 1, 3),
-(45, 'CNLB', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(46, 'COUP', 1, 1, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(47, 'GEPE', 1, 1, NULL, NULL, NULL, NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(48, 'GSII', 1, 1, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(49, 'GSIN', 1, 1, '1.0.7', NULL, NULL, '1.0.7', NULL, 9, NULL, NULL, NULL, 2, NULL, NULL),
-(50, 'NE01', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(51, 'SALM', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(52, 'WE01', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(53, 'WE02', 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(54, 'WE10', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(55, 'WE11', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(56, 'WE12', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL),
-(57, 'WE13', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(58, 'FSED', 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(59, 'GCNT', 1, 1, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(60, 'GCSL', 1, 1, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(61, 'GEAP', 1, 1, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(62, 'GINF', 1, 1, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(63, 'SEJU', 1, 1, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL),
-(64, 'SJCO', 1, 1, NULL, NULL, NULL, NULL, NULL, 8, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'ACBA', 0, 1, '01.00.00.17.00', '', 0, '01.00.00.22.00', 2, 9, 0, 0, 0, 0, 0, 0),
+(2, 'ACDC', 0, 1, '02.01.00.01.00', '02.02.00.02.00', 1, '', 3, 9, 2, 0, 0, 0, 0, 0),
+(3, 'ACSP', 1, 1, '01.01.00.02.00', '01.03.02.02.00', 0, '01.03.02.02.00', 0, 8, 0, 0, 0, 0, 1, 0),
+(4, 'BASC', 0, 0, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(5, 'CEHA', 1, 1, '', '', 0, '', 0, 9, 0, 0, 0, 0, 0, 0),
+(6, 'CEJA', 0, 1, '', '', 0, '', 0, 9, 0, 0, 0, 0, 0, 0),
+(7, 'COIP', 1, 1, '02.00.00.00.00', '02.00.00.00.00', 1, '', 0, 9, 0, 1, 3, 3, 3, 3),
+(8, 'COIR', 0, 1, '06.01.06.03.00', '06.02.00.03', 1, '06.02.00.03', 2, 9, 0, 0, 0, 0, 2, 0),
+(9, 'DAOL', 0, 1, '07.00.03.00.00', '07.00.03.00.00', 0, '07.00.03.00.00', 2, 9, 2, 1, 1, 0, 3, 3),
+(10, 'EMOP', 0, 1, '', '', 0, '02.02.02.00.00', 0, 9, 0, 0, 0, 0, 0, 0),
+(11, 'PCOT', 1, 1, '5.0.1', '5.0.2', 1, '', 2, 8, 0, 1, 0, 0, 1, 0),
+(12, 'PLPE', 1, 1, '', '', 0, '', 0, 9, 0, 0, 0, 0, 0, 0),
+(13, 'PMOP', 1, 1, '03.04.00.00.01', '4.1.1', 1, '', 1, 9, 0, 0, 0, 0, 0, 0),
+(14, 'PPAG', 0, 1, '07.00.00.00.01', '07.00.00.02.00', 1, '', 3, 9, 1, 0, 0, 0, 0, 1),
+(15, 'PSOB', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(16, 'RENO', 0, 0, '', '', 0, '09.01.01.00.00', 0, 8, 0, 0, 0, 0, 0, 0),
+(17, 'RESP', 1, 1, '', '1.3.3', 1, '01.02.02.00.00', 3, 8, 0, 0, 0, 0, 0, 3),
+(18, 'SAPO', 0, 1, '03.01.00.01.00', '03.03.00.00.00', 1, '', 1, 9, 0, 0, 0, 0, 0, 0),
+(19, 'SCNF', 0, 1, '03.00.00.01.01', '03.00.00.01.04', 1, '', 1, 9, 0, 1, 0, 0, 0, 1),
+(20, 'SDIE', 0, 1, '04.00.00.01.00', '04.00.00.01.00', 1, '04.00.00.01.00', 2, 9, 0, 2, 2, 0, 3, 3),
+(21, 'SEST', 0, 1, '', '', 0, '', 0, 9, 0, 0, 0, 0, 0, 0),
+(22, 'SFUN', 0, 1, '03.00.00.02.00', '03.00.00.02.00', 1, '', 1, 9, 0, 1, 0, 0, 3, 3),
+(23, 'SLET', 0, 1, '07.00.00.03.00', '07.00.00.03.00', 1, '07.00.00.03.00', 1, 9, 0, 2, 2, 0, 3, 3),
+(24, 'SNOR', 0, 1, '', '', 0, '', 0, 9, 2, 0, 0, 0, 0, 0),
+(25, 'SOBA', 0, 1, '06.04.15.06.00', '06.04.15.10.00', 1, '06.04.15.09.00', 2, 9, 0, 1, 0, 0, 2, 3),
+(26, 'SPAD', 0, 1, '', '', 0, '', 0, 9, 2, 0, 0, 0, 0, 0),
+(27, 'STEP', 1, 1, '', '', 0, '', 0, 9, 0, 0, 0, 0, 0, 0),
+(28, 'STRN', 0, 0, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(29, 'ERCP', 0, 1, '', '', 0, '03.02.00.00.00', 0, 9, 0, 0, 0, 0, 0, 0),
+(30, 'GFAD', 0, 1, '', '', 0, '03.01.00.00.00', 0, 9, 0, 0, 0, 0, 0, 0),
+(31, 'GFOR', 0, 1, '', '', 0, '02.55.00.17.00', 0, 9, 0, 1, 0, 0, 0, 2),
+(32, 'CASI', 1, 1, '2.8.1', '2.8.1', 1, '2.8.1', 0, 9, 3, 1, 0, 0, 3, 1),
+(33, 'FRDG', 1, 0, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(34, 'GEBE', 1, 1, '', '', 0, '', 0, 9, 0, 0, 0, 0, 0, 0),
+(35, 'NCEP', 1, 1, '6.4.0', '6.4.0', 1, '6.4.0', 0, 9, 0, 1, 1, 2, 1, 2),
+(36, 'SCCD', 1, 0, '2.0.2', '2.0.2', 0, '2.0.2', 0, 9, 0, 2, 0, 0, 1, 3),
+(37, 'SCCI', 1, 1, '', '', 1, '03.04.02.00.00', 0, 8, 0, 1, 0, 0, 1, 3),
+(38, 'SCNO', 1, 0, 'Sin codigo', '1.5.0', 0, '01.09.00.00.00', 0, 8, 0, 2, 0, 0, 1, 3),
+(39, 'SCPA', 1, 0, '1.26.3', '1.26.3', 1, '01.26.01.00.00', 0, 8, 0, 2, 0, 0, 1, 3),
+(40, 'SCSE', 1, 1, '2.4.0', '2.4.0', 1, '2.4.0', 0, 9, 0, 1, 0, 0, 1, 3),
+(41, 'SCSG', 1, 1, '2.1.0', '2.1.0', 1, '2.1.0', 0, 9, 0, 1, 0, 2, 1, 3),
+(42, 'SIPR', 0, 0, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(43, 'SPRS', 0, 0, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(44, 'TCON', 1, 1, '2.3.0', '2.3.0', 1, '2.3.0', 0, 9, 0, 2, 0, 2, 1, 3),
+(45, 'CNLB', 1, 1, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(46, 'COUP', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(47, 'GEPE', 1, 1, '', '', 0, '', 0, 9, 0, 0, 0, 0, 0, 0),
+(48, 'GSII', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(49, 'GSIN', 1, 1, '1.0.7', '', 0, '1.0.7', 0, 9, 0, 0, 0, 2, 0, 0),
+(50, 'NE01', 0, 0, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(51, 'SALM', 0, 1, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(52, 'WE01', 0, 0, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(53, 'WE02', 0, 0, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(54, 'WE10', 0, 1, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(55, 'WE11', 0, 1, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(56, 'WE12', 0, 1, '', '', 0, '', 0, 0, 2, 0, 0, 0, 0, 0),
+(57, 'WE13', 0, 1, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(58, 'FSED', 0, 1, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0),
+(59, 'GCNT', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(60, 'GCSL', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(61, 'GEAP', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(62, 'GINF', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(63, 'SEJU', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(64, 'SJCO', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -570,6 +574,7 @@ CREATE TABLE `testing_situacion` (
 --
 
 INSERT INTO `testing_situacion` (`Id_Testing`, `Testing`) VALUES
+(0, ''),
 (1, 'SI'),
 (2, 'EN PROCESO'),
 (3, 'NO');
