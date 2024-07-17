@@ -18,4 +18,5 @@ Endpoints Spring:
   - WIP
 
 Errores conocidos:
-  -
+  - Tabla no se actualiza al borrar
+  - No se puede borrar si en la bd tiene valores nulos
