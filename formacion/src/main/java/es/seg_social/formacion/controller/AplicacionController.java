@@ -35,9 +35,10 @@ public class AplicacionController {
 	public Aplicacion getApplicationById(@PathVariable("id") Integer id) {
 		return service.getApplicationById(id);
 	}
-	
-	@DeleteMapping("/delete/{id}")
-	public boolean deleteById(@PathVariable("id") Integer id) {
+	@CrossOrigin
+	@DeleteMapping("/delete/{cod}")
+	public boolean deleteById(@PathVariable("cod") String cod) {
+		Integer id=service.getAppIdByCod(cod);
 		return service.deleteByID(id);
 	}
 	

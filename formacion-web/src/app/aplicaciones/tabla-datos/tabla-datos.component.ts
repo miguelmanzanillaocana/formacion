@@ -21,4 +21,13 @@ export class TablaDatosComponent {
       this.datos = datos as any[];
     })
   }
+  borrarAplicacion(cod: string) {
+    this.datosService.borrarAplicacion(cod).subscribe((resultado) => {
+      if (resultado) {
+        console.log('Aplicación eliminada con éxito');
+      } else {
+        console.log('Error al eliminar la aplicación');
+      }
+    });
+  }
 }

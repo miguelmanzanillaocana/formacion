@@ -41,6 +41,9 @@ public class AplicacionService {
 		
 		return respuesta;
 	}
+	public Integer getAppIdByCod(String cod) {
+		return repository.getIdAplicacionByCodApp(cod);
+	}
 	
 	public Aplicacion insertAplicacion(Aplicacion ap) {
 		Aplicacion requirement = repository.save(ap);
