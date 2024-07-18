@@ -20,8 +20,8 @@ Endpoints Spring:
   - /tecnologia/ (GET) => recibe un array en JSON con todas las tecnologias
   - /tecnologia-interfaz/ (GET) => recibe un array en JSON con todas las tecnologiasInterfaz
   - /tipo/ (GET) => recibe un array en JSON con todos los tipos
-  - /volumen-evolutivo/ => recibe un array en JSON con todos los volumenes evolutivos
-  - /volumen-usuarios/ => recibe un array en JSON con todos los volumenes de usuario
+  - /volumen-evolutivo/ (GET) => recibe un array en JSON con todos los volumenes evolutivos
+  - /volumen-usuarios/ (GET )=> recibe un array en JSON con todos los volumenes de usuario
 
 Errores conocidos:
   
