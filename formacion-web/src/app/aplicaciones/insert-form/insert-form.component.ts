@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-insert-form',
@@ -14,8 +14,8 @@ export class InsertFormComponent {
   
   constructor(private fb: FormBuilder){
     this.aplicacionForm = this.fb.group({
-      codApli: new FormControl(''),
-      nombApli: new FormControl(``)
+      codApli: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]),
+      nombApli: new FormControl('')
     })
   }
 
