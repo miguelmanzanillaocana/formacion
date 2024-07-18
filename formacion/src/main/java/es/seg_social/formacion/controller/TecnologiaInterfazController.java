@@ -14,6 +14,7 @@ import es.seg_social.formacion.services.TecnologiaInterfazService;
 @RestController
 @RequestMapping("tecnologia-interfaz")
 public class TecnologiaInterfazController {
+	
 	@Autowired
 	TecnologiaInterfazService service;
 
@@ -22,4 +23,5 @@ public class TecnologiaInterfazController {
 	public ArrayList<TecnologiaInterfaz> getTecnologiasInterfaz() {
 		return service.getTecnologiasInterfaz();
 	}
+	
 }

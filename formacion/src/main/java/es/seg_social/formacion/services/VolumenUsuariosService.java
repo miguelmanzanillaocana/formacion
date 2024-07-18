@@ -10,6 +10,7 @@ import es.seg_social.formacion.repository.IVolumenUsuariosRepository;
 
 @Service
 public class VolumenUsuariosService {
+	
 	@Autowired
 	IVolumenUsuariosRepository repository;
 	
@@ -19,4 +20,5 @@ public class VolumenUsuariosService {
 	public VolumenUsuarios getVolumenUsuariosById(Integer id) {
 		return repository.findById(id).get();
 	}
+	
 }

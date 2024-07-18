@@ -14,6 +14,7 @@ import es.seg_social.formacion.services.VolumenEvolutivoService;
 @RestController
 @RequestMapping("/volumen-evolutivo")
 public class VolumenEvolutivoController {
+	
 	@Autowired
 	VolumenEvolutivoService service;
 
@@ -22,4 +23,5 @@ public class VolumenEvolutivoController {
 	public ArrayList<VolumenEvolutivo> getVolumenenesEvolutivos() {
 		return service.getVolumenesEvolutivos();
 	}
+	
 }

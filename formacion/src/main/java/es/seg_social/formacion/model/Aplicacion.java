@@ -28,8 +28,8 @@ public class Aplicacion {
 	@Column(name = "Responsable_ID")
 	private Integer resp;
 	
-	@Column(name = "Tecnologia")
-	private String tecn;
+	@Column(name = "Tecnologia_ID")
+	private Integer tecn;
 	
 	@Column(name = "Criticidad_ID")
 	private Integer criti;
@@ -53,7 +53,7 @@ public class Aplicacion {
 	}
 	
 	public Aplicacion(Integer id, String codAplic, String nombAplic, String nombArea, String subArea, Integer resp,
-			String tecn, Integer criti, Integer volEvol, Integer volUsu, Integer tipo, Integer tecInt) {
+			Integer tecn, Integer criti, Integer volEvol, Integer volUsu, Integer tipo, Integer tecInt) {
 		super();
 		this.id = id;
 		this.codAplic = codAplic;
@@ -117,10 +117,10 @@ public class Aplicacion {
 	public void setResp(int resp) {
 		this.resp = resp;
 	}
-	public String getTecn() {
+	public Integer getTecn() {
 		return tecn;
 	}
-	public void setTecn(String tecn) {
+	public void setTecn(Integer tecn) {
 		this.tecn = tecn;
 	}
 	public int getCriti() {

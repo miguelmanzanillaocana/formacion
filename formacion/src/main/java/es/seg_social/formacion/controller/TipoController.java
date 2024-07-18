@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 @RequestMapping("/tipo")
 public class TipoController {
+	
 	@Autowired
 	TipoService service;
 	

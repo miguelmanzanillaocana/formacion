@@ -10,6 +10,7 @@ import es.seg_social.formacion.repository.ITecnologiaRepository;
 
 @Service
 public class TecnologiaService {
+	
 	@Autowired
 	ITecnologiaRepository repository;
 	public ArrayList<Tecnologia> getTecnologias(){
@@ -18,4 +19,5 @@ public class TecnologiaService {
 	public Tecnologia getTecnologiaById(Integer id) {
 		return repository.findById(id).get();
 	}
+	
 }

@@ -9,6 +9,7 @@ import es.seg_social.formacion.repository.ITecnologiaInterfazRepository;
 
 @Service
 public class TecnologiaInterfazService {
+	
 	@Autowired
 	ITecnologiaInterfazRepository repository;
 	
@@ -19,4 +20,5 @@ public class TecnologiaInterfazService {
 	public TecnologiaInterfaz getTecnologiaInterfazById(Integer id) {
 		return repository.findById(id).get();
 	}
+	
 }

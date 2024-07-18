@@ -14,6 +14,7 @@ import es.seg_social.formacion.services.TecnologiaService;
 @RestController
 @RequestMapping("/tecnologia")
 public class TecnologiaController {
+	
 	@Autowired
 	TecnologiaService service;
 	
