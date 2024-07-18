@@ -3,6 +3,7 @@ package es.seg_social.formacion.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ public class ComentarioSituacionController {
 	@Autowired
 	ComentarioSituacionService service;
 	
+	@CrossOrigin
 	@GetMapping("/")
 	public ArrayList<ComentarioSituacion> getAllComentarioSituacion(){
 		return service.getAllComentarioSituacion();

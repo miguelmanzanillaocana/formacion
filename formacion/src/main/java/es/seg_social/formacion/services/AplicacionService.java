@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import es.seg_social.formacion.model.Aplicacion;
 import es.seg_social.formacion.model.Situacion;
 import es.seg_social.formacion.repository.IAplicacionRepository;
-import es.seg_social.formacion.repository.ISituacionRepository;
 
 @Service
 public class AplicacionService {
@@ -41,8 +40,9 @@ public class AplicacionService {
 		
 		return respuesta;
 	}
-	public Integer getAppIdByCod(String cod) {
-		return repository.getIdAplicacionByCodApp(cod);
+	
+	public Integer getAplicacionIdByCod(String cod) {
+		return repository.getIdAplicacionByCod(cod);
 	}
 	
 	public Aplicacion insertAplicacion(Aplicacion ap) {

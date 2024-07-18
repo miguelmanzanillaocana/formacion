@@ -447,21 +447,21 @@ INSERT INTO `serviciosterceros_situacion` (`Id_Servicios_Terceros`, `Servicios_T
 
 CREATE TABLE `situacion_aplicaciones` (
   `ID_Situacion` int NOT NULL,
-  `Codigo_Aplicacion` varchar(4) DEFAULT NULL,
-  `Prosa` int DEFAULT NULL,
-  `Grupo_GIT` int DEFAULT NULL,
-  `Version_Master` varchar(15) DEFAULT NULL,
-  `Version_Develop` varchar(15) DEFAULT NULL,
-  `Actualizado_GIT` int DEFAULT NULL,
-  `Version_Produccion` varchar(15) DEFAULT NULL,
-  `Despliegue_ID` int DEFAULT NULL,
-  `Version_WAS` int DEFAULT NULL,
-  `Maven_Id` int DEFAULT NULL,
-  `Documentacion_ID` int DEFAULT NULL,
-  `Plan_Pruebas_ID` int DEFAULT NULL,
-  `Testing_ID` int DEFAULT NULL,
-  `Informes_ID` int DEFAULT NULL,
-  `Servicios_Terceros_ID` int DEFAULT NULL
+  `Codigo_Aplicacion` varchar(4) NOT NULL,
+  `Prosa` int DEFAULT 0,
+  `Grupo_GIT` int DEFAULT 0,
+  `Version_Master` varchar(15) DEFAULT '',
+  `Version_Develop` varchar(15) DEFAULT '',
+  `Actualizado_GIT` int DEFAULT 0,
+  `Version_Produccion` varchar(15) DEFAULT '',
+  `Despliegue_ID` int DEFAULT 0,
+  `Version_WAS` int DEFAULT 0,
+  `Maven_Id` int DEFAULT 0,
+  `Documentacion_ID` int DEFAULT 0,
+  `Plan_Pruebas_ID` int DEFAULT 0,
+  `Testing_ID` int DEFAULT 0,
+  `Informes_ID` int DEFAULT 0,
+  `Servicios_Terceros_ID` int DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

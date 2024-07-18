@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { DatosService } from '../../datos.service';
+import { Aplicacion } from '../../interfaces/aplicacion';
 
 
 @Component({
@@ -12,19 +13,25 @@ import { DatosService } from '../../datos.service';
 })
 
 export class TablaDatosComponent {
-  datos: any[]=[];
+  datos: Aplicacion[]=[];
 
   constructor(private datosService: DatosService){  }
 
   ngOnInit(): void{
-    this.datosService.obtenerAplicaciones().subscribe((datos: any[]) => {
-      this.datos = datos as any[];
+    this.actualizarTabla()
+  }
+
+  actualizarTabla(): void{
+    this.datosService.obtenerAplicaciones().subscribe((datos: Aplicacion[]) => {
+      this.datos = datos as Aplicacion[];
     })
   }
+
   borrarAplicacion(cod: string) {
     this.datosService.borrarAplicacion(cod).subscribe((resultado) => {
       if (resultado) {
         console.log('Aplicación eliminada con éxito');
+        this.actualizarTabla()
       } else {
         console.log('Error al eliminar la aplicación');
       }
