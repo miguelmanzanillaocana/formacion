@@ -28,8 +28,8 @@ public class Aplicacion {
 	@Column(name = "Responsable_ID")
 	private Integer resp;
 	
-	@Column(name = "Tecnologia")
-	private String tecn;
+	@Column(name = "Tecnologia_ID")
+	private Integer tecn;
 	
 	@Column(name = "Criticidad_ID")
 	private Integer criti;
