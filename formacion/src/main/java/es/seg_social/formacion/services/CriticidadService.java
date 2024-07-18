@@ -1,0 +1,24 @@
+package es.seg_social.formacion.services;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import es.seg_social.formacion.model.Criticidad;
+import es.seg_social.formacion.repository.ICriticidadRepository;
+
+@Service
+public class CriticidadService {
+	
+	@Autowired
+	ICriticidadRepository repository;
+	
+	public ArrayList<Criticidad> getCriticidades(){
+		return (ArrayList<Criticidad>) repository.findAll();
+	}
+	
+	public Criticidad getCriticidadById(Integer id) {
+		return repository.findById(id).get();
+	}
+}

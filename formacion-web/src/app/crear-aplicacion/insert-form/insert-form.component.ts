@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { Responsable } from '../../interfaces/responsable';
 import { DatosService } from '../../datos.service';
 import { CommonModule } from '@angular/common';
+import { Criticidad } from '../../interfaces/criticidad';
 
 @Component({
   selector: 'app-insert-form',
@@ -14,11 +15,15 @@ import { CommonModule } from '@angular/common';
 
 export class InsertFormComponent {
   datosResp: Responsable[]=[];
+  datosCriti: Criticidad[]=[];
   aplicacionForm: FormGroup
   
   ngOnInit(): void{
     this.datosService.obtenerResponsables().subscribe((datosResp: Responsable[]) => {
       this.datosResp = datosResp as Responsable[];
+    })
+    this.datosService.obtenerCriticidades().subscribe((datosCriti: Criticidad[]) => {
+      this.datosCriti = datosCriti as Criticidad[];
     })
   }
 
@@ -30,7 +35,7 @@ export class InsertFormComponent {
       subArea: new FormControl(''),
       resp: new FormControl(0),
       tecn: new FormControl(0),
-      criti: new FormControl(0),
+      criti: new FormControl(1),
       volEvol: new FormControl(0),
       volUsu: new FormControl(0),
       tipo: new FormControl(0),

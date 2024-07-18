@@ -31,7 +31,7 @@
     <div class="col-md-6">
       <div class="form-floating mb-3">
         <select class="form-select" id="cb-responsable" formControlName="resp">
-          <option *ngFor="let resp of datosResp; index as i" [value]="i">{{ resp.responsable }}</option>
+          <option *ngFor="let resp of datosResp" [value]="resp.id">{{ resp.responsable }}</option>
         </select>
         <label for="cb-responsable">Responsable</label>
       </div>
@@ -52,10 +52,7 @@
     <div class="col-md-6">
       <div class="form-floating mb-3">
         <select class="form-select" id="cb-criticidad" formControlName="criti">
-          <option value="0">Sin Criticidad</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option *ngFor="let criti of datosCriti" [value]="criti.id">{{criti.criticidad}}</option>
         </select>
         <label for="cb-criticidad">Criticidad</label>
       </div>

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Aplicacion } from './interfaces/aplicacion';
 import { Responsable } from './interfaces/responsable';
+import { Criticidad } from './interfaces/criticidad';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +31,9 @@ export class DatosService {
   obtenerResponsables(): Observable<Responsable[]> {
     return this.http.get<Responsable[]>(this.urlBase + 'responsable/');
   }
+  //METODOS CRITICIDADES
+  obtenerCriticidades(): Observable<Criticidad[]> {
+    return this.http.get<Criticidad[]>(this.urlBase + 'criticidad/');
+  }
+
 }
