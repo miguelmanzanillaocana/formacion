@@ -39,10 +39,7 @@
     <div class="col-md-6">
       <div class="form-floating mb-3">
         <select class="form-select" id="cb-tecnologia" formControlName="tecn">
-          <option value="0">Sin Tecnologia</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option *ngFor="let tecn of datosTecno" [value]="tecn.id">{{ tecn.tecnologia }}</option>
         </select>
         <label for="cb-tecnologia">Tecnologia</label>
       </div>
@@ -60,10 +57,7 @@
     <div class="col-md-6">
       <div class="form-floating mb-3">
         <select class="form-select" id="cb-volumen-evolutivo" formControlName="volEvol">
-          <option value="0">Sin Volumen Evolutivo</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option *ngFor="let volEvol of datosVEvo" [value]="volEvol.id">{{ volEvol.volumenevolutivo }}</option>
         </select>
         <label for="cb-volumen-evolutivo">Volumen Evolutivo</label>
       </div>
@@ -73,10 +67,7 @@
     <div class="col-md-6">
       <div class="form-floating mb-3">
         <select class="form-select" id="cb-volumen-usuarios" formControlName="volUsu">
-          <option value="0">Sin Volumen Usuarios</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option *ngFor="let volUsu of datosVUser" [value]="volUsu.id">{{ volUsu.volumenusuarios }}</option>
         </select>
         <label for="cb-volumen-usuarios">Volumen Usuarios</label>
       </div>
@@ -84,10 +75,7 @@
     <div class="col-md-6">
       <div class="form-floating mb-3">
         <select class="form-select" id="cb-tipo" formControlName="tipo">
-          <option value="0">Sin Tipo</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option *ngFor="let tipo of datosTipo" [value]="tipo.id">{{ tipo.tipo }}</option>
         </select>
         <label for="cb-tipo">Tipo</label>
       </div>
@@ -97,10 +85,7 @@
     <div class="col-md-6">
       <div class="form-floating mb-3">
         <select class="form-select" id="cb-tecnologia-integracion" formControlName="tecnInt">
-          <option value="0">Sin Tecnologia Integracion</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option *ngFor="let tecnInt of datosTecnoInt" [value]="tecnInt.id">{{ tecnInt.tecnologiainterfaz }}</option>
         </select>
         <label for="cb-tecnologia-integracion">Tecnologia Integracion</label>
       </div>

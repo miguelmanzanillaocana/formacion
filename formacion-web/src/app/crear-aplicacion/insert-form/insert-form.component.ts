@@ -4,6 +4,11 @@ import { Responsable } from '../../interfaces/responsable';
 import { DatosService } from '../../datos.service';
 import { CommonModule } from '@angular/common';
 import { Criticidad } from '../../interfaces/criticidad';
+import { Tecnologia } from '../../interfaces/tecnologia';
+import { VolumenUsuarios } from '../../interfaces/volumen-usuarios';
+import { VolumenEvolutivo } from '../../interfaces/volumen-evolutivo';
+import { Tipo } from '../../interfaces/tipo';
+import { TecnologiaInterfaz } from '../../interfaces/tecnologia-interfaz';
 
 @Component({
   selector: 'app-insert-form',
@@ -16,6 +21,11 @@ import { Criticidad } from '../../interfaces/criticidad';
 export class InsertFormComponent {
   datosResp: Responsable[]=[];
   datosCriti: Criticidad[]=[];
+  datosTecno: Tecnologia[]=[];
+  datosVUser: VolumenUsuarios[]=[];
+  datosVEvo: VolumenEvolutivo[]=[];
+  datosTipo: Tipo[]=[];
+  datosTecnoInt: TecnologiaInterfaz[]=[];
   aplicacionForm: FormGroup
   
   ngOnInit(): void{
@@ -24,6 +34,21 @@ export class InsertFormComponent {
     })
     this.datosService.obtenerCriticidades().subscribe((datosCriti: Criticidad[]) => {
       this.datosCriti = datosCriti as Criticidad[];
+    })
+    this.datosService.obtenerTecnologias().subscribe((datosTecno: Tecnologia[]) => {
+      this.datosTecno = datosTecno as Tecnologia[];
+    })
+    this.datosService.obtenerVolumenesUsuarios().subscribe((datosVUser: VolumenUsuarios[]) => {
+      this.datosVUser = datosVUser as VolumenUsuarios[];
+    })
+    this.datosService.obtenerVolumenesEvolutivo().subscribe((datosVEvo: VolumenEvolutivo[]) => {
+      this.datosVEvo = datosVEvo as VolumenEvolutivo[];
+    })
+    this.datosService.obtenerTipos().subscribe((datosTipo: Tipo[]) => {
+      this.datosTipo = datosTipo as Tipo[];
+    })
+    this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: TecnologiaInterfaz[]) => {
+      this.datosTecnoInt = datosTecnoInt as TecnologiaInterfaz[];
     })
   }
 

@@ -4,6 +4,11 @@ import { Observable } from 'rxjs';
 import { Aplicacion } from './interfaces/aplicacion';
 import { Responsable } from './interfaces/responsable';
 import { Criticidad } from './interfaces/criticidad';
+import { Tecnologia } from './interfaces/tecnologia';
+import { VolumenUsuarios } from './interfaces/volumen-usuarios';
+import { VolumenEvolutivo } from './interfaces/volumen-evolutivo';
+import { Tipo } from './interfaces/tipo';
+import { TecnologiaInterfaz } from './interfaces/tecnologia-interfaz';
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +32,29 @@ export class DatosService {
     return this.http.post<Aplicacion>(this.urlBase + 'insert', apl);
   }
 
-  //METODOS RESPONSABLES
+  //METODOS FORMULARIO
   obtenerResponsables(): Observable<Responsable[]> {
     return this.http.get<Responsable[]>(this.urlBase + 'responsable/');
   }
-  //METODOS CRITICIDADES
+  
   obtenerCriticidades(): Observable<Criticidad[]> {
     return this.http.get<Criticidad[]>(this.urlBase + 'criticidad/');
   }
 
+  obtenerTecnologias(): Observable<Tecnologia[]> {
+    return this.http.get<Tecnologia[]>(this.urlBase + 'tecnologia/');
+  }
+
+  obtenerVolumenesUsuarios(): Observable<VolumenUsuarios[]> {
+    return this.http.get<VolumenUsuarios[]>(this.urlBase + 'volumen-usuario/');
+  }
+  obtenerVolumenesEvolutivo(): Observable<VolumenEvolutivo[]> {
+    return this.http.get<VolumenEvolutivo[]>(this.urlBase + 'volumen-evolutivo/');
+  }
+  obtenerTipos(): Observable<Tipo[]> {
+    return this.http.get<Tipo[]>(this.urlBase + 'tipo/');
+  }
+  obtenerTecnologiaInterfaz(): Observable<TecnologiaInterfaz[]> {
+    return this.http.get<TecnologiaInterfaz[]>(this.urlBase + 'tecnologia-interfaz/');
+  }
 }
