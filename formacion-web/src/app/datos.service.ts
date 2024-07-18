@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Aplicacion } from './interfaces/aplicacion';
+import { Responsable } from './interfaces/responsable';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class DatosService {
 
   constructor(private http: HttpClient) { }
 
+  //APLICACIONES
   obtenerAplicaciones(): Observable<Aplicacion[]> {
     return this.http.get<Aplicacion[]>(this.urlBase + 'aplicaciones/');
   }
@@ -22,5 +24,11 @@ export class DatosService {
 
   insertarAplicacion(apl: Aplicacion): Observable<Aplicacion> {
     return this.http.post<Aplicacion>(this.urlBase + 'insert', apl);
+  }
+
+  //RESPONSABLES
+
+  obtenerResponsables(): Observable<Responsable[]> {
+    return this.http.get<Responsable[]>(this.urlBase + 'responsable/');
   }
 }

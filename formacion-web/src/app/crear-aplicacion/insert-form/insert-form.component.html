@@ -31,14 +31,13 @@
     <div class="col-md-6">
       <div class="form-floating mb-3">
         <select class="form-select" id="cb-responsable" formControlName="resp">
-          <option value="0">Sin Responsable</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <optgroup *ngFor="let resp of datosResp">
+            <option [ngValue]="resp.id">{{ resp.responsable }}</option>
+          </optgroup>
         </select>
         <label for="cb-responsable">Responsable</label>
       </div>
-    </div>
+    </div>    
     <div class="col-md-6">
       <div class="form-floating mb-3">
         <select class="form-select" id="cb-tecnologia" formControlName="tecn">
