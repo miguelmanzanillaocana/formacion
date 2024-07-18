@@ -1,14 +1,14 @@
-<form class="mt-2 mx-4">
+<form class="mt-2 mx-4" [formGroup]="aplicacionForm">
   <div class="row">
     <div class="col-md-6">
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="codigo-aplicacion" name="codigo" placeholder="test" required="true"/>
+        <input type="text" class="form-control" id="codigo-aplicacion" formControlName="codApli" placeholder="test" required="true"/>
         <label for="codigo-aplicacion">Código de la aplicación</label>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="nombre-aplicacion" name="nombre" placeholder="test"/>
+        <input type="text" class="form-control" id="nombre-aplicacion" formControlName="nombApli" placeholder="test"/>
         <label for="nombre-aplicacion">Nombre de la aplicación</label>
       </div>
     </div>

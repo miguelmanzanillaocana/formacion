@@ -20,5 +20,7 @@ export class DatosService {
     return this.http.delete<boolean>(this.urlBase + 'aplicaciones/delete/' + cod);
   }
 
-  
+  insertarAplicacion(apl: Aplicacion): Observable<Aplicacion> {
+    return this.http.post<Aplicacion>(this.urlBase + 'insert', apl);
+  }
 }
