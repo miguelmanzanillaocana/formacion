@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { TablaDatosComponent } from "./aplicaciones/tabla-datos/tabla-datos.component";
-import { InsertFormComponent } from "./aplicaciones/insert-form/insert-form.component";
+import { InsertFormComponent } from "./crear-aplicacion/insert-form/insert-form.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 
 @Component({

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { InsertFormComponent } from "./insert-form/insert-form.component";
+
 import { TablaDatosComponent } from "./tabla-datos/tabla-datos.component";
+import { BotonInsertarComponent } from "./boton-insertar/boton-insertar.component";
 
 @Component({
   selector: 'app-aplicaciones',
   standalone: true,
-  imports: [InsertFormComponent, TablaDatosComponent],
+  imports: [TablaDatosComponent, BotonInsertarComponent],
   templateUrl: './aplicaciones.component.html',
   styleUrl: './aplicaciones.component.css'
 })
