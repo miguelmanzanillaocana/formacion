@@ -15,7 +15,7 @@ export class TablaDatosComponent {
 
   constructor(private datosService: DatosService){  }
 
-  ngAfterViewInit(): void{
+  ngOnInit(): void{
     this.datosService.obtenerAplicaciones().subscribe((datos: any[]) => {
       this.datos = datos as any[];
     })
