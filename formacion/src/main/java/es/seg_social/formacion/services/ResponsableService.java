@@ -17,5 +17,9 @@ public class ResponsableService {
 	public ArrayList<Responsable> getResponsables() {
 		return (ArrayList<Responsable>) repository.findAll();
 	}
+	
+	public Responsable getResponsableById(Integer id) {
+		return repository.findById(id).get();
+	}
 
 }
