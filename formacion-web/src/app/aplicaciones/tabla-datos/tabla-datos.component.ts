@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { DatosService } from '../../datos.service';
 
+
 @Component({
   selector: 'app-tabla-datos',
   standalone: true,
@@ -19,5 +20,14 @@ export class TablaDatosComponent {
     this.datosService.obtenerAplicaciones().subscribe((datos: any[]) => {
       this.datos = datos as any[];
     })
+  }
+  borrarAplicacion(cod: string) {
+    this.datosService.borrarAplicacion(cod).subscribe((resultado) => {
+      if (resultado) {
+        console.log('Aplicación eliminada con éxito');
+      } else {
+        console.log('Error al eliminar la aplicación');
+      }
+    });
   }
 }

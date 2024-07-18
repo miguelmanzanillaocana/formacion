@@ -3,6 +3,7 @@ package es.seg_social.formacion.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ public class AplicacionController {
 	private AplicacionService service;
 	
 	//TODO: cambiar base de datos para que int null sean 0
+	@CrossOrigin
 	@GetMapping("/")
 	public ArrayList<Aplicacion> getAllApplications() {
 		return service.getAllApplications();
@@ -33,9 +35,10 @@ public class AplicacionController {
 	public Aplicacion getApplicationById(@PathVariable("id") Integer id) {
 		return service.getApplicationById(id);
 	}
-	
-	@DeleteMapping("/delete/{id}")
-	public boolean deleteById(@PathVariable("id") Integer id) {
+	@CrossOrigin
+	@DeleteMapping("/delete/{cod}")
+	public boolean deleteById(@PathVariable("cod") String cod) {
+		Integer id=service.getAppIdByCod(cod);
 		return service.deleteByID(id);
 	}
 	

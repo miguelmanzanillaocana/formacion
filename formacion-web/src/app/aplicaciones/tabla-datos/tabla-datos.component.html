@@ -13,6 +13,7 @@
         <th scope="col">Volumen Usuarios</th>
         <th scope="col">Tipo</th>
         <th scope="col">Tecnología Integración</th>
+        <th scope="col" colspan="2" class="text-center">Acciones</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -28,6 +29,13 @@
         <td>{{ dato.volUsu }}</td>
         <td>{{ dato.tipo }}</td>
         <td>{{ dato.tecInt }}</td>
+        <td class="text-center"><button type="button" class="btn btn-outline-warning"><i class="bi bi-pen" ></i></button></td>
+        <td class="text-center">
+          <button type="button" class="btn btn-outline-danger" (click)="borrarAplicacion(dato.codAplic)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+        
       </tr>
     </tbody>
   </table>
