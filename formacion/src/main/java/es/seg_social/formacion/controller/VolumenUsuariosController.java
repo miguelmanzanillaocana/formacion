@@ -14,6 +14,7 @@ import es.seg_social.formacion.services.VolumenUsuariosService;
 @RestController
 @RequestMapping("/volumen-usuarios")
 public class VolumenUsuariosController {
+	
 	@Autowired
 	VolumenUsuariosService service;
 	
@@ -22,4 +23,5 @@ public class VolumenUsuariosController {
 	public ArrayList<VolumenUsuarios> getVolumenesUsuarios(){
 		return service.getVolumenUsuarios();
 	}
+	
 }

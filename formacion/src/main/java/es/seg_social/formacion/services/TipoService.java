@@ -9,6 +9,7 @@ import es.seg_social.formacion.repository.ITipoRepository;
 
 @Service
 public class TipoService {
+	
 	@Autowired
 	ITipoRepository repository;
 	public ArrayList<Tipo> getTipos(){
@@ -18,4 +19,5 @@ public class TipoService {
 	public Tipo getTipoById(Integer id) {
 		return repository.findById(id).get();
 	}
+	
 }

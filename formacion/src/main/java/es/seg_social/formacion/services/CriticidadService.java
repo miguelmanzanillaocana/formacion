@@ -21,4 +21,5 @@ public class CriticidadService {
 	public Criticidad getCriticidadById(Integer id) {
 		return repository.findById(id).get();
 	}
+	
 }

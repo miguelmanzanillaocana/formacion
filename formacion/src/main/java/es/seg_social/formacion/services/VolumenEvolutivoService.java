@@ -10,6 +10,7 @@ import es.seg_social.formacion.repository.IVolumenEvolutivoRepository;
 
 @Service
 public class VolumenEvolutivoService {
+	
 	@Autowired
 	IVolumenEvolutivoRepository repository;
 	public ArrayList<VolumenEvolutivo> getVolumenesEvolutivos(){
@@ -19,4 +20,5 @@ public class VolumenEvolutivoService {
 	public VolumenEvolutivo getTioById(Integer id) {
 		return repository.findById(id).get();
 	}
+	
 }

@@ -14,6 +14,7 @@ import es.seg_social.formacion.services.CriticidadService;
 @RestController
 @RequestMapping("/criticidad")
 public class CriticidadController {
+	
 	@Autowired
 	CriticidadService service;
 
@@ -22,4 +23,5 @@ public class CriticidadController {
 	public ArrayList<Criticidad> getCriticidades() {
 		return service.getCriticidades();
 	}
+	
 }
