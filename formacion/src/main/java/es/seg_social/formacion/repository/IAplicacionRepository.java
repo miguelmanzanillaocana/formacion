@@ -11,5 +11,5 @@ public interface IAplicacionRepository extends JpaRepository<Aplicacion, Integer
 
 	//Query que devuelva el id con el codigo de la aplicacion
 	@Query(value = "SELECT ID_Aplicacion FROM aplicaciones WHERE Codigo_Aplicacion = ?1",nativeQuery = true)
-	Integer getIdAplicacionByCodApp(String codApp);
+	Integer getIdAplicacionByCod(String codApp);
 }

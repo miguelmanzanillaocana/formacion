@@ -24,7 +24,6 @@ public class AplicacionController {
 	@Autowired
 	private AplicacionService service;
 	
-	//TODO: cambiar base de datos para que int null sean 0
 	@CrossOrigin
 	@GetMapping("/")
 	public ArrayList<Aplicacion> getAllApplications() {
@@ -35,10 +34,11 @@ public class AplicacionController {
 	public Aplicacion getApplicationById(@PathVariable("id") Integer id) {
 		return service.getApplicationById(id);
 	}
+	
 	@CrossOrigin
 	@DeleteMapping("/delete/{cod}")
 	public boolean deleteById(@PathVariable("cod") String cod) {
-		Integer id=service.getAppIdByCod(cod);
+		Integer id=service.getAplicacionIdByCod(cod);
 		return service.deleteByID(id);
 	}
 	
