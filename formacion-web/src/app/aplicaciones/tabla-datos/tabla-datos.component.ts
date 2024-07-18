@@ -18,14 +18,20 @@ export class TablaDatosComponent {
   constructor(private datosService: DatosService){  }
 
   ngOnInit(): void{
+    this.actualizarTabla()
+  }
+
+  actualizarTabla(): void{
     this.datosService.obtenerAplicaciones().subscribe((datos: Aplicacion[]) => {
       this.datos = datos as Aplicacion[];
     })
   }
+
   borrarAplicacion(cod: string) {
     this.datosService.borrarAplicacion(cod).subscribe((resultado) => {
       if (resultado) {
         console.log('Aplicación eliminada con éxito');
+        this.actualizarTabla()
       } else {
         console.log('Error al eliminar la aplicación');
       }

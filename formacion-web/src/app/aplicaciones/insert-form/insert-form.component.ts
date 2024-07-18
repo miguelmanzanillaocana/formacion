@@ -10,13 +10,20 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 })
 export class InsertFormComponent {
 
-  aplicacionForm: FormGroup;
+  aplicacionForm: FormGroup
   
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder) {
     this.aplicacionForm = this.fb.group({
       codApli: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]),
-      nombApli: new FormControl('')
+      nombApli: new FormControl(''),
+      nombArea: new FormControl(''),
+      subArea: new FormControl(''),
+      resp: new FormControl('')
     })
+  }
+
+  onSubmit(){
+    console.log(this.aplicacionForm.value)
   }
 
 }

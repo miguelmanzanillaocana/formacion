@@ -1,4 +1,4 @@
-<form class="mt-2 mx-4" [formGroup]="aplicacionForm">
+<form class="mt-2 mx-4" [formGroup]="aplicacionForm" (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="col-md-6">
       <div class="form-floating mb-3">
@@ -16,13 +16,13 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" name="area" id="area-aplicacion" placeholder="test"/>
+        <input type="text" class="form-control" id="area-aplicacion" formControlName="nombArea" placeholder="test"/>
         <label for="area-aplicacion">Area de la Aplicación</label>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" name="subarea" id="subarea-aplicacion" placeholder="test"/>
+        <input type="text" class="form-control" id="subarea-aplicacion" formControlName="subArea" placeholder="test"/>
         <label for="subarea-aplicacion">Subarea de la aplicacion</label>
       </div>
     </div>
@@ -30,8 +30,8 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-floating mb-3">
-        <select class="form-select" id="cb-responsable">
-          <option selected>Sin Responsable</option>
+        <select class="form-select" id="cb-responsable" formControlName="resp">
+          <option value="0" selected>Sin Responsable</option>
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
