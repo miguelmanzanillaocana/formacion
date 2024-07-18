@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { DatosService } from '../../datos.service';
-
+import { Aplicacion } from '../../interfaces/aplicacion';
 
 @Component({
   selector: 'app-tabla-datos',
@@ -12,13 +12,13 @@ import { DatosService } from '../../datos.service';
 })
 
 export class TablaDatosComponent {
-  datos: any[]=[];
+  datos: Aplicacion[]=[];
 
   constructor(private datosService: DatosService){  }
 
   ngOnInit(): void{
-    this.datosService.obtenerAplicaciones().subscribe((datos: any[]) => {
-      this.datos = datos as any[];
+    this.datosService.obtenerAplicaciones().subscribe((datos: Aplicacion[]) => {
+      this.datos = datos as Aplicacion[];
     })
   }
   borrarAplicacion(cod: string) {

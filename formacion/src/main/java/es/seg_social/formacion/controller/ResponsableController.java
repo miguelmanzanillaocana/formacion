@@ -17,7 +17,7 @@ public class ResponsableController {
 	
 	@Autowired
 	ResponsableService service;
-	
+
 	@CrossOrigin
 	@GetMapping("/")
 	public ArrayList<Responsable> getResponsables() {
