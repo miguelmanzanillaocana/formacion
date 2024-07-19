@@ -1,28 +1,36 @@
 <div>
   <button type="button" routerLink='/crear-app' class="btn btn-success mt-2 mb-2 mx-4">Crear nueva aplicación</button>
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+
+  <form [formGroup]="formGroup">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" name="stringFiltro" placeholder="" formControlName="filter" id="filtro"/>
+    <label for="filtro">Filtrar por...</label>
+    </div>
+    
+  </form>
 </div>
 
 <div class="table-responsive mt-2 mx-4">
   <table class="table table-hover table-sm ">
     <thead class="table-light">
       <tr>
-        <th scope="col" [appSort]="datos" data-order="desc" data-name="codAplic">Código Aplicación</th>
-        <th scope="col" [appSort]="datos" data-order="desc" data-name="nombAplic">Nombre Aplicación</th>
-        <th scope="col" [appSort]="datos" data-order="desc" data-name="nombArea">Nombre Área</th>
-        <th scope="col" [appSort]="datos" data-order="desc" data-name="subArea">Sub Área</th>
-        <th scope="col" [appSort]="datos" data-order="desc" data-name="resp">Responsable</th>
-        <th scope="col" [appSort]="datos" data-order="desc" data-name="tecn">Tecnología</th>
-        <th scope="col" [appSort]="datos" data-order="desc" data-name="criti">Criticidad</th>
-        <th scope="col" [appSort]="datos" data-order="desc" data-name="volEvol">Volumen Evolución</th>
-        <th scope="col" [appSort]="datos" data-order="desc" data-name="volUsu">Volumen Usuarios</th>
-        <th scope="col" [appSort]="datos" data-order="desc" data-name="tipo">Tipo</th>
-        <th scope="col" [appSort]="datos" data-order="desc" data-name="tecInt">Tecnología Integración</th>
+        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="codAplic">Código Aplicación</th>
+        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="nombAplic">Nombre Aplicación</th>
+        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="nombArea">Nombre Área</th>
+        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="subArea">Sub Área</th>
+        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="resp">Responsable</th>
+        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="tecn">Tecnología</th>
+        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="criti">Criticidad</th>
+        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="volEvol">Volumen Evolución</th>
+        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="volUsu">Volumen Usuarios</th>
+        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="tipo">Tipo</th>
+        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="tecInt">Tecnología Integración</th>
         <th scope="col" colspan="2" class="text-center">Acciones</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <tr *ngFor="let dato of datos">
+      <tr *ngFor="let dato of datosTabla">
         <th scope="row">{{ dato.codAplic }}</th>
         <td>{{ dato.nombAplic }}</td>
         <td>{{ dato.nombArea }}</td>
