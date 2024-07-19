@@ -30,7 +30,7 @@ export class DatosService {
 
   //METODOS FORMULARIO
   insertarAplicacion(apl: Aplicacion): Observable<Aplicacion> {
-    return this.http.post<Aplicacion>(this.urlBase + 'insert', apl);
+    return this.http.post<Aplicacion>(this.urlBase + 'insert/', apl);
   }
 
   obtenerResponsables(): Observable<Responsable[]> {
