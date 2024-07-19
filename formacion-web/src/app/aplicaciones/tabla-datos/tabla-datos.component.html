@@ -3,17 +3,17 @@
   <table class="table table-hover table-sm ">
     <thead class="table-light">
       <tr>
-        <th scope="col">Código Aplicación</th>
-        <th scope="col">Nombre Aplicación</th>
-        <th scope="col">Nombre Área</th>
-        <th scope="col">Sub Área</th>
-        <th scope="col">Responsable</th>
-        <th scope="col">Tecnología</th>
-        <th scope="col">Criticidad</th>
-        <th scope="col">Volumen Evolución</th>
-        <th scope="col">Volumen Usuarios</th>
-        <th scope="col">Tipo</th>
-        <th scope="col">Tecnología Integración</th>
+        <th scope="col" [appSort]="datos" data-order="desc" data-name="codAplic">Código Aplicación</th>
+        <th scope="col" [appSort]="datos" data-order="desc" data-name="nombAplic">Nombre Aplicación</th>
+        <th scope="col" [appSort]="datos" data-order="desc" data-name="nombArea">Nombre Área</th>
+        <th scope="col" [appSort]="datos" data-order="desc" data-name="subArea">Sub Área</th>
+        <th scope="col" [appSort]="datos" data-order="desc" data-name="resp">Responsable</th>
+        <th scope="col" [appSort]="datos" data-order="desc" data-name="tecn">Tecnología</th>
+        <th scope="col" [appSort]="datos" data-order="desc" data-name="criti">Criticidad</th>
+        <th scope="col" [appSort]="datos" data-order="desc" data-name="volEvol">Volumen Evolución</th>
+        <th scope="col" [appSort]="datos" data-order="desc" data-name="volUsu">Volumen Usuarios</th>
+        <th scope="col" [appSort]="datos" data-order="desc" data-name="tipo">Tipo</th>
+        <th scope="col" [appSort]="datos" data-order="desc" data-name="tecInt">Tecnología Integración</th>
         <th scope="col" colspan="2" class="text-center">Acciones</th>
       </tr>
     </thead>
