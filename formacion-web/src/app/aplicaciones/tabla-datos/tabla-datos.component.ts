@@ -6,6 +6,8 @@ import { SortDirective } from '../../directive/sort.directive';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { map, Observable, startWith, withLatestFrom } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-tabla-datos',
@@ -17,14 +19,18 @@ import { map, Observable, startWith, withLatestFrom } from 'rxjs';
 
 export class TablaDatosComponent {
 datosTabla: Aplicacion[]=[];
-datos: Observable<Aplicacion[]>;
-datosFiltrados: Observable<Aplicacion[]>;
+datos!: Observable<Aplicacion[]>;
+datosFiltrados!: Observable<Aplicacion[]>;
 
 formGroup: FormGroup;
 
-  constructor(private datosService: DatosService, private fb: FormBuilder){ 
-    this.formGroup = fb.group({ filter: ['']})
+  constructor(private datosService: DatosService, private dialog: MatDialog, private fb: FormBuilder){ 
+    this.formGroup = this.fb.group({ filter: ['']})
 
+    this.actualizarTabla();
+  }
+
+  actualizarTabla(){
     this.datos = this.datosService.obtenerAplicaciones();
 
     this.datosFiltrados = this.formGroup.get('filter')!.valueChanges.pipe(
@@ -38,17 +44,24 @@ formGroup: FormGroup;
     })
   }
 
-  ngOnInit(): void{
-    
-  }
-
   borrarAplicacion(cod: string) {
-    this.datosService.borrarAplicacion(cod).subscribe((resultado) => {
-      if (resultado) {
-        console.log('Aplicación eliminada con éxito');
-      } else {
-        console.log('Error al eliminar la aplicación');
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '500px',
+      data: { codigo: cod }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.datosService.borrarAplicacion(cod).subscribe((resultado) => {
+          if (resultado) {
+            console.log('Aplicación eliminada con éxito');
+            location.reload();
+          } else {
+            console.log('Error al eliminar la aplicación');
+          }
+        });
       }
     });
   }
 }
+
