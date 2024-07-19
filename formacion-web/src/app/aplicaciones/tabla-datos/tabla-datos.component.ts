@@ -26,7 +26,11 @@ formGroup: FormGroup;
 
   constructor(private datosService: DatosService, private dialog: MatDialog, private fb: FormBuilder){ 
     this.formGroup = this.fb.group({ filter: ['']})
+    
+    this.actualizarTabla();
+  }
 
+  ngOnInit() {
     this.actualizarTabla();
   }
 

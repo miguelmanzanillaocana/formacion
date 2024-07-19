@@ -28,7 +28,9 @@ export class InsertFormComponent {
   datosTipo: Tipo[]=[];
   datosTecnoInt: TecnologiaInterfaz[]=[];
   aplicacionForm: FormGroup;
+
   apl: Aplicacion = new Aplicacion('', '', '', '', 0, 0, 0, 0, 0, 0, 0);
+  aplicacion!: Aplicacion;
   
   ngOnInit(): void{
     this.datosService.obtenerResponsables().subscribe((datosResp: Responsable[]) => {
@@ -85,7 +87,8 @@ export class InsertFormComponent {
       this.aplicacionForm.get('tecInt')?.value
     );
 
-    console.log(this.datosService.insertarAplicacion(this.apl));
+    this.datosService.insertarAplicacion(this.apl).subscribe(aplicacion => this.aplicacion = aplicacion);
+    console.log(this.aplicacion);
   }
 
 }

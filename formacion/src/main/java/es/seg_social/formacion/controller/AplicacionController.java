@@ -42,7 +42,7 @@ public class AplicacionController {
 		return service.deleteByID(id);
 	}
 	
-	@CrossOrigin
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/insert")
 	public Aplicacion insertApplication(@RequestBody Aplicacion ap) {
 		return service.insertAplicacion(ap);
