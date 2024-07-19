@@ -42,6 +42,7 @@ public class AplicacionController {
 		return service.deleteByID(id);
 	}
 	
+	@CrossOrigin
 	@PostMapping("/insert")
 	public Aplicacion insertApplication(@RequestBody Aplicacion ap) {
 		return service.insertAplicacion(ap);
