@@ -6,9 +6,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import es.seg_social.formacion.model.TecnologiaInterfaz;
 import es.seg_social.formacion.model.Tipo;
 import es.seg_social.formacion.services.TipoService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -25,4 +30,18 @@ public class TipoController {
 		return service.getTipos();
 	}
 	
+	@GetMapping("/id/{id}")
+	public Tipo getTipoById(@PathVariable("id") Integer id) {
+		return service.getTipoById(id);
+	}
+	
+	@PostMapping("/insert")
+	public Tipo insertTipo(@RequestBody Tipo tip) {
+		return service.insertTipo(tip);
+	}
+	
+	@PutMapping("/update")
+	public Tipo updateTipo(@RequestBody Tipo tip) {
+		return service.updateTipo(tip);
+	}
 }
