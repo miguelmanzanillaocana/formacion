@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { DatosService } from '../../datos.service';
 import { Aplicacion } from '../../classes/aplicacion';
 import { SortDirective } from '../../directive/sort.directive';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-tabla-datos',
   standalone: true,
-  imports: [CommonModule, SortDirective],
+  imports: [CommonModule, SortDirective, RouterLink, RouterOutlet],
   templateUrl: './tabla-datos.component.html',
   styleUrl: './tabla-datos.component.css'
 })
