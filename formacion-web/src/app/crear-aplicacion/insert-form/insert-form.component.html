@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="codigo-aplicacion" formControlName="codApli" placeholder="test" required="true"/>
+        <input type="text" class="form-control" id="codigo-aplicacion" formControlName="codAplic" placeholder="test" required="true"/>
         <label for="codigo-aplicacion">Código de la aplicación</label>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="nombre-aplicacion" formControlName="nombApli" placeholder="test"/>
+        <input type="text" class="form-control" id="nombre-aplicacion" formControlName="nombAplic" placeholder="test"/>
         <label for="nombre-aplicacion">Nombre de la aplicación</label>
       </div>
     </div>
@@ -57,7 +57,7 @@
     <div class="col-md-6">
       <div class="form-floating mb-3">
         <select class="form-select" id="cb-volumen-evolutivo" formControlName="volEvol">
-          <option *ngFor="let volEvol of datosVEvo" [value]="volEvol.id">{{ volEvol.volumenevolutivo }}</option>
+          <option *ngFor="let volEvol of datosVEvo" [value]="volEvol.id">{{ volEvol.volumenEvolutivo }}</option>
         </select>
         <label for="cb-volumen-evolutivo">Volumen Evolutivo</label>
       </div>
@@ -67,7 +67,7 @@
     <div class="col-md-6">
       <div class="form-floating mb-3">
         <select class="form-select" id="cb-volumen-usuarios" formControlName="volUsu">
-          <option *ngFor="let volUsu of datosVUser" [value]="volUsu.id">{{ volUsu.volumenusuarios }}</option>
+          <option *ngFor="let volUsu of datosVUser" [value]="volUsu.id">{{ volUsu.volumenUsuarios }}</option>
         </select>
         <label for="cb-volumen-usuarios">Volumen Usuarios</label>
       </div>
@@ -84,8 +84,8 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-floating mb-3">
-        <select class="form-select" id="cb-tecnologia-integracion" formControlName="tecnInt">
-          <option *ngFor="let tecnInt of datosTecnoInt" [value]="tecnInt.id">{{ tecnInt.tecnologiainterfaz }}</option>
+        <select class="form-select" id="cb-tecnologia-integracion" formControlName="tecInt">
+          <option *ngFor="let tecnInt of datosTecnoInt" [value]="tecnInt.id">{{ tecnInt.tecnologiaInterfaz }}</option>
         </select>
         <label for="cb-tecnologia-integracion">Tecnologia Integracion</label>
       </div>

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Aplicacion } from './interfaces/aplicacion';
 import { Responsable } from './interfaces/responsable';
 import { Criticidad } from './interfaces/criticidad';
 import { Tecnologia } from './interfaces/tecnologia';
@@ -9,6 +8,7 @@ import { VolumenUsuarios } from './interfaces/volumen-usuarios';
 import { VolumenEvolutivo } from './interfaces/volumen-evolutivo';
 import { Tipo } from './interfaces/tipo';
 import { TecnologiaInterfaz } from './interfaces/tecnologia-interfaz';
+import { Aplicacion } from './classes/aplicacion';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +28,11 @@ export class DatosService {
     return this.http.delete<boolean>(this.urlBase + 'aplicaciones/delete/' + cod);
   }
 
+  //METODOS FORMULARIO
   insertarAplicacion(apl: Aplicacion): Observable<Aplicacion> {
     return this.http.post<Aplicacion>(this.urlBase + 'insert', apl);
   }
 
-  //METODOS FORMULARIO
   obtenerResponsables(): Observable<Responsable[]> {
     return this.http.get<Responsable[]>(this.urlBase + 'responsable/');
   }
@@ -46,7 +46,7 @@ export class DatosService {
   }
 
   obtenerVolumenesUsuarios(): Observable<VolumenUsuarios[]> {
-    return this.http.get<VolumenUsuarios[]>(this.urlBase + 'volumen-usuario/');
+    return this.http.get<VolumenUsuarios[]>(this.urlBase + 'volumen-usuarios/');
   }
   obtenerVolumenesEvolutivo(): Observable<VolumenEvolutivo[]> {
     return this.http.get<VolumenEvolutivo[]>(this.urlBase + 'volumen-evolutivo/');

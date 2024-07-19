@@ -13,4 +13,8 @@ public interface IAplicacionRepository extends JpaRepository<Aplicacion, Integer
 	@Query(value = "SELECT ID_Aplicacion FROM aplicaciones WHERE Codigo_Aplicacion = ?1",nativeQuery = true)
 	Integer getIdAplicacionByCod(String codApp);
 	
+	//Query que devuelve el ultimo id
+	@Query(value = "SELECT MAX(ID_Aplicacion FROM APLICACIONES", nativeQuery = true)
+	Integer getLastId();
+	
 }

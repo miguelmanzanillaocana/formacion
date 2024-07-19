@@ -1,10 +1,11 @@
-export interface Aplicacion {
+export interface IAplicacion {
+    id: number;
     codAplic: string;
     nombAplic: string;
     nombArea: string;
     subArea: string;
     resp: number;
-    tecn: string;
+    tecn: number;
     criti: number;
     volEvol: number;
     volUsu: number;

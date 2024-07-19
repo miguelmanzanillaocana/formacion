@@ -9,6 +9,7 @@ import { VolumenUsuarios } from '../../interfaces/volumen-usuarios';
 import { VolumenEvolutivo } from '../../interfaces/volumen-evolutivo';
 import { Tipo } from '../../interfaces/tipo';
 import { TecnologiaInterfaz } from '../../interfaces/tecnologia-interfaz';
+import { Aplicacion } from '../../classes/aplicacion';
 
 @Component({
   selector: 'app-insert-form',
@@ -26,7 +27,8 @@ export class InsertFormComponent {
   datosVEvo: VolumenEvolutivo[]=[];
   datosTipo: Tipo[]=[];
   datosTecnoInt: TecnologiaInterfaz[]=[];
-  aplicacionForm: FormGroup
+  aplicacionForm: FormGroup;
+  apl: Aplicacion = new Aplicacion('', '', '', '', 0, 0, 0, 0, 0, 0, 0);
   
   ngOnInit(): void{
     this.datosService.obtenerResponsables().subscribe((datosResp: Responsable[]) => {
@@ -52,24 +54,38 @@ export class InsertFormComponent {
     })
   }
 
-  constructor(private datosService: DatosService ,private fb: FormBuilder) {
+  constructor(private datosService: DatosService, private fb: FormBuilder) {
     this.aplicacionForm = this.fb.group({
-      codApli: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]),
-      nombApli: new FormControl(''),
-      nombArea: new FormControl(''),
-      subArea: new FormControl(''),
-      resp: new FormControl(0),
-      tecn: new FormControl(0),
-      criti: new FormControl(1),
-      volEvol: new FormControl(0),
-      volUsu: new FormControl(0),
-      tipo: new FormControl(0),
-      tecnInt: new FormControl(0)
-    })
+      codAplic: new FormControl(this.apl.codAplic, Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(4)])),
+      nombAplic: new FormControl(this.apl.nombAplic),
+      nombArea: new FormControl(this.apl.nombArea),
+      subArea: new FormControl(this.apl.subArea),
+      resp: new FormControl(this.apl.resp),
+      tecn: new FormControl(this.apl.tecn),
+      criti: new FormControl(this.apl.criti),
+      volEvol: new FormControl(this.apl.volEvol),
+      volUsu: new FormControl(this.apl.volUsu),
+      tipo: new FormControl(this.apl.tipo),
+      tecInt: new FormControl(this.apl.tecInt)
+    });
   }
 
   onSubmit(){
-    console.log(this.aplicacionForm.value)
+    this.apl = new Aplicacion(
+      this.aplicacionForm.get('codAplic')?.value,
+      this.aplicacionForm.get('nombAplic')?.value,
+      this.aplicacionForm.get('nombArea')?.value,
+      this.aplicacionForm.get('subArea')?.value,
+      this.aplicacionForm.get('resp')?.value,
+      this.aplicacionForm.get('tecn')?.value,
+      this.aplicacionForm.get('criti')?.value,
+      this.aplicacionForm.get('volEvol')?.value,
+      this.aplicacionForm.get('volUsu')?.value,
+      this.aplicacionForm.get('tipo')?.value,
+      this.aplicacionForm.get('tecInt')?.value
+    );
+
+    console.log(this.datosService.insertarAplicacion(this.apl));
   }
 
 }
