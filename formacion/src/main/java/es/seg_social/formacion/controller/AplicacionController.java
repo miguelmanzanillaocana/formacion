@@ -18,13 +18,13 @@ import es.seg_social.formacion.services.AplicacionService;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/aplicaciones")
 public class AplicacionController {
 	
 	@Autowired
 	private AplicacionService service;
-	
-	@CrossOrigin
+
 	@GetMapping("/")
 	public ArrayList<Aplicacion> getAllApplications() {
 		return service.getAllApplications();
@@ -35,14 +35,12 @@ public class AplicacionController {
 		return service.getApplicationById(id);
 	}
 	
-	@CrossOrigin
 	@DeleteMapping("/delete/{cod}")
 	public boolean deleteById(@PathVariable("cod") String cod) {
 		Integer id=service.getAplicacionIdByCod(cod);
 		return service.deleteByID(id);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/insert")
 	public Aplicacion insertApplication(@RequestBody Aplicacion ap) {
 		return service.insertAplicacion(ap);
