@@ -5,8 +5,8 @@ import { FormularioComponent } from "./formulario/formulario.component";
   selector: 'app-crear-aplicacion',
   standalone: true,
   imports: [FormularioComponent],
-  templateUrl: './crearAplicacion.component.html',
-  styleUrl: './crearAplicacion.component.css'
+  templateUrl: './crear-aplicacion.component.html',
+  styleUrl: './crear-aplicacion.component.css'
 })
 export class CrearAplicacionComponent {
 

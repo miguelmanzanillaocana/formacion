@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { TablaAplicacionesComponent } from "./tablaAplicaciones/tablaAplicaciones.component";
+import { TablaAplicacionesComponent } from "./tabla-aplicaciones/tabla-aplicaciones.component";
 
 @Component({
   selector: 'app-aplicaciones',

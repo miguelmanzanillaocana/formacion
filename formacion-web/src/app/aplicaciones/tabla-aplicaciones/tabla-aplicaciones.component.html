@@ -1,23 +1,22 @@
 <div class="container-fluid mt-2">
   <div class="row">
-    <div class="col-9 my-auto">
-      <button type="button" routerLink='/crear-app' class="btn btn-success my-auto mx-4">Crear nueva aplicación</button>
-      <router-outlet></router-outlet>
-    </div>
-
-    <div class="col">
+    <div class="col my-auto">
       <form [formGroup]="formGroup">
-        <div class="form-floating mb-3">
+        <div class="form-floating my-auto">
           <input type="text" class="form-control" name="stringFiltro" placeholder="" formControlName="filter" id="filtro"/>
-        <label for="filtro">Filtrar por...</label>
+          <label for="filtro">Filtrar por...</label>
         </div>
       </form>
     </div>
+    
+    <div class="col-9 my-auto text-end">
+      <button type="button" routerLink='/crear-app' class="btn btn-success my-auto mx-4">Crear nueva aplicación</button>
+      <router-outlet></router-outlet>
+    </div>
   </div>
-
 </div>
 
-<div class="table-responsive mt-2 mx-4">
+<div class="table-responsive mt-2 mx-2">
   <table class="table table-hover table-sm ">
     <thead class="table-light">
       <tr>

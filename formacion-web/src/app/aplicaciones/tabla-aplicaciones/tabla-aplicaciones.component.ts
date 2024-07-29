@@ -7,14 +7,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { map, Observable, startWith, withLatestFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from './confirmDialog/confirmDialog.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-tabla-aplicaciones',
   standalone: true,
   imports: [CommonModule, SortDirective, RouterLink, RouterOutlet, ReactiveFormsModule],
-  templateUrl: './tablaAplicaciones.component.html',
-  styleUrl: './tablaAplicaciones.component.css'
+  templateUrl: './tabla-aplicaciones.component.html',
+  styleUrl: './tabla-aplicaciones.component.css'
 })
 
 export class TablaAplicacionesComponent {
@@ -26,19 +26,20 @@ formGroup: FormGroup;
 
   constructor(private datosService: DatosService, private dialog: MatDialog, private fb: FormBuilder){ 
     this.formGroup = this.fb.group({ filter: ['']})
-    
-    this.actualizarTabla();
   }
 
   ngOnInit() {
-  
+    this.actualizarTabla();
+  }
+  ngDoCheck(){
+    this.actualizarTabla();
   }
 
   actualizarTabla(){
     this.datos = this.datosService.obtenerAplicaciones();
 
     this.datosFiltrados = this.formGroup.get('filter')!.valueChanges.pipe(
-      startWith(''),
+      startWith(""),
       withLatestFrom(this.datos),
       map(([val, datos]) => !val ? datos : datos.filter((x) => x.codAplic.toLowerCase().includes(val)))
     )
@@ -68,5 +69,6 @@ formGroup: FormGroup;
       }
     });
   }
+
 }
 
