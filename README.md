@@ -24,4 +24,4 @@ Endpoints Spring:
   - /volumen-usuarios/ (GET )=> recibe un array en JSON con todos los volumenes de usuario
 
 Errores conocidos:
-  
+  - Al cambiar de pagina no cargan las aplicaciones
