@@ -3,11 +3,11 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-confirm-dialog',
+  selector: 'app-confirmDialog',
   standalone: true,
   imports: [MatDialogModule],
-  templateUrl: './confirm-dialog.component.html',
-  styleUrl: './confirm-dialog.component.css'
+  templateUrl: './confirmDialog.component.html',
+  styleUrl: './confirmDialog.component.css'
 })
 export class ConfirmDialogComponent {
   codigo: string ='';

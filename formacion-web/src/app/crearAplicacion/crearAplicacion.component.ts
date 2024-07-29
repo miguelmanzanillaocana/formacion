@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { InsertFormComponent } from "./insert-form/insert-form.component";
+import { FormularioComponent } from "./formulario/formulario.component";
 
 @Component({
   selector: 'app-crear-aplicacion',
   standalone: true,
-  imports: [InsertFormComponent],
-  templateUrl: './crear-aplicacion.component.html',
-  styleUrl: './crear-aplicacion.component.css'
+  imports: [FormularioComponent],
+  templateUrl: './crearAplicacion.component.html',
+  styleUrl: './crearAplicacion.component.css'
 })
 export class CrearAplicacionComponent {
 

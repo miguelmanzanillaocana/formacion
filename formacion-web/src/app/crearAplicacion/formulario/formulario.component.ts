@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Responsable } from '../../interfaces/responsable';
-import { DatosService } from '../../datos.service';
+import { DatosService } from '../../datos/datos.service';
 import { CommonModule } from '@angular/common';
 import { Criticidad } from '../../interfaces/criticidad';
 import { Tecnologia } from '../../interfaces/tecnologia';
@@ -12,14 +12,14 @@ import { TecnologiaInterfaz } from '../../interfaces/tecnologia-interfaz';
 import { Aplicacion } from '../../classes/aplicacion';
 
 @Component({
-  selector: 'app-insert-form',
+  selector: 'app-formulario',
   standalone: true,
   imports: [ReactiveFormsModule,CommonModule],
-  templateUrl: './insert-form.component.html',
-  styleUrl: './insert-form.component.css'
+  templateUrl: './formulario.component.html',
+  styleUrl: './formulario.component.css'
 })
 
-export class InsertFormComponent {
+export class FormularioComponent {
   datosResp: Responsable[]=[];
   datosCriti: Criticidad[]=[];
   datosTecno: Tecnologia[]=[];

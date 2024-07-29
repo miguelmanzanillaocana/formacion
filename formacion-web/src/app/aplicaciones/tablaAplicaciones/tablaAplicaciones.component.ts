@@ -10,14 +10,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirmDialog/confirmDialog.component';
 
 @Component({
-  selector: 'app-tabla-datos',
+  selector: 'app-tabla-aplicaciones',
   standalone: true,
   imports: [CommonModule, SortDirective, RouterLink, RouterOutlet, ReactiveFormsModule],
   templateUrl: './tablaAplicaciones.component.html',
   styleUrl: './tablaAplicaciones.component.css'
 })
 
-export class TablaDatosComponent {
+export class TablaAplicacionesComponent {
 datosTabla: Aplicacion[]=[];
 datos!: Observable<Aplicacion[]>;
 datosFiltrados!: Observable<Aplicacion[]>;
