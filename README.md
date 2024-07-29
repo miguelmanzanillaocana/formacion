@@ -1,6 +1,6 @@
 Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y Miguel Manzanilla Ocaña
 
-Endpoints Spring:
+# Endpoints Spring:
   - /aplicaciones/ (GET) => recibe un array en JSON con todas las apliaciones
   - /aplicaciones/id/{id} (GET) => recibe un JSON con la aplicacion que tenga el id
   - /aplicaciones/delete/{cod} (DELETE) => borra la aplicacion con ese codigo
@@ -23,5 +23,13 @@ Endpoints Spring:
   - /volumen-evolutivo/ (GET) => recibe un array en JSON con todos los volumenes evolutivos
   - /volumen-usuarios/ (GET )=> recibe un array en JSON con todos los volumenes de usuario
 
-Errores conocidos:
-  - Al cambiar de pagina no cargan las aplicaciones
+# TODO:
+  - [ ] [Navegacion de la web](https://github.com/miguelmanzanillaocana/formacion/issues/2)
+  - [ ] Probar mat-table para situaciones[^1]
+  - [ ] Encontrar host
+  - [ ] Empezar seguridad web (inicio sesion, tipos de cuenta...)
+
+> [!WARNING]
+> Encontrar host y arreglar navegación prioridad
+
+[^1]: Esto no tiene importancia
