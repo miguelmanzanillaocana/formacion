@@ -31,6 +31,7 @@ formGroup: FormGroup;
   ngOnInit() {
     this.actualizarTabla();
   }
+  
   ngDoCheck(){
     this.actualizarTabla();
   }
