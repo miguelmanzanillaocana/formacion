@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { TablaSituacionesComponent } from "./tabla-situaciones/tabla-situaciones.component";
 
 @Component({
   selector: 'app-situaciones',
   standalone: true,
-  imports: [],
+  imports: [TablaSituacionesComponent],
   templateUrl: './situaciones.component.html',
   styleUrl: './situaciones.component.css'
 })

@@ -31,7 +31,7 @@ formGroup: FormGroup;
   }
 
   ngOnInit() {
-    this.actualizarTabla();
+  
   }
 
   actualizarTabla(){
@@ -46,6 +46,7 @@ formGroup: FormGroup;
     this.datosFiltrados.subscribe((datos: Aplicacion[]) => {
       this.datosTabla = datos as Aplicacion[];
     })
+    
   }
 
   borrarAplicacion(cod: string) {

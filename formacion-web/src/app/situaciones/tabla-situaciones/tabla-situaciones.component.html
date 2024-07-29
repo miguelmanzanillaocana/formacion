@@ -1,0 +1,17 @@
+<!-- <div class="example-header">
+    <form>
+        <input matInput (keyup)="applyFilter($event.target)" placeholder="Filter">
+    </form>
+</div> -->
+
+<div class="container">
+    <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="codAplic">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Codigo</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.codAplic}} </mat-cell>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row" matRowDefColumns="displayedColumns"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </mat-table>
+</div>
