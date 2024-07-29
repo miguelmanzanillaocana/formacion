@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TablaDatosComponent } from './tabla-datos.component';
+import { TablaDatosComponent } from './tablaAplicaciones.component';
 
 describe('TablaDatosComponent', () => {
   let component: TablaDatosComponent;

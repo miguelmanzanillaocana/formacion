@@ -1,8 +1,8 @@
-import { IAplicacion } from "../interfaces/AplicacionInterface";
+import { AplicacionInterface } from "../interfaces/AplicacionInterface";
 
-export class Aplicacion implements IAplicacion {
+export class Aplicacion implements AplicacionInterface {
 
-    id:number;
+    id: number;
     codAplic: string;
     nombAplic: string;
     nombArea: string;

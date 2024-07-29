@@ -1,20 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { DatosService } from '../../datos.service';
+import { DatosService } from '../../datos/datos.service';
 import { Aplicacion } from '../../classes/aplicacion';
 import { SortDirective } from '../../directive/sort.directive';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { map, Observable, startWith, withLatestFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from './confirmDialog/confirmDialog.component';
 
 @Component({
   selector: 'app-tabla-datos',
   standalone: true,
   imports: [CommonModule, SortDirective, RouterLink, RouterOutlet, ReactiveFormsModule],
-  templateUrl: './tabla-datos.component.html',
-  styleUrl: './tabla-datos.component.css'
+  templateUrl: './tablaAplicaciones.component.html',
+  styleUrl: './tablaAplicaciones.component.css'
 })
 
 export class TablaDatosComponent {

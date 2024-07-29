@@ -1,18 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Responsable } from './interfaces/responsable';
-import { Criticidad } from './interfaces/criticidad';
-import { Tecnologia } from './interfaces/tecnologia';
-import { VolumenUsuarios } from './interfaces/volumen-usuarios';
-import { VolumenEvolutivo } from './interfaces/volumen-evolutivo';
-import { Tipo } from './interfaces/tipo';
-import { TecnologiaInterfaz } from './interfaces/tecnologia-interfaz';
-import { Aplicacion } from './classes/aplicacion';
+import { Responsable } from '../interfaces/responsable';
+import { Criticidad } from '../interfaces/criticidad';
+import { Tecnologia } from '../interfaces/tecnologia';
+import { VolumenUsuarios } from '../interfaces/volumen-usuarios';
+import { VolumenEvolutivo } from '../interfaces/volumen-evolutivo';
+import { Tipo } from '../interfaces/tipo';
+import { TecnologiaInterfaz } from '../interfaces/tecnologia-interfaz';
+import { Aplicacion } from '../classes/aplicacion';
+import { Situacion } from '../classes/situacion';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class DatosService {
 
   private urlBase = 'http://localhost:8080/';
@@ -28,7 +30,7 @@ export class DatosService {
     return this.http.delete<boolean>(this.urlBase + 'aplicaciones/delete/' + cod);
   }
 
-  //METODOS FORMULARIO
+  //METODOS FORMULARIO APLICACIONES
   insertarAplicacion(apl: Aplicacion): Observable<Aplicacion> {
     return this.http.post<Aplicacion>(this.urlBase + 'aplicaciones/insert', apl);
   }
@@ -56,5 +58,10 @@ export class DatosService {
   }
   obtenerTecnologiaInterfaz(): Observable<TecnologiaInterfaz[]> {
     return this.http.get<TecnologiaInterfaz[]>(this.urlBase + 'tecnologia-interfaz/');
+  }
+
+  //METODOS SITUACIONES
+  obtenerSituaciones(): Observable<Situacion[]> {
+    return this.http.get<Situacion[]>(this.urlBase + 'situacion/');
   }
 }

@@ -1,4 +1,4 @@
-export interface IAplicacion {
+export interface AplicacionInterface {
     id: number;
     codAplic: string;
     nombAplic: string;
