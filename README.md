@@ -1,5 +1,14 @@
 Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y Miguel Manzanilla Ocaña
 
+# TODO:
+  - [ ] [Navegacion de la web](https://github.com/miguelmanzanillaocana/formacion/issues/2)
+  - [ ] Probar mat-table para situaciones[^1]
+  - [ ] Encontrar host
+  - [ ] Empezar seguridad web (inicio sesion, tipos de cuenta...)
+
+> [!WARNING]
+> Encontrar host y arreglar navegación prioridad
+
 # Endpoints Spring:
   - /aplicaciones/ (GET) => recibe un array en JSON con todas las apliaciones
   - /aplicaciones/id/{id} (GET) => recibe un JSON con la aplicacion que tenga el id
@@ -23,13 +32,5 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - /volumen-evolutivo/ (GET) => recibe un array en JSON con todos los volumenes evolutivos
   - /volumen-usuarios/ (GET )=> recibe un array en JSON con todos los volumenes de usuario
 
-# TODO:
-  - [ ] [Navegacion de la web](https://github.com/miguelmanzanillaocana/formacion/issues/2)
-  - [ ] Probar mat-table para situaciones[^1]
-  - [ ] Encontrar host
-  - [ ] Empezar seguridad web (inicio sesion, tipos de cuenta...)
-
-> [!WARNING]
-> Encontrar host y arreglar navegación prioridad
 
 [^1]: Esto no tiene importancia
