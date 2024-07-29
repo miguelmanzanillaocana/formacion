@@ -1,6 +1,6 @@
 Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y Miguel Manzanilla Ocaña
 
-# TODO:
+# TODO
   - [ ] [Navegacion de la web](https://github.com/miguelmanzanillaocana/formacion/issues/2)
   - [ ] Probar mat-table para situaciones[^1]
   - [ ] Encontrar host
@@ -9,7 +9,7 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
 > [!WARNING]
 > Encontrar host y arreglar navegación prioridad
 
-# Endpoints Spring:
+# Endpoints Spring
   - /aplicaciones/ (GET) => recibe un array en JSON con todas las apliaciones
   - /aplicaciones/id/{id} (GET) => recibe un JSON con la aplicacion que tenga el id
   - /aplicaciones/delete/{cod} (DELETE) => borra la aplicacion con ese codigo
