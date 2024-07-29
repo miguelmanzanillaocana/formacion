@@ -1,5 +1,5 @@
 # TODO:
-  - [ ] https://github.com/miguelmanzanillaocana/formacion/issues/2
+  - [ ] #2
   - [ ] Probar mat-table para situaciones[^1]
   - [ ] Encontrar host
   - [ ] Empezar seguridad web (inicio sesion, tipos de cuenta...)
