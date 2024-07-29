@@ -5,6 +5,7 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - [ ] Probar mat-table para situaciones[^1]
   - [ ] Encontrar host
   - [ ] Empezar seguridad web (inicio sesion, tipos de cuenta...)
+  - [ ] Cambiar id responsable, id tecnologia... por su equivalente en texto
 
 > [!WARNING]
 > Encontrar host y arreglar navegación prioridad
