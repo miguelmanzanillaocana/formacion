@@ -12,10 +12,10 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
 > Encontrar host y arreglar navegación prioridad
 
 # Endpoints Spring
-  - /aplicaciones/ (GET) => recibe un array en JSON con todas las apliaciones
-  - /aplicaciones/id/{id} (GET) => recibe un JSON con la aplicacion que tenga el id
-  - /aplicaciones/delete/{cod} (DELETE) => borra la aplicacion con ese codigo
-  - /aplicaciones/insert (POST) => inserta nueva aplicacion, la aplicacion se pasa en el body del request
+  - /aplicacion/ (GET) => recibe un array en JSON con todas las apliaciones
+  - /aplicacion/{id} (GET) => recibe un JSON con la aplicacion que tenga el id
+  - /aplicacion/delete/{cod} (DELETE) => borra la aplicacion con ese codigo
+  - /aplicacion/insert (POST) => inserta nueva aplicacion, la aplicacion se pasa en el body del request
   - /aplicacion/update (PUT) => actualiza una aplicacion, los datos modificado se pasan en el body del request
   - /situacion/ (GET) => recibe un array en JSON con todas las situaciones
   - /situacion/id/{id} (GET) => recibe un JSON con la situacion que tenga id id

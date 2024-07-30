@@ -21,8 +21,6 @@ public class CriticidadService {
 		return repository.findById(id).get();
 	}
 	
-	//ACCIONES
-	
 	public Criticidad updateCriticidad(Criticidad cr) {
 		return repository.save(cr);
 	}

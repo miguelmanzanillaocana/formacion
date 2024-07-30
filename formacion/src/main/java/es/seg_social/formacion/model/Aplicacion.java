@@ -31,7 +31,7 @@ public class Aplicacion {
 	@Column(name = "Tecnologia_ID")
 	private Integer tecn;
 
-	@Column(name = "Criticidad_ID")
+	@Column(name = "criticidad_id")
 	private Integer criti;
 
 	@Column(name = "Vol_Evol_ID")
