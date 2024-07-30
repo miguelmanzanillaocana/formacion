@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: blnux86e0sozweghjptg-mysql.services.clever-cloud.com:3306
--- Tiempo de generación: 18-07-2024 a las 12:07:59
+-- Servidor: bxyjqpgv8ih0ltqnutnk-mysql.services.clever-cloud.com:3306
+-- Tiempo de generación: 30-07-2024 a las 08:26:20
 -- Versión del servidor: 8.0.22-13
 -- Versión de PHP: 8.2.21
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `blnux86e0sozweghjptg`
+-- Base de datos: `bxyjqpgv8ih0ltqnutnk`
 --
 
 -- --------------------------------------------------------
@@ -31,8 +31,8 @@ CREATE TABLE `aplicaciones` (
   `ID_Aplicacion` int NOT NULL,
   `Codigo_Aplicacion` varchar(4) NOT NULL,
   `Nombre_Aplicacion` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `Nombre_Area` varchar(20) DEFAULT NULL,
-  `Subarea` varchar(40) DEFAULT NULL,
+  `Area_ID` int DEFAULT '0',
+  `Subarea_ID` int DEFAULT NULL,
   `Responsable_ID` int DEFAULT NULL,
   `Tecnologia_ID` int DEFAULT NULL,
   `Criticidad_ID` int DEFAULT NULL,
@@ -46,71 +46,92 @@ CREATE TABLE `aplicaciones` (
 -- Volcado de datos para la tabla `aplicaciones`
 --
 
-INSERT INTO `aplicaciones` (`ID_Aplicacion`, `Codigo_Aplicacion`, `Nombre_Aplicacion`, `Nombre_Area`, `Subarea`, `Responsable_ID`, `Tecnologia_ID`, `Criticidad_ID`, `Vol_Evol_ID`, `Vol_Usu_ID`, `Tipo_ID`, `Tecnologia_Interfaz_ID`) VALUES
-(1, 'ACBA', 'Procesos Batch de Accion Social', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 1, 3, 3, 1, 5),
-(2, 'ACDC', 'Gestión de los Expedientes de Accion Socal', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 1, 1, 1, 4, 1),
-(3, 'ACSP', 'Sistema de Presentación de Solicitudes de Accion Social', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 2, 1, 3, 3, 3, 1),
-(4, 'BASC', 'Consulta Bases de Cotización', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 3, 3, 3, 3, 1),
-(5, 'CEHA', '', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 2, 5, 3, 3, 3, 1),
-(6, 'CEJA', '', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 4, 3, 3, 3, 1),
-(7, 'COIP', 'Consulta del IRPF Mensual - 2', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 2, 2, 3, 3, 3, 1),
-(8, 'COIR', 'Consuta del IRPF Mensual, Acumulado y Cálculo del Tipo de Retención en Nomina', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 3, 3, 3, 3, 1),
-(9, 'DAOL', 'Consulta de Datos Personales en la Intranet', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 3, 3, 3, 3, 1),
-(10, 'EMOP', 'Expedientes de Modificación de los Presupuestos de las Mutuas', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 3, 3, 3, 3, 1),
-(11, 'PCOT', 'Consulta Bases de Cotización', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 2, 2, 3, 3, 3, 1),
-(12, 'PLPE', 'Gestión Plan de Pensiones AGE', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 2, 5, 3, 3, 3, 1),
-(13, 'PMOP', 'Expedientes y Modificación de Presupuestos', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 2, 2, 3, 2, 3, 1),
-(14, 'PPAG', 'Gestión y Emisioón Anual de Aportación al Plan de Pensiones de la AGE', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 3, 3, 2, 3, 1),
-(15, 'PSOB', 'Consulta de Puestos Solicitados y Adjudicados en Concursos', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 2, 3, 3, 2, 3, 1),
-(16, 'RENO', 'Consulta e Impresión de Nomina en el Entorno de Intranet', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 3, 3, 3, 3, 1),
-(17, 'RESP', 'Consulta de Recibos del Sistema SIP', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 2, 2, 3, 3, 3, 1),
-(18, 'SAPO', 'Servicios Web Relativos a las Tablas de Apoyo y Nomenclátores del Sistema SIP', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 3, 3, 3, 1, 5),
-(19, 'SCNF', 'Servicios Web para la Gestión del Acceso al Sistema SIP', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 2, 3, 3, 1, 5),
-(20, 'SDIE', 'Datos Relativos a la Gestión de Dietas', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 2, 3, 3, 3, 1),
-(21, 'SEST', 'Estructura de los Centros de Destino de la SS', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 3, 2, 3, 3, 1),
-(22, 'SFUN', 'Servicios Web para la Gestión de los Datos Administrativos del Personal del Sistema SIP', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 3, 2, 3, 1, 5),
-(23, 'SLET', 'Servicios Web Relativos a la Ocupación de los Servicios Jurídicos', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 3, 3, 3, 3, 1),
-(24, 'SNOR', 'Gestión de Reglamentos', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 6, 0, 0, 0, 1),
-(25, 'SOBA', 'Consulta por DNI de los Puestos Solicitados y Adjudicados en Concursos', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 2, 3, 3, 3, 1),
-(26, 'SPAD', 'Administración de Parametros SIP', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 3, 3, 3, 3, 1),
-(27, 'STEP', 'Solicitudes Telemáticas para RRHH con Registro', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 2, 6, 0, 0, 0, 1),
-(28, 'STRN', '', 'Desarrollos Externos', 'Cordinacion y desarrollo de RRHH', 1, 1, 5, 3, 3, 1, 5),
-(29, 'ERCP', 'Envio y Recepción de Archivos RCP', 'Desarrollos Externos', 'Innovacion', 2, 1, 2, 3, 3, 2, 1),
-(30, 'GFAD', 'Aplicación de Gestión y Administración de la Aplicación GFOR', 'Desarrollos Externos', 'Innovacion', 2, 1, 2, 3, 3, 2, 1),
-(31, 'GFOR', 'Gestión de Cursos de Formación', 'Desarrollos Externos', 'Innovacion', 2, 1, 1, 1, 1, 2, 1),
-(32, 'CASI', 'Carga de las Tablas de Siniestralidad (AT/EP) envidas por Mutuas, TGSS, INSS, ISM via IfiWeb', 'Desarrollos Externos', 'Presupuestos', 3, 2, 2, 3, 3, 3, 1),
-(33, 'FRDG', '', 'Desarrollos Externos', 'Presupuestos', 3, 2, 4, 3, 3, 2, 1),
-(34, 'GEBE', 'Gestión de Empresas Colaboradoras', 'Desarrollos Externos', 'Presupuestos', 3, 2, 3, 3, 3, 3, 1),
-(35, 'NCEP', 'Comunicación y Gestión de los Partes de Enfermedades Profesionales dentro de la Seguridad Social', 'Desarrollos Externos', 'Presupuestos', 3, 2, 1, 2, 1, 5, 1),
-(36, 'SCCD', 'Servicio de Comunicación con Ciudadanos', 'Desarrollos Externos', 'Presupuestos', 3, 2, 2, 3, 3, 3, 1),
-(37, 'SCCI', 'Servicio de Comunicación con Instituciones', 'Desarrollos Externos', 'Presupuestos', 3, 2, 3, 3, 3, 3, 1),
-(38, 'SCNO', 'SCCI Normativa', 'Desarrollos Externos', 'Presupuestos', 3, 2, 2, 3, 3, 3, 1),
-(39, 'SCPA', 'SCCI Parlamentario', 'Desarrollos Externos', 'Presupuestos', 3, 2, 2, 3, 3, 3, 1),
-(40, 'SCSE', 'Servicio Comunicación de la SESS', 'Desarrollos Externos', 'Presupuestos', 3, 2, 1, 3, 3, 3, 3),
-(41, 'SCSG', 'SCCI Secretaria de Gabinete', 'Desarrollos Externos', 'Presupuestos', 3, 2, 2, 3, 3, 3, 1),
-(42, 'SIPR', '', 'Desarrollos Externos', 'Presupuestos', 3, 3, 3, 3, 3, 3, 1),
-(43, 'SPRS', '', 'Desarrollos Externos', 'Presupuestos', 3, 1, 7, 3, 3, 3, 1),
-(44, 'TCON', 'Tramitación de Convenios del Gabinete de la SSP', 'Desarrollos Externos', 'Presupuestos', 3, 2, 2, 1, 3, 3, 1),
-(45, 'CNLB', '', 'Desarrollos Externos', '', 0, 2, 4, 3, 0, 0, 0),
-(46, 'COUP', 'Consulta de Objetivos, Unidades y Provincias', 'Desarrollos Externos', '', 4, 2, 3, 3, 4, 4, 1),
-(47, 'GEPE', 'Gestión de Incidencias de Personal', 'Desarrollos Externos', '', 4, 2, 1, 2, 1, 3, 1),
-(48, 'GSII', 'Gestión de Servicios de Intercambio de Información', 'Desarrollos Externos', '', 4, 2, 1, 3, 3, 3, 1),
-(49, 'GSIN', 'Gestión de Servicios de Intercambio de Información V2', 'Desarrollos Externos', '', 4, 2, 2, 2, 2, 3, 1),
-(50, 'NE01', '', 'Desarrollos Externos', '', 0, 1, 4, 3, 0, 0, 0),
-(51, 'SALM', 'Salida de Materiales', 'Desarrollos Externos', '', 4, 1, 3, 3, 2, 3, 1),
-(52, 'WE01', '', 'Desarrollos Externos', '', 0, 1, 4, 3, 0, 0, 0),
-(53, 'WE02', '', 'Desarrollos Externos', '', 0, 1, 4, 3, 0, 0, 0),
-(54, 'WE10', '', 'Desarrollos Externos', '', 0, 1, 4, 3, 0, 0, 0),
-(55, 'WE11', 'Estructura de Personal', 'Desarrollos Externos', '', 4, 1, 2, 2, 1, 3, 1),
-(56, 'WE12', 'Acceso a Edificio sin Tarjeta', 'Desarrollos Externos', '', 4, 1, 2, 3, 2, 3, 1),
-(57, 'WE13', 'Visitas', 'Desarrollos Externos', '', 4, 1, 2, 2, 2, 3, 1),
-(58, 'FSED', 'Formulario de Solicitud de Ejercicio de Derechos', 'Servicios Juridicos', '', 5, 1, 3, 3, 3, 2, 1),
-(59, 'GCNT', 'Contencioso', 'Servicios Juridicos', '', 5, 2, 1, 1, 1, 2, 1),
-(60, 'GCSL', 'Concursal', 'Servicios Juridicos', '', 5, 2, 1, 1, 1, 2, 1),
-(61, 'GEAP', 'Abogados Apoderados', 'Servicios Juridicos', '', 5, 2, 2, 2, 2, 2, 1),
-(62, 'GINF', 'Consultivo', 'Servicios Juridicos', '', 5, 2, 2, 2, 2, 2, 1),
-(63, 'SEJU', 'Gestión de Expedietntes Servicio Juridico', 'Servicios Juridicos', '', 5, 2, 1, 1, 1, 2, 1),
-(64, 'SJCO', 'Común', 'Servicios Juridicos', '', 5, 2, 1, 3, 3, 2, 1);
+INSERT INTO `aplicaciones` (`ID_Aplicacion`, `Codigo_Aplicacion`, `Nombre_Aplicacion`, `Area_ID`, `Subarea_ID`, `Responsable_ID`, `Tecnologia_ID`, `Criticidad_ID`, `Vol_Evol_ID`, `Vol_Usu_ID`, `Tipo_ID`, `Tecnologia_Interfaz_ID`) VALUES
+(1, 'ACBA', 'Procesos Batch de Accion Social', 1, 1, 1, 1, 1, 3, 3, 1, 5),
+(2, 'ACDC', 'Gestión de los Expedientes de Accion Socal', 1, 1, 1, 1, 1, 1, 1, 4, 1),
+(3, 'ACSP', 'Sistema de Presentación de Solicitudes de Accion Social', 1, 1, 1, 2, 1, 3, 3, 3, 1),
+(4, 'BASC', 'Consulta Bases de Cotización', 1, 1, 1, 1, 3, 3, 3, 3, 1),
+(5, 'CEHA', '', 1, 1, 1, 2, 5, 3, 3, 3, 1),
+(6, 'CEJA', '', 1, 1, 1, 1, 4, 3, 3, 3, 1),
+(7, 'COIP', 'Consulta del IRPF Mensual - 2', 1, 1, 1, 2, 2, 3, 3, 3, 1),
+(8, 'COIR', 'Consuta del IRPF Mensual, Acumulado y Cálculo del Tipo de Retención en Nomina', 1, 1, 1, 1, 3, 3, 3, 3, 1),
+(9, 'DAOL', 'Consulta de Datos Personales en la Intranet', 1, 1, 1, 1, 3, 3, 3, 3, 1),
+(10, 'EMOP', 'Expedientes de Modificación de los Presupuestos de las Mutuas', 1, 1, 1, 1, 3, 3, 3, 3, 1),
+(11, 'PCOT', 'Consulta Bases de Cotización', 1, 1, 1, 2, 2, 3, 3, 3, 1),
+(12, 'PLPE', 'Gestión Plan de Pensiones AGE', 1, 1, 1, 2, 5, 3, 3, 3, 1),
+(13, 'PMOP', 'Expedientes y Modificación de Presupuestos', 1, 1, 1, 2, 2, 3, 2, 3, 1),
+(14, 'PPAG', 'Gestión y Emisioón Anual de Aportación al Plan de Pensiones de la AGE', 1, 1, 1, 1, 3, 3, 2, 3, 1),
+(15, 'PSOB', 'Consulta de Puestos Solicitados y Adjudicados en Concursos', 1, 1, 1, 2, 3, 3, 2, 3, 1),
+(16, 'RENO', 'Consulta e Impresión de Nomina en el Entorno de Intranet', 1, 1, 1, 1, 3, 3, 3, 3, 1),
+(17, 'RESP', 'Consulta de Recibos del Sistema SIP', 1, 1, 1, 2, 2, 3, 3, 3, 1),
+(18, 'SAPO', 'Servicios Web Relativos a las Tablas de Apoyo y Nomenclátores del Sistema SIP', 1, 1, 1, 1, 3, 3, 3, 1, 5),
+(19, 'SCNF', 'Servicios Web para la Gestión del Acceso al Sistema SIP', 1, 1, 1, 1, 2, 3, 3, 1, 5),
+(20, 'SDIE', 'Datos Relativos a la Gestión de Dietas', 1, 1, 1, 1, 2, 3, 3, 3, 1),
+(21, 'SEST', 'Estructura de los Centros de Destino de la SS', 1, 1, 1, 1, 3, 2, 3, 3, 1),
+(22, 'SFUN', 'Servicios Web para la Gestión de los Datos Administrativos del Personal del Sistema SIP', 1, 1, 1, 1, 3, 2, 3, 1, 5),
+(23, 'SLET', 'Servicios Web Relativos a la Ocupación de los Servicios Jurídicos', 1, 1, 1, 1, 3, 3, 3, 3, 1),
+(24, 'SNOR', 'Gestión de Reglamentos', 1, 1, 1, 1, 6, 0, 0, 0, 1),
+(25, 'SOBA', 'Consulta por DNI de los Puestos Solicitados y Adjudicados en Concursos', 1, 1, 1, 1, 2, 3, 3, 3, 1),
+(26, 'SPAD', 'Administración de Parametros SIP', 1, 1, 1, 1, 3, 3, 3, 3, 1),
+(27, 'STEP', 'Solicitudes Telemáticas para RRHH con Registro', 1, 1, 1, 2, 6, 0, 0, 0, 1),
+(28, 'STRN', '', 1, 1, 1, 1, 5, 3, 3, 1, 5),
+(29, 'ERCP', 'Envio y Recepción de Archivos RCP', 1, 2, 2, 1, 2, 3, 3, 2, 1),
+(30, 'GFAD', 'Aplicación de Gestión y Administración de la Aplicación GFOR', 1, 2, 2, 1, 2, 3, 3, 2, 1),
+(31, 'GFOR', 'Gestión de Cursos de Formación', 1, 2, 2, 1, 1, 1, 1, 2, 1),
+(32, 'CASI', 'Carga de las Tablas de Siniestralidad (AT/EP) envidas por Mutuas, TGSS, INSS, ISM via IfiWeb', 1, 3, 3, 2, 2, 3, 3, 3, 1),
+(33, 'FRDG', '', 1, 3, 3, 2, 4, 3, 3, 2, 1),
+(34, 'GEBE', 'Gestión de Empresas Colaboradoras', 1, 3, 3, 2, 3, 3, 3, 3, 1),
+(35, 'NCEP', 'Comunicación y Gestión de los Partes de Enfermedades Profesionales dentro de la Seguridad Social', 1, 3, 3, 2, 1, 2, 1, 5, 1),
+(36, 'SCCD', 'Servicio de Comunicación con Ciudadanos', 1, 3, 3, 2, 2, 3, 3, 3, 1),
+(37, 'SCCI', 'Servicio de Comunicación con Instituciones', 1, 3, 3, 2, 3, 3, 3, 3, 1),
+(38, 'SCNO', 'SCCI Normativa', 1, 3, 3, 2, 2, 3, 3, 3, 1),
+(39, 'SCPA', 'SCCI Parlamentario', 1, 3, 3, 2, 2, 3, 3, 3, 1),
+(40, 'SCSE', 'Servicio Comunicación de la SESS', 1, 3, 3, 2, 1, 3, 3, 3, 3),
+(41, 'SCSG', 'SCCI Secretaria de Gabinete', 1, 3, 3, 2, 2, 3, 3, 3, 1),
+(42, 'SIPR', '', 1, 3, 3, 3, 3, 3, 3, 3, 1),
+(43, 'SPRS', '', 1, 3, 3, 1, 7, 3, 3, 3, 1),
+(44, 'TCON', 'Tramitación de Convenios del Gabinete de la SSP', 1, 3, 3, 2, 2, 1, 3, 3, 1),
+(45, 'CNLB', '', 1, 0, 0, 2, 4, 3, 0, 0, 0),
+(46, 'COUP', 'Consulta de Objetivos, Unidades y Provincias', 2, 0, 4, 2, 3, 3, 4, 4, 1),
+(47, 'GEPE', 'Gestión de Incidencias de Personal', 2, 0, 4, 2, 1, 2, 1, 3, 1),
+(48, 'GSII', 'Gestión de Servicios de Intercambio de Información', 2, 0, 4, 2, 1, 3, 3, 3, 1),
+(49, 'GSIN', 'Gestión de Servicios de Intercambio de Información V2', 2, 0, 4, 2, 2, 2, 2, 3, 1),
+(50, 'NE01', '', 2, 0, 0, 1, 4, 3, 0, 0, 0),
+(51, 'SALM', 'Salida de Materiales', 2, 0, 4, 1, 3, 3, 2, 3, 1),
+(52, 'WE01', '', 2, 0, 0, 1, 4, 3, 0, 0, 0),
+(53, 'WE02', '', 2, 0, 0, 1, 4, 3, 0, 0, 0),
+(54, 'WE10', '', 2, 0, 0, 1, 4, 3, 0, 0, 0),
+(55, 'WE11', 'Estructura de Personal', 2, 0, 4, 1, 2, 2, 1, 3, 1),
+(56, 'WE12', 'Acceso a Edificio sin Tarjeta', 2, 0, 4, 1, 2, 3, 2, 3, 1),
+(57, 'WE13', 'Visitas', 2, 0, 4, 1, 2, 2, 2, 3, 1),
+(58, 'FSED', 'Formulario de Solicitud de Ejercicio de Derechos', 3, 0, 5, 1, 3, 3, 3, 2, 1),
+(59, 'GCNT', 'Contencioso', 3, 0, 5, 2, 1, 1, 1, 2, 1),
+(60, 'GCSL', 'Concursal', 3, 0, 5, 2, 1, 1, 1, 2, 1),
+(61, 'GEAP', 'Abogados Apoderados', 3, 0, 5, 2, 2, 2, 2, 2, 1),
+(62, 'GINF', 'Consultivo', 3, 0, 5, 2, 2, 2, 2, 2, 1),
+(63, 'SEJU', 'Gestión de Expedietntes Servicio Juridico', 3, 0, 5, 2, 1, 1, 1, 2, 1),
+(64, 'SJCO', 'Común', 3, 0, 5, 2, 1, 3, 3, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `area_aplicacion`
+--
+
+CREATE TABLE `area_aplicacion` (
+  `ID_Area` int NOT NULL,
+  `Area` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `area_aplicacion`
+--
+
+INSERT INTO `area_aplicacion` (`ID_Area`, `Area`) VALUES
+(0, ''),
+(1, 'Desarrollos Externos'),
+(2, 'Desarrollos Internos'),
+(3, 'Servicios Juridicos');
 
 -- --------------------------------------------------------
 
@@ -537,6 +558,27 @@ INSERT INTO `situacion_aplicaciones` (`ID_Situacion`, `Codigo_Aplicacion`, `Pros
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `subarea_aplicacion`
+--
+
+CREATE TABLE `subarea_aplicacion` (
+  `ID_Subrea` int NOT NULL,
+  `Subarea` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `subarea_aplicacion`
+--
+
+INSERT INTO `subarea_aplicacion` (`ID_Subrea`, `Subarea`) VALUES
+(0, ''),
+(1, 'Coordinación y Desarrollo de RRHH'),
+(2, 'Innovación'),
+(3, 'Presupuestos');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tecnologiainterfaz_aplicacion`
 --
 
@@ -682,7 +724,15 @@ ALTER TABLE `aplicaciones`
   ADD KEY `Vol_Usu_ID` (`Vol_Usu_ID`),
   ADD KEY `Tipo_ID` (`Tipo_ID`),
   ADD KEY `Tecnologia_Interfaz_ID` (`Tecnologia_Interfaz_ID`),
-  ADD KEY `Codigo_Aplicacion` (`Codigo_Aplicacion`);
+  ADD KEY `Codigo_Aplicacion` (`Codigo_Aplicacion`),
+  ADD KEY `Aplicaciones_ibfk_8` (`Area_ID`),
+  ADD KEY `Aplicaciones_ibfk_9` (`Subarea_ID`);
+
+--
+-- Indices de la tabla `area_aplicacion`
+--
+ALTER TABLE `area_aplicacion`
+  ADD PRIMARY KEY (`ID_Area`);
 
 --
 -- Indices de la tabla `cer_aplicacion`
@@ -801,6 +851,12 @@ ALTER TABLE `situacion_aplicaciones`
   ADD KEY `Servicios_Terceros_ID` (`Servicios_Terceros_ID`);
 
 --
+-- Indices de la tabla `subarea_aplicacion`
+--
+ALTER TABLE `subarea_aplicacion`
+  ADD PRIMARY KEY (`ID_Subrea`);
+
+--
 -- Indices de la tabla `tecnologiainterfaz_aplicacion`
 --
 ALTER TABLE `tecnologiainterfaz_aplicacion`
@@ -850,7 +906,9 @@ ALTER TABLE `aplicaciones`
   ADD CONSTRAINT `Aplicaciones_ibfk_4` FOREIGN KEY (`Vol_Evol_ID`) REFERENCES `volumenevolutivo_aplicacion` (`ID_Volumen_Evolutivo`),
   ADD CONSTRAINT `Aplicaciones_ibfk_5` FOREIGN KEY (`Vol_Usu_ID`) REFERENCES `volumenusuarios_aplicacion` (`ID_Volumen_Usuarios`),
   ADD CONSTRAINT `Aplicaciones_ibfk_6` FOREIGN KEY (`Tipo_ID`) REFERENCES `tipo_aplicacion` (`ID_Tipo`),
-  ADD CONSTRAINT `Aplicaciones_ibfk_7` FOREIGN KEY (`Tecnologia_Interfaz_ID`) REFERENCES `tecnologiainterfaz_aplicacion` (`ID_Tecnologia_Interfaz`);
+  ADD CONSTRAINT `Aplicaciones_ibfk_7` FOREIGN KEY (`Tecnologia_Interfaz_ID`) REFERENCES `tecnologiainterfaz_aplicacion` (`ID_Tecnologia_Interfaz`),
+  ADD CONSTRAINT `Aplicaciones_ibfk_8` FOREIGN KEY (`Area_ID`) REFERENCES `area_aplicacion` (`ID_Area`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `Aplicaciones_ibfk_9` FOREIGN KEY (`Subarea_ID`) REFERENCES `subarea_aplicacion` (`ID_Subrea`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Filtros para la tabla `cer_aplicacion`

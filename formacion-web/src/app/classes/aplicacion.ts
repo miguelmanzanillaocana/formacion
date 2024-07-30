@@ -5,8 +5,8 @@ export class Aplicacion implements AplicacionInterface {
     id: number;
     codAplic: string;
     nombAplic: string;
-    nombArea: string;
-    subArea: string;
+    nombArea: number;
+    subArea: number;
     resp: number;
     tecn: number;
     criti: number;
@@ -15,7 +15,7 @@ export class Aplicacion implements AplicacionInterface {
     tipo: number;
     tecInt: number;
 
-    constructor(codAplic: string, nombAplic: string, nombArea: string, subArea: string, resp: number,
+    constructor(codAplic: string, nombAplic: string, nombArea: number, subArea: number, resp: number,
          tecn: number, criti: number, volEvol: number, volUsu: number, tipo: number, tecInt: number) {
         this.id = 0;
         this.codAplic = codAplic,

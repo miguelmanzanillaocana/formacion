@@ -6,52 +6,52 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Aplicaciones")
-public class Aplicacion {
-
+@Table(name="Aplicaciones")
+public class AplicacionString {
+	
 	@Id
 	@Column(name = "ID_Aplicacion")
 	private Integer id;
-
+	
 	@Column(name = "Codigo_Aplicacion")
 	private String codAplic;
-
+	
 	@Column(name = "Nombre_Aplicacion")
 	private String nombAplic;
+	
+	@Column(name = "Nombre_Area")
+	private String nombArea;
 
-	@Column(name = "Area_ID")
-	private Integer nombArea;
-
-	@Column(name = "Subarea_ID")
-	private Integer subArea;
+	@Column(name = "Subarea")
+	private String subArea;
 
 	@Column(name = "Responsable_ID")
-	private Integer resp;
+	private String resp;
 
 	@Column(name = "Tecnologia_ID")
-	private Integer tecn;
+	private String tecn;
 
 	@Column(name = "Criticidad_ID")
-	private Integer criti;
+	private String criti;
 
 	@Column(name = "Vol_Evol_ID")
-	private Integer volEvol;
+	private String volEvol;
 
 	@Column(name = "Vol_Usu_ID")
-	private Integer volUsu;
+	private String volUsu;
 
 	@Column(name = "Tipo_ID")
-	private Integer tipo;
+	private String tipo;
 
 	@Column(name = "Tecnologia_Interfaz_ID")
-	private Integer tecInt;
+	private String tecInt;
 
-	public Aplicacion() {
+	public AplicacionString() {
 		super();
 	}
 
-	public Aplicacion(Integer id, String codAplic, String nombAplic, Integer nombArea, Integer subArea, Integer resp,
-			Integer tecn, Integer criti, Integer volEvol, Integer volUsu, Integer tipo, Integer tecInt) {
+	public AplicacionString(Integer id, String codAplic, String nombAplic, String nombArea, String subArea, String resp,
+			String tecn, String criti, String volEvol, String volUsu, String tipo, String tecInt) {
 		super();
 		this.id = id;
 		this.codAplic = codAplic;
@@ -67,11 +67,11 @@ public class Aplicacion {
 		this.tecInt = tecInt;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -91,75 +91,75 @@ public class Aplicacion {
 		this.nombAplic = nombAplic;
 	}
 
-	public Integer getNombArea() {
+	public String getNombArea() {
 		return nombArea;
 	}
 
-	public void setNombArea(Integer nombArea) {
+	public void setNombArea(String nombArea) {
 		this.nombArea = nombArea;
 	}
 
-	public Integer getSubArea() {
+	public String getSubArea() {
 		return subArea;
 	}
 
-	public void setSubArea(Integer subArea) {
+	public void setSubArea(String subArea) {
 		this.subArea = subArea;
 	}
 
-	public int getResp() {
+	public String getResp() {
 		return resp;
 	}
 
-	public void setResp(int resp) {
+	public void setResp(String resp) {
 		this.resp = resp;
 	}
 
-	public Integer getTecn() {
+	public String getTecn() {
 		return tecn;
 	}
 
-	public void setTecn(Integer tecn) {
+	public void setTecn(String tecn) {
 		this.tecn = tecn;
 	}
 
-	public int getCriti() {
+	public String getCriti() {
 		return criti;
 	}
 
-	public void setCriti(int criti) {
+	public void setCriti(String criti) {
 		this.criti = criti;
 	}
 
-	public int getVolEvol() {
+	public String getVolEvol() {
 		return volEvol;
 	}
 
-	public void setVolEvol(int volEvol) {
+	public void setVolEvol(String volEvol) {
 		this.volEvol = volEvol;
 	}
 
-	public int getVolUsu() {
+	public String getVolUsu() {
 		return volUsu;
 	}
 
-	public void setVolUsu(int volUsu) {
+	public void setVolUsu(String volUsu) {
 		this.volUsu = volUsu;
 	}
 
-	public int getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(int tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 
-	public int getTecInt() {
+	public String getTecInt() {
 		return tecInt;
 	}
 
-	public void setTecInt(int tecInt) {
+	public void setTecInt(String tecInt) {
 		this.tecInt = tecInt;
 	}
 
