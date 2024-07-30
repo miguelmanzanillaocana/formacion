@@ -18,8 +18,7 @@ import es.seg_social.formacion.services.AplicacionService;
 
 
 @RestController
-@CrossOrigin
-@RequestMapping("/aplicaciones")
+@RequestMapping("/aplicacion")
 public class AplicacionController {
 	
 	@Autowired
@@ -30,7 +29,7 @@ public class AplicacionController {
 		return service.getAllApplications();
 	}
 	
-	@GetMapping("/id/{id}")
+	@GetMapping("/{id}")
 	public Aplicacion getApplicationById(@PathVariable("id") Integer id) {
 		return service.getApplicationById(id);
 	}

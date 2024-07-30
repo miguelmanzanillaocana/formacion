@@ -23,16 +23,16 @@ export class DatosService {
 
   //METODOS APLICACIONES
   obtenerAplicaciones(): Observable<Aplicacion[]> {
-    return this.http.get<Aplicacion[]>(this.urlBase + 'aplicaciones/');
+    return this.http.get<Aplicacion[]>(this.urlBase + 'aplicacion/');
   }
 
   borrarAplicacion(cod: string): Observable<boolean> {
-    return this.http.delete<boolean>(this.urlBase + 'aplicaciones/delete/' + cod);
+    return this.http.delete<boolean>(this.urlBase + 'aplicacion/delete/' + cod);
   }
 
   //METODOS FORMULARIO APLICACIONES
   insertarAplicacion(apl: Aplicacion): Observable<Aplicacion> {
-    return this.http.post<Aplicacion>(this.urlBase + 'aplicaciones/insert', apl);
+    return this.http.post<Aplicacion>(this.urlBase + 'aplicacion/insert', apl);
   }
 
   obtenerResponsables(): Observable<Responsable[]> {
