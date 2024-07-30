@@ -2,8 +2,8 @@ export interface AplicacionInterface {
     id: number;
     codAplic: string;
     nombAplic: string;
-    nombArea: string;
-    subArea: string;
+    nombArea: number;
+    subArea: number;
     resp: number;
     tecn: number;
     criti: number;
