@@ -6,6 +6,7 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - [ ] [Encontrar host](https://github.com/miguelmanzanillaocana/formacion/issues/5)
   - [ ] [Empezar seguridad web (inicio sesion, tipos de cuenta...)](https://github.com/miguelmanzanillaocana/formacion/issues/4)
   - [ ] [Cambiar id responsable, id tecnologia... por su equivalente en texto](https://github.com/miguelmanzanillaocana/formacion/issues/3)
+  - [ ] [Mejorar formulario aplicaciones](https://github.com/miguelmanzanillaocana/formacion/issues/5)
 
 > [!WARNING]
 > Encontrar host y arreglar navegación prioridad
