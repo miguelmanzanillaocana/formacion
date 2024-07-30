@@ -29,7 +29,7 @@ export class FormularioComponent {
   datosTecnoInt: TecnologiaInterfaz[]=[];
   aplicacionForm: FormGroup;
 
-  apl: Aplicacion = new Aplicacion('', '', '', '', 0, 0, 0, 0, 0, 0, 0);
+  apl: Aplicacion = new Aplicacion('', '', 0, 0, 0, 0, 0, 0, 0, 0, 0);
   aplicacion!: Aplicacion;
   
   ngOnInit(): void{

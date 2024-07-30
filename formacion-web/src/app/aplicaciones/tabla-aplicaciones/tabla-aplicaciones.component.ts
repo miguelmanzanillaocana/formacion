@@ -8,6 +8,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { map, Observable, startWith, withLatestFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { promises } from 'dns';
+import { resolve } from 'path';
 
 @Component({
   selector: 'app-tabla-aplicaciones',
@@ -17,7 +19,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
   styleUrl: './tabla-aplicaciones.component.css'
 })
 
-export class TablaAplicacionesComponent {
+export class TablaAplicacionesComponent{
 datosTabla: Aplicacion[]=[];
 datos!: Observable<Aplicacion[]>;
 datosFiltrados!: Observable<Aplicacion[]>;
@@ -30,15 +32,15 @@ formGroup: FormGroup;
 
   ngOnInit() {
     this.actualizarTabla();
+    
   }
 
   ngDoCheck(){
     this.actualizarTabla();
   }
 
-  actualizarTabla(){
+  async actualizarTabla(){
     this.datos = this.datosService.obtenerAplicaciones();
-
     this.datosFiltrados = this.formGroup.get('filter')!.valueChanges.pipe(
       startWith(""),
       withLatestFrom(this.datos),
@@ -48,7 +50,11 @@ formGroup: FormGroup;
     this.datosFiltrados.subscribe((datos: Aplicacion[]) => {
       this.datosTabla = datos as Aplicacion[];
     })
-    
+    await this.delay(2000)
+  }
+
+  delay(ms: number ){
+    return new Promise(resolve => setTimeout(resolve,ms));
   }
 
   borrarAplicacion(cod: string) {
