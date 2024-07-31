@@ -29,7 +29,7 @@ formGroup: FormGroup;
   }
 
   ngOnInit() {
-    this.actualizarTabla();
+    // this.actualizarTabla();
   }
 
   actualizarTabla(){
