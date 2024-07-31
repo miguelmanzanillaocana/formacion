@@ -1,95 +1,110 @@
-<form class="mt-2 mx-4" [formGroup]="aplicacionForm" (ngSubmit)="onSubmit()">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="codigo-aplicacion" formControlName="codAplic" placeholder="test" required="true"/>
-        <label for="codigo-aplicacion">Código de la aplicación</label>
+<div class="container-fluid p-4">
+  <h1 class="text-center my-5">Crear nueva App</h1>
+  <form class="mt-2 mx-4" [formGroup]="aplicacionForm" (ngSubmit)="onSubmit()">
+    <div class="row mx-5 my-3">
+      <div class="col-md-6">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="codigo-aplicacion" formControlName="codAplic" placeholder="test"
+            required
+            [class.is-invalid]="aplicacionForm.get('codAplic')?.invalid && (aplicacionForm.get('codAplic')?.dirty || aplicacionForm.get('codAplic')?.touched)" />
+          <label for="codigo-aplicacion">Código de la aplicación</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="nombre-aplicacion" formControlName="nombAplic"
+            placeholder="test" />
+          <label for="nombre-aplicacion">Nombre de la aplicación</label>
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="nombre-aplicacion" formControlName="nombAplic" placeholder="test"/>
-        <label for="nombre-aplicacion">Nombre de la aplicación</label>
+    <div class="row mx-5 my-3">
+      <div class="col-md-6">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="area-aplicacion" formControlName="nombArea" placeholder="test" />
+          <label for="area-aplicacion">Area de la Aplicación</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="subarea-aplicacion" formControlName="subArea"
+            placeholder="test" />
+          <label for="subarea-aplicacion">Subarea de la aplicacion</label>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="area-aplicacion" formControlName="nombArea" placeholder="test"/>
-        <label for="area-aplicacion">Area de la Aplicación</label>
+    <div class="row mx-5 my-3">
+      <div class="col-md-12">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-responsable" formControlName="resp">
+            <option *ngFor="let resp of datosResp" [value]="resp.id">{{ resp.responsable }}</option>
+          </select>
+          <label for="cb-responsable">Responsable</label>
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="subarea-aplicacion" formControlName="subArea" placeholder="test"/>
-        <label for="subarea-aplicacion">Subarea de la aplicacion</label>
+    <div class="row mx-5 my-3">
+      <div class="col-md-12">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-tecnologia" formControlName="tecn">
+            <option *ngFor="let tecn of datosTecno" [value]="tecn.id">{{ tecn.tecnologia }}</option>
+          </select>
+          <label for="cb-tecnologia">Tecnologia</label>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-floating mb-3">
-        <select class="form-select" id="cb-responsable" formControlName="resp">
-          <option *ngFor="let resp of datosResp" [value]="resp.id">{{ resp.responsable }}</option>
-        </select>
-        <label for="cb-responsable">Responsable</label>
-      </div>
-    </div>    
-    <div class="col-md-6">
-      <div class="form-floating mb-3">
-        <select class="form-select" id="cb-tecnologia" formControlName="tecn">
-          <option *ngFor="let tecn of datosTecno" [value]="tecn.id">{{ tecn.tecnologia }}</option>
-        </select>
-        <label for="cb-tecnologia">Tecnologia</label>
+    <div class="row mx-5 my-3">
+      <div class="col-md-12">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-criticidad" formControlName="criti">
+            <option *ngFor="let criti of datosCriti" [value]="criti.id">{{criti.criticidad}}</option>
+          </select>
+          <label for="cb-criticidad">Criticidad</label>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-floating mb-3">
-        <select class="form-select" id="cb-criticidad" formControlName="criti">
-          <option *ngFor="let criti of datosCriti" [value]="criti.id">{{criti.criticidad}}</option>
-        </select>
-        <label for="cb-criticidad">Criticidad</label>
+    <div class="row mx-5 my-3">
+      <div class="col-md-12">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-volumen-evolutivo" formControlName="volEvol">
+            <option *ngFor="let volEvol of datosVEvo" [value]="volEvol.id">{{ volEvol.volumenEvolutivo }}</option>
+          </select>
+          <label for="cb-volumen-evolutivo">Volumen Evolutivo</label>
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="form-floating mb-3">
-        <select class="form-select" id="cb-volumen-evolutivo" formControlName="volEvol">
-          <option *ngFor="let volEvol of datosVEvo" [value]="volEvol.id">{{ volEvol.volumenEvolutivo }}</option>
-        </select>
-        <label for="cb-volumen-evolutivo">Volumen Evolutivo</label>
+    <div class="row mx-5 my-3">
+      <div class="col-md-12">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-volumen-usuarios" formControlName="volUsu">
+            <option *ngFor="let volUsu of datosVUser" [value]="volUsu.id">{{ volUsu.volumenUsuarios }}</option>
+          </select>
+          <label for="cb-volumen-usuarios">Volumen Usuarios</label>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-floating mb-3">
-        <select class="form-select" id="cb-volumen-usuarios" formControlName="volUsu">
-          <option *ngFor="let volUsu of datosVUser" [value]="volUsu.id">{{ volUsu.volumenUsuarios }}</option>
-        </select>
-        <label for="cb-volumen-usuarios">Volumen Usuarios</label>
+    <div class="row mx-5 my-3">
+      <div class="col-md-12">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-tipo" formControlName="tipo">
+            <option *ngFor="let tipo of datosTipo" [value]="tipo.id">{{ tipo.tipo }}</option>
+          </select>
+          <label for="cb-tipo">Tipo</label>
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="form-floating mb-3">
-        <select class="form-select" id="cb-tipo" formControlName="tipo">
-          <option *ngFor="let tipo of datosTipo" [value]="tipo.id">{{ tipo.tipo }}</option>
-        </select>
-        <label for="cb-tipo">Tipo</label>
+    <div class="row mx-5 my-3">
+      <div class="col-md-12">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-tecnologia-integracion" formControlName="tecInt">
+            <option *ngFor="let tecnInt of datosTecnoInt" [value]="tecnInt.id">{{ tecnInt.tecnologiaInterfaz }}</option>
+          </select>
+          <label for="cb-tecnologia-integracion">Tecnologia Integracion</label>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-floating mb-3">
-        <select class="form-select" id="cb-tecnologia-integracion" formControlName="tecInt">
-          <option *ngFor="let tecnInt of datosTecnoInt" [value]="tecnInt.id">{{ tecnInt.tecnologiaInterfaz }}</option>
-        </select>
-        <label for="cb-tecnologia-integracion">Tecnologia Integracion</label>
-      </div>
+    <div class="text-center mb-4">
+      <button type="submit" class="btn btn-success my-2" [disabled]="!aplicacionForm.valid">Crear aplicación</button>
     </div>
-  </div>
-  <button type="submit" class="btn btn-success">Crear aplicación</button>
-</form>
+  </form>
+</div>
