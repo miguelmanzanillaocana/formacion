@@ -18,7 +18,16 @@ import { Situacion } from '../classes/situacion';
 export class DatosService {
 
   private urlBase = 'http://localhost:8080/';
+  private datosTabla: Aplicacion[] = [];
 
+  setDatosTabla(datos: Aplicacion[]) {
+    this.datosTabla = datos;
+  }
+
+  getDatosTabla(): Aplicacion[] {
+    return this.datosTabla;
+  }
+  
   constructor(private http: HttpClient) { }
 
   //METODOS APLICACIONES
