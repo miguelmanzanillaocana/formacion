@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { DatosService } from '../../../services/datos.service';
 import { Aplicacion } from '../../../models/aplicacion';
-import { SortDirective } from '../../directive/sort.directive';
+import { SortDirective } from '../../../directives/sort.directive';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { map, Observable, startWith, withLatestFrom } from 'rxjs';
