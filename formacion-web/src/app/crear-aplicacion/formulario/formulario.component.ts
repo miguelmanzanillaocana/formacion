@@ -10,11 +10,14 @@ import { VolumenEvolutivo } from '../../interfaces/volumen-evolutivo';
 import { Tipo } from '../../interfaces/tipo';
 import { TecnologiaInterfaz } from '../../interfaces/tecnologia-interfaz';
 import { Aplicacion } from '../../classes/aplicacion';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogCrearAppComponent } from './dialog-crear-app/dialog-crear-app.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule,CommonModule,MatDialogModule],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })
@@ -56,7 +59,7 @@ export class FormularioComponent {
     })
   }
 
-  constructor(private datosService: DatosService, private fb: FormBuilder) {
+  constructor(private datosService: DatosService, private fb: FormBuilder,private dialog: MatDialog, private router: Router) {
     this.aplicacionForm = this.fb.group({
       codAplic: new FormControl(this.apl.codAplic, Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(4)])),
       nombAplic: new FormControl(this.apl.nombAplic),
@@ -89,6 +92,13 @@ export class FormularioComponent {
 
     this.datosService.insertarAplicacion(this.apl).subscribe(aplicacion => this.aplicacion = aplicacion);
     console.log(this.aplicacion);
+    const dialogRef = this.dialog.open(DialogCrearAppComponent, {
+      width: '350px',
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.router.navigate(['/aplicaciones']);
+    });
   }
 
 }
