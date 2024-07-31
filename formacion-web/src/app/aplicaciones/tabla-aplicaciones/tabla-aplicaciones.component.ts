@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { DatosService } from '../../datos/datos.service';
-import { Aplicacion } from '../../classes/aplicacion';
+import { DatosService } from '../../../services/datos.service';
+import { Aplicacion } from '../../../models/aplicacion';
 import { SortDirective } from '../../directive/sort.directive';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';

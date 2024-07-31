@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { Situacion } from '../../classes/situacion';
+import { Situacion } from '../../../models/situacion';
 import { MatCell, MatFooterRow, MatFooterRowDef, MatHeaderCell, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { DatosService } from '../../datos/datos.service';
+import { DatosService } from '../../../services/datos.service';
 import { Observable } from 'rxjs';
 
 @Component({

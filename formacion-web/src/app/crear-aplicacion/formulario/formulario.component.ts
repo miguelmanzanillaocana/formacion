@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Responsable } from '../../interfaces/responsable';
-import { DatosService } from '../../datos/datos.service';
+import { Responsable } from '../../../interfaces/responsable';
+import { DatosService } from '../../../services/datos.service';
 import { CommonModule } from '@angular/common';
-import { Criticidad } from '../../interfaces/criticidad';
-import { Tecnologia } from '../../interfaces/tecnologia';
-import { VolumenUsuarios } from '../../interfaces/volumen-usuarios';
-import { VolumenEvolutivo } from '../../interfaces/volumen-evolutivo';
-import { Tipo } from '../../interfaces/tipo';
-import { TecnologiaInterfaz } from '../../interfaces/tecnologia-interfaz';
-import { Aplicacion } from '../../classes/aplicacion';
+import { Criticidad } from '../../../interfaces/criticidad';
+import { Tecnologia } from '../../../interfaces/tecnologia';
+import { VolumenUsuarios } from '../../../interfaces/volumen-usuarios';
+import { VolumenEvolutivo } from '../../../interfaces/volumen-evolutivo';
+import { Tipo } from '../../../interfaces/tipo';
+import { TecnologiaInterfaz } from '../../../interfaces/tecnologia-interfaz';
+import { Aplicacion } from '../../../models/aplicacion';
 
 @Component({
   selector: 'app-formulario',

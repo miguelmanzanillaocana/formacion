@@ -8,8 +8,8 @@ import { VolumenUsuarios } from '../interfaces/volumen-usuarios';
 import { VolumenEvolutivo } from '../interfaces/volumen-evolutivo';
 import { Tipo } from '../interfaces/tipo';
 import { TecnologiaInterfaz } from '../interfaces/tecnologia-interfaz';
-import { Aplicacion } from '../classes/aplicacion';
-import { Situacion } from '../classes/situacion';
+import { Aplicacion } from '../models/aplicacion';
+import { Situacion } from '../models/situacion';
 
 @Injectable({
   providedIn: 'root'
