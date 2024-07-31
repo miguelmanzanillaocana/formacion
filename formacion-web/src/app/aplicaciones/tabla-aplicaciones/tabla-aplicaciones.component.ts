@@ -30,11 +30,6 @@ formGroup: FormGroup;
 
   ngOnInit() {
     this.actualizarTabla();
-    
-  }
-
-  ngDoCheck(){
-    this.actualizarTabla();
   }
 
   actualizarTabla(){
@@ -50,8 +45,6 @@ formGroup: FormGroup;
     })
     
   }
-
- 
 
   borrarAplicacion(cod: string) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
