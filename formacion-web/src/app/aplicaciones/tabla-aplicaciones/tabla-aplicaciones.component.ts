@@ -5,7 +5,7 @@ import { Aplicacion } from '../../../models/aplicacion';
 import { SortDirective } from '../../../directives/sort.directive';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { map, Observable, startWith, withLatestFrom } from 'rxjs';
+import { delay, map, Observable, startWith, tap, withLatestFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
@@ -17,33 +17,35 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
   styleUrl: './tabla-aplicaciones.component.css'
 })
 
-export class TablaAplicacionesComponent{
-datosTabla: Aplicacion[]=[];
-datos!: Observable<Aplicacion[]>;
-datosFiltrados!: Observable<Aplicacion[]>;
+export class TablaAplicacionesComponent {
+  datosTabla: Aplicacion[] = [];
+  datos!: Observable<Aplicacion[]>;
+  datosFiltrados!: Observable<Aplicacion[]>;
 
-formGroup: FormGroup;
+  formGroup: FormGroup;
 
-  constructor(private datosService: DatosService, private dialog: MatDialog, private fb: FormBuilder){ 
-    this.formGroup = this.fb.group({ filter: ['']})
+  isEnded: boolean;
+
+  constructor(private datosService: DatosService, private dialog: MatDialog, private fb: FormBuilder) {
+    this.formGroup = this.fb.group({ filter: [''] })
+    this.isEnded = false;
   }
 
   ngOnInit() {
-    // this.actualizarTabla();
+    this.actualizarTabla();
   }
 
-  actualizarTabla(){
-    this.datos = this.datosService.obtenerAplicaciones();
+  actualizarTabla() {
+    this.datos = this.datosService.obtenerAplicaciones().pipe(tap(() => this.isEnded = true));
+
+    delay(500)
+    
     this.datosFiltrados = this.formGroup.get('filter')!.valueChanges.pipe(
       startWith(""),
       withLatestFrom(this.datos),
       map(([val, datos]) => !val ? datos : datos.filter((x) => x.codAplic.toLowerCase().includes(val)))
-    )
+    );
 
-    this.datosFiltrados.subscribe((datos: Aplicacion[]) => {
-      this.datosTabla = datos as Aplicacion[];
-    })
-    
   }
 
   borrarAplicacion(cod: string) {

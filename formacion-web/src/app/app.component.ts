@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import {  RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./navbar/navbar.component";
 
 @Component({
@@ -12,9 +12,4 @@ import { NavbarComponent } from "./navbar/navbar.component";
 export class AppComponent {
   title = 'Formacion';
 
-  constructor (private router: Router) {}
-
-  ngOnInit() {
-    this.router.events.subscribe((event) => console.log(event))
-  }
 }

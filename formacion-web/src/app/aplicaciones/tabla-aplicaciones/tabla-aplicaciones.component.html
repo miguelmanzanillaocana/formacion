@@ -17,7 +17,7 @@
 </div>
 
 <div class="table-responsive mt-2 mx-2">
-  <table class="table table-hover table-sm ">
+  <table class="table table-hover table-sm">
     <thead class="table-light">
       <tr>
         <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="codAplic">Código Aplicación</th>
@@ -35,7 +35,7 @@
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <tr *ngFor="let dato of datosTabla">
+      <tr *ngFor="let dato of datosFiltrados | async">
         <th scope="row">{{ dato.codAplic }}</th>
         <td>{{ dato.nombAplic }}</td>
         <td>{{ dato.nombArea }}</td>
