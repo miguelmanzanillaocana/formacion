@@ -21,5 +21,4 @@ public class AplicacionStringService {
 	public AplicacionString getAplicacionStringById(Integer id) {
 		return repository.getAplicacionStringById(id);
 	}
-
 }

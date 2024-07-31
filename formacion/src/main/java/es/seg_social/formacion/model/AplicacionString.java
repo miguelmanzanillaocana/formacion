@@ -51,7 +51,7 @@ public class AplicacionString {
 	}
 
 	public AplicacionString(Integer id, String codAplic, String nombAplic, String nombArea, String subArea, String resp,
-			String tecn, String criti, String volEvol, String volUsu, String tipo, String tecInt) {
+			String tecn, /*String criti,*/ String volEvol, String volUsu, String tipo, String tecInt) {
 		super();
 		this.id = id;
 		this.codAplic = codAplic;
@@ -60,7 +60,7 @@ public class AplicacionString {
 		this.subArea = subArea;
 		this.resp = resp;
 		this.tecn = tecn;
-		this.criti = criti;
+		this.criti = "";
 		this.volEvol = volEvol;
 		this.volUsu = volUsu;
 		this.tipo = tipo;
