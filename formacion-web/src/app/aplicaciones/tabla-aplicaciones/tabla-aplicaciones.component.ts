@@ -1,51 +1,84 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { DatosService } from '../../../services/datos.service';
 import { Aplicacion } from '../../../models/aplicacion';
-import { SortDirective } from '../../../directives/sort.directive';
+import { Observable } from 'rxjs';
+
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { DatosService } from '../../../services/datos.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { delay, map, Observable, startWith, tap, withLatestFrom } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
+
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-tabla-aplicaciones',
   standalone: true,
-  imports: [CommonModule, SortDirective, RouterLink, RouterOutlet, ReactiveFormsModule],
+  imports: [RouterLink, RouterOutlet, MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule],
   templateUrl: './tabla-aplicaciones.component.html',
   styleUrl: './tabla-aplicaciones.component.css'
 })
 
 export class TablaAplicacionesComponent {
-  datosTabla: Aplicacion[] = [];
-  datos!: Observable<Aplicacion[]>;
-  datosFiltrados!: Observable<Aplicacion[]>;
+  datosAplicacion: Aplicacion[] = [];
+  aplicacionService!: Observable<Aplicacion[]>;
+  displayedColumns = ['codAplic', 'nombAplic', 'area', 'subArea', 'resp', 'tecn', 'criti', 'volEvol', 'volUsu', 'tipo', 'tecInt'];
+  dataSource: MatTableDataSource<Aplicacion>;
 
-  formGroup: FormGroup;
+  @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
+  @ViewChild(MatSort) sort: MatSort | null = null;
 
-  isEnded: boolean;
+  constructor(private datosService: DatosService, private dialog: MatDialog) {
+    this.aplicacionService = this.datosService.obtenerAplicaciones();
 
-  constructor(private datosService: DatosService, private dialog: MatDialog, private fb: FormBuilder) {
-    this.formGroup = this.fb.group({ filter: [''] })
-    this.isEnded = false;
+    this.aplicacionService.subscribe((datos: Aplicacion[]) => {
+      this.datosAplicacion = datos as Aplicacion[];
+    })
+
+    this.dataSource = new MatTableDataSource(this.datosAplicacion);
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      switch (property) {
+        case "codAplic":
+          return item.codAplic;
+        case "nombAplic":
+          return item.nombAplic;
+        case "area":
+          return item.area.area;
+        case "subArea":
+          return item.subArea.subarea;
+        case "resp":
+          return item.resp.responsable;
+        case "tecn":
+          return item.tecn.tecnologia;
+        case "criti":
+          return item.criti.criticidad;
+        case "volEvol":
+          return item.volEvol.volumenEvolutivo;
+        case "volUsu":
+          return item.volUsu.volumenUsuarios;
+        case "tipo":
+          return item.tipo.tipo;
+        case "tecInt":
+          return item.tecInt.tecnologiaInterfaz;
+        default:
+          return '';
+      }
+    }
   }
 
-  ngOnInit() {
-    this.actualizarTabla();
+  ngOnInit(): void {
+    this.dataSource = new MatTableDataSource(this.datosAplicacion);
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
-  actualizarTabla() {
-    this.datos = this.datosService.obtenerAplicaciones().pipe(tap(() => this.isEnded = true));
-
-    delay(500)
-    
-    this.datosFiltrados = this.formGroup.get('filter')!.valueChanges.pipe(
-      startWith(""),
-      withLatestFrom(this.datos),
-      map(([val, datos]) => !val ? datos : datos.filter((x) => x.codAplic.toLowerCase().includes(val)))
-    );
-
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 
   borrarAplicacion(cod: string) {
