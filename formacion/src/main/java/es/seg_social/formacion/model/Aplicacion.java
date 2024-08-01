@@ -3,6 +3,8 @@ package es.seg_social.formacion.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,44 +21,53 @@ public class Aplicacion {
 	@Column(name = "Nombre_Aplicacion")
 	private String nombAplic;
 
-	@Column(name = "Area_ID")
-	private Integer nombArea;
+	@ManyToOne
+	@JoinColumn(name = "Area_ID")
+	private Area area;
 
-	@Column(name = "Subarea_ID")
-	private Integer subArea;
+	@ManyToOne
+	@JoinColumn(name = "Subarea_ID")
+	private Subarea subArea;
 
-	@Column(name = "Responsable_ID")
-	private Integer resp;
+	@ManyToOne
+	@JoinColumn(name = "Responsable_ID")
+	private Responsable resp;
 
-	@Column(name = "Tecnologia_ID")
-	private Integer tecn;
+	@ManyToOne
+	@JoinColumn(name = "Tecnologia_ID")
+	private Tecnologia tecn;
 
-	@Column(name = "criticidad_id")
-	private Integer criti;
+	@ManyToOne
+	@JoinColumn(name = "criticidad_id")
+	private Criticidad criti;
 
-	@Column(name = "Vol_Evol_ID")
-	private Integer volEvol;
+	@ManyToOne
+	@JoinColumn(name = "Vol_Evol_ID")
+	private VolumenEvolutivo volEvol;
 
-	@Column(name = "Vol_Usu_ID")
-	private Integer volUsu;
+	@ManyToOne
+	@JoinColumn(name = "Vol_Usu_ID")
+	private VolumenUsuarios volUsu;
 
-	@Column(name = "Tipo_ID")
-	private Integer tipo;
+	@ManyToOne
+	@JoinColumn(name = "Tipo_ID")
+	private Tipo tipo;
 
-	@Column(name = "Tecnologia_Interfaz_ID")
-	private Integer tecInt;
+	@ManyToOne
+	@JoinColumn(name = "Tecnologia_Interfaz_ID")
+	private TecnologiaInterfaz tecInt;
 
 	public Aplicacion() {
 		super();
 	}
 
-	public Aplicacion(Integer id, String codAplic, String nombAplic, Integer nombArea, Integer subArea, Integer resp,
-			Integer tecn, Integer criti, Integer volEvol, Integer volUsu, Integer tipo, Integer tecInt) {
+	public Aplicacion(Integer id, String codAplic, String nombAplic, Area area, Subarea subArea, Responsable resp,
+			Tecnologia tecn, Criticidad criti, VolumenEvolutivo volEvol, VolumenUsuarios volUsu, Tipo tipo, TecnologiaInterfaz tecInt) {
 		super();
 		this.id = id;
 		this.codAplic = codAplic;
 		this.nombAplic = nombAplic;
-		this.nombArea = nombArea;
+		this.area = area;
 		this.subArea = subArea;
 		this.resp = resp;
 		this.tecn = tecn;
@@ -91,75 +102,75 @@ public class Aplicacion {
 		this.nombAplic = nombAplic;
 	}
 
-	public Integer getNombArea() {
-		return nombArea;
+	public Area getArea() {
+		return area;
 	}
 
-	public void setNombArea(Integer nombArea) {
-		this.nombArea = nombArea;
+	public void setNombArea(Area area) {
+		this.area = area;
 	}
 
-	public Integer getSubArea() {
+	public Subarea getSubArea() {
 		return subArea;
 	}
 
-	public void setSubArea(Integer subArea) {
+	public void setSubArea(Subarea subArea) {
 		this.subArea = subArea;
 	}
 
-	public int getResp() {
+	public Responsable getResp() {
 		return resp;
 	}
 
-	public void setResp(int resp) {
+	public void setResp(Responsable resp) {
 		this.resp = resp;
 	}
 
-	public Integer getTecn() {
+	public Tecnologia getTecn() {
 		return tecn;
 	}
 
-	public void setTecn(Integer tecn) {
+	public void setTecn(Tecnologia tecn) {
 		this.tecn = tecn;
 	}
 
-	public int getCriti() {
+	public Criticidad getCriti() {
 		return criti;
 	}
 
-	public void setCriti(int criti) {
+	public void setCriti(Criticidad criti) {
 		this.criti = criti;
 	}
 
-	public int getVolEvol() {
+	public VolumenEvolutivo getVolEvol() {
 		return volEvol;
 	}
 
-	public void setVolEvol(int volEvol) {
+	public void setVolEvol(VolumenEvolutivo volEvol) {
 		this.volEvol = volEvol;
 	}
 
-	public int getVolUsu() {
+	public VolumenUsuarios getVolUsu() {
 		return volUsu;
 	}
 
-	public void setVolUsu(int volUsu) {
+	public void setVolUsu(VolumenUsuarios volUsu) {
 		this.volUsu = volUsu;
 	}
 
-	public int getTipo() {
+	public Tipo getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(int tipo) {
+	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
 
-	public int getTecInt() {
+	public TecnologiaInterfaz getTecInt() {
 		return tecInt;
 	}
 
-	public void setTecInt(int tecInt) {
+	public void setTecInt(TecnologiaInterfaz tecInt) {
 		this.tecInt = tecInt;
 	}
 
