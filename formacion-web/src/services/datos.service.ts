@@ -10,6 +10,8 @@ import { Tipo } from '../interfaces/tipo';
 import { TecnologiaInterfaz } from '../interfaces/tecnologia-interfaz';
 import { Aplicacion } from '../models/aplicacion';
 import { Situacion } from '../models/situacion';
+import { Area } from '../interfaces/area';
+import { SubArea } from '../interfaces/subArea';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +35,14 @@ export class DatosService {
   //METODOS FORMULARIO APLICACIONES
   insertarAplicacion(apl: Aplicacion): Observable<Aplicacion> {
     return this.http.post<Aplicacion>(this.urlBase + 'aplicacion/insert', apl);
+  }
+
+  obtenerAreas(): Observable<Area[]> {
+    return this.http.get<Area[]>(this.urlBase + 'area/');
+  }
+
+  obtenerSubareas(): Observable<SubArea[]> {
+    return this.http.get<SubArea[]>(this.urlBase + 'subarea/');
   }
 
   obtenerResponsables(): Observable<Responsable[]> {

@@ -23,7 +23,6 @@ public class TecnologiaService {
 	}
 
 	// ACCIONES
-
 	public Tecnologia updateTecnologia(Tecnologia tec) {
 		return repository.save(tec);
 	}

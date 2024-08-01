@@ -1,16 +1,16 @@
-<div class="container-fluid p-4">
-  <h1 class="text-center my-5">Crear nueva App</h1>
-  <form class="mt-2 mx-4" [formGroup]="aplicacionForm" (ngSubmit)="onSubmit()">
-    <div class="row mx-5 my-3">
-      <div class="col-md-6">
-        <div class="form-floating mb-3">
+<div class="container-fluid">
+  <h1 class="mt-4 mx-2 pb-2">Crear nueva App</h1>
+  <form class="mx-2 my-2 pt-2" [formGroup]="aplicacionForm" (ngSubmit)="onSubmit()">
+    <div class="row ">
+      <div class="col-md-3">
+        <div class="form-floating mb-2">
           <input type="text" class="form-control" id="codigo-aplicacion" formControlName="codAplic" placeholder="test"
             required
             [class.is-invalid]="aplicacionForm.get('codAplic')?.invalid && (aplicacionForm.get('codAplic')?.dirty || aplicacionForm.get('codAplic')?.touched)" />
           <label for="codigo-aplicacion">Código de la aplicación</label>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-9">
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="nombre-aplicacion" formControlName="nombAplic"
             placeholder="test" />
@@ -18,23 +18,24 @@
         </div>
       </div>
     </div>
-    <div class="row mx-5 my-3">
-      <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-3">
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="area-aplicacion" formControlName="nombArea" placeholder="test" />
-          <label for="area-aplicacion">Area de la Aplicación</label>
+          <select class="form-select" id="cb-area" formControlName="area">
+            <option *ngFor="let area of datosArea" [value]="area.id_Area">{{ area.area }}</option>
+          </select>
+          <label for="cb-area">Area</label>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-3">
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="subarea-aplicacion" formControlName="subArea"
-            placeholder="test" />
-          <label for="subarea-aplicacion">Subarea de la aplicacion</label>
+          <select class="form-select" id="cb-subarea" formControlName="subArea">
+            <option *ngFor="let subArea of datosSubarea" [value]="subArea.id">{{ subArea.subarea }}</option>
+          </select>
+          <label for="cb-subarea">Subarea</label>
         </div>
       </div>
-    </div>
-    <div class="row mx-5 my-3">
-      <div class="col-md-12">
+      <div class="col-md-3">
         <div class="form-floating mb-3">
           <select class="form-select" id="cb-responsable" formControlName="resp">
             <option *ngFor="let resp of datosResp" [value]="resp.id">{{ resp.responsable }}</option>
@@ -42,9 +43,7 @@
           <label for="cb-responsable">Responsable</label>
         </div>
       </div>
-    </div>
-    <div class="row mx-5 my-3">
-      <div class="col-md-12">
+      <div class="col-md-3">
         <div class="form-floating mb-3">
           <select class="form-select" id="cb-tecnologia" formControlName="tecn">
             <option *ngFor="let tecn of datosTecno" [value]="tecn.id">{{ tecn.tecnologia }}</option>
@@ -53,8 +52,8 @@
         </div>
       </div>
     </div>
-    <div class="row mx-5 my-3">
-      <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-3">
         <div class="form-floating mb-3">
           <select class="form-select" id="cb-criticidad" formControlName="criti">
             <option *ngFor="let criti of datosCriti" [value]="criti.id">{{criti.criticidad}}</option>
@@ -62,9 +61,7 @@
           <label for="cb-criticidad">Criticidad</label>
         </div>
       </div>
-    </div>
-    <div class="row mx-5 my-3">
-      <div class="col-md-12">
+      <div class="col-md-2">
         <div class="form-floating mb-3">
           <select class="form-select" id="cb-volumen-evolutivo" formControlName="volEvol">
             <option *ngFor="let volEvol of datosVEvo" [value]="volEvol.id">{{ volEvol.volumenEvolutivo }}</option>
@@ -72,9 +69,7 @@
           <label for="cb-volumen-evolutivo">Volumen Evolutivo</label>
         </div>
       </div>
-    </div>
-    <div class="row mx-5 my-3">
-      <div class="col-md-12">
+      <div class="col-md-2">
         <div class="form-floating mb-3">
           <select class="form-select" id="cb-volumen-usuarios" formControlName="volUsu">
             <option *ngFor="let volUsu of datosVUser" [value]="volUsu.id">{{ volUsu.volumenUsuarios }}</option>
@@ -82,9 +77,7 @@
           <label for="cb-volumen-usuarios">Volumen Usuarios</label>
         </div>
       </div>
-    </div>
-    <div class="row mx-5 my-3">
-      <div class="col-md-12">
+      <div class="col-md-2">
         <div class="form-floating mb-3">
           <select class="form-select" id="cb-tipo" formControlName="tipo">
             <option *ngFor="let tipo of datosTipo" [value]="tipo.id">{{ tipo.tipo }}</option>
@@ -92,9 +85,7 @@
           <label for="cb-tipo">Tipo</label>
         </div>
       </div>
-    </div>
-    <div class="row mx-5 my-3">
-      <div class="col-md-12">
+      <div class="col-md-3">
         <div class="form-floating mb-3">
           <select class="form-select" id="cb-tecnologia-integracion" formControlName="tecInt">
             <option *ngFor="let tecnInt of datosTecnoInt" [value]="tecnInt.id">{{ tecnInt.tecnologiaInterfaz }}</option>

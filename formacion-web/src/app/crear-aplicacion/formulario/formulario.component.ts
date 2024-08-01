@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CrearDialogComponent } from './crear-dialog/crear-dialog.component';
 import { Area } from '../../../interfaces/area';
 import { SubArea } from '../../../interfaces/subArea';
+
 @Component({
   selector: 'app-formulario',
   standalone: true,
@@ -24,6 +25,8 @@ import { SubArea } from '../../../interfaces/subArea';
 })
 
 export class FormularioComponent {
+  datosArea: Area[]=[]
+  datosSubarea: SubArea[]=[]
   datosResp: Responsable[]=[];
   datosCriti: Criticidad[]=[];
   datosTecno: Tecnologia[]=[];
@@ -36,46 +39,68 @@ export class FormularioComponent {
   area!: Area;
   subarea!: SubArea;
   resp!:Responsable;
-  apl: Aplicacion = new Aplicacion('', '', this.area, this.subarea, this.resp, 0, 0, 0, 0, 0, 0);
+  tecn!: Tecnologia;
+  criti!: Criticidad;
+  volEvol!: VolumenEvolutivo;
+  volUsu!: VolumenUsuarios;
+  tipo!: Tipo;
+  tecnInt!: TecnologiaInterfaz;
+  apl: Aplicacion = new Aplicacion('', '', this.area, this.subarea, this.resp, this.tecn, this.criti, this.volEvol, this.volUsu, this.tipo, this.tecnInt);
   aplicacion!: Aplicacion;
   
   ngOnInit(): void{
+
+    this.datosService.obtenerAreas().subscribe((datosArea: Area[]) => {
+      this.datosArea = datosArea as Area[];
+    })
+
+    this.datosService.obtenerSubareas().subscribe((datosSubarea: SubArea[]) => {
+      this.datosSubarea = datosSubarea as SubArea[];
+    })
+
     this.datosService.obtenerResponsables().subscribe((datosResp: Responsable[]) => {
       this.datosResp = datosResp as Responsable[];
     })
+
     this.datosService.obtenerCriticidades().subscribe((datosCriti: Criticidad[]) => {
       this.datosCriti = datosCriti as Criticidad[];
     })
+
     this.datosService.obtenerTecnologias().subscribe((datosTecno: Tecnologia[]) => {
       this.datosTecno = datosTecno as Tecnologia[];
     })
+
     this.datosService.obtenerVolumenesUsuarios().subscribe((datosVUser: VolumenUsuarios[]) => {
       this.datosVUser = datosVUser as VolumenUsuarios[];
     })
+
     this.datosService.obtenerVolumenesEvolutivo().subscribe((datosVEvo: VolumenEvolutivo[]) => {
       this.datosVEvo = datosVEvo as VolumenEvolutivo[];
     })
+
     this.datosService.obtenerTipos().subscribe((datosTipo: Tipo[]) => {
       this.datosTipo = datosTipo as Tipo[];
     })
+
     this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: TecnologiaInterfaz[]) => {
       this.datosTecnoInt = datosTecnoInt as TecnologiaInterfaz[];
     })
+
   }
 
   constructor(private datosService: DatosService, private dialog: MatDialog, private router: Router, private fb: FormBuilder) {
     this.aplicacionForm = this.fb.group({
       codAplic: new FormControl(this.apl.codAplic, Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(4)])),
       nombAplic: new FormControl(this.apl.nombAplic),
-      nombArea: new FormControl(this.apl.area.id_Area),
-      subArea: new FormControl(this.apl.subArea.id),
-      resp: new FormControl(this.apl.resp.id),
-      tecn: new FormControl(this.apl.tecn.id),
-      criti: new FormControl(this.apl.criti.id),
-      volEvol: new FormControl(this.apl.volEvol.id),
-      volUsu: new FormControl(this.apl.volUsu.id),
-      tipo: new FormControl(this.apl.tipo.id),
-      tecInt: new FormControl(this.apl.tecInt.id)
+      area: new FormControl(this.apl.area),
+      subArea: new FormControl(this.apl.subArea),
+      resp: new FormControl(this.apl.resp),
+      tecn: new FormControl(this.apl.tecn),
+      criti: new FormControl(this.apl.criti),
+      volEvol: new FormControl(this.apl.volEvol),
+      volUsu: new FormControl(this.apl.volUsu),
+      tipo: new FormControl(this.apl.tipo),
+      tecInt: new FormControl(this.apl.tecInt)
     });
   }
 
@@ -83,7 +108,7 @@ export class FormularioComponent {
     this.apl = new Aplicacion(
       this.aplicacionForm.get('codAplic')?.value,
       this.aplicacionForm.get('nombAplic')?.value,
-      this.aplicacionForm.get('nombArea')?.value,
+      this.aplicacionForm.get('area')?.value,
       this.aplicacionForm.get('subArea')?.value,
       this.aplicacionForm.get('resp')?.value,
       this.aplicacionForm.get('tecn')?.value,

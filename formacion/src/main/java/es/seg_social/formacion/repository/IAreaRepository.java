@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import es.seg_social.formacion.model.Area;
 
 @Repository
-public interface IAreaAplicacion extends JpaRepository<Area, Integer>{
+public interface IAreaRepository extends JpaRepository<Area, Integer>{
 
 }
