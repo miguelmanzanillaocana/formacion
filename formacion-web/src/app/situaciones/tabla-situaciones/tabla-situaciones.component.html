@@ -14,13 +14,14 @@
 </div>
 
 
+
 <div class="table-responsive mt-2 mx-2">
     <mat-table [dataSource]="dataSource" matSort class="table table-hover table-sm">
 
         <!-- CodApli Column -->
         <ng-container matColumnDef="codApli">
             <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Codigo Aplicacion</mat-header-cell>
-            <mat-cell class="table-group-divider" *matCellDef="let row"> {{row.codApli}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.codApli}} </mat-cell>
         </ng-container>
 
         <!-- Prosa Column -->
@@ -112,5 +113,5 @@
         </mat-row>
     </mat-table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
 </div>

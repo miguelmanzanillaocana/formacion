@@ -1,63 +1,92 @@
 <div class="container-fluid mt-2">
   <div class="row">
     <div class="col my-auto">
-      <form [formGroup]="formGroup">
-        <div class="form-floating my-auto">
-          <input type="text" class="form-control" name="stringFiltro" placeholder="" formControlName="filter" id="filtro"/>
-          <label for="filtro">Filtrar por...</label>
-        </div>
-      </form>
+      <div class="form-floating my-auto">
+        <input type="text" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)" id="filtro">
+        <label for="filtro">Filtrar por...</label>
+      </div>
     </div>
-    
     <div class="col-9 my-auto text-end">
-      <button type="button" routerLink='/crear-app' class="btn btn-success my-auto mx-4">Crear nueva aplicación</button>
+      <button type="button" routerLink='/crear-app' class="btn btn-success my-auto mx-4">Crear nueva situacion</button>
       <router-outlet></router-outlet>
     </div>
   </div>
 </div>
 
+
 <div class="table-responsive mt-2 mx-2">
-  <table class="table table-hover table-sm">
-    <thead class="table-light">
-      <tr>
-        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="codAplic">Código Aplicación</th>
-        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="nombAplic">Nombre Aplicación</th>
-        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="nombArea">Nombre Área</th>
-        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="subArea">Sub Área</th>
-        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="resp">Responsable</th>
-        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="tecn">Tecnología</th>
-        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="criti">Criticidad</th>
-        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="volEvol">Volumen Evolución</th>
-        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="volUsu">Volumen Usuarios</th>
-        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="tipo">Tipo</th>
-        <th scope="col" [appSort]="datosTabla" data-order="desc" data-name="tecInt">Tecnología Integración</th>
-        <th scope="col" colspan="2" class="text-center">Acciones</th>
-      </tr>
-    </thead>
-    <tbody class="table-group-divider">
-      <tr *ngFor="let dato of datosFiltrados | async">
-        <th scope="row">{{ dato.codAplic }}</th>
-        <td>{{ dato.nombAplic }}</td>
-        <td>{{ dato.area.area }}</td>
-        <td>{{ dato.subArea.subarea }}</td>
-        <td>{{ dato.resp.responsable }}</td>
-        <td>{{ dato.tecn.tecnologia }}</td>
-        <td>{{ dato.criti.criticidad }}</td>
-        <td>{{ dato.volEvol.volumenEvolutivo }}</td>
-        <td>{{ dato.volUsu.volumenUsuarios }}</td>
-        <td>{{ dato.tipo.tipo }}</td>
-        <td>{{ dato.tecInt.tecnologiaInterfaz }}</td>
-        <td class="text-center">
-          <button type="button" class="btn btn-outline-warning">
-            <i class="bi bi-pen"></i>
-          </button>
-        </td>
-        <td class="text-center">
-          <button type="button" class="btn btn-outline-danger" (click)="borrarAplicacion(dato.codAplic)">
-            <i class="bi bi-trash"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <mat-table [dataSource]="dataSource" matSort class="table table-hover table-sm">
+
+    <!-- CodApli Column -->
+    <ng-container matColumnDef="codAplic">
+      <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Codigo Aplicacion</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.codAplic}} </mat-cell>
+    </ng-container>
+
+    <!-- nombAplic Column -->
+    <ng-container matColumnDef="nombAplic">
+      <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Nombre Aplicacion</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.nombAplic}} </mat-cell>
+    </ng-container>
+
+    <!-- area Column -->
+    <ng-container matColumnDef="area">
+      <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header="area">Area</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.area.area}} </mat-cell>
+    </ng-container>
+
+    <!-- subArea Column -->
+    <ng-container matColumnDef="subArea">
+      <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>SubArea</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.subArea.subarea}} </mat-cell>
+    </ng-container>
+
+    <!-- resp Column -->
+    <ng-container matColumnDef="resp">
+      <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Responsable</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.resp.responsable}} </mat-cell>
+    </ng-container>
+
+    <!-- tecn Column -->
+    <ng-container matColumnDef="tecn">
+      <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Tecnologia</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.tecn.tecnologia}} </mat-cell>
+    </ng-container>
+
+    <!-- Crititcidad Column -->
+    <ng-container matColumnDef="criti">
+      <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Criticidad</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.criti.criticidad}} </mat-cell>
+    </ng-container>
+
+    <!-- volEvol Column -->
+    <ng-container matColumnDef="volEvol">
+      <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Volumen Evolutivo</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.volEvol.volumenEvolutivo}} </mat-cell>
+    </ng-container>
+
+    <!-- volUsu Column -->
+    <ng-container matColumnDef="volUsu">
+      <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>volumen Usuarios</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.volUsu.volumenUsuarios}} </mat-cell>
+    </ng-container>
+
+    <!-- tipo Column -->
+    <ng-container matColumnDef="tipo">
+      <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.tipo.tipo}} </mat-cell>
+    </ng-container>
+
+    <!-- tecInt Column -->
+    <ng-container matColumnDef="tecInt">
+      <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Tecnoloigia Interfaz</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.tecInt.tecnologiaInterfaz}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
 </div>

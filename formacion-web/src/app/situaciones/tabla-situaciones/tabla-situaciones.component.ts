@@ -24,7 +24,6 @@ export class TablaSituacionesComponent {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
-formGroup: any;
 
   constructor(private datosService: DatosService) {
     this.situacionesService = this.datosService.obtenerSituaciones();
