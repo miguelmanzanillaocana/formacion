@@ -15,96 +15,96 @@
 
 
 
-<div class="table-responsive mt-2 mx-2">
-    <mat-table [dataSource]="dataSource" matSort class="table table-hover table-sm">
+<div class="mt-2 mx-2">
+    <mat-table [dataSource]="dataSource" matSort>
 
         <!-- CodApli Column -->
         <ng-container matColumnDef="codApli">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Codigo Aplicacion</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Codigo Aplicacion</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.codApli}} </mat-cell>
         </ng-container>
 
         <!-- Prosa Column -->
         <ng-container matColumnDef="pro">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Prosa</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Prosa</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.pro}} </mat-cell>
         </ng-container>
 
         <!-- gruGit Column -->
         <ng-container matColumnDef="gruGit">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Grupo en GIT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Grupo en GIT</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.gruGit}} </mat-cell>
         </ng-container>
 
         <!-- Version Master Column -->
         <ng-container matColumnDef="master">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Version Master</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Version Master</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.master}} </mat-cell>
         </ng-container>
 
         <!-- Versión Develop Column -->
         <ng-container matColumnDef="develop">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Versión Develop</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Versión Develop</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.develop}} </mat-cell>
         </ng-container>
 
         <!-- Actualizado en GIT Column -->
         <ng-container matColumnDef="actualizado">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Actualizado en GIT</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Actualizado en GIT</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.actualizado}} </mat-cell>
         </ng-container>
 
         <!-- Versión Produccion Column -->
         <ng-container matColumnDef="produccion">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Versión Produccion</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Versión Produccion</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.produccion}} </mat-cell>
         </ng-container>
 
         <!-- Solicitado despliegue Column -->
         <ng-container matColumnDef="was">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Solicitado despliegue</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Solicitado despliegue</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.was}} </mat-cell>
         </ng-container>
 
         <!-- Versión WAS Column -->
         <ng-container matColumnDef="despl">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Versión WAS</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Versión WAS</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.despl}} </mat-cell>
         </ng-container>
 
         <!-- Maven Column -->
         <ng-container matColumnDef="maven">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Maven</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Maven</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.maven}} </mat-cell>
         </ng-container>
 
         <!-- Sitio de la Documentación Column -->
         <ng-container matColumnDef="doc">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Sitio de la Documentación</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Sitio de la Documentación</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.doc}} </mat-cell>
         </ng-container>
 
         <!-- Existe Plan de Pruebas Column -->
         <ng-container matColumnDef="pruebas">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Existe Plan de Pruebas</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Existe Plan de Pruebas</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.pruebas}} </mat-cell>
         </ng-container>
 
         <!-- Testing/Creando Pruebas Column -->
         <ng-container matColumnDef="test">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Testing/Creando Pruebas</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Testing/Creando Pruebas</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.test}} </mat-cell>
         </ng-container>
 
         <!-- Tipo Informes Column -->
         <ng-container matColumnDef="inf">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Tipo Informes</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo Informes</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.inf}} </mat-cell>
         </ng-container>
 
         <!-- Acceso a Servicios de Terceros Column -->
         <ng-container matColumnDef="terc">
-            <mat-header-cell class="table-light" *matHeaderCellDef mat-sort-header>Acceso a Servicios de Terceros</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Acceso a Servicios de Terceros</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.terc}} </mat-cell>
         </ng-container>
 
