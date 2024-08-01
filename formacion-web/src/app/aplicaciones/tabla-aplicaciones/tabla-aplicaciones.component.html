@@ -38,15 +38,15 @@
       <tr *ngFor="let dato of datosFiltrados | async">
         <th scope="row">{{ dato.codAplic }}</th>
         <td>{{ dato.nombAplic }}</td>
-        <td>{{ dato.nombArea }}</td>
-        <td>{{ dato.subArea }}</td>
-        <td>{{ dato.resp }}</td>
-        <td>{{ dato.tecn }}</td>
-        <td>{{ dato.criti }}</td>
-        <td>{{ dato.volEvol }}</td>
-        <td>{{ dato.volUsu }}</td>
-        <td>{{ dato.tipo }}</td>
-        <td>{{ dato.tecInt }}</td>
+        <td>{{ dato.area.area }}</td>
+        <td>{{ dato.subArea.subarea }}</td>
+        <td>{{ dato.resp.responsable }}</td>
+        <td>{{ dato.tecn.tecnologia }}</td>
+        <td>{{ dato.criti.criticidad }}</td>
+        <td>{{ dato.volEvol.volumenEvolutivo }}</td>
+        <td>{{ dato.volUsu.volumenUsuarios }}</td>
+        <td>{{ dato.tipo.tipo }}</td>
+        <td>{{ dato.tecInt.tecnologiaInterfaz }}</td>
         <td class="text-center">
           <button type="button" class="btn btn-outline-warning">
             <i class="bi bi-pen"></i>

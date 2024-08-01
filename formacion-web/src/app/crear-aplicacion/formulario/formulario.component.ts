@@ -13,7 +13,8 @@ import { Aplicacion } from '../../../models/aplicacion';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearDialogComponent } from './crear-dialog/crear-dialog.component';
-
+import { Area } from '../../../interfaces/area';
+import { SubArea } from '../../../interfaces/subArea';
 @Component({
   selector: 'app-formulario',
   standalone: true,
@@ -31,8 +32,11 @@ export class FormularioComponent {
   datosTipo: Tipo[]=[];
   datosTecnoInt: TecnologiaInterfaz[]=[];
   aplicacionForm: FormGroup;
-
-  apl: Aplicacion = new Aplicacion('', '', 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  
+  area!: Area;
+  subarea!: SubArea;
+  resp!:Responsable;
+  apl: Aplicacion = new Aplicacion('', '', this.area, this.subarea, this.resp, 0, 0, 0, 0, 0, 0);
   aplicacion!: Aplicacion;
   
   ngOnInit(): void{
@@ -63,15 +67,15 @@ export class FormularioComponent {
     this.aplicacionForm = this.fb.group({
       codAplic: new FormControl(this.apl.codAplic, Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(4)])),
       nombAplic: new FormControl(this.apl.nombAplic),
-      nombArea: new FormControl(this.apl.nombArea),
-      subArea: new FormControl(this.apl.subArea),
-      resp: new FormControl(this.apl.resp),
-      tecn: new FormControl(this.apl.tecn),
-      criti: new FormControl(this.apl.criti),
-      volEvol: new FormControl(this.apl.volEvol),
-      volUsu: new FormControl(this.apl.volUsu),
-      tipo: new FormControl(this.apl.tipo),
-      tecInt: new FormControl(this.apl.tecInt)
+      nombArea: new FormControl(this.apl.area.id_Area),
+      subArea: new FormControl(this.apl.subArea.id),
+      resp: new FormControl(this.apl.resp.id),
+      tecn: new FormControl(this.apl.tecn.id),
+      criti: new FormControl(this.apl.criti.id),
+      volEvol: new FormControl(this.apl.volEvol.id),
+      volUsu: new FormControl(this.apl.volUsu.id),
+      tipo: new FormControl(this.apl.tipo.id),
+      tecInt: new FormControl(this.apl.tecInt.id)
     });
   }
 
