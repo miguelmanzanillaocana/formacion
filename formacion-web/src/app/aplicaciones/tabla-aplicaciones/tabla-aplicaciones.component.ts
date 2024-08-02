@@ -23,7 +23,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class TablaAplicacionesComponent {
   datosAplicacion: Aplicacion[] = [];
   aplicacionService!: Observable<Aplicacion[]>;
-  displayedColumns = ['codAplic', 'nombAplic', 'area', 'subArea', 'resp', 'tecn', 'criti', 'volEvol', 'volUsu', 'tipo', 'tecInt'];
+  displayedColumns = ['codAplic', 'nombAplic', 'area', 'subArea', 'resp', 'tecn', 'criti', 'volEvol', 'volUsu', 'tipo', 'tecInt','acciones'];
   dataSource: MatTableDataSource<Aplicacion>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
