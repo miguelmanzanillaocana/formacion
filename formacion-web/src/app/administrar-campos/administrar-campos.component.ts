@@ -9,17 +9,19 @@ import { Tecnologia } from '../../interfaces/tecnologia';
 import { VolumenUsuarios } from '../../interfaces/volumen-usuarios';
 import { VolumenEvolutivo } from '../../interfaces/volumen-evolutivo';
 import { DatosService } from '../../services/datos.service';
+import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { TablaAreaComponent } from "./tabla-area/tabla-area.component";
+import { TablaSubareaComponent } from "./tabla-subarea/tabla-subarea.component";
 
 @Component({
   selector: 'app-administrar-campos',
   standalone: true,
-  imports: [],
+  imports: [MatTableModule, TablaAreaComponent, TablaSubareaComponent],
   templateUrl: './administrar-campos.component.html',
   styleUrl: './administrar-campos.component.css'
 })
 export class AdministrarCamposComponent {
-  datosArea: Area[]=[]
-  datosSubarea: Subarea[]=[]
+  
   datosResp: Responsable[]=[];
   datosCriti: Criticidad[]=[];
   datosTecn: Tecnologia[]=[];
@@ -29,14 +31,6 @@ export class AdministrarCamposComponent {
   datosTecInt: TecnologiaInterfaz[]=[];
 
   ngOnInit(): void{
-    this.datosService.obtenerAreas().subscribe((datosArea: Area[]) => {
-      this.datosArea = datosArea as Area[];
-    })
-
-    this.datosService.obtenerSubareas().subscribe((datosSubarea: Subarea[]) => {
-      this.datosSubarea = datosSubarea as Subarea[];
-    })
-
     this.datosService.obtenerResponsables().subscribe((datosResp: Responsable[]) => {
       this.datosResp = datosResp as Responsable[];
     })
@@ -67,6 +61,6 @@ export class AdministrarCamposComponent {
   }
 
   constructor(private datosService: DatosService) {
-
+    
   }
 }

@@ -23,7 +23,7 @@ export class DatosService {
   
   constructor(private http: HttpClient) { }
 
-  //METODOS APLICACIONES
+  //Aplicaciones
   obtenerAplicaciones(): Observable<Aplicacion[]> {
     return this.http.get<Aplicacion[]>(this.urlBase + 'aplicacion/');
   }
@@ -32,7 +32,7 @@ export class DatosService {
     return this.http.delete<boolean>(this.urlBase + 'aplicacion/delete/' + cod);
   }
 
-  //METODOS FORMULARIO APLICACIONES
+  //Formulario aplicaciones
   insertarAplicacion(apl: Aplicacion): Observable<Aplicacion> {
     return this.http.post<Aplicacion>(this.urlBase + 'aplicacion/insert', apl);
   }
@@ -70,8 +70,13 @@ export class DatosService {
     return this.http.get<TecnologiaInterfaz[]>(this.urlBase + 'tecnologia-interfaz/');
   }
 
-  //METODOS SITUACIONES
+  //Situaciones
   obtenerSituaciones(): Observable<Situacion[]> {
     return this.http.get<Situacion[]>(this.urlBase + 'situacion/');
+  }
+
+  //Administración
+  insertarArea(ar: Area): Observable<Area> {
+    return this.http.post<Area>(this.urlBase + 'area/insert', ar);
   }
 }
