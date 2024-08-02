@@ -2,14 +2,11 @@
     <div class="row">
         <div class="col my-auto">
             <div class="form-floating my-auto">
-                <input type="text" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)" id="filtro">
+                <input type="text" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)"
+                    id="filtro">
                 <label for="filtro">Filtrar por...</label>
             </div>
         </div>
-        <div class="col-9 my-auto text-end">
-            <button type="button" routerLink='/crear-app' class="btn btn-success my-auto mx-4">Crear nueva situacion</button>
-            <router-outlet></router-outlet>
-          </div>
     </div>
 </div>
 
@@ -109,7 +106,18 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;">
         </mat-row>
+        <!-- Editar Column -->
+        <ng-container matColumnDef="editar">
+            <mat-header-cell *matHeaderCellDef class="d-flex justify-content-center">Editar</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="d-flex justify-content-center">
+                <button type="button" class="btn btn-outline-warning mx-2">
+                    <i class="bi bi-pen"></i>
+                </button>
+            </mat-cell>
+        </ng-container>
     </mat-table>
+
+
 
     <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
 </div>

@@ -3,7 +3,6 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { Situacion } from '../../../models/situacion';
-import { Observable } from 'rxjs';
 import { DatosService } from '../../../services/datos.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
@@ -18,7 +17,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 export class TablaSituacionesComponent {
 
   datosSituacion: Situacion[]=[];
-  displayedColumns = ['codApli', 'pro', 'gruGit', 'master', 'develop', 'actualizado', 'produccion', 'despl', 'was', 'maven', 'doc', 'pruebas', 'test', 'inf', 'terc'];
+  displayedColumns = ['codApli', 'pro', 'gruGit', 'master', 'develop', 'actualizado', 'produccion', 'despl', 'was', 'maven', 'doc', 'pruebas', 'test', 'inf', 'terc','editar'];
   dataSource: MatTableDataSource<Situacion>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;

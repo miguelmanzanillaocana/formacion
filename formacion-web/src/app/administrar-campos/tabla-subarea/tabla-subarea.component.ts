@@ -24,5 +24,9 @@ export class TablaSubareaComponent {
 
     this.dataSource = new MatTableDataSource(this.datosSubarea);
   }
-
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
 }
