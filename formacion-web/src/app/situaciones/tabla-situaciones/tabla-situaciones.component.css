@@ -1,14 +1,12 @@
+.mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell {
+  background: none !important;
+}
+
 mat-header-cell{
   font-weight: bold;
 }
-.table-light {
-  background-color: #f7f7f7; 
-  border-bottom: 1px solid #ddd; 
-}
 
-.table-light th {
-  background-color: #f7f7f7; /* Color gris claro */
-  border-bottom: 1px solid #ddd; /* Borde inferior gris */
-  color: #333; /* Color de texto negro */
-  font-weight: bold; /* Fuente negrita */
+mat-table {
+  border: 1px solid lightgray;
+  border-radius: 1em;
 }
