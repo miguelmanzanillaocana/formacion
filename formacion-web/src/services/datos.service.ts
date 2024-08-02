@@ -79,4 +79,16 @@ export class DatosService {
   insertarArea(ar: Area): Observable<Area> {
     return this.http.post<Area>(this.urlBase + 'area/insert', ar);
   }
+
+  actualizarArea(ar: Area): Observable<Area> {
+    return this.http.put<Area>(this.urlBase + 'area/update', ar);
+  }
+
+  insertarSubarea(sa: Subarea): Observable<Subarea> {
+    return this.http.post<Subarea>(this.urlBase + 'subarea/insert',sa);
+  }
+
+  actualizarSubarea(sa: Subarea): Observable<Subarea> {
+    return this.http.put<Subarea>(this.urlBase + 'subarea/update', sa);
+  }
 }
