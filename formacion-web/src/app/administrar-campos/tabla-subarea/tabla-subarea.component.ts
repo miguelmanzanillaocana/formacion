@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Subarea } from '../../../models/subarea';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DatosService } from '../../../services/datos.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tabla-subarea',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [CommonModule, MatTableModule],
   templateUrl: './tabla-subarea.component.html',
   styleUrl: './tabla-subarea.component.css'
 })

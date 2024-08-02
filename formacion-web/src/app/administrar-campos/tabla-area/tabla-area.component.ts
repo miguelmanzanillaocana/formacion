@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Area } from '../../../models/area';
 import { DatosService } from '../../../services/datos.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tabla-area',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, CommonModule],
   templateUrl: './tabla-area.component.html',
   styleUrl: './tabla-area.component.css'
 })

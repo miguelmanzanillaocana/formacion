@@ -7,7 +7,12 @@
 
         <ng-container matColumnDef="area">
             <mat-header-cell *matHeaderCellDef>Area</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.area}} </mat-cell>
+            <mat-cell *matCellDef="let row">
+                <div *ngIf="row.id_Area != 0 ; else elseBlock">
+                    {{row.area}}
+                </div>
+                <ng-template #elseBlock>Sin area</ng-template>
+            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
