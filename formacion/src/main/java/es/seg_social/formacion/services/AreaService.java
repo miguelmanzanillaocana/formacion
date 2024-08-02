@@ -21,5 +21,10 @@ public class AreaService {
 	public Area getAreaById(Integer id) {
 		return repository.findById(id).get();
 	}
+	
+	public Area insertArea(Area a) {
+		a.setId_Area(repository.getLastId());
+		return repository.save(a);
+	}
 
 }
