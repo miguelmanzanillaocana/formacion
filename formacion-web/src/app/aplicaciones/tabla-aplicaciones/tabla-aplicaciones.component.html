@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="col-9 my-auto text-end">
-      <button type="button" routerLink='/crear-app' class="btn btn-success my-auto mx-4">Crear nueva situacion</button>
+      <button type="button" routerLink='/crear-app' class="btn btn-success my-auto mx-4">Crear nueva Aplicacion</button>
       <router-outlet></router-outlet>
     </div>
   </div>
@@ -15,7 +15,7 @@
 
 
 <div class="table-responsive mt-2 mx-2">
-  <mat-table [dataSource]="dataSource" matSort class="table table-hover table-sm">
+  <mat-table [dataSource]="dataSource" matSort>
 
     <!-- CodApli Column -->
     <ng-container matColumnDef="codAplic">
@@ -82,6 +82,20 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Tecnoloigia Interfaz</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.tecInt.tecnologiaInterfaz}} </mat-cell>
     </ng-container>
+
+    <!-- Acciones Column -->
+<ng-container matColumnDef="acciones">
+  <mat-header-cell *matHeaderCellDef class="d-flex justify-content-center">Acciones</mat-header-cell>
+  <mat-cell *matCellDef="let row" class="d-flex justify-content-center">
+    <button type="button" class="btn btn-outline-warning mx-2">
+      <i class="bi bi-pen"></i>
+    </button>
+    <button type="button" class="btn btn-outline-danger mx-2" (click)="borrarAplicacion(row.codAplic)">
+      <i class="bi bi-trash"></i>
+    </button>
+  </mat-cell>
+</ng-container>
+
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;">
