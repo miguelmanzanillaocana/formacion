@@ -26,5 +26,9 @@ public class AreaService {
 		a.setId_Area(repository.getLastId());
 		return repository.save(a);
 	}
+	
+	public Area updateArea(Area a) {
+		return repository.save(a);
+	}
 
 }

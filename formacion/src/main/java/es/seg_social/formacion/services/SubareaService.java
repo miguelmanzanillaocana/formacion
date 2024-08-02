@@ -21,5 +21,14 @@ public class SubareaService {
 	public Subarea getSubareaById(Integer id) {
 		return repository.findById(id).get();
 	}
+	
+	public Subarea insertSubarea(Subarea sa) {
+		sa.setId(repository.getLastId());
+		return repository.save(sa);
+	}
+	
+	public Subarea updateSubarea(Subarea sa) {
+		return repository.save(sa);
+	}
 
 }

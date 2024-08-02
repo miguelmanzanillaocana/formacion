@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,5 +34,10 @@ public class AreaController {
 	@PostMapping("/insert")
 	public Area insertArea(@RequestBody Area a) {
 		return service.insertArea(a);
+	}
+	
+	@PutMapping("/update")
+	public Area updateArea(@RequestBody Area a) {
+		return service.updateArea(a);
 	}
 }

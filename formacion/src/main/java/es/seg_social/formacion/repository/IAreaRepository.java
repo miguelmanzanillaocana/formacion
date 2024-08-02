@@ -9,7 +9,7 @@ import es.seg_social.formacion.model.Area;
 @Repository
 public interface IAreaRepository extends JpaRepository<Area, Integer>{
 	
-	@Query(value = "SELECT MAX(ID_Aplicacion) FROM aplicaciones", nativeQuery = true)
+	@Query(value = "SELECT MAX(ID_Area) FROM Area_Aplicacion", nativeQuery = true)
 	Integer getLastId();
 
 }
