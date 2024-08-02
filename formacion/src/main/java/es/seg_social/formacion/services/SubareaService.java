@@ -23,7 +23,7 @@ public class SubareaService {
 	}
 	
 	public Subarea insertSubarea(Subarea sa) {
-		sa.setId(repository.getLastId()+1);
+		sa.setId(repository.getLastId() + 1);
 		return repository.save(sa);
 	}
 	

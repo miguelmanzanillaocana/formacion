@@ -8,10 +8,13 @@
             </div>
         </div>
         <div class="col-6 my-auto text-end">
-            <button type="button" class="btn btn-success my-auto mx-4"  (click)="abrirDialogoInsertArea()">Nueva Area</button>
-          </div>
+            <button type="button" class="btn btn-success my-auto mx-4" (click)="abrirDialogoInsertArea()">
+                Nueva Area
+            </button>
+        </div>
     </div>
 </div>
+
 <div class="container-fluid mt-2">
     <mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="id">
@@ -28,7 +31,7 @@
                 <ng-template #elseBlock>Sin area</ng-template>
             </mat-cell>
         </ng-container>
- 
+
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>

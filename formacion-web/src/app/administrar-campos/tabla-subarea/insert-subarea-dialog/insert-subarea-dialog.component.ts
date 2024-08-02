@@ -14,6 +14,7 @@ import { Subarea } from '../../../../models/subarea';
   templateUrl: './insert-subarea-dialog.component.html',
   styleUrl: './insert-subarea-dialog.component.css'
 })
+
 export class InsertSubareaDialogComponent {
   subareaForm: FormGroup;
   subarea: Subarea = new Subarea(0,"");
@@ -22,6 +23,7 @@ export class InsertSubareaDialogComponent {
       nombreSubArea:new FormControl("")
     });
   }
+  
   insertarSubarea() {
     this.subarea = new Subarea(0, this.subareaForm.get('nombreSubArea')?.value);
     this.datosService.insertarSubarea(this.subarea).subscribe(subarea => this.subarea = subarea);

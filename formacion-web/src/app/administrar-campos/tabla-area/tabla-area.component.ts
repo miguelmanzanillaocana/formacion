@@ -9,7 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-tabla-area',
   standalone: true,
-  imports: [MatTableModule, CommonModule,MatPaginator],
+  imports: [MatTableModule, CommonModule, MatPaginator],
   templateUrl: './tabla-area.component.html',
   styleUrl: './tabla-area.component.css'
 })

@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import { TecnologiaInterfaz } from '../../interfaces/tecnologia-interfaz';
 import { Tipo } from '../../interfaces/tipo';
-import { Area } from '../../models/area';
-import { Subarea } from '../../models/subarea';
 import { Responsable } from '../../interfaces/responsable';
 import { Criticidad } from '../../interfaces/criticidad';
 import { Tecnologia } from '../../interfaces/tecnologia';
 import { VolumenUsuarios } from '../../interfaces/volumen-usuarios';
 import { VolumenEvolutivo } from '../../interfaces/volumen-evolutivo';
 import { DatosService } from '../../services/datos.service';
-import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { TablaAreaComponent } from "./tabla-area/tabla-area.component";
 import { TablaSubareaComponent } from "./tabla-subarea/tabla-subarea.component";
 

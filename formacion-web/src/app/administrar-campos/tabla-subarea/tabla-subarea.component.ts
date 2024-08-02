@@ -6,13 +6,15 @@ import { CommonModule } from '@angular/common';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { InsertSubareaDialogComponent } from './insert-subarea-dialog/insert-subarea-dialog.component';
+
 @Component({
   selector: 'app-tabla-subarea',
   standalone: true,
-  imports: [CommonModule, MatTableModule,MatPaginator],
+  imports: [CommonModule, MatTableModule, MatPaginator],
   templateUrl: './tabla-subarea.component.html',
   styleUrl: './tabla-subarea.component.css'
 })
+
 export class TablaSubareaComponent {
   datosSubarea: Subarea[]=[]
 

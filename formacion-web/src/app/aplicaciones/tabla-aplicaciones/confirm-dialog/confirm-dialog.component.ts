@@ -9,6 +9,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   templateUrl: './confirm-dialog.component.html',
   styleUrl: './confirm-dialog.component.css'
 })
+
 export class ConfirmDialogComponent {
   codigo: string ='';
 

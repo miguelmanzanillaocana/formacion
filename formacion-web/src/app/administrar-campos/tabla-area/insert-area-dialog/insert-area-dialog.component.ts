@@ -15,6 +15,7 @@ import { Area } from '../../../../models/area';
   templateUrl: './insert-area-dialog.component.html',
   styleUrl: './insert-area-dialog.component.css'
 })
+
 export class InsertAreaDialogComponent {
   areaForm: FormGroup;
   area: Area = new Area(0, "");
