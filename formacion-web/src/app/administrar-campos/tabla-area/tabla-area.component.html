@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.id_Area}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="area">
+            <mat-header-cell *matHeaderCellDef>Area</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div *ngIf="row.id_Area != 0 ; else elseBlock">
+                    {{row.area}}
+                </div>
+                <ng-template #elseBlock>Sin area</ng-template>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

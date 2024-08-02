@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="subarea">
+            <mat-header-cell *matHeaderCellDef>Subarea</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div *ngIf="row.id != 0; else elseBlock">
+                    {{row.subarea}}
+                </div>
+                <ng-template #elseBlock>Sin subarea</ng-template>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

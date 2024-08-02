@@ -49,7 +49,6 @@ export class FormularioComponent {
   aplicacion!: Aplicacion;
   
   ngOnInit(): void{
-
     this.datosService.obtenerAreas().subscribe((datosArea: Area[]) => {
       this.datosArea = datosArea as Area[];
     })
@@ -85,7 +84,6 @@ export class FormularioComponent {
     this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: TecnologiaInterfaz[]) => {
       this.datosTecInt = datosTecnoInt as TecnologiaInterfaz[];
     })
-
   }
 
   constructor(private datosService: DatosService, private dialog: MatDialog, private router: Router, private fb: FormBuilder) {
