@@ -1,4 +1,5 @@
 import { Aplicacion } from '../../../models/aplicacion';
+import { AplicacionString } from '../../../models/aplicacion-string';
 import { Observable } from 'rxjs';
 
 import { Component, ViewChild } from '@angular/core';
@@ -21,10 +22,10 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 export class TablaAplicacionesComponent {
-  datosAplicacion: Aplicacion[] = [];
+  datosAplicacion: AplicacionString[] = [];
   aplicacionService!: Observable<Aplicacion[]>;
   displayedColumns = ['codAplic', 'nombAplic', 'area', 'subArea', 'resp', 'tecn', 'criti', 'volEvol', 'volUsu', 'tipo', 'tecInt','acciones'];
-  dataSource: MatTableDataSource<Aplicacion>;
+  dataSource: MatTableDataSource<AplicacionString>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
@@ -33,38 +34,26 @@ export class TablaAplicacionesComponent {
     this.aplicacionService = this.datosService.obtenerAplicaciones();
 
     this.aplicacionService.subscribe((datos: Aplicacion[]) => {
-      this.datosAplicacion = datos as Aplicacion[];
+      this.datosAplicacion = datos.map((aplicacion: Aplicacion) => {
+        return new AplicacionString(
+          aplicacion.codAplic,
+          aplicacion.nombAplic,
+          aplicacion.area.area,
+          aplicacion.subArea.subarea,
+          aplicacion.resp.responsable,
+          aplicacion.tecn.tecnologia,
+          aplicacion.criti.criticidad,
+          aplicacion.volEvol.volumenEvolutivo,
+          aplicacion.volUsu.volumenUsuarios,
+          aplicacion.tipo.tipo,
+          aplicacion.tecInt.tecnologiaInterfaz
+        );
+      });
+      this.dataSource = new MatTableDataSource(this.datosAplicacion);
     })
+    
 
     this.dataSource = new MatTableDataSource(this.datosAplicacion);
-    this.dataSource.sortingDataAccessor = (item, property) => {
-      switch (property) {
-        case "codAplic":
-          return item.codAplic;
-        case "nombAplic":
-          return item.nombAplic;
-        case "area":
-          return item.area.area;
-        case "subArea":
-          return item.subArea.subarea;
-        case "resp":
-          return item.resp.responsable;
-        case "tecn":
-          return item.tecn.tecnologia;
-        case "criti":
-          return item.criti.criticidad;
-        case "volEvol":
-          return item.volEvol.volumenEvolutivo;
-        case "volUsu":
-          return item.volUsu.volumenUsuarios;
-        case "tipo":
-          return item.tipo.tipo;
-        case "tecInt":
-          return item.tecInt.tecnologiaInterfaz;
-        default:
-          return '';
-      }
-    }
   }
 
   ngOnInit(): void {
