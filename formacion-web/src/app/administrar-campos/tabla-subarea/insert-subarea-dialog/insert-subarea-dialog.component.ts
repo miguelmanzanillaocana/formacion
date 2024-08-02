@@ -3,7 +3,7 @@ import { MatDialogContent } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogActions } from '@angular/material/dialog';
 import { MatDialogClose } from '@angular/material/dialog';
-import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { DatosService } from '../../../../services/datos.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Subarea } from '../../../../models/subarea';
@@ -24,7 +24,7 @@ export class InsertSubareaDialogComponent {
   }
   insertarSubarea() {
     this.subarea = new Subarea(0, this.subareaForm.get('nombreSubArea')?.value);
-    this.datosService.inser(this.subarea).subscribe(area => this.area = area);
+    this.datosService.insertarSubarea(this.subarea).subscribe(subarea => this.subarea = subarea);
     location.reload();
   }
 }
