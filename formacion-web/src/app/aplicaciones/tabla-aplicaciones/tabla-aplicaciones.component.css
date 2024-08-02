@@ -7,8 +7,8 @@ mat-header-cell{
 }
 
 .table-light th {
-  background-color: #f7f7f7; /* Color gris claro */
-  border-bottom: 1px solid #ddd; /* Borde inferior gris */
-  color: #333; /* Color de texto negro */
-  font-weight: bold; /* Fuente negrita */
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+  font-weight: bold;
 }
