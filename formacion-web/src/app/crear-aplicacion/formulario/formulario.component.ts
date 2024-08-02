@@ -13,8 +13,8 @@ import { Aplicacion } from '../../../models/aplicacion';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearDialogComponent } from './crear-dialog/crear-dialog.component';
-import { Area } from '../../../interfaces/area';
-import { SubArea } from '../../../interfaces/subArea';
+import { Area } from '../../../models/area';
+import { Subarea } from '../../../models/subarea';
 
 @Component({
   selector: 'app-formulario',
@@ -26,26 +26,26 @@ import { SubArea } from '../../../interfaces/subArea';
 
 export class FormularioComponent {
   datosArea: Area[]=[]
-  datosSubarea: SubArea[]=[]
+  datosSubarea: Subarea[]=[]
   datosResp: Responsable[]=[];
   datosCriti: Criticidad[]=[];
-  datosTecno: Tecnologia[]=[];
-  datosVUser: VolumenUsuarios[]=[];
+  datosTecn: Tecnologia[]=[];
+  datosVUsu: VolumenUsuarios[]=[];
   datosVEvo: VolumenEvolutivo[]=[];
   datosTipo: Tipo[]=[];
-  datosTecnoInt: TecnologiaInterfaz[]=[];
+  datosTecInt: TecnologiaInterfaz[]=[];
   aplicacionForm: FormGroup;
   
   area!: Area;
-  subarea!: SubArea;
+  subarea!: Subarea;
   resp!:Responsable;
   tecn!: Tecnologia;
   criti!: Criticidad;
   volEvol!: VolumenEvolutivo;
   volUsu!: VolumenUsuarios;
   tipo!: Tipo;
-  tecnInt!: TecnologiaInterfaz;
-  apl: Aplicacion = new Aplicacion('', '', this.area, this.subarea, this.resp, this.tecn, this.criti, this.volEvol, this.volUsu, this.tipo, this.tecnInt);
+  tecInt!: TecnologiaInterfaz;
+  apl: Aplicacion = new Aplicacion('', '', this.area, this.subarea, this.resp, this.tecn, this.criti, this.volEvol, this.volUsu, this.tipo, this.tecInt);
   aplicacion!: Aplicacion;
   
   ngOnInit(): void{
@@ -54,8 +54,8 @@ export class FormularioComponent {
       this.datosArea = datosArea as Area[];
     })
 
-    this.datosService.obtenerSubareas().subscribe((datosSubarea: SubArea[]) => {
-      this.datosSubarea = datosSubarea as SubArea[];
+    this.datosService.obtenerSubareas().subscribe((datosSubarea: Subarea[]) => {
+      this.datosSubarea = datosSubarea as Subarea[];
     })
 
     this.datosService.obtenerResponsables().subscribe((datosResp: Responsable[]) => {
@@ -67,11 +67,11 @@ export class FormularioComponent {
     })
 
     this.datosService.obtenerTecnologias().subscribe((datosTecno: Tecnologia[]) => {
-      this.datosTecno = datosTecno as Tecnologia[];
+      this.datosTecn = datosTecno as Tecnologia[];
     })
 
-    this.datosService.obtenerVolumenesUsuarios().subscribe((datosVUser: VolumenUsuarios[]) => {
-      this.datosVUser = datosVUser as VolumenUsuarios[];
+    this.datosService.obtenerVolumenesUsuarios().subscribe((datosVUsu: VolumenUsuarios[]) => {
+      this.datosVUsu = datosVUsu as VolumenUsuarios[];
     })
 
     this.datosService.obtenerVolumenesEvolutivo().subscribe((datosVEvo: VolumenEvolutivo[]) => {
@@ -83,7 +83,7 @@ export class FormularioComponent {
     })
 
     this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: TecnologiaInterfaz[]) => {
-      this.datosTecnoInt = datosTecnoInt as TecnologiaInterfaz[];
+      this.datosTecInt = datosTecnoInt as TecnologiaInterfaz[];
     })
 
   }
@@ -102,25 +102,34 @@ export class FormularioComponent {
       tipo: new FormControl(this.apl.tipo),
       tecInt: new FormControl(this.apl.tecInt)
     });
-  }
+  } 
 
   onSubmit(){
+    this.area = this.datosArea[this.aplicacionForm.get('area')?.value] || this.datosArea[0];
+    this.subarea = this.datosSubarea[this.aplicacionForm.get('subArea')?.value] || this.datosSubarea[0];
+    this.resp = this.datosResp[this.aplicacionForm.get('resp')?.value] || this.datosResp[0];
+    this.tecn = this.datosTecn[this.aplicacionForm.get('tecn')?.value] || this.datosTecn[0];
+    this.criti = this.datosCriti[this.aplicacionForm.get('criti')?.value] || this.datosCriti[0];
+    this.volEvol = this.datosVEvo[this.aplicacionForm.get('volEvol')?.value] || this.datosVEvo[0];
+    this.volUsu = this.datosVUsu[this.aplicacionForm.get('volUsu')?.value] || this.datosVUsu[0];
+    this.tipo = this.datosTipo[this.aplicacionForm.get('tipo')?.value] || this.datosTipo[0];
+    this.tecInt = this.datosTecInt[this.aplicacionForm.get('tecInt')?.value] || this.datosTecInt[0];
+
     this.apl = new Aplicacion(
       this.aplicacionForm.get('codAplic')?.value,
       this.aplicacionForm.get('nombAplic')?.value,
-      this.aplicacionForm.get('area')?.value,
-      this.aplicacionForm.get('subArea')?.value,
-      this.aplicacionForm.get('resp')?.value,
-      this.aplicacionForm.get('tecn')?.value,
-      this.aplicacionForm.get('criti')?.value,
-      this.aplicacionForm.get('volEvol')?.value,
-      this.aplicacionForm.get('volUsu')?.value,
-      this.aplicacionForm.get('tipo')?.value,
-      this.aplicacionForm.get('tecInt')?.value
+      this.area,
+      this.subarea,
+      this.resp,
+      this.tecn,
+      this.criti,
+      this.volEvol,
+      this.volUsu,
+      this.tipo,
+      this.tecInt
     );
 
     this.datosService.insertarAplicacion(this.apl).subscribe(aplicacion => this.aplicacion = aplicacion);
-    console.log(this.aplicacion);
 
     const dialogRef = this.dialog.open(CrearDialogComponent, {
       width: '350px',

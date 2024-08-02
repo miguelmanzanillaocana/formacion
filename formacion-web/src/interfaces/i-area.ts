@@ -1,4 +1,4 @@
-export interface Area{
+export interface IArea{
     id_Area: number;
     area: string;
 }

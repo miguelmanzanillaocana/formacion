@@ -1,4 +1,4 @@
-export interface SubArea{
+export interface ISubArea{
     id: number;
     subarea:string;
 }
