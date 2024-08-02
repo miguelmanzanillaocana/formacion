@@ -23,7 +23,7 @@ public class AreaService {
 	}
 	
 	public Area insertArea(Area a) {
-		a.setId_Area(repository.getLastId());
+		a.setId_Area(repository.getLastId()+1);
 		return repository.save(a);
 	}
 	

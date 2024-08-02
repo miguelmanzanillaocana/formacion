@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="col-6 my-auto text-end">
-            <button type="button" class="btn btn-success my-auto mx-4"  (click)="insertarArea()">Nueva Area</button>
+            <button type="button" class="btn btn-success my-auto mx-4"  (click)="abrirDialogoInsertArea()">Nueva Area</button>
           </div>
     </div>
 </div>
@@ -28,8 +28,9 @@
                 <ng-template #elseBlock>Sin area</ng-template>
             </mat-cell>
         </ng-container>
-
+ 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <mat-paginator [pageSizeOptions]="[3, 5, 8, 10]"></mat-paginator>
 </div>

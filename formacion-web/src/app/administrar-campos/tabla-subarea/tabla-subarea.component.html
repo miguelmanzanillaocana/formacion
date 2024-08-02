@@ -8,8 +8,9 @@
             </div>
         </div>
         <div class="col-6 my-auto text-end">
-            <button type="button" class="btn btn-success my-auto mx-4">Nueva Subarea</button>
-          </div>
+            <button type="button" class="btn btn-success my-auto mx-4" (click)="abrirDialogoInsertSubArea()">Nueva
+                Subarea</button>
+        </div>
     </div>
 </div>
 <div class="container-fluid mt-2">
@@ -18,7 +19,7 @@
             <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
             <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
         </ng-container>
-        
+
         <ng-container matColumnDef="subarea">
             <mat-header-cell *matHeaderCellDef>Subarea</mat-header-cell>
             <mat-cell *matCellDef="let row">
@@ -32,4 +33,5 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <mat-paginator [pageSizeOptions]="[3, 5, 8, 10]"></mat-paginator>
 </div>
