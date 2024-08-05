@@ -8,8 +8,8 @@
             </div>
         </div>
         <div class="col-6 my-auto text-end">
-            <button type="button" class="btn btn-success my-auto mx-4" (click)="abrirDialogoInsertSubArea()">
-                Nueva Subarea
+            <button type="button" class="btn btn-success my-auto mx-4" (click)="abrirDialogoInsertTecnologia()">
+                Nueva Tecnologia
             </button>
         </div>
     </div> 
@@ -22,11 +22,11 @@
             <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="subarea">
-            <mat-header-cell *matHeaderCellDef>Subarea</mat-header-cell>
+        <ng-container matColumnDef="tecnologia">
+            <mat-header-cell *matHeaderCellDef>Tecnologia</mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <div *ngIf="row.id != 0; else elseBlock"> {{row.subarea}} </div>
-                <ng-template #elseBlock>Sin subarea</ng-template>
+                <div *ngIf="row.id != 0; else elseBlock"> {{row.tecnologia}} </div>
+                <ng-template #elseBlock>Sin tecnologia</ng-template>
             </mat-cell>
         </ng-container>
 

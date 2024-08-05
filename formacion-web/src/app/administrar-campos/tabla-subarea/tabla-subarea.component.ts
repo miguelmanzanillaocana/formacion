@@ -7,7 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { InsertSubareaDialogComponent } from './insert-subarea-dialog/insert-subarea-dialog.component';
 
-@Component({
+@Component({ 
   selector: 'app-tabla-subarea',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatPaginator],

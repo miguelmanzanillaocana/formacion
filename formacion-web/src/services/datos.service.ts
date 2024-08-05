@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Responsable } from '../models/responsable';
 import { Criticidad } from '../interfaces/criticidad';
-import { Tecnologia } from '../interfaces/tecnologia';
+import { Tecnologia } from '../models/tecnologia';
 import { VolumenUsuarios } from '../interfaces/volumen-usuarios';
 import { VolumenEvolutivo } from '../interfaces/volumen-evolutivo';
 import { Tipo } from '../interfaces/tipo';

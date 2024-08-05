@@ -3,7 +3,7 @@ import { Area } from "./area";
 import { Criticidad } from "../interfaces/criticidad";
 import { Responsable } from "../models/responsable";
 import { Subarea } from "../models/subarea";
-import { Tecnologia } from "../interfaces/tecnologia";
+import { Tecnologia } from "../models/tecnologia";
 import { TecnologiaInterfaz } from "../interfaces/tecnologia-interfaz";
 import { Tipo } from "../interfaces/tipo";
 import { VolumenEvolutivo } from "../interfaces/volumen-evolutivo";
