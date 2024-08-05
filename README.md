@@ -1,7 +1,7 @@
 Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y Miguel Manzanilla Ocaña
 
 # TODO
-  - [ ] [Navegacion de la web](https://github.com/miguelmanzanillaocana/formacion/issues/2)
+  - [X] [Navegacion de la web](https://github.com/miguelmanzanillaocana/formacion/issues/2)
   - [X] Probar mat-table para situaciones[^1]
   - [ ] [Encontrar host](https://github.com/miguelmanzanillaocana/formacion/issues/5)
   - [ ] [Empezar seguridad web (inicio sesion, tipos de cuenta...)](https://github.com/miguelmanzanillaocana/formacion/issues/4)
