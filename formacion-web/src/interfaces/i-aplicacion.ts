@@ -1,6 +1,6 @@
 import { Area } from "../models/area";
 import { Criticidad } from "./criticidad";
-import { Responsable } from "./responsable";
+import { Responsable } from "../models/responsable";
 import { Subarea } from "../models/subarea";
 import { Tecnologia } from "./tecnologia";
 import { TecnologiaInterfaz } from "./tecnologia-interfaz";

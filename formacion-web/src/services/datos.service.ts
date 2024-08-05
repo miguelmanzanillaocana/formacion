@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Responsable } from '../interfaces/responsable';
+import { Responsable } from '../models/responsable';
 import { Criticidad } from '../interfaces/criticidad';
 import { Tecnologia } from '../interfaces/tecnologia';
 import { VolumenUsuarios } from '../interfaces/volumen-usuarios';
@@ -91,4 +91,13 @@ export class DatosService {
   actualizarSubarea(sa: Subarea): Observable<Subarea> {
     return this.http.put<Subarea>(this.urlBase + 'subarea/update', sa);
   }
+
+  insertarResponsable(re: Responsable): Observable<Responsable> {
+    return this.http.post<Responsable>(this.urlBase + 'responable/insert', re);
+  }
+
+  actualizarResponsable(re: Responsable): Observable<Responsable> {
+    return this.http.put<Responsable>(this.urlBase + 'responsable/update', re)
+  }
+
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Responsable } from '../../../interfaces/responsable';
+import { Responsable } from '../../../models/responsable';
 import { DatosService } from '../../../services/datos.service';
 import { CommonModule } from '@angular/common';
 import { Criticidad } from '../../../interfaces/criticidad';

@@ -1,17 +1,18 @@
-<h2 mat-dialog-title class="m-4">Insertar Area</h2>
+<h2 mat-dialog-title id="titulo" class="mt-4 ms-4">Nueva Area</h2>
+
 <mat-dialog-content>
-    Introduzca el nombre del nuevo area:
-    <form class="mx-2 my-2 pt-2" [formGroup]="areaForm">
+    <p>Introduzca el nombre del nuevo area:</p>
+    <form [formGroup]="areaForm">
         <div class="form-floating my-2">
-            <input type="text" class="form-control" id="nombre-area" formControlName="nombreArea" />
+            <input type="text" class="form-control" id="nombre-area" formControlName="nombreArea" placeholder=""/>
             <label for="nombre-area">Nombre del area</label>
         </div>
     </form>
 </mat-dialog-content>
+
 <mat-dialog-actions>
-    <button mat-button mat-dialog-close [mat-dialog-close]="false"
-        class="btn-cancelar btn btn-outline-danger">Cancelar</button>
-    <button mat-button mat-dialog-close cdkFocusInitial [mat-dialog-close]="true" class="btn-borrar btn btn-success" (click)="insertarArea()">
+    <button mat-button mat-dialog-close [mat-dialog-close]="false" class="btn-cancelar btn btn-outline-danger">Cancelar</button>
+    <button mat-button mat-dialog-close cdkFocusInitial [mat-dialog-close]="true" class="btn-anadir btn btn-success" (click)="insertarArea()">
         Insertar
     </button>
 </mat-dialog-actions>

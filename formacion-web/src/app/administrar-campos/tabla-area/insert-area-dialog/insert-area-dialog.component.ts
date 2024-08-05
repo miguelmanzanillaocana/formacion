@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { MatDialogContent } from '@angular/material/dialog';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDialogActions } from '@angular/material/dialog';
-import { MatDialogClose } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { DatosService } from '../../../../services/datos.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +17,7 @@ import { Area } from '../../../../models/area';
 export class InsertAreaDialogComponent {
   areaForm: FormGroup;
   area: Area = new Area(0, "");
+
   constructor(private datosService: DatosService, private fb: FormBuilder) {
     this.areaForm = this.fb.group({
       nombreArea: new FormControl("")

@@ -1,4 +1,4 @@
-export interface SituacionInterface {
+export interface ISituacion {
     id: number;
     codApli: string;
     pro: number;

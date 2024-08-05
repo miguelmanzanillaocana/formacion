@@ -1,7 +1,7 @@
 import { IAplicacion } from "../interfaces/i-aplicacion";
 import { Area } from "./area";
 import { Criticidad } from "../interfaces/criticidad";
-import { Responsable } from "../interfaces/responsable";
+import { Responsable } from "../models/responsable";
 import { Subarea } from "../models/subarea";
 import { Tecnologia } from "../interfaces/tecnologia";
 import { TecnologiaInterfaz } from "../interfaces/tecnologia-interfaz";

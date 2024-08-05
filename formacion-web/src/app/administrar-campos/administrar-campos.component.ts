@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TecnologiaInterfaz } from '../../interfaces/tecnologia-interfaz';
 import { Tipo } from '../../interfaces/tipo';
-import { Responsable } from '../../interfaces/responsable';
 import { Criticidad } from '../../interfaces/criticidad';
 import { Tecnologia } from '../../interfaces/tecnologia';
 import { VolumenUsuarios } from '../../interfaces/volumen-usuarios';
@@ -10,17 +9,16 @@ import { DatosService } from '../../services/datos.service';
 import { MatTableModule } from '@angular/material/table';
 import { TablaAreaComponent } from "./tabla-area/tabla-area.component";
 import { TablaSubareaComponent } from "./tabla-subarea/tabla-subarea.component";
+import { TablaResponsableComponent } from "./tabla-responsable/tabla-responsable.component";
 
 @Component({
   selector: 'app-administrar-campos',
   standalone: true,
-  imports: [MatTableModule, TablaAreaComponent, TablaSubareaComponent],
+  imports: [MatTableModule, TablaAreaComponent, TablaSubareaComponent, TablaResponsableComponent],
   templateUrl: './administrar-campos.component.html',
   styleUrl: './administrar-campos.component.css'
 })
 export class AdministrarCamposComponent {
-  
-  datosResp: Responsable[]=[];
   datosCriti: Criticidad[]=[];
   datosTecn: Tecnologia[]=[];
   datosVUsu: VolumenUsuarios[]=[];
@@ -29,9 +27,7 @@ export class AdministrarCamposComponent {
   datosTecInt: TecnologiaInterfaz[]=[];
 
   ngOnInit(): void{
-    this.datosService.obtenerResponsables().subscribe((datosResp: Responsable[]) => {
-      this.datosResp = datosResp as Responsable[];
-    })
+    
 
     this.datosService.obtenerCriticidades().subscribe((datosCriti: Criticidad[]) => {
       this.datosCriti = datosCriti as Criticidad[];

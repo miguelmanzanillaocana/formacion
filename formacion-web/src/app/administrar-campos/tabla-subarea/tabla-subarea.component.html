@@ -25,9 +25,7 @@
         <ng-container matColumnDef="subarea">
             <mat-header-cell *matHeaderCellDef>Subarea</mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <div *ngIf="row.id != 0; else elseBlock">
-                    {{row.subarea}}
-                </div>
+                <div *ngIf="row.id != 0; else elseBlock"> {{row.subarea}} </div>
                 <ng-template #elseBlock>Sin subarea</ng-template>
             </mat-cell>
         </ng-container>

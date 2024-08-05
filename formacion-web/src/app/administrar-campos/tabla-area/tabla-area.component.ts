@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { InsertAreaDialogComponent } from './insert-area-dialog/insert-area-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+
 @Component({
   selector: 'app-tabla-area',
   standalone: true,
@@ -21,7 +22,7 @@ export class TablaAreaComponent {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
-  constructor(private datosService: DatosService,private dialog: MatDialog) {
+  constructor(private datosService: DatosService, private dialog: MatDialog) {
     this.datosService.obtenerAreas().subscribe((datos: Area[]) => {
       this.datosArea = datos as Area[];
     })

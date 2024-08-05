@@ -1,14 +1,14 @@
 <div class="container-fluid mt-2">
     <div class="row">
-        <div class="col my-auto">
-            <div class="form-floating my-auto">
-                <input type="text" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)" id="filtro">
+        <div class="col-6 my-auto">
+            <div class="form-floating myauto">
+                <input type="text" id="filtro" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)">
                 <label for="filtro">Filtrar por...</label>
             </div>
         </div>
         <div class="col-6 my-auto text-end">
-            <button type="button" class="btn btn-success my-auto mx-4" (click)="abrirDialogoInsertArea()">
-                Nueva Area
+            <button type="button" class="btn btn-success my-auto mx-4" (click)="abrirDialogoInsertResponsable()">
+                Nuevo Responsable
             </button>
         </div>
     </div>
@@ -18,14 +18,14 @@
     <mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.id_Area}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="area">
-            <mat-header-cell *matHeaderCellDef>Area</mat-header-cell>
+        <ng-container matColumnDef="responsable">
+            <mat-header-cell *matHeaderCellDef>Responsable</mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <div *ngIf="row.id_Area != 0 ; else elseBlock"> {{row.area}} </div>
-                <ng-template #elseBlock>Sin area</ng-template>
+                <div *ngIf="row.id != 0; else elseBlock"> {{row.responsable}} </div>
+                <ng-template #elseBlock>Sin responsable</ng-template>
             </mat-cell>
         </ng-container>
 

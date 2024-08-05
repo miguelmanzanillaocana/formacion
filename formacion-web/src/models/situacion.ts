@@ -1,6 +1,6 @@
-import { SituacionInterface } from "../interfaces/SituacionInterface";
+import { ISituacion } from "../interfaces/i-situacion";
 
-export class Situacion implements SituacionInterface{
+export class Situacion implements ISituacion{
     id: number;
     codApli: string;
     pro: number;
