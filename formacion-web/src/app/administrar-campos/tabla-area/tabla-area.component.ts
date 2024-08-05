@@ -1,3 +1,4 @@
+// tabla-area.component.ts
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Area } from '../../../models/area';
@@ -15,18 +16,23 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrl: './tabla-area.component.css'
 })
 export class TablaAreaComponent {
-  datosArea: Area[]=[];
+  datosArea: Area[] = [];
 
-  displayedColumns = ['id', 'area']
-  dataSource: MatTableDataSource<Area>
+  displayedColumns = ['id', 'area'];
+  dataSource: MatTableDataSource<Area>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
   constructor(private datosService: DatosService, private dialog: MatDialog) {
+    this.dataSource = new MatTableDataSource(this.datosArea);
+   }
+
+  ngOnInit(): void {
     this.datosService.obtenerAreas().subscribe((datos: Area[]) => {
       this.datosArea = datos as Area[];
-    })
-    this.dataSource = new MatTableDataSource(this.datosArea);
+      this.dataSource = new MatTableDataSource(this.datosArea);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
   ngAfterViewInit() {
@@ -38,11 +44,10 @@ export class TablaAreaComponent {
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
-  
+
   abrirDialogoInsertArea() {
     const dialogRef = this.dialog.open(InsertAreaDialogComponent, {
       width: '500px'
     });
   }
 }
-

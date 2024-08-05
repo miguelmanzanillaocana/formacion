@@ -1,7 +1,6 @@
 import { Aplicacion } from '../../../models/aplicacion';
 import { AplicacionString } from '../../../models/aplicacion-string';
 import { Observable } from 'rxjs';
-
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -9,7 +8,6 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DatosService } from '../../../services/datos.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
-
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -23,7 +21,6 @@ import { MatDialog } from '@angular/material/dialog';
 
 export class TablaAplicacionesComponent {
   datosAplicacion: AplicacionString[] = [];
-  aplicacionService!: Observable<Aplicacion[]>;
   displayedColumns = ['codAplic', 'nombAplic', 'area', 'subArea', 'resp', 'tecn', 'criti', 'volEvol', 'volUsu', 'tipo', 'tecInt','acciones'];
   dataSource: MatTableDataSource<AplicacionString>;
 
@@ -31,9 +28,11 @@ export class TablaAplicacionesComponent {
   @ViewChild(MatSort) sort: MatSort | null = null;
 
   constructor(private datosService: DatosService, private dialog: MatDialog) {
-    this.aplicacionService = this.datosService.obtenerAplicaciones();
-
-    this.aplicacionService.subscribe((datos: Aplicacion[]) => {
+    this.dataSource = new MatTableDataSource(this.datosAplicacion);
+  }
+ 
+  ngOnInit(): void {
+    this.datosService.obtenerAplicaciones().subscribe((datos: Aplicacion[]) => {
       this.datosAplicacion = datos.map((aplicacion: Aplicacion) => {
         return new AplicacionString(
           aplicacion.codAplic,
@@ -50,14 +49,9 @@ export class TablaAplicacionesComponent {
         );
       });
       this.dataSource = new MatTableDataSource(this.datosAplicacion);
-    })
-    
-
-    this.dataSource = new MatTableDataSource(this.datosAplicacion);
-  }
-
-  ngOnInit(): void {
-    this.dataSource = new MatTableDataSource(this.datosAplicacion);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
