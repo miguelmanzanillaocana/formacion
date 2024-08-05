@@ -5,6 +5,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Tecnologia } from '../../../models/tecnologia';
 import { DatosService } from '../../../services/datos.service';
 import { MatDialog } from '@angular/material/dialog';
+import { InsertTecnologiaDialogComponent } from './insert-tecnologia-dialog/insert-tecnologia-dialog.component';
 
 
 @Component({
@@ -39,6 +40,8 @@ export class TablaTecnologiaComponent {
     this.dataSource.filter = filterValue;
   }
   abrirDialogoInsertTecnologia() {
-    throw new Error('Method not implemented.');
+    const dialogRef = this.dialog.open(InsertTecnologiaDialogComponent, {
+      width: '500px'
+    })
   }
 }
