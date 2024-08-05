@@ -4,7 +4,14 @@
     <p>Introduzca el nombre del nuevo area:</p>
     <form [formGroup]="areaForm">
         <div class="form-floating my-2">
-            <input type="text" class="form-control" id="nombre-area" formControlName="nombreArea" placeholder=""/>
+            <input 
+            required
+            type="text" 
+            class="form-control" 
+            id="nombre-area" 
+            formControlName="nombreArea" 
+            placeholder=""
+            [class.is-invalid]="areaForm.get('nombreArea')?. invalid && (areaForm.get('nombreArea')?.dirty || areaForm.get('nombreArea')?.touched)"/>
             <label for="nombre-area">Nombre del area</label>
         </div>
     </form>
@@ -12,7 +19,12 @@
 
 <mat-dialog-actions>
     <button mat-button mat-dialog-close [mat-dialog-close]="false" class="btn-cancelar btn btn-outline-danger">Cancelar</button>
-    <button mat-button mat-dialog-close cdkFocusInitial [mat-dialog-close]="true" class="btn-anadir btn btn-success" (click)="insertarArea()">
-        Insertar
-    </button>
+    <button 
+    mat-button 
+    mat-dialog-close 
+    cdkFocusInitial 
+    [mat-dialog-close]="true" 
+    [disabled]="!areaForm.valid"
+    class="btn-anadir btn btn-success" 
+    (click)="insertarArea()"> Insertar </button>
 </mat-dialog-actions>

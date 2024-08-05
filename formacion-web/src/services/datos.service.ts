@@ -97,7 +97,15 @@ export class DatosService {
   }
 
   actualizarResponsable(re: Responsable): Observable<Responsable> {
-    return this.http.put<Responsable>(this.urlBase + 'responsable/update', re)
+    return this.http.put<Responsable>(this.urlBase + 'responsable/update', re);
+  }
+
+  insertarTecnologia(te: Tecnologia): Observable<Tecnologia> {
+    return this.http.post<Tecnologia>(this.urlBase + 'tecnologia/insert', te);
+  }
+
+  actualizarTecnologia(te: Tecnologia): Observable<Tecnologia> {
+    return this.http.put<Tecnologia>(this.urlBase + 'tecnologia/update', te);
   }
 
 }
