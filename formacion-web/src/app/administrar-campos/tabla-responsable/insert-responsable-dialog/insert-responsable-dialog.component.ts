@@ -25,7 +25,6 @@ export class InsertResponsableDialogComponent {
 
   insertarResponsable() {
     this.responsable = new Responsable(0, this.responsableForm.get('nombreResponsable')?.value);
-    this.datosService.insertarResponsable(this.responsable).subscribe(responsable => this.responsable = responsable)
-    location.reload();
+    this.datosService.insertarResponsable(this.responsable).subscribe(responsable => this.responsable = responsable);
   }
 }

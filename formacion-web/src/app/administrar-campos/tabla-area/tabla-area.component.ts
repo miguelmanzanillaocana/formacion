@@ -15,19 +15,18 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './tabla-area.component.html',
   styleUrl: './tabla-area.component.css'
 })
+
 export class TablaAreaComponent {
   datosArea: Area[] = [];
 
   displayedColumns = ['id', 'area'];
-  dataSource: MatTableDataSource<Area>;
+  dataSource: MatTableDataSource<Area> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
-  constructor(private datosService: DatosService, private dialog: MatDialog) {
-    this.dataSource = new MatTableDataSource(this.datosArea);
-   }
+  constructor(private datosService: DatosService, private dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.datosService.obtenerAreas().subscribe((datos: Area[]) => {
       this.datosArea = datos as Area[];
       this.dataSource = new MatTableDataSource(this.datosArea);
@@ -48,6 +47,8 @@ export class TablaAreaComponent {
   abrirDialogoInsertArea() {
     const dialogRef = this.dialog.open(InsertAreaDialogComponent, {
       width: '500px'
+    }).afterClosed().subscribe((res) => {
+      location.reload();
     });
   }
 }

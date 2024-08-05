@@ -19,15 +19,18 @@ export class TablaSubareaComponent {
   datosSubarea: Subarea[]=[]
 
   displayedColumns = ['id', 'subarea']
-  dataSource: MatTableDataSource<Subarea>
+  dataSource: MatTableDataSource<Subarea> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
-  constructor(private datosService: DatosService,private dialog: MatDialog) {
+  constructor(private datosService: DatosService,private dialog: MatDialog) { }
+
+  ngOnInit() {
     this.datosService.obtenerSubareas().subscribe((datos: Subarea[]) => {
       this.datosSubarea = datos as Subarea[];
+      this.dataSource = new MatTableDataSource(this.datosSubarea);
+      this.dataSource.paginator = this.paginator;
     })
-    this.dataSource = new MatTableDataSource(this.datosSubarea);
   }
 
   ngAfterViewInit() {
@@ -43,6 +46,8 @@ export class TablaSubareaComponent {
   abrirDialogoInsertSubArea() {
     const dialogRef = this.dialog.open(InsertSubareaDialogComponent, {
       width: '500px'
+    }).afterClosed().subscribe((res) => {
+      location.reload();
     });
   }
 }

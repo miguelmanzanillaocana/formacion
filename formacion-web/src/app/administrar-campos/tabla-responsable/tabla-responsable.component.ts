@@ -18,17 +18,19 @@ import { MatDialog } from '@angular/material/dialog';
 export class TablaResponsableComponent {
   datosResponsable: Responsable[]=[];
 
-  displayedColumns = ['id', 'responsable']
-  dataSource: MatTableDataSource<Responsable>
+  displayedColumns = ['id', 'responsable'];
+  dataSource: MatTableDataSource<Responsable> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
-  constructor(private dialog: MatDialog, private datosService: DatosService) {
-    this.datosService.obtenerResponsables().subscribe((datosResponsable: Responsable[]) => {
-      this.datosResponsable = datosResponsable as Responsable[];
-    })
+  constructor(private dialog: MatDialog, private datosService: DatosService) { }
 
-    this.dataSource = new MatTableDataSource(this.datosResponsable)
+  ngOnInit() {
+    this.datosService.obtenerResponsables().subscribe((datos: Responsable[]) => {
+      this.datosResponsable = datos as Responsable[];
+      this.dataSource = new MatTableDataSource(this.datosResponsable);
+      this.dataSource.paginator = this.paginator;
+    })
   }
 
   ngAfterViewInit() {
@@ -44,6 +46,8 @@ export class TablaResponsableComponent {
   abrirDialogoInsertResponsable() {
     const dialogRef = this.dialog.open(InsertResponsableDialogComponent, {
       width: '500px'
-    })
+    }).afterClosed().subscribe((res) => {
+      location.reload();
+    });
   }
 }

@@ -27,6 +27,5 @@ export class InsertAreaDialogComponent {
   insertarArea() {
     this.area = new Area(0, this.areaForm.get('nombreArea')?.value);
     this.datosService.insertarArea(this.area).subscribe(area => this.area = area);
-    location.reload();
   }
 }

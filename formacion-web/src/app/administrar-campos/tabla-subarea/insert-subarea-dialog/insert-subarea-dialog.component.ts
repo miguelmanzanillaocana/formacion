@@ -27,6 +27,5 @@ export class InsertSubareaDialogComponent {
   insertarSubarea() {
     this.subarea = new Subarea(0, this.subareaForm.get('nombreSubArea')?.value);
     this.datosService.insertarSubarea(this.subarea).subscribe(subarea => this.subarea = subarea);
-    location.reload();
   }
 }

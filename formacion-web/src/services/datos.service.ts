@@ -93,7 +93,7 @@ export class DatosService {
   }
 
   insertarResponsable(re: Responsable): Observable<Responsable> {
-    return this.http.post<Responsable>(this.urlBase + 'responable/insert', re);
+    return this.http.post<Responsable>(this.urlBase + 'responsable/insert', re);
   }
 
   actualizarResponsable(re: Responsable): Observable<Responsable> {

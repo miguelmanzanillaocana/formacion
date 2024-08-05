@@ -22,16 +22,14 @@ import { MatDialog } from '@angular/material/dialog';
 export class TablaAplicacionesComponent {
   datosAplicacion: AplicacionString[] = [];
   displayedColumns = ['codAplic', 'nombAplic', 'area', 'subArea', 'resp', 'tecn', 'criti', 'volEvol', 'volUsu', 'tipo', 'tecInt','acciones'];
-  dataSource: MatTableDataSource<AplicacionString>;
+  dataSource: MatTableDataSource<AplicacionString> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  constructor(private datosService: DatosService, private dialog: MatDialog) {
-    this.dataSource = new MatTableDataSource(this.datosAplicacion);
-  }
+  constructor(private datosService: DatosService, private dialog: MatDialog) { }
  
-  ngOnInit(): void {
+  ngOnInit() {
     this.datosService.obtenerAplicaciones().subscribe((datos: Aplicacion[]) => {
       this.datosAplicacion = datos.map((aplicacion: Aplicacion) => {
         return new AplicacionString(

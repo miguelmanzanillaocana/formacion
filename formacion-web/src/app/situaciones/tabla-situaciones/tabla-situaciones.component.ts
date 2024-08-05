@@ -20,37 +20,16 @@ export class TablaSituacionesComponent {
   datosSituacion: Situacion[]=[];
   situacionService!: Observable<Situacion[]>;
   displayedColumns = ['codApli', 'pro', 'gruGit', 'master', 'develop', 'actualizado', 'produccion', 'despl', 'was', 'maven', 'doc', 'pruebas', 'test', 'inf', 'terc','editar'];
-  dataSource: MatTableDataSource<Situacion>;
+  dataSource: MatTableDataSource<Situacion> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  constructor(private datosService: DatosService, private dialog: MatDialog) {
-    this.situacionService = this.datosService.obtenerSituaciones();
-    this.dataSource = new MatTableDataSource(this.datosSituacion);
-  }
+  constructor(private datosService: DatosService, private dialog: MatDialog) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.datosService.obtenerSituaciones().subscribe((datos: Situacion[]) => {
-      this.datosSituacion = datos.map((situacion: Situacion) => {
-        return new Situacion(
-          situacion.codApli,
-          situacion.pro,
-          situacion.gruGit,
-          situacion.master,
-          situacion.develop,
-          situacion.actualizado,
-          situacion.produccion,
-          situacion.despl,
-          situacion.was,
-          situacion.maven,
-          situacion.doc,
-          situacion.pruebas,
-          situacion.test,
-          situacion.inf,
-          situacion.terc
-        );
-      });
+      this.datosSituacion = datos as Situacion[];
       this.dataSource = new MatTableDataSource(this.datosSituacion);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

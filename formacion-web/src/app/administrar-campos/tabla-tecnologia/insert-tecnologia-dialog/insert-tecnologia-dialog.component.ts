@@ -25,6 +25,5 @@ export class InsertTecnologiaDialogComponent {
   insertarTecnologia() {
     this.tecnologia = new Tecnologia(0, this.tecnologiaForm.get('nombreTecnologia')?.value);
     this.datosService.insertarTecnologia(this.tecnologia).subscribe(tecnologia => this.tecnologia = tecnologia);
-    location.reload();
   }
 }
