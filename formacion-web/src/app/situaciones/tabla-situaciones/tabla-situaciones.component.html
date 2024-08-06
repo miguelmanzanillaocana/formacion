@@ -1,6 +1,6 @@
 <div class="container-fluid mt-2">
     <div class="row">
-        <div class="col my-auto">
+        <div class="col-3 my-auto">
             <div class="form-floating my-auto">
                 <input type="text" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)"
                     id="filtro">
@@ -22,13 +22,13 @@
         <!-- Prosa Column -->
         <ng-container matColumnDef="pro">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Prosa</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.pro}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{datosComunes[row.pro].valor}} </mat-cell>
         </ng-container>
 
         <!-- gruGit Column -->
         <ng-container matColumnDef="gruGit">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Grupo en GIT</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.gruGit}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{datosComunes[row.gruGit].valor}} </mat-cell>
         </ng-container>
 
         <!-- Version Master Column -->
@@ -46,7 +46,7 @@
         <!-- Actualizado en GIT Column -->
         <ng-container matColumnDef="actualizado">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Actualizado en GIT</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.actualizado}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{datosComunes[row.actualizado].valor}} </mat-cell>
         </ng-container>
 
         <!-- Versión Produccion Column -->
@@ -56,15 +56,15 @@
         </ng-container>
 
         <!-- Solicitado despliegue Column -->
-        <ng-container matColumnDef="was">
+        <ng-container matColumnDef="despl">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Solicitado despliegue</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.was}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.despl}} </mat-cell>
         </ng-container>
 
         <!-- Versión WAS Column -->
-        <ng-container matColumnDef="despl">
+        <ng-container matColumnDef="was">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Versión WAS</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.despl}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.was}} </mat-cell>
         </ng-container>
 
         <!-- Maven Column -->

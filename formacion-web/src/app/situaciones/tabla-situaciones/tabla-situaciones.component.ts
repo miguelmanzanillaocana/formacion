@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { Comun } from '../../../models/comun';
 
 @Component({
   selector: 'app-tabla-situaciones',
@@ -18,6 +19,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class TablaSituacionesComponent {
   datosSituacion: Situacion[]=[];
+  datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
   situacionService!: Observable<Situacion[]>;
   displayedColumns = ['codApli', 'pro', 'gruGit', 'master', 'develop', 'actualizado', 'produccion', 'despl', 'was', 'maven', 'doc', 'pruebas', 'test', 'inf', 'terc','editar'];
   dataSource: MatTableDataSource<Situacion> = new MatTableDataSource();
