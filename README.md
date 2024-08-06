@@ -10,7 +10,7 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - [ ] [Modificar formulario aplicaciones con situaciones](https://github.com/miguelmanzanillaocana/formacion/issues/8)
   - [ ] [Mejorar formulario 2.0](https://github.com/miguelmanzanillaocana/formacion/issues/11)
   - [ ] [Crear administración aplicaciones](https://github.com/miguelmanzanillaocana/formacion/issues/9)
-  - [ ] [Cambiar interfaces por objetos](https://github.com/miguelmanzanillaocana/formacion/issues/10)
+  - [X] [Cambiar interfaces por objetos](https://github.com/miguelmanzanillaocana/formacion/issues/10)
 
 > [!WARNING]
 > Encontrar host prioridad
