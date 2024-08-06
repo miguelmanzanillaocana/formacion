@@ -29,7 +29,7 @@ public class SituacionService {
 	public boolean deleteSituacionById(Integer id) {
 		boolean respuesta = false;
 		
-		if (!repository.findById(id).get().equals(Optional.empty())) {
+		if (!repository.findById(id).get().equals(null)) {
 			comSitService.deleteComentarioSituacionByIdSit(id);
 			repository.deleteById(id);
 			respuesta = true;

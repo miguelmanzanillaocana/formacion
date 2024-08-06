@@ -1,5 +1,8 @@
 package es.seg_social.formacion.model.situacion;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -83,14 +86,14 @@ public class Situacion {
 		this.develop = "";
 		this.actualizado = 0;
 		this.produccion = "";
-		this.despl = new Despliegue();
+		this.despl = new Despliegue(0, "");
 		this.was = 0;
-		this.maven = new Maven();
-		this.doc = new Documentacion();
-		this.pruebas = new PlanPruebas();
-		this.test = new Testing();
-		this.inf = new Informes();
-		this.terc = new ServiciosTerceros();
+		this.maven = new Maven(0, "");
+		this.doc = new Documentacion(0, "");
+		this.pruebas = new PlanPruebas(0, "");
+		this.test = new Testing(0, "");
+		this.inf = new Informes(0, "");
+		this.terc = new ServiciosTerceros(0, "");
 	}
 
 	public Situacion(Integer id, String codApli, Integer pro, Integer gruGit, String master, String develop,

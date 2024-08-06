@@ -32,10 +32,8 @@ public class AplicacionService {
 		boolean respuesta = false;
 		
 		if (!repository.findById(id).get().equals(Optional.empty())) {
-			
 			situacionService.deleteSituacionById(id);
 			repository.deleteById(id);
-			
 			respuesta = true;
 		}
 		
