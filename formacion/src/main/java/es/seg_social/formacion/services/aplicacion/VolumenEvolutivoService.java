@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.seg_social.formacion.model.aplicacion.Tecnologia;
 import es.seg_social.formacion.model.aplicacion.VolumenEvolutivo;
 import es.seg_social.formacion.repository.aplicacion.IVolumenEvolutivoRepository;
 

@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.seg_social.formacion.model.aplicacion.TecnologiaInterfaz;
 import es.seg_social.formacion.model.aplicacion.Tipo;
 import es.seg_social.formacion.services.aplicacion.TipoService;
 

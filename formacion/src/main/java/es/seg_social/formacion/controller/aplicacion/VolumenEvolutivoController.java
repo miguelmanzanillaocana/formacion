@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.seg_social.formacion.model.aplicacion.TecnologiaInterfaz;
 import es.seg_social.formacion.model.aplicacion.VolumenEvolutivo;
 import es.seg_social.formacion.services.aplicacion.VolumenEvolutivoService;
 
