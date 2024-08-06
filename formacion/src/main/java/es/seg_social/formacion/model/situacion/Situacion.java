@@ -3,6 +3,8 @@ package es.seg_social.formacion.model.situacion;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -34,29 +36,36 @@ public class Situacion {
 	@Column(name = "Version_Produccion")
 	private String produccion;
 	
-	@Column(name = "Despliegue_ID")
-	private Integer despl;
+	@ManyToOne
+	@JoinColumn(name = "Despliegue_ID")
+	private Despliegue despl;
 	
 	@Column(name = "Version_WAS")
 	private Integer was;
 	
-	@Column(name = "Maven_Id")
-	private Integer maven;
+	@ManyToOne
+	@JoinColumn(name = "Maven_Id")
+	private Maven maven;
 	
-	@Column(name = "Documentacion_ID")
-	private Integer doc;
+	@ManyToOne
+	@JoinColumn(name = "Documentacion_ID")
+	private Documentacion doc;
 	
-	@Column(name = "Plan_Pruebas_ID")
-	private Integer pruebas;
+	@ManyToOne
+	@JoinColumn(name = "Plan_Pruebas_ID")
+	private PlanPruebas pruebas;
 	
-	@Column(name = "Testing_ID")
-	private Integer test;
+	@ManyToOne
+	@JoinColumn(name = "Testing_ID")
+	private Testing test;
 	
-	@Column(name = "Informes_ID")
-	private Integer inf;
+	@ManyToOne
+	@JoinColumn(name = "Informes_ID")
+	private Informes inf;
 	
-	@Column(name = "Servicios_Terceros_ID")
-	private Integer terc;
+	@ManyToOne
+	@JoinColumn(name = "Servicios_Terceros_ID")
+	private ServiciosTerceros terc;
 	
 	
 
@@ -74,19 +83,19 @@ public class Situacion {
 		this.develop = "";
 		this.actualizado = 0;
 		this.produccion = "";
-		this.despl = 1;
+		this.despl = new Despliegue();
 		this.was = 0;
-		this.maven = 1;
-		this.doc = 1;
-		this.pruebas = 1;
-		this.test = 1;
-		this.inf = 1;
-		this.terc = 1;
+		this.maven = new Maven();
+		this.doc = new Documentacion();
+		this.pruebas = new PlanPruebas();
+		this.test = new Testing();
+		this.inf = new Informes();
+		this.terc = new ServiciosTerceros();
 	}
 
 	public Situacion(Integer id, String codApli, Integer pro, Integer gruGit, String master, String develop,
-			Integer actualizado, String produccion, Integer despl, Integer was, Integer maven, Integer doc,
-			Integer pruebas, Integer test, Integer inf, Integer terc) {
+			Integer actualizado, String produccion, Despliegue despl, Integer was, Maven maven, Documentacion doc,
+			PlanPruebas pruebas, Testing test, Informes inf, ServiciosTerceros terc) {
 		super();
 		this.id = id;
 		this.codApli = codApli;
@@ -170,11 +179,11 @@ public class Situacion {
 		this.produccion = produccion;
 	}
 
-	public Integer getDespl() {
+	public Despliegue getDespl() {
 		return despl;
 	}
 
-	public void setDespl(Integer despl) {
+	public void setDespl(Despliegue despl) {
 		this.despl = despl;
 	}
 
@@ -186,51 +195,51 @@ public class Situacion {
 		this.was = was;
 	}
 
-	public Integer getMaven() {
+	public Maven getMaven() {
 		return maven;
 	}
 
-	public void setMaven(Integer maven) {
+	public void setMaven(Maven maven) {
 		this.maven = maven;
 	}
 
-	public Integer getDoc() {
+	public Documentacion getDoc() {
 		return doc;
 	}
 
-	public void setDoc(Integer doc) {
+	public void setDoc(Documentacion doc) {
 		this.doc = doc;
 	}
 
-	public Integer getPruebas() {
+	public PlanPruebas getPruebas() {
 		return pruebas;
 	}
 
-	public void setPruebas(Integer pruebas) {
+	public void setPruebas(PlanPruebas pruebas) {
 		this.pruebas = pruebas;
 	}
 
-	public Integer getTest() {
+	public Testing getTest() {
 		return test;
 	}
 
-	public void setTest(Integer test) {
+	public void setTest(Testing test) {
 		this.test = test;
 	}
 
-	public Integer getInf() {
+	public Informes getInf() {
 		return inf;
 	}
 
-	public void setInf(Integer inf) {
+	public void setInf(Informes inf) {
 		this.inf = inf;
 	}
 
-	public Integer getTerc() {
+	public ServiciosTerceros getTerc() {
 		return terc;
 	}
 
-	public void setTerc(Integer terc) {
+	public void setTerc(ServiciosTerceros terc) {
 		this.terc = terc;
 	}
 	
