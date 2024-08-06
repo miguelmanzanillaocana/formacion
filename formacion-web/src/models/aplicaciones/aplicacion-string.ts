@@ -1,4 +1,6 @@
-export class AplicacionString {
+import { IAplicacionString } from "../../interfaces/aplicaciones/i-aplicacion-string";
+
+export class AplicacionString implements IAplicacionString{
     id: number;
     codAplic: string;
     nombAplic: string;

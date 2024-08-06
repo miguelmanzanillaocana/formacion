@@ -3,12 +3,12 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { Responsable } from '../../../models/aplicaciones/responsable';
 import { DatosService } from '../../../services/datos.service';
 import { CommonModule } from '@angular/common';
-import { ICriticidad } from '../../../interfaces/aplicaciones/i-criticidad';
+import { Criticidad } from '../../../models/aplicaciones/criticidad';
 import { Tecnologia } from '../../../models/aplicaciones/tecnologia';
-import { IVolumenUsuarios } from '../../../interfaces/aplicaciones/i-volumen-usuarios';
-import { IVolumenEvolutivo } from '../../../interfaces/aplicaciones/i-volumen-evolutivo';
-import { ITipo } from '../../../interfaces/aplicaciones/i-tipo';
-import { ITecnologiaInterfaz } from '../../../interfaces/aplicaciones/i-tecnologia-interfaz';
+import { VolumenUsuarios } from '../../../models/aplicaciones/volumen-usuarios';
+import { VolumenEvolutivo } from '../../../models/aplicaciones/volumen-evolutivo';
+import { Tipo } from '../../../models/aplicaciones/tipo';
+import { TecnologiaInterfaz } from '../../../models/aplicaciones/tecnologia-interfaz';
 import { Aplicacion } from '../../../models/aplicaciones/aplicacion';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -29,23 +29,23 @@ export class FormularioComponent {
   datosArea: Area[]=[]
   datosSubarea: Subarea[]=[]
   datosResp: Responsable[]=[];
-  datosCriti: ICriticidad[]=[];
+  datosCriti: Criticidad[]=[];
   datosTecn: Tecnologia[]=[];
-  datosVUsu: IVolumenUsuarios[]=[];
-  datosVEvo: IVolumenEvolutivo[]=[];
-  datosTipo: ITipo[]=[];
-  datosTecInt: ITecnologiaInterfaz[]=[];
+  datosVUsu: VolumenUsuarios[]=[];
+  datosVEvo: VolumenEvolutivo[]=[];
+  datosTipo: Tipo[]=[];
+  datosTecInt: TecnologiaInterfaz[]=[];
   aplicacionForm: FormGroup;
   
   area!: Area;
   subarea!: Subarea;
   resp!:Responsable;
   tecn!: Tecnologia;
-  criti!: ICriticidad;
-  volEvol!: IVolumenEvolutivo;
-  volUsu!: IVolumenUsuarios;
-  tipo!: ITipo;
-  tecInt!: ITecnologiaInterfaz;
+  criti!: Criticidad;
+  volEvol!: VolumenEvolutivo;
+  volUsu!: VolumenUsuarios;
+  tipo!: Tipo;
+  tecInt!: TecnologiaInterfaz;
   apl: Aplicacion = new Aplicacion('', '', this.area, this.subarea, this.resp, this.tecn, this.criti, this.volEvol, this.volUsu, this.tipo, this.tecInt);
   aplicacion!: Aplicacion;
 
@@ -78,28 +78,28 @@ export class FormularioComponent {
       this.datosResp = datosResp as Responsable[];
     })
 
-    this.datosService.obtenerCriticidades().subscribe((datosCriti: ICriticidad[]) => {
-      this.datosCriti = datosCriti as ICriticidad[];
+    this.datosService.obtenerCriticidades().subscribe((datosCriti: Criticidad[]) => {
+      this.datosCriti = datosCriti as Criticidad[];
     })
 
     this.datosService.obtenerTecnologias().subscribe((datosTecno: Tecnologia[]) => {
       this.datosTecn = datosTecno as Tecnologia[];
     })
 
-    this.datosService.obtenerVolumenesUsuarios().subscribe((datosVUsu: IVolumenUsuarios[]) => {
-      this.datosVUsu = datosVUsu as IVolumenUsuarios[];
+    this.datosService.obtenerVolumenesUsuarios().subscribe((datosVUsu: VolumenUsuarios[]) => {
+      this.datosVUsu = datosVUsu as VolumenUsuarios[];
     })
 
-    this.datosService.obtenerVolumenesEvolutivo().subscribe((datosVEvo: IVolumenEvolutivo[]) => {
-      this.datosVEvo = datosVEvo as IVolumenEvolutivo[];
+    this.datosService.obtenerVolumenesEvolutivo().subscribe((datosVEvo: VolumenEvolutivo[]) => {
+      this.datosVEvo = datosVEvo as VolumenEvolutivo[];
     })
 
-    this.datosService.obtenerTipos().subscribe((datosTipo: ITipo[]) => {
-      this.datosTipo = datosTipo as ITipo[];
+    this.datosService.obtenerTipos().subscribe((datosTipo: Tipo[]) => {
+      this.datosTipo = datosTipo as Tipo[];
     })
 
-    this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: ITecnologiaInterfaz[]) => {
-      this.datosTecInt = datosTecnoInt as ITecnologiaInterfaz[];
+    this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: TecnologiaInterfaz[]) => {
+      this.datosTecInt = datosTecnoInt as TecnologiaInterfaz[];
     })
   }
 

@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Responsable } from '../models/aplicaciones/responsable';
-import { ICriticidad } from '../interfaces/aplicaciones/i-criticidad';
+import { Criticidad } from '../models/aplicaciones/criticidad';
 import { Tecnologia } from '../models/aplicaciones/tecnologia';
-import { IVolumenUsuarios } from '../interfaces/aplicaciones/i-volumen-usuarios';
-import { IVolumenEvolutivo } from '../interfaces/aplicaciones/i-volumen-evolutivo';
-import { ITipo } from '../interfaces/aplicaciones/i-tipo';
-import { ITecnologiaInterfaz } from '../interfaces/aplicaciones/i-tecnologia-interfaz';
+import { VolumenUsuarios } from '../models/aplicaciones/volumen-usuarios';
+import { VolumenEvolutivo } from '../models/aplicaciones/volumen-evolutivo';
+import { Tipo } from '../models/aplicaciones/tipo';
+import { TecnologiaInterfaz } from '../models/aplicaciones/tecnologia-interfaz';
 import { Aplicacion } from '../models/aplicaciones/aplicacion';
 import { Situacion } from '../models/situaciones/situacion';
 import { Area } from '../models/aplicaciones/area';
@@ -83,25 +83,25 @@ export class DatosService {
     return this.http.get<Responsable[]>(this.urlBase + this.responsable);
   }
   
-  obtenerCriticidades(): Observable<ICriticidad[]> {
-    return this.http.get<ICriticidad[]>(this.urlBase + this.criticidad);
+  obtenerCriticidades(): Observable<Criticidad[]> {
+    return this.http.get<Criticidad[]>(this.urlBase + this.criticidad);
   }
 
   obtenerTecnologias(): Observable<Tecnologia[]> {
     return this.http.get<Tecnologia[]>(this.urlBase + this.tecnologia);
   }
 
-  obtenerVolumenesUsuarios(): Observable<IVolumenUsuarios[]> {
-    return this.http.get<IVolumenUsuarios[]>(this.urlBase + this.volumenUsuarios);
+  obtenerVolumenesUsuarios(): Observable<VolumenUsuarios[]> {
+    return this.http.get<VolumenUsuarios[]>(this.urlBase + this.volumenUsuarios);
   }
-  obtenerVolumenesEvolutivo(): Observable<IVolumenEvolutivo[]> {
-    return this.http.get<IVolumenEvolutivo[]>(this.urlBase + this.volumenEvolutivo);
+  obtenerVolumenesEvolutivo(): Observable<VolumenEvolutivo[]> {
+    return this.http.get<VolumenEvolutivo[]>(this.urlBase + this.volumenEvolutivo);
   }
-  obtenerTipos(): Observable<ITipo[]> {
-    return this.http.get<ITipo[]>(this.urlBase + this.tipo);
+  obtenerTipos(): Observable<Tipo[]> {
+    return this.http.get<Tipo[]>(this.urlBase + this.tipo);
   }
-  obtenerTecnologiaInterfaz(): Observable<ITecnologiaInterfaz[]> {
-    return this.http.get<ITecnologiaInterfaz[]>(this.urlBase + this.tecnologiaInterfaz);
+  obtenerTecnologiaInterfaz(): Observable<TecnologiaInterfaz[]> {
+    return this.http.get<TecnologiaInterfaz[]>(this.urlBase + this.tecnologiaInterfaz);
   }
 
   //Situaciones

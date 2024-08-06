@@ -1,12 +1,12 @@
 import { Area } from "../../models/aplicaciones/area";
-import { ICriticidad } from "./i-criticidad";
+import { Criticidad } from "../../models/aplicaciones/criticidad";
 import { Responsable } from "../../models/aplicaciones/responsable";
 import { Subarea } from "../../models/aplicaciones/subarea";
 import { Tecnologia } from "../../models/aplicaciones/tecnologia";
-import { ITecnologiaInterfaz } from "./i-tecnologia-interfaz";
-import { ITipo } from "./i-tipo";
-import { IVolumenEvolutivo } from "./i-volumen-evolutivo";
-import { IVolumenUsuarios } from "./i-volumen-usuarios";
+import { TecnologiaInterfaz } from "../../models/aplicaciones/tecnologia-interfaz";
+import { Tipo } from "../../models/aplicaciones/tipo";
+import { VolumenEvolutivo } from "../../models/aplicaciones/volumen-evolutivo";
+import { VolumenUsuarios } from "../../models/aplicaciones/volumen-usuarios";
 
 export interface IAplicacion {
     id: number;
@@ -16,9 +16,9 @@ export interface IAplicacion {
     subArea: Subarea;
     resp: Responsable;
     tecn: Tecnologia;
-    criti: ICriticidad;
-    volEvol: IVolumenEvolutivo;
-    volUsu: IVolumenUsuarios;
-    tipo: ITipo;
-    tecInt: ITecnologiaInterfaz;
+    criti: Criticidad;
+    volEvol: VolumenEvolutivo;
+    volUsu: VolumenUsuarios;
+    tipo: Tipo;
+    tecInt: TecnologiaInterfaz;
 }
