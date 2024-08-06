@@ -562,7 +562,7 @@ INSERT INTO `situacion_aplicaciones` (`ID_Situacion`, `Codigo_Aplicacion`, `Pros
 --
 
 CREATE TABLE `subarea_aplicacion` (
-  `ID_Subrea` int NOT NULL,
+  `ID_Subarea` int NOT NULL,
   `Subarea` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -570,7 +570,7 @@ CREATE TABLE `subarea_aplicacion` (
 -- Volcado de datos para la tabla `subarea_aplicacion`
 --
 
-INSERT INTO `subarea_aplicacion` (`ID_Subrea`, `Subarea`) VALUES
+INSERT INTO `subarea_aplicacion` (`ID_Subarea`, `Subarea`) VALUES
 (0, ''),
 (1, 'Coordinación y Desarrollo de RRHH'),
 (2, 'Innovación'),
@@ -854,7 +854,7 @@ ALTER TABLE `situacion_aplicaciones`
 -- Indices de la tabla `subarea_aplicacion`
 --
 ALTER TABLE `subarea_aplicacion`
-  ADD PRIMARY KEY (`ID_Subrea`);
+  ADD PRIMARY KEY (`ID_Subarea`);
 
 --
 -- Indices de la tabla `tecnologiainterfaz_aplicacion`
