@@ -77,9 +77,37 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - **/comentarioSituacion/delete/{idSit}/{idCom} (DELETE)** => borra el comentario que pertenezca a una situacion y tenga un id determinado (idSit = idSituacion, idCom = idComentario)
   - **/comentarioSituacion/insert (POST)** => inserta un nuevo comentario, el comentario se pasa en el body del request
 ## Despliegue
+  - **/despliegue/ (GET)** => recibe un array en JSON con todas los despliegues
+  - **/despliegue/{id} (GET)** => recibe un JSON con el despliegue que tenga ese id
+  - **/despliegue/insert (POST)** => inserta un nuevo despliegue, el despliegue se pasa en el body del request
+  - **/despliegue/update (PUT)** => actualiza un despliegue, el despliegue a actualizar se pasa en el body del request
 ## Maven
+  - **/maven/ (GET)** => recibe un array en JSON con todas los tipo de maven
+  - **/maven/{id} (GET)** => recibe un JSON con el tipo de maven que tenga ese id
+  - **/maven/insert (POST)** => inserta un nuevo tipo de maven, el tipo de maven se pasa en el body del request
+  - **/maven/update (PUT)** => actualiza un tipo de maven, el tipo de maven a actualizar se pasa en el body del request
 ## Documentacion
+  - **/documentacion/ (GET)** => recibe un array en JSON con todos los tipo servidores de documentacion
+  - **/documentacion/{id} (GET)** => recibe un JSON con el servidor de documentacion que tenga ese id
+  - **/documentacion/insert (POST)** => inserta un nuevo servidor de documentacion, el servidor de documentacion se pasa en el body del request
+  - **/documentacion/update (PUT)** => actualiza un servidor de documentacion, el servidor de documentacion a actualizar se pasa en el body del request
 ## PlanPruebas
+  - **/planPruebas/ (GET)** => recibe un array en JSON con todos los tipos de plan de pruebas
+  - **/despliegue/{id} (GET)** => recibe un JSON con el tipo de plan de pruebas que tenga ese id
+  - **/despliegue/insert (POST)** => inserta un nuevo tipo de plan de pruebas, el tipo de plan de pruebas se pasa en el body del request
+  - **/despliegue/update (PUT)** => actualiza un tipo de plan de pruebas, el tipo de plan de pruebas a actualizar se pasa en el body del request
 ## Testing
+  - **/testing/ (GET)** => recibe un array en JSON con todas los tipos de testing
+  - **/testing/{id} (GET)** => recibe un JSON con el tipo de testing que tenga ese id
+  - **/testing/insert (POST)** => inserta un nuevo tipo de testing, el tipo de testing se pasa en el body del request
+  - **/testing/update (PUT)** => actualiza un tipo de despliegue, el tipo de despliegue a actualizar se pasa en el body del request
 ## Informes
+  - **/informes/ (GET)** => recibe un array en JSON con todas los tipos de informe
+  - **/informes/{id} (GET)** => recibe un JSON con el tipo de informe que tenga ese id
+  - **/informes/insert (POST)** => inserta un nuevo tipo de informe, el tipo de informe se pasa en el body del request
+  - **/informes/update (PUT)** => actualiza un tipo de informe, el tipo de informe a actualizar se pasa en el body del request
 ## Servicios de Terceros
+  - **/serviciosTerceros/ (GET)** => recibe un array en JSON con todas los tipos de servicio de terceros
+  - **/serviciosTerceros/{id} (GET)** => recibe un JSON con el tipo de servicio de terceros que tenga ese id
+  - **/serviciosTerceros/insert (POST)** => inserta un nuevo tipo de servicio de terceros, el tipo de servicio de terceros se pasa en el body del request
+  - **/serviciosTerceros/update (PUT)** => actualiza un tipo de servicio de terceros, el tipo de servicio de terceros a actualizar se pasa en el body del request
