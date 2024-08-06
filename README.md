@@ -8,6 +8,7 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - [X] [Cambiar id responsable, id tecnologia... por su equivalente en texto](https://github.com/miguelmanzanillaocana/formacion/issues/3)
   - [X] [Mejorar formulario aplicaciones](https://github.com/miguelmanzanillaocana/formacion/issues/6)
   - [ ] [Modificar formulario aplicaciones con situaciones](https://github.com/miguelmanzanillaocana/formacion/issues/8)
+  - [ ] [Mejorar formulario 2.0](https://github.com/miguelmanzanillaocana/formacion/issues/11)
   - [ ] [Crear administración aplicaciones](https://github.com/miguelmanzanillaocana/formacion/issues/9)
   - [ ] [Cambiar interfaces por objetos](https://github.com/miguelmanzanillaocana/formacion/issues/10)
 
