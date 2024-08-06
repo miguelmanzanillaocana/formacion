@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TecnologiaInterfaz } from '../../interfaces/aplicaciones/i-tecnologia-interfaz';
-import { Tipo } from '../../interfaces/aplicaciones/i-tipo';
+import { ITecnologiaInterfaz } from '../../interfaces/aplicaciones/i-tecnologia-interfaz';
+import { ITipo } from '../../interfaces/aplicaciones/i-tipo';
 import { DatosService } from '../../services/datos.service';
 import { MatTableModule } from '@angular/material/table';
 import { TablaAreaComponent } from "./tabla-area/tabla-area.component";
@@ -16,17 +16,17 @@ import { TablaTecnologiaComponent } from "./tabla-tecnologia/tabla-tecnologia.co
   styleUrl: './administrar-campos.component.css'
 })
 export class AdministrarCamposComponent {
-  datosTipo: Tipo[]=[];
-  datosTecInt: TecnologiaInterfaz[]=[];
+  datosTipo: ITipo[]=[];
+  datosTecInt: ITecnologiaInterfaz[]=[];
 
   ngOnInit(): void{
 
-    this.datosService.obtenerTipos().subscribe((datosTipo: Tipo[]) => {
-      this.datosTipo = datosTipo as Tipo[];
+    this.datosService.obtenerTipos().subscribe((datosTipo: ITipo[]) => {
+      this.datosTipo = datosTipo as ITipo[];
     })
 
-    this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: TecnologiaInterfaz[]) => {
-      this.datosTecInt = datosTecnoInt as TecnologiaInterfaz[];
+    this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: ITecnologiaInterfaz[]) => {
+      this.datosTecInt = datosTecnoInt as ITecnologiaInterfaz[];
     })
   }
 

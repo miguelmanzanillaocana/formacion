@@ -1,13 +1,13 @@
 import { IAplicacion } from "../../interfaces/aplicaciones/i-aplicacion";
 import { Area } from "./area";
-import { Criticidad } from "../../interfaces/aplicaciones/i-criticidad";
-import { Responsable } from "../models/responsable";
-import { Subarea } from "../models/subarea";
-import { Tecnologia } from "../models/tecnologia";
-import { TecnologiaInterfaz } from "../../interfaces/aplicaciones/i-tecnologia-interfaz";
-import { Tipo } from "../../interfaces/aplicaciones/i-tipo";
-import { VolumenEvolutivo } from "../../interfaces/aplicaciones/i-volumen-evolutivo";
-import { VolumenUsuarios } from "../../interfaces/aplicaciones/i-volumen-usuarios";
+import { ICriticidad } from "../../interfaces/aplicaciones/i-criticidad";
+import { Responsable } from "./responsable";
+import { Subarea } from "./subarea";
+import { Tecnologia } from "./tecnologia";
+import { ITecnologiaInterfaz } from "../../interfaces/aplicaciones/i-tecnologia-interfaz";
+import { ITipo } from "../../interfaces/aplicaciones/i-tipo";
+import { IVolumenEvolutivo } from "../../interfaces/aplicaciones/i-volumen-evolutivo";
+import { IVolumenUsuarios } from "../../interfaces/aplicaciones/i-volumen-usuarios";
 
 export class Aplicacion implements IAplicacion {
 
@@ -18,14 +18,14 @@ export class Aplicacion implements IAplicacion {
     subArea: Subarea;
     resp: Responsable;
     tecn: Tecnologia;
-    criti: Criticidad;
-    volEvol: VolumenEvolutivo;
-    volUsu: VolumenUsuarios;
-    tipo: Tipo;
-    tecInt: TecnologiaInterfaz;
+    criti: ICriticidad;
+    volEvol: IVolumenEvolutivo;
+    volUsu: IVolumenUsuarios;
+    tipo: ITipo;
+    tecInt: ITecnologiaInterfaz;
 
     constructor(codAplic: string, nombAplic: string, area: Area, subArea: Subarea, resp: Responsable,
-         tecn: Tecnologia, criti: Criticidad, volEvol: VolumenEvolutivo, volUsu: VolumenUsuarios, tipo: Tipo, tecInt: TecnologiaInterfaz) {
+         tecn: Tecnologia, criti: ICriticidad, volEvol: IVolumenEvolutivo, volUsu: IVolumenUsuarios, tipo: ITipo, tecInt: ITecnologiaInterfaz) {
         this.id = 0;
         this.codAplic = codAplic,
         this.nombAplic = nombAplic,
