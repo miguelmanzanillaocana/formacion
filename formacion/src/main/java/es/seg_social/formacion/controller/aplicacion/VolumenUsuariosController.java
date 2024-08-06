@@ -16,7 +16,7 @@ import es.seg_social.formacion.model.aplicacion.VolumenUsuarios;
 import es.seg_social.formacion.services.aplicacion.VolumenUsuariosService;
 
 @RestController
-@RequestMapping("/volumen-usuarios")
+@RequestMapping("/volumenUsuarios")
 public class VolumenUsuariosController {
 	
 	@Autowired

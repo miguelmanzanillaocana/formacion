@@ -16,7 +16,7 @@ import es.seg_social.formacion.model.aplicacion.TecnologiaInterfaz;
 import es.seg_social.formacion.services.aplicacion.TecnologiaInterfazService;
 
 @RestController
-@RequestMapping("tecnologia-interfaz")
+@RequestMapping("tecnologiaInterfaz")
 public class TecnologiaInterfazController {
 	
 	@Autowired

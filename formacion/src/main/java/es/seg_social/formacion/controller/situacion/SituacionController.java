@@ -25,7 +25,7 @@ public class SituacionController {
 		return service.getAllSituacion();
 	}
 	
-	@GetMapping("/id/{id}")
+	@GetMapping("/{id}")
 	public Situacion getSituacionById(@PathVariable("id") Integer id) {
 		return service.getSituacionById(id);
 	}

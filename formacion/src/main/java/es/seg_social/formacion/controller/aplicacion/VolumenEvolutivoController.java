@@ -16,7 +16,7 @@ import es.seg_social.formacion.model.aplicacion.VolumenEvolutivo;
 import es.seg_social.formacion.services.aplicacion.VolumenEvolutivoService;
 
 @RestController
-@RequestMapping("/volumen-evolutivo")
+@RequestMapping("/volumenEvolutivo")
 public class VolumenEvolutivoController {
 	
 	@Autowired

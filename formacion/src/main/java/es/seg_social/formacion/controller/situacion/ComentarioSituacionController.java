@@ -29,18 +29,18 @@ public class ComentarioSituacionController {
 		return service.getAllComentarioSituacion();
 	}
 	
-	@GetMapping("id/{id}")
+	@GetMapping("/{id}")
 	public ArrayList<ComentarioSituacion> getComentarioSituacionByIdSit(@PathVariable (value = "id") Integer id){
 		return service.getComentarioSituacionByIdSit(id);
 	}
 	
-	@GetMapping("/id/{idSit}/{idCom}")
+	@GetMapping("/{idSit}/{idCom}")
 	public ComentarioSituacion getComentarioSituacionById(@PathVariable (value = "idSit") Integer idSit, @PathVariable(value="idCom") Integer idCom) {
 		ComentarioSituacionId id = new ComentarioSituacionId(idSit, idCom);
 		return service.getComentarioSituacionById(id);
 	}
 	
-	@DeleteMapping("/delete/id/{id}")
+	@DeleteMapping("/delete/{id}")
 	public boolean deleteComentarioSituacionByIdSit(@PathVariable(value="id") Integer id) {
 		return service.deleteComentarioSituacionByIdSit(id);
 	}
