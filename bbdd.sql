@@ -262,9 +262,9 @@ CREATE TABLE `despliegue_situacion` (
 
 INSERT INTO `despliegue_situacion` (`Id_Despliegue`, `Despliegue`) VALUES
 (0, ''),
-(1, 'PREPRODUCION'),
-(2, 'PRODUCION'),
-(3, 'INTEGRACION');
+(1, 'Preproducción'),
+(2, 'Producción'),
+(3, 'Integración');
 
 -- --------------------------------------------------------
 
@@ -315,8 +315,8 @@ CREATE TABLE `informes_situacion` (
 INSERT INTO `informes_situacion` (`Id_Informes`, `Informes`) VALUES
 (0, ''),
 (1, 'AIFO'),
-(2, 'INTEGRADOS'),
-(3, 'NO');
+(2, 'Integrados'),
+(3, 'No');
 
 -- --------------------------------------------------------
 
@@ -357,9 +357,9 @@ CREATE TABLE `maven_situacion` (
 
 INSERT INTO `maven_situacion` (`Id_Maven`, `Maven`) VALUES
 (0, ''),
-(1, 'SI'),
-(2, 'EN PROGRESO'),
-(3, 'NO');
+(1, 'Sí'),
+(2, 'En progreso'),
+(3, 'No');
 
 -- --------------------------------------------------------
 
@@ -378,9 +378,9 @@ CREATE TABLE `planpruebas_situacion` (
 
 INSERT INTO `planpruebas_situacion` (`Id_Plan_Pruebas`, `Plan_Pruebas`) VALUES
 (0, ''),
-(1, 'SI'),
-(2, 'GIT'),
-(3, 'NO');
+(1, 'Sí'),
+(2, 'Git'),
+(3, 'No');
 
 -- --------------------------------------------------------
 
@@ -456,9 +456,9 @@ CREATE TABLE `serviciosterceros_situacion` (
 
 INSERT INTO `serviciosterceros_situacion` (`Id_Servicios_Terceros`, `Servicios_Terceros`) VALUES
 (0, ''),
-(1, 'SI'),
+(1, 'Sí'),
 (2, 'IFIW'),
-(3, 'NO');
+(3, 'No');
 
 -- --------------------------------------------------------
 
@@ -638,9 +638,9 @@ CREATE TABLE `testing_situacion` (
 
 INSERT INTO `testing_situacion` (`Id_Testing`, `Testing`) VALUES
 (0, ''),
-(1, 'SI'),
-(2, 'EN PROCESO'),
-(3, 'NO');
+(1, 'Sí'),
+(2, 'En proceso'),
+(3, 'No');
 
 -- --------------------------------------------------------
 
