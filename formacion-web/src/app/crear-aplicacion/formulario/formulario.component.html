@@ -4,9 +4,14 @@
     <div class="row ">
       <div class="col-md-3">
         <div class="form-floating mb-2">
-          <input type="text" class="form-control" id="codigo-aplicacion" formControlName="codAplic" placeholder="test"
-            required
-            [class.is-invalid]="aplicacionForm.get('codAplic')?.invalid && (aplicacionForm.get('codAplic')?.dirty || aplicacionForm.get('codAplic')?.touched)" />
+          <input 
+          type="text" 
+          class="form-control" 
+          id="codigo-aplicacion" 
+          formControlName="codAplic" 
+          placeholder="test"
+          required
+          [class.is-invalid]="aplicacionForm.get('codAplic')?.invalid && (aplicacionForm.get('codAplic')?.dirty || aplicacionForm.get('codAplic')?.touched)" />
           <label for="codigo-aplicacion">Código de la aplicación</label>
         </div>
       </div>
@@ -55,7 +60,12 @@
     <div class="row">
       <div class="col-md-3">
         <div class="form-floating mb-3">
-          <select class="form-select" id="cb-criticidad" formControlName="criti">
+          <select 
+          class="form-select" 
+          id="cb-criticidad" 
+          formControlName="criti"
+          required
+          [class.is-invalid]="aplicacionForm.get('criti')?.invalid && (aplicacionForm.get('criti')?.dirty || aplicacionForm.get('criti')?.touched)">
             <option *ngFor="let criti of datosCriti" [value]="criti.id">{{criti.criticidad}}</option>
           </select>
           <label for="cb-criticidad">Criticidad</label>
@@ -95,6 +105,7 @@
       </div>
     </div>
     <div class="text-center mb-4">
+      <button class="btn btn-outline-danger my-2 me-2" (click)="cancelarInsert()">Cancelar</button>
       <button type="submit" class="btn btn-success my-2" [disabled]="!aplicacionForm.valid">Crear aplicación</button>
     </div>
   </form>

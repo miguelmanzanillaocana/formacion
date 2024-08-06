@@ -13,6 +13,7 @@ import { Aplicacion } from '../../../models/aplicacion';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearDialogComponent } from './crear-dialog/crear-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Area } from '../../../models/area';
 import { Subarea } from '../../../models/subarea';
 
@@ -47,8 +48,24 @@ export class FormularioComponent {
   tecInt!: TecnologiaInterfaz;
   apl: Aplicacion = new Aplicacion('', '', this.area, this.subarea, this.resp, this.tecn, this.criti, this.volEvol, this.volUsu, this.tipo, this.tecInt);
   aplicacion!: Aplicacion;
-  
-  ngOnInit(): void{
+
+  constructor(private datosService: DatosService, private dialog: MatDialog, private router: Router,private snackBar:MatSnackBar, private fb: FormBuilder) {
+    this.aplicacionForm = this.fb.group({
+      codAplic: new FormControl(this.apl.codAplic, Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(4)])),
+      nombAplic: new FormControl(this.apl.nombAplic),
+      area: new FormControl(this.apl.area),
+      subArea: new FormControl(this.apl.subArea),
+      resp: new FormControl(this.apl.resp),
+      tecn: new FormControl(this.apl.tecn),
+      criti: new FormControl(this.apl.criti),
+      volEvol: new FormControl(this.apl.volEvol),
+      volUsu: new FormControl(this.apl.volUsu),
+      tipo: new FormControl(this.apl.tipo),
+      tecInt: new FormControl(this.apl.tecInt)
+    });
+  } 
+
+  ngOnInit(){
     this.datosService.obtenerAreas().subscribe((datosArea: Area[]) => {
       this.datosArea = datosArea as Area[];
     })
@@ -86,22 +103,6 @@ export class FormularioComponent {
     })
   }
 
-  constructor(private datosService: DatosService, private dialog: MatDialog, private router: Router, private fb: FormBuilder) {
-    this.aplicacionForm = this.fb.group({
-      codAplic: new FormControl(this.apl.codAplic, Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(4)])),
-      nombAplic: new FormControl(this.apl.nombAplic),
-      area: new FormControl(this.apl.area),
-      subArea: new FormControl(this.apl.subArea),
-      resp: new FormControl(this.apl.resp),
-      tecn: new FormControl(this.apl.tecn),
-      criti: new FormControl(this.apl.criti),
-      volEvol: new FormControl(this.apl.volEvol),
-      volUsu: new FormControl(this.apl.volUsu),
-      tipo: new FormControl(this.apl.tipo),
-      tecInt: new FormControl(this.apl.tecInt)
-    });
-  } 
-
   onSubmit(){
     this.area = this.datosArea[this.aplicacionForm.get('area')?.value] || this.datosArea[0];
     this.subarea = this.datosSubarea[this.aplicacionForm.get('subArea')?.value] || this.datosSubarea[0];
@@ -129,13 +130,21 @@ export class FormularioComponent {
 
     this.datosService.insertarAplicacion(this.apl).subscribe(aplicacion => this.aplicacion = aplicacion);
 
-    const dialogRef = this.dialog.open(CrearDialogComponent, {
-      width: '350px',
-    });
+    // const dialogRef = this.dialog.open(CrearDialogComponent, {
+    //   width: '350px',
+    // });
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.router.navigate(['/aplicaciones']);
-    });
+    // dialogRef.afterClosed().subscribe(() => {
+    //   this.router.navigate(['/aplicaciones']);
+    // });
+    this.router.navigate(['/aplicaciones']);
+    this.snackBar.open('Aplicacion ' + this.apl.codAplic + ' creada', '', {
+      duration: 2500
+    })
+  }
+
+  cancelarInsert() {
+    this.router.navigate(['/aplicaciones']);
   }
 
 }
