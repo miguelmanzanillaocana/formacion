@@ -1,4 +1,4 @@
-export interface TecnologiaInterfaz {
+export interface ITecnologiaInterfaz {
     id: number,
     tecnologiaInterfaz: string
 }

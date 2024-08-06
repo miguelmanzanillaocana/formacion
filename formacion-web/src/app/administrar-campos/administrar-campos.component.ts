@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TecnologiaInterfaz } from '../../interfaces/tecnologia-interfaz';
-import { Tipo } from '../../interfaces/tipo';
+import { TecnologiaInterfaz } from '../../interfaces/aplicaciones/i-tecnologia-interfaz';
+import { Tipo } from '../../interfaces/aplicaciones/i-tipo';
 import { DatosService } from '../../services/datos.service';
 import { MatTableModule } from '@angular/material/table';
 import { TablaAreaComponent } from "./tabla-area/tabla-area.component";

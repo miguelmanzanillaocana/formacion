@@ -1,17 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Responsable } from '../models/responsable';
-import { Criticidad } from '../interfaces/criticidad';
-import { Tecnologia } from '../models/tecnologia';
-import { VolumenUsuarios } from '../interfaces/volumen-usuarios';
-import { VolumenEvolutivo } from '../interfaces/volumen-evolutivo';
-import { Tipo } from '../interfaces/tipo';
-import { TecnologiaInterfaz } from '../interfaces/tecnologia-interfaz';
-import { Aplicacion } from '../models/aplicacion';
-import { Situacion } from '../models/situacion';
-import { Area } from '../models/area';
-import { Subarea } from '../models/subarea';
+import { Responsable } from '../models/aplicaciones/responsable';
+import { ICriticidad } from '../interfaces/aplicaciones/i-criticidad';
+import { Tecnologia } from '../models/aplicaciones/tecnologia';
+import { IVolumenUsuarios } from '../interfaces/aplicaciones/i-volumen-usuarios';
+import { IVolumenEvolutivo } from '../interfaces/aplicaciones/i-volumen-evolutivo';
+import { ITipo } from '../interfaces/aplicaciones/i-tipo';
+import { ITecnologiaInterfaz } from '../interfaces/aplicaciones/i-tecnologia-interfaz';
+import { Aplicacion } from '../models/aplicaciones/aplicacion';
+import { Situacion } from '../models/situaciones/situacion';
+import { Area } from '../models/aplicaciones/area';
+import { Subarea } from '../models/aplicaciones/subarea';
+import { Despliegue } from '../models/situaciones/despliegue';
+import { Maven } from '../models/situaciones/maven';
+import { Documentacion } from '../models/situaciones/documentacion';
+import { Pruebas } from '../models/situaciones/pruebas';
+import { Testing } from '../models/situaciones/testing';
+import { Informes } from '../models/situaciones/informes';
+import { ServicioTerceros } from '../models/situaciones/servicio-terceros';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +42,13 @@ export class DatosService {
 
   // Endpoints Situaciones
   private situacion = 'situacion/';
+  private despliegue = 'despliegue/';
+  private maven = 'maven/';
+  private documentacion = 'documentacion/';
+  private planPruebas = 'planPruebas/';
+  private testing = 'testing/';
+  private informes = 'informes/';
+  private serviciosTerceros = 'serviciosTerceros/'
 
   // Endpoints Comunes
   private insert = 'insert';
@@ -69,30 +83,62 @@ export class DatosService {
     return this.http.get<Responsable[]>(this.urlBase + this.responsable);
   }
   
-  obtenerCriticidades(): Observable<Criticidad[]> {
-    return this.http.get<Criticidad[]>(this.urlBase + this.criticidad);
+  obtenerCriticidades(): Observable<ICriticidad[]> {
+    return this.http.get<ICriticidad[]>(this.urlBase + this.criticidad);
   }
 
   obtenerTecnologias(): Observable<Tecnologia[]> {
     return this.http.get<Tecnologia[]>(this.urlBase + this.tecnologia);
   }
 
-  obtenerVolumenesUsuarios(): Observable<VolumenUsuarios[]> {
-    return this.http.get<VolumenUsuarios[]>(this.urlBase + this.volumenUsuarios);
+  obtenerVolumenesUsuarios(): Observable<IVolumenUsuarios[]> {
+    return this.http.get<IVolumenUsuarios[]>(this.urlBase + this.volumenUsuarios);
   }
-  obtenerVolumenesEvolutivo(): Observable<VolumenEvolutivo[]> {
-    return this.http.get<VolumenEvolutivo[]>(this.urlBase + this.volumenEvolutivo);
+  obtenerVolumenesEvolutivo(): Observable<IVolumenEvolutivo[]> {
+    return this.http.get<IVolumenEvolutivo[]>(this.urlBase + this.volumenEvolutivo);
   }
-  obtenerTipos(): Observable<Tipo[]> {
-    return this.http.get<Tipo[]>(this.urlBase + this.tipo);
+  obtenerTipos(): Observable<ITipo[]> {
+    return this.http.get<ITipo[]>(this.urlBase + this.tipo);
   }
-  obtenerTecnologiaInterfaz(): Observable<TecnologiaInterfaz[]> {
-    return this.http.get<TecnologiaInterfaz[]>(this.urlBase + this.tecnologiaInterfaz);
+  obtenerTecnologiaInterfaz(): Observable<ITecnologiaInterfaz[]> {
+    return this.http.get<ITecnologiaInterfaz[]>(this.urlBase + this.tecnologiaInterfaz);
   }
 
   //Situaciones
   obtenerSituaciones(): Observable<Situacion[]> {
     return this.http.get<Situacion[]>(this.urlBase + this.situacion);
+  }
+
+  obtenerDespliegues(): Observable<Despliegue[]> {
+    return this.http.get<Despliegue[]>(this.urlBase + this.despliegue);
+  }
+
+  obtenerMavens(): Observable<Maven[]> {
+    return this.http.get<Maven[]>(this.urlBase + this.maven);
+  }
+
+  obtenerDocumentacion(): Observable<Documentacion[]> {
+    return this.http.get<Documentacion[]>(this.urlBase + this.documentacion);
+  }
+
+  obtenerPlanPruebas(): Observable<Pruebas[]> {
+    return this.http.get<Pruebas[]>(this.urlBase + this.planPruebas);
+  }
+
+  obtenerTesting(): Observable<Testing[]> {
+    return this.http.get<Testing[]>(this.urlBase + this.testing);
+  }
+
+  obtenerInformes(): Observable<Informes[]> {
+    return this.http.get<Informes[]>(this.urlBase + this.informes);
+  }
+
+  obtenerServicioTerceros(): Observable<ServicioTerceros[]> {
+    return this.http.get<ServicioTerceros[]>(this.urlBase + this.serviciosTerceros);
+  }
+
+  obtenerComentariosSituacion() {
+
   }
 
   //Administración

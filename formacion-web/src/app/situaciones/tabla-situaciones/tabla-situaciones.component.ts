@@ -2,7 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import { Situacion } from '../../../models/situacion';
+import { Situacion } from '../../../models/situaciones/situacion';
 import { DatosService } from '../../../services/datos.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';

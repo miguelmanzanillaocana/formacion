@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Responsable } from '../../../models/responsable';
+import { Responsable } from '../../../models/aplicaciones/responsable';
 import { DatosService } from '../../../services/datos.service';
 import { CommonModule } from '@angular/common';
-import { Criticidad } from '../../../interfaces/criticidad';
-import { Tecnologia } from '../../../models/tecnologia';
-import { VolumenUsuarios } from '../../../interfaces/volumen-usuarios';
-import { VolumenEvolutivo } from '../../../interfaces/volumen-evolutivo';
-import { Tipo } from '../../../interfaces/tipo';
-import { TecnologiaInterfaz } from '../../../interfaces/tecnologia-interfaz';
-import { Aplicacion } from '../../../models/aplicacion';
+import { Criticidad } from '../../../interfaces/aplicaciones/i-criticidad';
+import { Tecnologia } from '../../../models/aplicaciones/tecnologia';
+import { VolumenUsuarios } from '../../../interfaces/aplicaciones/i-volumen-usuarios';
+import { VolumenEvolutivo } from '../../../interfaces/aplicaciones/i-volumen-evolutivo';
+import { Tipo } from '../../../interfaces/aplicaciones/i-tipo';
+import { TecnologiaInterfaz } from '../../../interfaces/aplicaciones/i-tecnologia-interfaz';
+import { Aplicacion } from '../../../models/aplicaciones/aplicacion';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CrearDialogComponent } from './crear-dialog/crear-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Area } from '../../../models/area';
-import { Subarea } from '../../../models/subarea';
+import { Area } from '../../../models/aplicaciones/area';
+import { Subarea } from '../../../models/aplicaciones/subarea';
 
 @Component({
   selector: 'app-formulario',

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Subarea } from '../../../models/subarea';
+import { Subarea } from '../../../models/aplicaciones/subarea';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DatosService } from '../../../services/datos.service';
 import { CommonModule } from '@angular/common';

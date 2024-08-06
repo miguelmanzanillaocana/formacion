@@ -1,5 +1,5 @@
-import { Aplicacion } from '../../../models/aplicacion';
-import { AplicacionString } from '../../../models/aplicacion-string';
+import { Aplicacion } from '../../../models/aplicaciones/aplicacion';
+import { AplicacionString } from '../../../models/aplicaciones/aplicacion-string';
 import { Observable } from 'rxjs';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';

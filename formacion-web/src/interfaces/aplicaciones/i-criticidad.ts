@@ -1,4 +1,4 @@
-export interface Criticidad {
+export interface ICriticidad {
     id: number,
     criticidad: string
 }

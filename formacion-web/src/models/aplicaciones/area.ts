@@ -1,4 +1,4 @@
-import { IArea } from "../interfaces/i-area";
+import { IArea } from "../../interfaces/aplicaciones/i-area";
 
 export class Area implements IArea{
     id_Area: number;

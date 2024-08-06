@@ -1,4 +1,4 @@
-import { ISubArea } from "../interfaces/i-subarea";
+import { ISubArea } from "../../interfaces/aplicaciones/i-subarea";
 
 export class Subarea implements ISubArea{
     id: number;

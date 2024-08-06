@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { DatosService } from '../../../../services/datos.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Area } from '../../../../models/area';
+import { Area } from '../../../../models/aplicaciones/area';
  
 @Component({
   selector: 'app-insert-area-dialog',

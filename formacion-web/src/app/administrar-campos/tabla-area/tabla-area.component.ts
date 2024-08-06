@@ -1,7 +1,7 @@
 // tabla-area.component.ts
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Area } from '../../../models/area';
+import { Area } from '../../../models/aplicaciones/area';
 import { DatosService } from '../../../services/datos.service';
 import { CommonModule } from '@angular/common';
 import { InsertAreaDialogComponent } from './insert-area-dialog/insert-area-dialog.component';

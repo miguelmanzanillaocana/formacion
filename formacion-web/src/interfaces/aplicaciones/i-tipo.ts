@@ -1,4 +1,4 @@
-export interface Tipo {
+export interface ITipo {
     id: number,
     tipo: string
 }

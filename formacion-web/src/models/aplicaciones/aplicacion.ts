@@ -1,13 +1,13 @@
-import { IAplicacion } from "../interfaces/i-aplicacion";
+import { IAplicacion } from "../../interfaces/aplicaciones/i-aplicacion";
 import { Area } from "./area";
-import { Criticidad } from "../interfaces/criticidad";
+import { Criticidad } from "../../interfaces/aplicaciones/i-criticidad";
 import { Responsable } from "../models/responsable";
 import { Subarea } from "../models/subarea";
 import { Tecnologia } from "../models/tecnologia";
-import { TecnologiaInterfaz } from "../interfaces/tecnologia-interfaz";
-import { Tipo } from "../interfaces/tipo";
-import { VolumenEvolutivo } from "../interfaces/volumen-evolutivo";
-import { VolumenUsuarios } from "../interfaces/volumen-usuarios";
+import { TecnologiaInterfaz } from "../../interfaces/aplicaciones/i-tecnologia-interfaz";
+import { Tipo } from "../../interfaces/aplicaciones/i-tipo";
+import { VolumenEvolutivo } from "../../interfaces/aplicaciones/i-volumen-evolutivo";
+import { VolumenUsuarios } from "../../interfaces/aplicaciones/i-volumen-usuarios";
 
 export class Aplicacion implements IAplicacion {
 

@@ -1,4 +1,4 @@
-import { ITecnologia } from "../interfaces/i-tecnologia";
+import { ITecnologia } from "../../interfaces/aplicaciones/i-tecnologia";
 
 export class Tecnologia implements ITecnologia{
     id: number;

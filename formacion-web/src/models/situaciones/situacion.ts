@@ -1,4 +1,4 @@
-import { ISituacion } from "../interfaces/i-situacion";
+import { ISituacion } from "../../interfaces/situaciones/i-situacion";
 
 export class Situacion implements ISituacion{
     id: number;

@@ -6,7 +6,7 @@ import { MatDialogClose } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { DatosService } from '../../../../services/datos.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Subarea } from '../../../../models/subarea';
+import { Subarea } from '../../../../models/aplicaciones/subarea';
 @Component({
   selector: 'app-insert-subarea-dialog',
   standalone: true,

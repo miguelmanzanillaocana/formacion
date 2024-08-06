@@ -1,4 +1,4 @@
-import { IResponsable } from "../interfaces/i-responsable";
+import { IResponsable } from "../../interfaces/aplicaciones/i-responsable";
 
 export class Responsable implements IResponsable{
     id: number;

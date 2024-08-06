@@ -1,4 +1,4 @@
-export interface VolumenUsuarios {
+export interface IVolumenUsuarios {
     id: number,
     volumenUsuarios: string
 }
