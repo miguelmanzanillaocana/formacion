@@ -1,4 +1,11 @@
 import { ISituacion } from "../../interfaces/situaciones/i-situacion";
+import { Despliegue } from "./despliegue";
+import { Documentacion } from "./documentacion";
+import { Informes } from "./informes";
+import { Maven } from "./maven";
+import { Pruebas } from "./pruebas";
+import { ServicioTerceros } from "./servicio-terceros";
+import { Testing } from "./testing";
 
 export class Situacion implements ISituacion{
     id: number;
@@ -9,18 +16,18 @@ export class Situacion implements ISituacion{
     develop: string;
     actualizado: number;
     produccion: string;
-    despl: number;
+    despl: Despliegue;
     was: number;
-    maven: number;
-    doc: number;
-    pruebas: number;
-    test: number;
-    inf: number;
-    terc: number;
+    maven: Maven;
+    doc: Documentacion;
+    pruebas: Pruebas;
+    test: Testing;
+    inf: Informes;
+    terc: ServicioTerceros;
 
     constructor(codApli: string, pro: number, gruGit: number, master: string, develop: string, actualizado: number,
-            produccion: string, despl: number, was: number, maven: number, doc: number, pruebas: number, test: number,
-            inf: number, terc: number){
+            produccion: string, despl: Despliegue, was: number, maven: Maven, doc: Documentacion, pruebas: Pruebas, test: Testing,
+            inf: Informes, terc: ServicioTerceros){
         this.id = 0;
         this.codApli = codApli;
         this.pro = pro;

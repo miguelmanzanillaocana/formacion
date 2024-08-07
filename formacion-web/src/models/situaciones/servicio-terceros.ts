@@ -2,10 +2,10 @@ import { IServicioTerceros } from "../../interfaces/situaciones/i-servicio-terce
 
 export class ServicioTerceros implements IServicioTerceros{
     id: number;
-    servicioTerceros: string;
+    serviciosTerceros: string;
 
-    constructor(id: number, servicioTerceros: string) {
+    constructor(id: number, serviciosTerceros: string) {
         this.id = id;
-        this.servicioTerceros = servicioTerceros;
+        this.serviciosTerceros = serviciosTerceros;
     }
 }

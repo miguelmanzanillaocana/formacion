@@ -1,0 +1,37 @@
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col my-auto">
+            <div class="form-floating my-auto">
+                <input type="text" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)"
+                    id="filtro">
+                <label for="filtro">Filtrar por...</label>
+            </div>
+        </div>
+        <div class="col-6 my-auto text-end">
+            <button type="button" class="btn btn-success my-auto mx-4" (click)="abrirDialogoInsertTecnologia()">
+                Nueva Tecnologia Interfaz
+            </button>
+        </div>
+    </div> 
+</div>
+
+<div class="container-fluid mt-2">
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="tecnologiaInterfaz">
+            <mat-header-cell *matHeaderCellDef>Tecnologia Interfaz</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div *ngIf="row.id != 0; else elseBlock"> {{row.tecnologiaInterfaz}} </div>
+                <ng-template #elseBlock>Sin tecnologia interfaz</ng-template>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[3, 5, 8, 10]"></mat-paginator>
+</div>

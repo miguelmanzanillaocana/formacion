@@ -1,0 +1,30 @@
+<h2 mat-dialog-class class="mt-4 ms-4">Nueva Tecnologia Interfaz</h2>
+
+<mat-dialog-content>
+    <p>Introduzca la nueva tecnologia interfaz:</p>
+    <form class="m-2 pt-2" [formGroup]="tecnologiaForm">
+        <div class="form-floating my-2">
+            <input 
+            required 
+            type="text" 
+            class="form-control" 
+            id="nombre-tecnologia" 
+            formControlName="nombreTecnologia" 
+            placeholder=""
+            [class.is-invalid]="tecnologiaForm.get('nombreTecnologia')?.invalid && (tecnologiaForm.get('nombreTecnologia')?.dirty || tecnologiaForm.get('nombreTecnologia')?.touched)">
+            <label for="nombre-tecnologia">Nombre de la tecnologia</label>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close [mat-dialog-close]="false" class="btn btn-cancelar btn-outline-danger">Cancelar</button>
+    <button 
+    mat-button 
+    mat-dialog-close 
+    cdkFocusInitial 
+    [mat-dialog-close]="true" 
+    [disabled]="!tecnologiaForm.valid" 
+    class="btn btn-anadir btn-success" 
+    (click)="insertarTecnologia()"> Insertar </button>
+</mat-dialog-actions>

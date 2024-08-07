@@ -6,10 +6,10 @@ import { Situacion } from '../../../models/situaciones/situacion';
 import { DatosService } from '../../../services/datos.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Comun } from '../../../models/comun';
-
+import { SituacionString } from '../../../models/situaciones/situacion-string';
+ 
 @Component({
   selector: 'app-tabla-situaciones',
   standalone: true,
@@ -18,11 +18,10 @@ import { Comun } from '../../../models/comun';
   styleUrl: './tabla-situaciones.component.css'
 })
 export class TablaSituacionesComponent {
-  datosSituacion: Situacion[]=[];
+  datosSituacion: SituacionString[]=[];
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
-  situacionService!: Observable<Situacion[]>;
   displayedColumns = ['codApli', 'pro', 'gruGit', 'master', 'develop', 'actualizado', 'produccion', 'despl', 'was', 'maven', 'doc', 'pruebas', 'test', 'inf', 'terc','editar'];
-  dataSource: MatTableDataSource<Situacion> = new MatTableDataSource();
+  dataSource: MatTableDataSource<SituacionString> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
@@ -31,7 +30,26 @@ export class TablaSituacionesComponent {
 
   ngOnInit() {
     this.datosService.obtenerSituaciones().subscribe((datos: Situacion[]) => {
-      this.datosSituacion = datos as Situacion[];
+      this.datosSituacion = datos.map((situacion: Situacion) => {
+        return new SituacionString(
+          situacion.codApli,
+          situacion.pro,
+          situacion.gruGit,
+          situacion.master,
+          situacion.develop,
+          situacion.actualizado,
+          situacion.produccion,
+          situacion.despl.despliegue,
+          situacion.was,
+          situacion.maven.maven,
+          situacion.doc.documentacion,
+          situacion.pruebas.planPruebas,
+          situacion.test.testing,
+          situacion.inf.informes,
+          situacion.terc.serviciosTerceros
+        );
+      });
+      console.log('Datos cargados:', this.datosSituacion);
       this.dataSource = new MatTableDataSource(this.datosSituacion);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

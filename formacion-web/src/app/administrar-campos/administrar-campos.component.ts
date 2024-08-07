@@ -7,11 +7,13 @@ import { TablaAreaComponent } from "./tabla-area/tabla-area.component";
 import { TablaSubareaComponent } from "./tabla-subarea/tabla-subarea.component";
 import { TablaResponsableComponent } from "./tabla-responsable/tabla-responsable.component";
 import { TablaTecnologiaComponent } from "./tabla-tecnologia/tabla-tecnologia.component";
+import { TablaTipoComponent } from "./tabla-tipo/tabla-tipo.component";
+import { TablaTecnologiaInterfazComponent } from "./tabla-tecnologia-interfaz/tabla-tecnologia-interfaz.component";
 
 @Component({
   selector: 'app-administrar-campos',
   standalone: true,
-  imports: [MatTableModule, TablaAreaComponent, TablaSubareaComponent, TablaResponsableComponent, TablaTecnologiaComponent],
+  imports: [MatTableModule, TablaAreaComponent, TablaSubareaComponent, TablaResponsableComponent, TablaTecnologiaComponent, TablaTipoComponent, TablaTecnologiaInterfazComponent],
   templateUrl: './administrar-campos.component.html',
   styleUrl: './administrar-campos.component.css'
 })
@@ -20,10 +22,6 @@ export class AdministrarCamposComponent {
   datosTecInt: TecnologiaInterfaz[]=[];
 
   ngOnInit(): void{
-
-    this.datosService.obtenerTipos().subscribe((datosTipo: Tipo[]) => {
-      this.datosTipo = datosTipo as Tipo[];
-    })
 
     this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: TecnologiaInterfaz[]) => {
       this.datosTecInt = datosTecnoInt as TecnologiaInterfaz[];

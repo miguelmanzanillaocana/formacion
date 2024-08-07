@@ -1,39 +1,37 @@
+
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Tecnologia } from '../../../models/aplicaciones/tecnologia';
 import { DatosService } from '../../../services/datos.service';
 import { MatDialog } from '@angular/material/dialog';
-import { InsertTecnologiaDialogComponent } from './insert-tecnologia-dialog/insert-tecnologia-dialog.component';
+import { Tipo } from '../../../models/aplicaciones/tipo';
+import { InsertTipoDialogComponent } from './insert-tipo-dialog/insert-tipo-dialog.component';
 
-
-@Component({ 
-  selector: 'app-tabla-tecnologia',
+@Component({
+  selector: 'app-tabla-tipo',
   standalone: true,
   imports: [CommonModule,MatTableModule,MatPaginator],
-  templateUrl: './tabla-tecnologia.component.html',
-  styleUrl: './tabla-tecnologia.component.css'
+  templateUrl: './tabla-tipo.component.html',
+  styleUrl: './tabla-tipo.component.css'
 })
-export class TablaTecnologiaComponent {
-
-  datosTecnologia: Tecnologia[]=[];
-
-  displayedColumns = ['id','tecnologia'];
-  dataSource: MatTableDataSource<Tecnologia> = new MatTableDataSource();
+export class TablaTipoComponent {
+  datosTipo: Tipo[]=[];
+  displayedColumns = ['id','tipo'];
+  dataSource: MatTableDataSource<Tipo> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
   constructor(private datosService: DatosService,private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.datosService.obtenerTecnologias().subscribe((datos: Tecnologia[]) => {
-      this.datosTecnologia = datos as Tecnologia[];
-      this.dataSource = new MatTableDataSource(this.datosTecnologia);
+    this.datosService.obtenerTipos().subscribe((datos: Tipo[]) => {
+      this.datosTipo = datos as Tipo[];
+      this.dataSource = new MatTableDataSource(this.datosTipo);
       this.dataSource.paginator = this.paginator;
     })
   }
- 
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -43,8 +41,8 @@ export class TablaTecnologiaComponent {
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
-  abrirDialogoInsertTecnologia() {
-    const dialogRef = this.dialog.open(InsertTecnologiaDialogComponent, {
+  abrirDialogoInsertTipo() {
+    const dialogRef = this.dialog.open(InsertTipoDialogComponent, {
       width: '500px'
     }).afterClosed().subscribe((res) => {
       location.reload();

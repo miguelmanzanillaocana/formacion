@@ -1,34 +1,32 @@
 import { CommonModule } from '@angular/common';
+import { TecnologiaInterfaz } from '../../../models/aplicaciones/tecnologia-interfaz';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Tecnologia } from '../../../models/aplicaciones/tecnologia';
 import { DatosService } from '../../../services/datos.service';
 import { MatDialog } from '@angular/material/dialog';
-import { InsertTecnologiaDialogComponent } from './insert-tecnologia-dialog/insert-tecnologia-dialog.component';
+import { InsertTecnologiaInterfazDialogComponent } from './insert-tecnologia-interfaz-dialog/insert-tecnologia-interfaz-dialog.component';
 
-
-@Component({ 
-  selector: 'app-tabla-tecnologia',
+@Component({
+  selector: 'app-tabla-tecnologia-interfaz',
   standalone: true,
   imports: [CommonModule,MatTableModule,MatPaginator],
-  templateUrl: './tabla-tecnologia.component.html',
-  styleUrl: './tabla-tecnologia.component.css'
+  templateUrl: './tabla-tecnologia-interfaz.component.html',
+  styleUrl: './tabla-tecnologia-interfaz.component.css'
 })
-export class TablaTecnologiaComponent {
+export class TablaTecnologiaInterfazComponent {
+  datosTecnologia: TecnologiaInterfaz[]=[];
 
-  datosTecnologia: Tecnologia[]=[];
-
-  displayedColumns = ['id','tecnologia'];
-  dataSource: MatTableDataSource<Tecnologia> = new MatTableDataSource();
+  displayedColumns = ['id','tecnologiaInterfaz'];
+  dataSource: MatTableDataSource<TecnologiaInterfaz> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
 
   constructor(private datosService: DatosService,private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.datosService.obtenerTecnologias().subscribe((datos: Tecnologia[]) => {
-      this.datosTecnologia = datos as Tecnologia[];
+    this.datosService.obtenerTecnologiaInterfaz().subscribe((datos: TecnologiaInterfaz[]) => {
+      this.datosTecnologia = datos as TecnologiaInterfaz[];
       this.dataSource = new MatTableDataSource(this.datosTecnologia);
       this.dataSource.paginator = this.paginator;
     })
@@ -44,10 +42,10 @@ export class TablaTecnologiaComponent {
     this.dataSource.filter = filterValue;
   }
   abrirDialogoInsertTecnologia() {
-    const dialogRef = this.dialog.open(InsertTecnologiaDialogComponent, {
-      width: '500px'
-    }).afterClosed().subscribe((res) => {
-      location.reload();
-    });
+    const dialogRef = this.dialog.open(InsertTecnologiaInterfazDialogComponent, {
+       width: '500px'
+     }).afterClosed().subscribe((res) => {
+       location.reload();
+     });
   }
 }

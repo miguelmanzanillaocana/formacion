@@ -1,3 +1,11 @@
+import { Despliegue } from "../../models/situaciones/despliegue";
+import { Documentacion } from "../../models/situaciones/documentacion";
+import { Informes } from "../../models/situaciones/informes";
+import { Maven } from "../../models/situaciones/maven";
+import { Pruebas } from "../../models/situaciones/pruebas";
+import { ServicioTerceros } from "../../models/situaciones/servicio-terceros";
+import { Testing } from "../../models/situaciones/testing";
+
 export interface ISituacion {
     id: number;
     codApli: string;
@@ -7,12 +15,12 @@ export interface ISituacion {
     develop: string;
     actualizado: number;
     produccion: string;
-    despl: number;
+    despl: Despliegue;
     was: number;
-    maven: number;
-    doc: number;
-    pruebas: number;
-    test: number;
-    inf: number;
-    terc: number;
+    maven: Maven;
+    doc: Documentacion;
+    pruebas: Pruebas;
+    test: Testing;
+    inf: Informes;
+    terc: ServicioTerceros;
 }

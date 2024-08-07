@@ -174,4 +174,19 @@ export class DatosService {
     return this.http.put<Tecnologia>(this.urlBase + this.tecnologia + this.update, te);
   }
 
+  insertarTipo(ti: Tipo): Observable<Tipo> {
+    return this.http.post<Tipo>(this.urlBase + this.tipo + this.insert, ti);
+  }
+
+  actualizarTipo(ti: Tipo): Observable<Tipo> {
+    return this.http.put<Tipo>(this.urlBase + this.tipo + this.update, ti);
+  }
+
+  insertarTecnologiaInterfaz(te: TecnologiaInterfaz): Observable<TecnologiaInterfaz> {
+    return this.http.post<TecnologiaInterfaz>(this.urlBase + this.tecnologiaInterfaz + this.insert, te);
+  }
+
+  actualizarTecnologiaInterfaz(te: TecnologiaInterfaz): Observable<TecnologiaInterfaz> {
+    return this.http.put<TecnologiaInterfaz>(this.urlBase + this.tecnologiaInterfaz + this.update, te);
+  }
 }

@@ -1,4 +1,4 @@
 export interface IPlanPruebas {
     id: number;
-    pruebas: string;
+    planPruebas: string;
 }
