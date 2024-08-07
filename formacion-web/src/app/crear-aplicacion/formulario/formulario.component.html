@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <h1 class="mt-4 mx-2 pb-2">Crear nueva Aplicación</h1>
-  <form class="mx-2 my-2 pt-2" [formGroup]="aplicacionForm" (ngSubmit)="onSubmit()">
+  <form class="mx-2 my-2 pt-2" [formGroup]="aplicacionForm">
     <div class="row ">
       <div class="col-md-3">
         <div class="form-floating mb-2">
@@ -104,9 +104,62 @@
         </div>
       </div>
     </div>
-    <div class="text-center mb-4">
-      <button class="btn btn-outline-danger my-2 me-2" (click)="cancelarInsert()">Cancelar</button>
-      <button type="submit" class="btn btn-success my-2" [disabled]="!aplicacionForm.valid">Crear aplicación</button>
+    
+  </form>
+  <h2>Situacion</h2>
+  <form class="mx-2 my-2 pt-2" [formGroup]="situacionForm">
+    <div class="col-md-2">
+      <div class="form-floating mb-3">
+        <select class="form-select" id="cb-prosa" formControlName="prosa">
+          <option value="0">No</option>
+          <option value="1">Si</option>
+        </select>
+        <label for="cb-prosa">Prosa</label>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-floating mb-3">
+        <select class="form-select" id="cb-grupoGit" formControlName="gruGit">
+          <option value="0">No</option>
+          <option value="1">Si</option>
+        </select>
+        <label for="cb-grupoGit">Grupo en git</label>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="master" formControlName="master"
+            placeholder="test" />
+        <label for="master">Version Master</label>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="develop" formControlName="develop"
+            placeholder="test" />
+        <label for="develop">Version Develop</label>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-floating mb-3">
+        <select class="form-select" id="cb-actualizado" formControlName="actualizado">
+          <option value="0">No</option>
+          <option value="1">Si</option>
+        </select>
+        <label for="cb-grupoGit">Actualizado</label>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="produccion" formControlName="produccion"
+            placeholder="test" />
+        <label for="produccion">Version produccion</label>
+      </div>
     </div>
   </form>
+
+  <div class="text-center mb-4">
+    <button class="btn btn-outline-danger my-2 me-2" (click)="cancelarInsert()">Cancelar</button>
+    <button class="btn btn-success my-2" (click)="onSubmit()" [disabled]="!aplicacionForm.valid">Crear aplicación</button>
+  </div>
 </div>

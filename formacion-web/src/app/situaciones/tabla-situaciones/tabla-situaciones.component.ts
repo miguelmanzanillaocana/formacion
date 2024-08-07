@@ -49,7 +49,6 @@ export class TablaSituacionesComponent {
           situacion.terc.serviciosTerceros
         );
       });
-      console.log('Datos cargados:', this.datosSituacion);
       this.dataSource = new MatTableDataSource(this.datosSituacion);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

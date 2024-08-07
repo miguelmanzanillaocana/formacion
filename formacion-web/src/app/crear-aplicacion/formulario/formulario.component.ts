@@ -16,6 +16,14 @@ import { CrearDialogComponent } from './crear-dialog/crear-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Area } from '../../../models/aplicaciones/area';
 import { Subarea } from '../../../models/aplicaciones/subarea';
+import { Situacion } from '../../../models/situaciones/situacion';
+import { Despliegue } from '../../../models/situaciones/despliegue';
+import { Maven } from '../../../models/situaciones/maven';
+import { Documentacion } from '../../../models/situaciones/documentacion';
+import { Pruebas } from '../../../models/situaciones/pruebas';
+import { Testing } from '../../../models/situaciones/testing';
+import { Informes } from '../../../models/situaciones/informes';
+import { ServicioTerceros } from '../../../models/situaciones/servicio-terceros';
 
 @Component({
   selector: 'app-formulario',
@@ -36,6 +44,7 @@ export class FormularioComponent {
   datosTipo: Tipo[]=[];
   datosTecInt: TecnologiaInterfaz[]=[];
   aplicacionForm: FormGroup;
+  situacionForm: FormGroup;
   
   area!: Area;
   subarea!: Subarea;
@@ -48,6 +57,15 @@ export class FormularioComponent {
   tecInt!: TecnologiaInterfaz;
   apl: Aplicacion = new Aplicacion('', '', this.area, this.subarea, this.resp, this.tecn, this.criti, this.volEvol, this.volUsu, this.tipo, this.tecInt);
   aplicacion!: Aplicacion;
+
+  desp!: Despliegue;
+  mav!: Maven;
+  doc!: Documentacion;
+  pruebas!: Pruebas;
+  test!: Testing;
+  inf!:Informes;
+  serv!: ServicioTerceros;
+  situ: Situacion=new Situacion('',0,0,'','',0,'',this.desp,0,this.mav,this.doc,this.pruebas,this.test,this.inf,this.serv)
 
   constructor(private datosService: DatosService, private dialog: MatDialog, private router: Router,private snackBar:MatSnackBar, private fb: FormBuilder) {
     this.aplicacionForm = this.fb.group({
@@ -62,6 +80,14 @@ export class FormularioComponent {
       volUsu: new FormControl(this.apl.volUsu),
       tipo: new FormControl(this.apl.tipo),
       tecInt: new FormControl(this.apl.tecInt)
+    });
+    this.situacionForm=this.fb.group({
+      prosa: new FormControl(this.situ.pro),
+      gruGit: new FormControl(this.situ.gruGit),
+      master: new FormControl(this.situ.master),
+      develop: new FormControl(this.situ.develop),
+      actualizado: new FormControl(this.situ.actualizado),
+      produccion: new FormControl(this.situ.produccion),
     });
   } 
 
