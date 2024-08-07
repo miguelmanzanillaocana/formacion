@@ -1,0 +1,30 @@
+<h2 mat-dialog-class class="mt-4 ms-4">Nueva Documentacion</h2>
+
+<mat-dialog-content>
+    <p>Introduzca la nueva documentacion:</p>
+    <form class="m-2 pt-2" [formGroup]="documentacionForm">
+        <div class="form-floating my-2">
+            <input 
+            required 
+            type="text" 
+            class="form-control" 
+            id="nombre-documentacion" 
+            formControlName="nombreDocumentacion" 
+            placeholder=""
+            [class.is-invalid]="documentacionForm.get('nombreDocumentacion')?.invalid && (documentacionForm.get('nombreDocumentacion')?.dirty || documentacionForm.get('nombreDocumentacion')?.touched)">
+            <label for="nombre-documentacion">Nombre del Despliegue</label>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close [mat-dialog-close]="false" class="btn btn-cancelar btn-outline-danger">Cancelar</button>
+    <button 
+    mat-button 
+    mat-dialog-close 
+    cdkFocusInitial 
+    [mat-dialog-close]="true" 
+    [disabled]="!documentacionForm.valid" 
+    class="btn btn-anadir btn-success" 
+    (click)="insertarDocumentacion()"> Insertar </button>
+</mat-dialog-actions>

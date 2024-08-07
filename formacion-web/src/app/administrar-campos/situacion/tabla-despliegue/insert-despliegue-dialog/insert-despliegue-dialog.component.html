@@ -1,0 +1,30 @@
+<h2 mat-dialog-class class="mt-4 ms-4">Nuevo Despliegue</h2>
+
+<mat-dialog-content>
+    <p>Introduzca el nuevo despliegue:</p>
+    <form class="m-2 pt-2" [formGroup]="despliegueForm">
+        <div class="form-floating my-2">
+            <input 
+            required 
+            type="text" 
+            class="form-control" 
+            id="nombre-despliegue" 
+            formControlName="nombreDespliegue" 
+            placeholder=""
+            [class.is-invalid]="despliegueForm.get('nombreDespliegue')?.invalid && (despliegueForm.get('nombreDespliegue')?.dirty || despliegueForm.get('nombreDespliegue')?.touched)">
+            <label for="nombre-despliegue">Nombre del Despliegue</label>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close [mat-dialog-close]="false" class="btn btn-cancelar btn-outline-danger">Cancelar</button>
+    <button 
+    mat-button 
+    mat-dialog-close 
+    cdkFocusInitial 
+    [mat-dialog-close]="true" 
+    [disabled]="!despliegueForm.valid" 
+    class="btn btn-anadir btn-success" 
+    (click)="insertarDespliegue()"> Insertar </button>
+</mat-dialog-actions>

@@ -189,4 +189,28 @@ export class DatosService {
   actualizarTecnologiaInterfaz(te: TecnologiaInterfaz): Observable<TecnologiaInterfaz> {
     return this.http.put<TecnologiaInterfaz>(this.urlBase + this.tecnologiaInterfaz + this.update, te);
   }
+
+  insertarDespliegue(des: Despliegue): Observable<Despliegue> {
+    return this.http.post<Despliegue>(this.urlBase + this.despliegue + this.insert, des);
+  }
+
+  actualizarDespliegue(des: Despliegue): Observable<Despliegue> {
+    return this.http.put<Despliegue>(this.urlBase + this.despliegue + this.update, des);
+  }
+
+  insertarDocumentacion(doc: Documentacion): Observable<Documentacion> {
+    return this.http.post<Documentacion>(this.urlBase + this.documentacion + this.insert, doc);
+  }
+
+  actualizarDocumentacion(doc: Documentacion): Observable<Documentacion> {
+    return this.http.put<Documentacion>(this.urlBase + this.documentacion + this.update, doc);
+  }
+
+  insertarInformes(inf: Informes): Observable<Informes> {
+    return this.http.post<Informes>(this.urlBase + this.informes + this.insert, inf);
+  }
+
+  actualizarInformes(inf: Informes): Observable<Informes> {
+    return this.http.put<Informes>(this.urlBase + this.informes + this.update, inf);
+  }
 }

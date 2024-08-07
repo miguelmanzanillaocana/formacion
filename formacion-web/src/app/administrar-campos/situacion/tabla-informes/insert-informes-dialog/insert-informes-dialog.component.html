@@ -1,0 +1,30 @@
+<h2 mat-dialog-class class="mt-4 ms-4">Nuevo Informes</h2>
+
+<mat-dialog-content>
+    <p>Introduzca la nuevo informes:</p>
+    <form class="m-2 pt-2" [formGroup]="informesForm">
+        <div class="form-floating my-2">
+            <input 
+            required 
+            type="text" 
+            class="form-control" 
+            id="nombre-informes" 
+            formControlName="nombreInformes" 
+            placeholder=""
+            [class.is-invalid]="informesForm.get('nombreInformes')?.invalid && (informesForm.get('nombreInformes')?.dirty || informesForm.get('nombreInformes')?.touched)">
+            <label for="nombre-informes">Nombre del Despliegue</label>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close [mat-dialog-close]="false" class="btn btn-cancelar btn-outline-danger">Cancelar</button>
+    <button 
+    mat-button 
+    mat-dialog-close 
+    cdkFocusInitial 
+    [mat-dialog-close]="true" 
+    [disabled]="!informesForm.valid" 
+    class="btn btn-anadir btn-success" 
+    (click)="insertarInformes()"> Insertar </button>
+</mat-dialog-actions>
