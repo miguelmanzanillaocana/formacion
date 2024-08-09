@@ -1,1 +1,8 @@
 @import url(../../../styles/tables.css);
+
+.boton-accion{
+    margin: 0.10m;
+    --bs-btn-padding-y: 0.25rem;
+    --bs-btn-padding-x: 0.5rem;
+    --bs-btn-font-size: 1rem;
+}

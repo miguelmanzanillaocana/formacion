@@ -64,7 +64,10 @@
         <!-- Versión WAS Column -->
         <ng-container matColumnDef="was">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Versión WAS</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.was}} </mat-cell>
+            <mat-cell *matCellDef="let row"> 
+                <div *ngIf="row.was != 0; else elseBlock">{{row.was}}</div> 
+                <ng-template #elseBlock></ng-template>
+            </mat-cell>
         </ng-container>
 
         <!-- Maven Column -->

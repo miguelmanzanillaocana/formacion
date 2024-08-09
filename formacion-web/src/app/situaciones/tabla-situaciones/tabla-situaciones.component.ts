@@ -9,11 +9,12 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Comun } from '../../../models/comun';
 import { SituacionString } from '../../../models/situaciones/situacion-string';
+import { CommonModule } from '@angular/common';
  
 @Component({
   selector: 'app-tabla-situaciones',
   standalone: true,
-  imports: [MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, RouterLink, RouterOutlet],
+  imports: [MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, RouterLink, RouterOutlet,CommonModule],
   templateUrl: './tabla-situaciones.component.html',
   styleUrl: './tabla-situaciones.component.css'
 })

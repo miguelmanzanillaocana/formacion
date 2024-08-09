@@ -39,6 +39,7 @@ public class SituacionService {
 	}
 	
 	public Situacion insertSituacion(Situacion sit) {
+		sit.setId(repository.getLastId()+1);
 		return repository.save(sit);
 	}
 

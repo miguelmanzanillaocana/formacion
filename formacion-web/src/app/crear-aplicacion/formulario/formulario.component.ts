@@ -12,7 +12,6 @@ import { TecnologiaInterfaz } from '../../../models/aplicaciones/tecnologia-inte
 import { Aplicacion } from '../../../models/aplicaciones/aplicacion';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { CrearDialogComponent } from './crear-dialog/crear-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Area } from '../../../models/aplicaciones/area';
 import { Subarea } from '../../../models/aplicaciones/subarea';
@@ -34,6 +33,7 @@ import { ServicioTerceros } from '../../../models/situaciones/servicio-terceros'
 })
 
 export class FormularioComponent {
+  aplicacionForm: FormGroup;
   datosArea: Area[]=[]
   datosSubarea: Subarea[]=[]
   datosResp: Responsable[]=[];
@@ -43,8 +43,6 @@ export class FormularioComponent {
   datosVEvo: VolumenEvolutivo[]=[];
   datosTipo: Tipo[]=[];
   datosTecInt: TecnologiaInterfaz[]=[];
-  aplicacionForm: FormGroup;
-  situacionForm: FormGroup;
   
   area!: Area;
   subarea!: Subarea;
@@ -57,6 +55,15 @@ export class FormularioComponent {
   tecInt!: TecnologiaInterfaz;
   apl: Aplicacion = new Aplicacion('', '', this.area, this.subarea, this.resp, this.tecn, this.criti, this.volEvol, this.volUsu, this.tipo, this.tecInt);
   aplicacion!: Aplicacion;
+
+  situacionForm: FormGroup;
+  datosDespl: Despliegue[]=[];
+  datosMaven: Maven[]=[];
+  datosDoc: Documentacion[]=[];
+  datosPrueba: Pruebas[]=[];
+  datosTest: Testing[]=[];
+  datosInf: Informes[]=[];
+  datosTerc: ServicioTerceros[]=[];
 
   desp!: Despliegue;
   mav!: Maven;
@@ -81,6 +88,7 @@ export class FormularioComponent {
       tipo: new FormControl(this.apl.tipo),
       tecInt: new FormControl(this.apl.tecInt)
     });
+
     this.situacionForm=this.fb.group({
       prosa: new FormControl(this.situ.pro),
       gruGit: new FormControl(this.situ.gruGit),
@@ -88,10 +96,21 @@ export class FormularioComponent {
       develop: new FormControl(this.situ.develop),
       actualizado: new FormControl(this.situ.actualizado),
       produccion: new FormControl(this.situ.produccion),
+      desp: new FormControl(this.situ.despl),
+      was: new FormControl(this.situ.was),
+      maven: new FormControl(this.situ.maven),
+      doc: new FormControl(this.situ.doc),
+      pruebas:new FormControl(this.situ.pruebas),
+      test: new FormControl(this.situ.test),
+      inf: new FormControl(this.situ.inf),
+      serv: new FormControl(this.situ.terc)
     });
   } 
 
   ngOnInit(){
+
+    //APLICACIONES
+
     this.datosService.obtenerAreas().subscribe((datosArea: Area[]) => {
       this.datosArea = datosArea as Area[];
     })
@@ -127,9 +146,40 @@ export class FormularioComponent {
     this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: TecnologiaInterfaz[]) => {
       this.datosTecInt = datosTecnoInt as TecnologiaInterfaz[];
     })
+
+    //SITUACIONES
+
+    this.datosService.obtenerDespliegues().subscribe((datosDespl: Despliegue[]) => {
+      this.datosDespl = datosDespl as Despliegue[];
+    })
+
+    this.datosService.obtenerMavens().subscribe((datosMaven: Maven[]) => {
+      this.datosMaven = datosMaven as Maven[];
+    })
+
+    this.datosService.obtenerDocumentacion().subscribe((datosDoc:  Documentacion[]) => {
+      this.datosDoc = datosDoc as Documentacion[]
+    })
+
+    this.datosService.obtenerPlanPruebas().subscribe((datosPrueba:  Pruebas[]) => {
+      this.datosPrueba = datosPrueba as Pruebas[]
+    })
+
+    this.datosService.obtenerTesting().subscribe((datosTest:  Testing[]) => {
+      this.datosTest = datosTest as Testing[]
+    })
+
+    this.datosService.obtenerInformes().subscribe((datosInf:  Informes[]) => {
+      this.datosInf = datosInf as Informes[]
+    })
+
+    this.datosService.obtenerServicioTerceros().subscribe((datosTerc:  ServicioTerceros[]) => {
+      this.datosTerc = datosTerc as ServicioTerceros[]
+    })
   }
 
   onSubmit(){
+
     this.area = this.datosArea[this.aplicacionForm.get('area')?.value] || this.datosArea[0];
     this.subarea = this.datosSubarea[this.aplicacionForm.get('subArea')?.value] || this.datosSubarea[0];
     this.resp = this.datosResp[this.aplicacionForm.get('resp')?.value] || this.datosResp[0];
@@ -153,20 +203,43 @@ export class FormularioComponent {
       this.tipo,
       this.tecInt
     );
+    
+    
 
-    this.datosService.insertarAplicacion(this.apl).subscribe(aplicacion => this.aplicacion = aplicacion);
+    this.desp = this.datosDespl[this.situacionForm.get('desp')?.value] || this.datosDespl[0];
+    this.mav = this.datosMaven[this.situacionForm.get('maven')?.value] || this.datosMaven[0];
+    this.doc = this.datosDoc[this.situacionForm.get('doc')?.value] || this.datosDoc[0];
+    this.pruebas = this.datosPrueba[this.situacionForm.get('pruebas')?.value] || this.datosPrueba[0];
+    this.test = this.datosTest[this.situacionForm.get('test')?.value] || this.datosTest[0];
+    this.inf = this.datosInf[this.situacionForm.get('inf')?.value] || this.datosInf[0];
+    this.serv = this.datosTerc[this.situacionForm.get('serv')?.value] || this.datosTerc[0];
 
-    // const dialogRef = this.dialog.open(CrearDialogComponent, {
-    //   width: '350px',
-    // });
-
-    // dialogRef.afterClosed().subscribe(() => {
-    //   this.router.navigate(['/aplicaciones']);
-    // });
-    this.router.navigate(['/aplicaciones']);
-    this.snackBar.open('Aplicacion ' + this.apl.codAplic + ' creada', '', {
+    this.situ= new Situacion(
+      this.aplicacionForm.get('codAplic')?.value,
+      this.situacionForm.get('prosa')?.value,
+      this.situacionForm.get('gruGit')?.value,
+      this.situacionForm.get('master')?.value,
+      this.situacionForm.get('develop')?.value,
+      this.situacionForm.get('actualizado')?.value,
+      this.situacionForm.get('produccion')?.value,
+      this.desp,
+      this.situacionForm.get('was')?.value,
+      this.mav,
+      this.doc,
+      this.pruebas,
+      this.test,
+      this.inf,
+      this.serv
+    );
+    this.datosService.insertarAplicacion(this.apl).subscribe(aplicacion => {
+      this.aplicacion = aplicacion;
+      this.datosService.insertarSituacion(this.situ).subscribe(situ => this.situ = situ);
+      this.router.navigate(['/aplicaciones']);
+      this.snackBar.open('Aplicacion ' + this.apl.codAplic + ' creada', '', {
       duration: 2500
     })
+    });
+    
   }
 
   cancelarInsert() {

@@ -78,7 +78,7 @@
 
     <!-- tecInt Column -->
     <ng-container matColumnDef="tecInt">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Tecnoloigia Interfaz</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Tecnologia Interfaz</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.tecInt}} </mat-cell>
     </ng-container>
 
@@ -86,10 +86,13 @@
     <ng-container matColumnDef="acciones">
       <mat-header-cell *matHeaderCellDef class="d-flex justify-content-center">Acciones</mat-header-cell>
       <mat-cell *matCellDef="let row" class="d-flex justify-content-center">
-        <button type="button" class="btn btn-outline-warning mx-2">
+        <button type="button" class="btn btn-outline-info boton-accion">
+          <i class="bi bi-eye"></i>
+        </button>
+        <button type="button" class="btn btn-outline-warning boton-accion">
           <i class="bi bi-pen"></i>
         </button>
-        <button type="button" class="btn btn-outline-danger mx-2" (click)="borrarAplicacion(row.codAplic)">
+        <button type="button" class="btn btn-outline-danger boton-accion" (click)="borrarAplicacion(row.codAplic)">
           <i class="bi bi-trash"></i>
         </button>
       </mat-cell>

@@ -1,0 +1,13 @@
+.nav-link{
+    color: grey;
+}
+.nav-link:hover {
+    color: black;
+    cursor: pointer; 
+}
+  
+.nav-link.active { 
+    color: #00a01d; 
+    text-decoration: underline; 
+}
+  

@@ -4,14 +4,9 @@
     <div class="row ">
       <div class="col-md-3">
         <div class="form-floating mb-2">
-          <input 
-          type="text" 
-          class="form-control" 
-          id="codigo-aplicacion" 
-          formControlName="codAplic" 
-          placeholder="test"
-          required
-          [class.is-invalid]="aplicacionForm.get('codAplic')?.invalid && (aplicacionForm.get('codAplic')?.dirty || aplicacionForm.get('codAplic')?.touched)" />
+          <input type="text" class="form-control" id="codigo-aplicacion" formControlName="codAplic" placeholder="test"
+            required
+            [class.is-invalid]="aplicacionForm.get('codAplic')?.invalid && (aplicacionForm.get('codAplic')?.dirty || aplicacionForm.get('codAplic')?.touched)" />
           <label for="codigo-aplicacion">Código de la aplicación</label>
         </div>
       </div>
@@ -60,12 +55,8 @@
     <div class="row">
       <div class="col-md-3">
         <div class="form-floating mb-3">
-          <select 
-          class="form-select" 
-          id="cb-criticidad" 
-          formControlName="criti"
-          required
-          [class.is-invalid]="aplicacionForm.get('criti')?.invalid && (aplicacionForm.get('criti')?.dirty || aplicacionForm.get('criti')?.touched)">
+          <select class="form-select" id="cb-criticidad" formControlName="criti" required
+            [class.is-invalid]="aplicacionForm.get('criti')?.invalid && (aplicacionForm.get('criti')?.dirty || aplicacionForm.get('criti')?.touched)">
             <option *ngFor="let criti of datosCriti" [value]="criti.id">{{criti.criticidad}}</option>
           </select>
           <label for="cb-criticidad">Criticidad</label>
@@ -104,62 +95,128 @@
         </div>
       </div>
     </div>
-    
+
   </form>
   <h2>Situacion</h2>
   <form class="mx-2 my-2 pt-2" [formGroup]="situacionForm">
-    <div class="col-md-2">
-      <div class="form-floating mb-3">
-        <select class="form-select" id="cb-prosa" formControlName="prosa">
-          <option value="0">No</option>
-          <option value="1">Si</option>
-        </select>
-        <label for="cb-prosa">Prosa</label>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-prosa" formControlName="prosa">
+            <option value="0">No</option>
+            <option value="1">Si</option>
+          </select>
+          <label for="cb-prosa">Prosa</label>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-grupoGit" formControlName="gruGit">
+            <option value="0">No</option>
+            <option value="1">Si</option>
+          </select>
+          <label for="cb-grupoGit">Grupo en git</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="master" formControlName="master" placeholder="test" />
+          <label for="master">Version Master</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="develop" formControlName="develop" placeholder="test" />
+          <label for="develop">Version Develop</label>
+        </div>
       </div>
     </div>
-    <div class="col-md-2">
-      <div class="form-floating mb-3">
-        <select class="form-select" id="cb-grupoGit" formControlName="gruGit">
-          <option value="0">No</option>
-          <option value="1">Si</option>
-        </select>
-        <label for="cb-grupoGit">Grupo en git</label>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-actualizado" formControlName="actualizado">
+            <option value="0">No</option>
+            <option value="1">Si</option>
+          </select>
+          <label for="cb-grupoGit">Actualizado</label>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="produccion" formControlName="produccion" placeholder="test" />
+          <label for="produccion">Version produccion</label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-solicitado-despliegue" formControlName="desp">
+            <option *ngFor="let desp of datosDespl" [value]="desp.id">{{ desp.despliegue }}</option>
+          </select>
+          <label for="cb-solicitado-despliegue">Solicitado Despliegue</label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="was" formControlName="was" placeholder="test" />
+          <label for="was">Version was</label>
+        </div>
       </div>
     </div>
-    <div class="col-md-2">
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="master" formControlName="master"
-            placeholder="test" />
-        <label for="master">Version Master</label>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-maven" formControlName="maven">
+            <option *ngFor="let maven of datosMaven" [value]="maven.id">{{ maven.maven }}</option>
+          </select>
+          <label for="cb-maven">Maven</label>
+        </div>
       </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="develop" formControlName="develop"
-            placeholder="test" />
-        <label for="develop">Version Develop</label>
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-documentacion" formControlName="doc">
+            <option *ngFor="let doc of datosDoc" [value]="doc.id">{{ doc.documentacion }}</option>
+          </select>
+          <label for="cb-documentacion">Documentacion</label>
+        </div>
       </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-floating mb-3">
-        <select class="form-select" id="cb-actualizado" formControlName="actualizado">
-          <option value="0">No</option>
-          <option value="1">Si</option>
-        </select>
-        <label for="cb-grupoGit">Actualizado</label>
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-prueba" formControlName="pruebas">
+            <option *ngFor="let pruebas of datosPrueba" [value]="pruebas.id">{{ pruebas.planPruebas }}</option>
+          </select>
+          <label for="cb-prueba">Existe Plan de Pruebas</label>
+        </div>
       </div>
-    </div>
-    <div class="col-md-2">
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="produccion" formControlName="produccion"
-            placeholder="test" />
-        <label for="produccion">Version produccion</label>
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-test" formControlName="test">
+            <option *ngFor="let test of datosTest" [value]="test.id">{{ test.testing }}</option>
+          </select>
+          <label for="cb-test">Testing/Creando Pruebas</label>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-inf" formControlName="inf">
+            <option *ngFor="let inf of datosInf" [value]="inf.id">{{ inf.informes }}</option>
+          </select>
+          <label for="cb-inf">Tipo Informes</label>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="cb-serv" formControlName="serv">
+            <option *ngFor="let serv of datosTerc" [value]="serv.id">{{ serv.serviciosTerceros }}</option>
+          </select>
+          <label for="cb-serv">Acceso a servicio de Terceros</label>
+        </div>
       </div>
     </div>
   </form>
 
   <div class="text-center mb-4">
     <button class="btn btn-outline-danger my-2 me-2" (click)="cancelarInsert()">Cancelar</button>
-    <button class="btn btn-success my-2" (click)="onSubmit()" [disabled]="!aplicacionForm.valid">Crear aplicación</button>
+    <button class="btn btn-success my-2" (click)="onSubmit()" [disabled]="!aplicacionForm.valid">Crear
+      aplicación</button>
   </div>
 </div>

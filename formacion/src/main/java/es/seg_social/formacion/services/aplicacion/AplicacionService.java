@@ -47,7 +47,6 @@ public class AplicacionService {
 	public Aplicacion insertAplicacion(Aplicacion ap) {
 		ap.setId(repository.getLastId() + 1);
 		Aplicacion requirement = repository.save(ap);
-		situacionService.insertSituacion(new Situacion(ap.getId(), ap.getCodAplic()));
 		return requirement;
 	}
 	
