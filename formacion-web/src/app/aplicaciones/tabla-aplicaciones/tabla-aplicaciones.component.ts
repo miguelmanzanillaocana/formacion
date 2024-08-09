@@ -7,7 +7,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DatosService } from '../../../services/datos.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
  
@@ -20,6 +20,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 
 export class TablaAplicacionesComponent {
+
   datosAplicacion: AplicacionString[] = [];
   displayedColumns = ['codAplic', 'nombAplic', 'area', 'subArea', 'resp', 'tecn', 'criti', 'volEvol', 'volUsu', 'tipo', 'tecInt','acciones'];
   dataSource: MatTableDataSource<AplicacionString> = new MatTableDataSource();
@@ -27,7 +28,7 @@ export class TablaAplicacionesComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  constructor(private datosService: DatosService, private dialog: MatDialog) { }
+  constructor(private datosService: DatosService, private dialog: MatDialog,private router: Router) { }
  
   ngOnInit() {
     this.datosService.obtenerAplicaciones().subscribe((datos: Aplicacion[]) => {
@@ -82,4 +83,8 @@ export class TablaAplicacionesComponent {
     });
   }
 
+  informacionAplicacion(cod: string) {
+    this.router.navigate(['/detalles-aplicacion'], { queryParams: { cod: cod } });
+  }
+  
 }

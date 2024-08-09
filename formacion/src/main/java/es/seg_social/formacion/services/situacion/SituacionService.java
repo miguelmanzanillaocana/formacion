@@ -43,4 +43,8 @@ public class SituacionService {
 		return repository.save(sit);
 	}
 
+	public Situacion getSituacionByCod(String cod) {
+		return repository.findById(repository.getIdSituacionByCod(cod)).get();
+	}
+
 }

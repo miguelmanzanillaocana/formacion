@@ -54,6 +54,7 @@ export class DatosService {
   private insert = 'insert';
   private update = 'update';
   private delete = 'delete/';
+  private consulta = 'cod/'
   
   constructor(private http: HttpClient) { }
 
@@ -64,6 +65,10 @@ export class DatosService {
 
   borrarAplicacion(cod: string): Observable<boolean> {
     return this.http.delete<boolean>(this.urlBase + this.aplicacion + this.delete + cod);
+  }
+
+  obtenerAplicacionPorCod(cod: string): Observable<Aplicacion> {
+    return this.http.get<Aplicacion>(this.urlBase + this.aplicacion + this.consulta + cod);
   }
 
   //Formulario aplicaciones
@@ -111,6 +116,10 @@ export class DatosService {
   //Situaciones
   obtenerSituaciones(): Observable<Situacion[]> {
     return this.http.get<Situacion[]>(this.urlBase + this.situacion);
+  }
+
+  obtenerSituacionPorCod(cod: string): Observable<Situacion> {
+    return this.http.get<Situacion>(this.urlBase + this.situacion + this.consulta + cod);
   }
 
   obtenerDespliegues(): Observable<Despliegue[]> {

@@ -33,6 +33,11 @@ public class AplicacionController {
 		return service.getApplicationById(id);
 	}
 	
+	@GetMapping("/cod/{cod}")
+	public Aplicacion getApplicationByCod(@PathVariable("cod") String cod) {
+		return service.getApplicationByCod(cod);
+	}
+	
 	@DeleteMapping("/delete/{cod}")
 	public boolean deleteById(@PathVariable("cod") String cod) {
 		Integer id=service.getAplicacionIdByCod(cod);

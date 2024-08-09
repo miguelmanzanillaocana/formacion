@@ -32,6 +32,11 @@ public class SituacionController {
 		return service.getSituacionById(id);
 	}
 	
+	@GetMapping("/cod/{cod}")
+	public Situacion getSituacionByCod(@PathVariable("cod") String cod) {
+		return service.getSituacionByCod(cod);
+	}
+	
 	@DeleteMapping("/delete/{id}")
 	public boolean deleteSituacionById(@PathVariable("id") Integer id) {
 		return service.deleteSituacionById(id);

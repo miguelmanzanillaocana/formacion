@@ -54,4 +54,8 @@ public class AplicacionService {
 		return repository.save(ap);
 	}
 
+	public Aplicacion getApplicationByCod(String cod) {
+		return repository.findById(repository.getIdAplicacionByCod(cod)).get();
+	}
+
 }
