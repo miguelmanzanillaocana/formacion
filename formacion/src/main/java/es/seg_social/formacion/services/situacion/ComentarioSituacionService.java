@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import es.seg_social.formacion.claseId.ComentarioSituacionId;
 import es.seg_social.formacion.model.situacion.ComentarioSituacion;
 import es.seg_social.formacion.repository.situacion.IComentarioSituacionRepository;
-import es.seg_social.formacion.repository.situacion.ISituacionRepository;
 
 @Service
 public class ComentarioSituacionService {
@@ -18,7 +17,7 @@ public class ComentarioSituacionService {
 	IComentarioSituacionRepository repository;
 	
 	@Autowired
-	ISituacionRepository SituacionRepository;
+	SituacionService sitService;
 	
 	public ArrayList<ComentarioSituacion> getAllComentarioSituacion(){
 		return (ArrayList<ComentarioSituacion>) repository.findAll();
@@ -61,6 +60,10 @@ public class ComentarioSituacionService {
 	
 	public ComentarioSituacion insertComentarioSituacion(ComentarioSituacion comSit) {
 		return repository.save(comSit);
+	}
+
+	public ArrayList<ComentarioSituacion> getComentarioSituacionByCodAplic(String cod) {
+		return repository.getComentarioSituacionByIdSit(sitService.findIdByCod(cod));
 	}
 
 }

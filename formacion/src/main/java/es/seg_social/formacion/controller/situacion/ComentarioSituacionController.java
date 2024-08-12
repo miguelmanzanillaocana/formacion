@@ -30,8 +30,13 @@ public class ComentarioSituacionController {
 	}
 	
 	@GetMapping("/{id}")
-	public ArrayList<ComentarioSituacion> getComentarioSituacionByIdSit(@PathVariable (value = "id") Integer id){
+	public ArrayList<ComentarioSituacion> getComentarioSituacionByIdSit(@PathVariable(value = "id") Integer id){
 		return service.getComentarioSituacionByIdSit(id);
+	}
+	
+	@GetMapping("/cod/{cod}")
+	public ArrayList<ComentarioSituacion> getComentarioSituacionByCodAplic(@PathVariable(value="cod")String cod){
+		return service.getComentarioSituacionByCodAplic(cod);
 	}
 	
 	@GetMapping("/{idSit}/{idCom}")

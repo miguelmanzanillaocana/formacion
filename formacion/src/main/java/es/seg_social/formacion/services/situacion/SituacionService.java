@@ -1,7 +1,6 @@
 package es.seg_social.formacion.services.situacion;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +43,11 @@ public class SituacionService {
 	}
 
 	public Situacion getSituacionByCod(String cod) {
-		return repository.findById(repository.getIdSituacionByCod(cod)).get();
+		return repository.findById(findIdByCod(cod)).get();
+	}
+	
+	public Integer findIdByCod(String cod) {
+		return repository.getIdSituacionByCod(cod);
 	}
 
 }
