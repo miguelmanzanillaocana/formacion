@@ -7,9 +7,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DatosService } from '../../../services/datos.service';
 import { Aplicacion, Area, Criticidad, Responsable, Subarea, Tecnologia, TecnologiaInterfaz, Tipo, VolumenEvolutivo, VolumenUsuarios } from '../../../models/aplicaciones';
 import { Despliegue, Documentacion, Informes, Maven, Pruebas, ServicioTerceros, Situacion, Testing } from '../../../models/situaciones';
+import { delay, pipe } from 'rxjs';
 
 @Component({
-  selector: 'app-formulario-crear',
+  selector: 'app-formulario-editar',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './formulario.component.html',
@@ -17,6 +18,8 @@ import { Despliegue, Documentacion, Informes, Maven, Pruebas, ServicioTerceros, 
 })
 
 export class FormularioComponent {
+  state: any;
+
   aplicacionForm: FormGroup;
   datosArea: Area[] = []
   datosSubarea: Subarea[] = []
@@ -59,6 +62,8 @@ export class FormularioComponent {
   situ: Situacion = new Situacion('', 0, 0, '', '', 0, '', this.desp, 0, this.mav, this.doc, this.pruebas, this.test, this.inf, this.serv)
 
   constructor(private datosService: DatosService, private dialog: MatDialog, private router: Router, private snackBar: MatSnackBar, private fb: FormBuilder) {
+    this.state = this.router.getCurrentNavigation()?.extras.state;
+
     this.aplicacionForm = this.fb.group({
       codAplic: new FormControl(this.apl.codAplic, Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(4)])),
       nombAplic: new FormControl(this.apl.nombAplic),
@@ -72,6 +77,27 @@ export class FormularioComponent {
       tipo: new FormControl(this.apl.tipo),
       tecInt: new FormControl(this.apl.tecInt)
     });
+
+    this.aplicacionForm.setValue({
+      codAplic: this.state.data.codAplic,
+      nombAplic: this.state.data.nombAplic,
+      area: this.state.data.area.id_Area,
+      subArea: this.state.data.subArea.id,
+      resp: this.state.data.resp.id,
+      tecn: this.state.data.tecn.id,
+      criti: this.state.data.criti.id,
+      volEvol: this.state.data.volEvol.id,
+      volUsu: this.state.data.volUsu.id,
+      tipo: this.state.data.tipo.id,
+      tecInt: this.state.data.tecInt.id
+    })
+    
+    console.log(this.state.data.codAplic)
+    this.datosService.obtenerSituacionPorCod(this.state.data.codAplic).subscribe(situacion => {
+      this.situ = situacion as Situacion;
+    })
+
+    console.log(this.situ)
 
     this.situacionForm = this.fb.group({
       prosa: new FormControl(this.situ.pro),
@@ -89,6 +115,23 @@ export class FormularioComponent {
       inf: new FormControl(this.situ.inf),
       serv: new FormControl(this.situ.terc)
     });
+
+  //   this.situacionForm.setValue({
+  //     prosa: this.situ.pro,
+  //     gruGit: this.situ.gruGit,
+  //     master: this.situ.master,
+  //     develop: this.situ.develop,
+  //     actualizado: this.situ.actualizado,
+  //     produccion: this.situ.produccion,
+  //     desp: this.situ.despl,
+  //     was: this.situ.was,
+  //     maven: this.situ.maven,
+  //     doc: this.situ.doc,
+  //     pruebas: this.situ.pruebas,
+  //     test: this.situ.test,
+  //     inf: this.situ.inf,
+  //     serv: this.situ.terc
+  //   })
   }
 
   ngOnInit() {
