@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DatosService } from '../../../../services/datos.service';
 import { Aplicacion } from '../../../../models/aplicaciones';
-import { Situacion } from '../../../../models/situaciones';
+import { ComentarioSituacion, Situacion } from '../../../../models/situaciones';
 import { Comun } from '../../../../models/comun';
 import { CommonModule } from '@angular/common';
 
@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 export class DetallesAplicacionComponent implements OnInit {
   aplicacion!: Aplicacion;
   situacion!: Situacion;
+  datosComentario: ComentarioSituacion[]=[];
   cod!: string;
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
 
@@ -36,8 +37,10 @@ export class DetallesAplicacionComponent implements OnInit {
         console.log(this.situacion)
       });
       
-      
-
+      this.datosService.obtenerComentariosSituacion(this.cod).subscribe((datos: ComentarioSituacion[]) =>{
+        this.datosComentario=datos;
+        console.log(this.datosComentario)
+      });
     });
   }
-}
+};

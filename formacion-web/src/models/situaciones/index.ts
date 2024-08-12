@@ -7,3 +7,4 @@ export * from './pruebas';
 export * from './testing';
 export * from './informes';
 export * from './servicio-terceros';
+export * from './comentario-situacion'

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Aplicacion, Area, Subarea, Responsable, Criticidad, TecnologiaInterfaz, Tecnologia, Tipo, VolumenEvolutivo, VolumenUsuarios } from '../models/aplicaciones';
-import { Situacion, Despliegue, Maven, Documentacion, Pruebas, Testing, Informes, ServicioTerceros } from '../models/situaciones';
+import { Situacion, Despliegue, Maven, Documentacion, Pruebas, Testing, Informes, ServicioTerceros, ComentarioSituacion } from '../models/situaciones';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,7 @@ export class DatosService {
   private testing = 'testing/';
   private informes = 'informes/';
   private serviciosTerceros = 'serviciosTerceros/'
+  private comentarioSituacion= 'comentarioSituacion/'
 
   // Endpoints Comunes
   private insert = 'insert';
@@ -134,8 +135,8 @@ export class DatosService {
     return this.http.get<ServicioTerceros[]>(this.urlBase + this.serviciosTerceros);
   }
 
-  obtenerComentariosSituacion() {
-
+  obtenerComentariosSituacion(cod: string): Observable<ComentarioSituacion[]> {
+    return this.http.get<ComentarioSituacion[]>(this.urlBase + this.comentarioSituacion + this.consulta + cod)
   }
 
   //Administración
