@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-
 import { AplicacionesComponent } from './aplicaciones';
 import { SituacionesComponent } from './situaciones';
 import { CrearAplicacionComponent } from './crear-aplicacion';

@@ -1,30 +1,187 @@
+<div class="container m-2">
+    <div class="row">
+        <div class="col-6">
+            <h2>Aplicacion:</h2>
+            <p>
+                <span class="fw-bold">Codigo Aplicacion:</span> {{aplicacion.codAplic}}
+            </p>
+            <p *ngIf="aplicacion.nombAplic!=''; else elseNombre">
+                <span class="fw-bold">Nombre Aplicacion:</span> {{aplicacion.nombAplic}}
+            </p>
+            <p *ngIf="aplicacion.area.id_Area!=0; else elseArea">
+                <span class="fw-bold">Area:</span> {{aplicacion.area.area}}
+            </p>
+            <p *ngIf="aplicacion.subArea.id!=0; else elseSubarea">
+                <span class="fw-bold">Subarea:</span> {{aplicacion.subArea.subarea}}
+            </p>
+            <p *ngIf="aplicacion.resp.id!=0; elseResponsable">
+                <span class="fw-bold">Responsable:</span> {{aplicacion.resp.responsable}}
+            </p>
+            <p *ngIf="aplicacion.tecn.id!=0; else elseTecnologia">
+                <span class="fw-bold">Tecnologia:</span> {{aplicacion.tecn.tecnologia}}
+            </p>
+            <p>
+                <span class="fw-bold">Criticidad:</span> {{aplicacion.criti.criticidad}}
+            </p>
+            <p *ngIf="aplicacion.volEvol.id!=0; else elseVolEvol">
+                <span class="fw-bold">Volumen Evolutivo:</span> {{aplicacion.volEvol.volumenEvolutivo}}
+            </p>
+            <p *ngIf="aplicacion.volUsu.id!=0; else elseVolUsu">
+                <span class="fw-bold">Volumen Usuarios:</span> {{aplicacion.volUsu.volumenUsuarios}}
+            </p>
+            <p *ngIf="aplicacion.tipo.id!=0; else elseTipo">
+                <span class="fw-bold">Tipo:</span> {{aplicacion.tipo.tipo}}
+            </p>
+            <p *ngIf="aplicacion.tecInt.id!=0; else elseTecInt">
+                <span class="fw-bold">Tecnología de la Interfaz:</span> {{aplicacion.tecInt.tecnologiaInterfaz}}
+            </p>
 
-    <h2>Aplicacion:</h2><p><br>
-    {{aplicacion.codAplic}}<br>
-    {{aplicacion.nombAplic}} <br>
-    {{aplicacion.area.area}} <br>
-    {{aplicacion.subArea.subarea}} <br>
-    {{aplicacion.resp.responsable}}<br>
-    {{aplicacion.tecn.tecnologia}}<br>
-    {{aplicacion.criti.criticidad}}<br>
-    {{aplicacion.volEvol.volumenEvolutivo}}<br>
-    {{aplicacion.volUsu.volumenUsuarios}}<br>
-    {{aplicacion.tipo.tipo}}<br>
-    {{aplicacion.tecInt.tecnologiaInterfaz}}<br>
-    </p>
-    <h2>Situacion:</h2>
-    <p>
-    {{datosComunes[situacion.pro].valor}}<br>
-    {{datosComunes[situacion.gruGit].valor}}<br>
-    {{situacion.master}}<br>
-    {{situacion.develop}}<br>
-    {{datosComunes[situacion.actualizado].valor}}<br>
-    {{situacion.produccion}}<br>
-    {{situacion.despl.despliegue}}<br>
-    {{situacion.was}}<br>
-    {{situacion.maven.maven}}<br>
-    {{situacion.pruebas.planPruebas}}<br>
-    {{situacion.test.testing}}<br>
-    {{situacion.inf.informes}}<br>
-    {{situacion.terc.serviciosTerceros}}<br>
-</p>
+            <ng-template #elseNombre>
+                <p>
+                    <span class="fw-bold">Nombre Aplicacion:</span> Sin nombre
+                </p>
+            </ng-template>
+            <ng-template #elseArea>
+                <p>
+                    <span class="fw-bold">Area:</span> Sin area
+                </p>
+            </ng-template>
+            <ng-template #elseSubarea>
+                <p> 
+                    <span class="fw-bold">Subarea:</span> Sin subarea
+                </p>
+            </ng-template>
+            <ng-template #elseResponsable>
+                <p>
+                    <span class="fw-bold">Responsable:</span> Sin responsable
+                </p>
+            </ng-template>
+            <ng-template #elseTecnologia>
+                <p>
+                    <span class="fw-bold">Tecnologia:</span> Sin tecnologia
+                </p>
+            </ng-template>
+            <ng-template #elseVolEvol>
+                <p>
+                    <span class="fw-bold">Volumen Evolutivo:</span> Sin volumen evolutivo
+                </p>
+            </ng-template>
+            <ng-template #elseVolUsu>
+                <p>
+                    <span class="fw-bold">Volumen Usuarios:</span> Sin volumen de usuarios
+                </p>
+            </ng-template>
+            <ng-template #elseTipo>
+                <p>
+                    <span class="fw-bold">Tipo:</span> Sin tipo
+                </p>
+            </ng-template>
+            <ng-template #elseTecInt>
+                <p>
+                    <span class="fw-bold">Tecnología de la Interfaz:</span> Sin tecnologia de la interfaz
+                </p>
+            </ng-template>
+        </div>
+        <div class="col-6">
+            <h2>Situacion:</h2>
+            <p>
+                <span class="fw-bold">Prosa:</span> {{datosComunes[situacion.pro].valor}}
+            </p>
+            <p>
+                <span class="fw-bold">Grupo Git:</span> {{datosComunes[situacion.gruGit].valor}}
+            </p>
+            <p *ngIf="situacion.master!=''; else elseMaster">
+                <span class="fw-bold">Versión Master:</span> {{situacion.master}}
+            </p>
+            <p *ngIf="situacion.develop!=''; else elseDevelop">
+                <span class="fw-bold">Versión Develop:</span> {{situacion.develop}}
+            </p>
+            <p>
+                <span class="fw-bold">Actualizado en Git:</span> {{datosComunes[situacion.actualizado].valor}}
+            </p>
+            <p *ngIf="situacion.produccion!=''; else elseProduccion">
+                <span class="fw-bold">Version Producción:</span> {{situacion.produccion}}
+            </p>
+            <p *ngIf="situacion.despl.id!=0; else elseDespliegue">
+                <span class="fw-bold">Despliegue:</span> {{situacion.despl.despliegue}}
+            </p>
+            <p *ngIf="situacion.was!=0; else elseWas">
+                <span class="fw-bold">Version WAS:</span> {{situacion.was}}
+            </p>
+            <p *ngIf="situacion.maven.id!=0; else elseMaven">
+                <span class="fw-bold">Maven:</span> {{situacion.maven.maven}}
+            </p>
+            <p *ngIf="situacion.doc.id!=0; else elseDocumentacion">
+                <span class="fw-bold">Documentacion:</span> {{situacion.doc.documentacion}}
+            </p>
+            <p *ngIf="situacion.pruebas.id!=0; else elsePruebas">
+                <span class="fw-bold">Plan de Pruebas:</span> {{situacion.pruebas.planPruebas}}
+            </p>
+            <p *ngIf="situacion.test.id!=0; else elseTesting">
+                <span class="fw-bold">Testing/Creación de pruebas:</span> {{situacion.test.testing}}
+            </p>
+            <p *ngIf="situacion.inf.id!=0; else elseInformes">
+                <span class="fw-bold">Tipo de Informes:</span> {{situacion.inf.informes}}
+            </p>
+            <p *ngIf="situacion.terc.id!=0; else elseServTerceros">
+                <span class="fw-bold">Acceso a Servicios de Terceros:</span> {{situacion.terc.serviciosTerceros}}
+            </p>
+
+            <ng-template #elseMaster>
+                <p>
+                    <span class="fw-bold">Versión Master:</span> Sin version master
+                </p>
+            </ng-template>
+            <ng-template #elseDevelop>
+                <p>
+                    <span class="fw-bold">Versión Develop:</span> Sin version develop
+                </p>
+            </ng-template>
+            <ng-template #elseProduccion>
+                <p>
+                    <span class="fw-bold">Version Producción:</span> Sin version producción
+                </p>
+            </ng-template>
+            <ng-template #elseDespliegue>
+                <p>
+                    <span class="fw-bold">Despliegue:</span> Sin despliegue
+                </p>
+            </ng-template>
+            <ng-template #elseWas>
+                <p>
+                    <span class="fw-bold">Version WAS:</span> Sin WAS
+                </p>
+            </ng-template>
+            <ng-template #elseMaven>
+                <p>
+                    <span class="fw-bold">Maven:</span> Sin maven
+                </p>
+            </ng-template>
+            <ng-template #elseDocumentacion>
+                <p>
+                    <span class="fw-bold">Documentacion:</span> Sin documentación
+                </p>
+            </ng-template>
+            <ng-template #elsePruebas>
+                <p>
+                    <span class="fw-bold">Plan de Pruebas:</span> Sin plan de pruebas
+                </p>
+            </ng-template>
+            <ng-template #elseTesting>
+                <p>
+                    <span class="fw-bold">Testing/Creación de pruebas:</span> Sin testing
+                </p>
+            </ng-template>
+            <ng-template #elseInformes>
+                <p>
+                    <span class="fw-bold">Tipo de Informes:</span> Sin informes
+                </p>
+            </ng-template>
+            <ng-template #elseServTerceros>
+                <p>
+                    <span class="fw-bold">Acceso a Servicios de Terceros:</span> Sin acceso a servcios de terceros
+                </p>
+            </ng-template>
+        </div>
+    </div>
+</div>

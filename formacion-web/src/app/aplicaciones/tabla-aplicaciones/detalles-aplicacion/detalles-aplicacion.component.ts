@@ -4,11 +4,12 @@ import { DatosService } from '../../../../services/datos.service';
 import { Aplicacion } from '../../../../models/aplicaciones';
 import { Situacion } from '../../../../models/situaciones';
 import { Comun } from '../../../../models/comun';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-detalles-aplicacion',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './detalles-aplicacion.component.html',
   styleUrl: './detalles-aplicacion.component.css'
 })
@@ -27,10 +28,12 @@ export class DetallesAplicacionComponent implements OnInit {
 
       this.datosService.obtenerAplicacionPorCod(this.cod).subscribe(aplicacion => {
         this.aplicacion = aplicacion as Aplicacion;
+        console.log(this.aplicacion);
       });
 
       this.datosService.obtenerSituacionPorCod(this.cod).subscribe(situacion => {
         this.situacion = situacion as Situacion;
+        console.log(this.situacion)
       });
       
     });
