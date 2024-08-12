@@ -83,7 +83,12 @@ export class TablaAplicacionesComponent {
   }
 
   informacionAplicacion(cod: string) {
-    this.router.navigate(['/detalles-aplicacion'], { queryParams: { cod: cod } });
+    this.router.navigate(['/detalles-aplicacion'], { 
+      state: {
+        key: 'cod',
+        data: cod
+      }
+     });
   }
   
 }

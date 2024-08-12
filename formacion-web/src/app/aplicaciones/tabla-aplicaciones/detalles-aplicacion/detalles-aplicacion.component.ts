@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DatosService } from '../../../../services/datos.service';
 import { Aplicacion } from '../../../../models/aplicaciones';
 import { Situacion } from '../../../../models/situaciones';
@@ -19,12 +19,15 @@ export class DetallesAplicacionComponent implements OnInit {
   situacion!: Situacion;
   cod!: string;
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
+  params: any;
 
-  constructor(private route: ActivatedRoute, private datosService: DatosService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private datosService: DatosService) {
+    this.params = this.router.getCurrentNavigation()?.extras.state;
+   }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.cod = params['cod'];
+      this.cod = this.params.data;
 
       this.datosService.obtenerAplicacionPorCod(this.cod).subscribe(aplicacion => {
         this.aplicacion = aplicacion as Aplicacion;
@@ -35,8 +38,6 @@ export class DetallesAplicacionComponent implements OnInit {
         this.situacion = situacion as Situacion;
         console.log(this.situacion)
       });
-      
-      
 
     });
   }
