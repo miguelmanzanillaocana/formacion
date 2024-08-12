@@ -50,4 +50,9 @@ public class SituacionService {
 		return repository.getIdSituacionByCod(cod);
 	}
 
+	public Situacion updateSituacion(Situacion situ) {
+		situ.setId(findIdByCod(situ.getCodApli()));
+		return repository.save(situ);
+	}
+
 }

@@ -55,9 +55,9 @@ public class ComentarioSituacionController {
 		return service.deleteComentarioSituacionById(new ComentarioSituacionId(idSit, idCom));
 	}
 	
-	@PostMapping("/insert")
-	public ComentarioSituacion ComentarioSituacion(@RequestBody ComentarioSituacion comSit) {
-		return service.insertComentarioSituacion(comSit);
-	}
+//	@PostMapping("/insert")
+//	public ComentarioSituacion insertComentarioSituacion(@RequestBody ComentarioSituacion comSit) {
+//		return service.insertComentarioSituacion(comSit);
+//	}
 
 }

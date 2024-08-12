@@ -16,4 +16,7 @@ public interface IComentarioSituacionRepository extends JpaRepository<Comentario
 	@Query(value = "SELECT * FROM comentarios_situacion WHERE Situacion_ID = ?1", nativeQuery = true)
 	ArrayList<ComentarioSituacion> getComentarioSituacionByIdSit(Integer idSit);
 
+//	@Query(value = "SELECT MAX(ID_Comentario) FROM comentarios_situacion WHERE Situacion_ID = ?1")
+//	Integer getLastId(Integer idSit);
+
 }

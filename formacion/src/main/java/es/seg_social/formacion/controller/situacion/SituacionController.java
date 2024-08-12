@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,11 @@ public class SituacionController {
 		return service.getSituacionByCod(cod);
 	}
 	
+	@GetMapping("/idByCod/{cod}")
+	public Integer getIdByCod(@PathVariable("cod") String cod) {
+		return service.findIdByCod(cod);
+	}
+	
 	@DeleteMapping("/delete/{id}")
 	public boolean deleteSituacionById(@PathVariable("id") Integer id) {
 		return service.deleteSituacionById(id);
@@ -45,5 +51,10 @@ public class SituacionController {
 	@PostMapping("/insert")
 	public Situacion insertSituacion(@RequestBody Situacion situ) {
 		return service.insertSituacion(situ);
+	}
+	
+	@PutMapping("/update")
+	public Situacion updateSituacion(@RequestBody Situacion situ) {
+		return service.updateSituacion(situ);
 	}
 }
