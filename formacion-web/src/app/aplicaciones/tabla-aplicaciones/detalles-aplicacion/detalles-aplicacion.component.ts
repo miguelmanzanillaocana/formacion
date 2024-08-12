@@ -6,27 +6,30 @@ import { ComentarioSituacion, Situacion } from '../../../../models/situaciones';
 import { Comun } from '../../../../models/comun';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-detalles-aplicacion',
   standalone: true,
-  imports: [CommonModule,MatCardModule,FormsModule],
+  imports: [CommonModule,MatCardModule,ReactiveFormsModule],
   templateUrl: './detalles-aplicacion.component.html',
   styleUrl: './detalles-aplicacion.component.css'
 })
 
 export class DetallesAplicacionComponent implements OnInit {
-
   aplicacion!: Aplicacion;
   situacion!: Situacion;
   datosComentario: ComentarioSituacion[]=[];
   cod!: string;
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
   params: any;
-  nuevoComentario: string = '';
-  constructor(private route: ActivatedRoute, private router: Router, private datosService: DatosService) {
+  comentarioForm: FormGroup;
+
+  constructor(private route: ActivatedRoute, private router: Router, private datosService: DatosService, private fb: FormBuilder) {
     this.params = this.router.getCurrentNavigation()?.extras.state;
+    this.comentarioForm= this.fb.group({
+      comentario: new FormControl('',Validators.required)
+    })
    }
 
   ngOnInit(): void {

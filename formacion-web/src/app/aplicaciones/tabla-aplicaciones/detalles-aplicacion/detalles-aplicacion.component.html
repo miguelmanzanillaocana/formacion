@@ -199,13 +199,14 @@
             </ng-template>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-md-12">
-          <label>Nuevo comentario</label>
+          <label for="comentario-text">Nuevo comentario</label>
           <div class="input-group">
-            <input type="text" class="form-control" [(ngModel)]="nuevoComentario" placeholder="Escribe un comentario...">
-            <div class="input-group-append d-flex align-items-center">
-              <button class="btn btn-primary btn-sm" type="button">
+            <input type="text" class="form-control" id="comentario-text" formControlName="comentario"
+              placeholder="Escribe un comentario..." />
+            <div class="input-group-append d-flex align-items-center ms-2">
+              <button class="btn btn-primary btn-sm" type="button" [disabled]="!comentarioForm.valid">
                 <i class="bi bi-plus-circle"></i>
               </button>
             </div>
