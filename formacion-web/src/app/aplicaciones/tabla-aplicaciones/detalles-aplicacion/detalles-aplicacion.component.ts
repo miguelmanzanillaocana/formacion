@@ -2,21 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatosService } from '../../../../services/datos.service';
 import { Aplicacion } from '../../../../models/aplicaciones';
-import { Situacion } from '../../../../models/situaciones';
+import { ComentarioSituacion, Situacion } from '../../../../models/situaciones';
 import { Comun } from '../../../../models/comun';
 import { CommonModule } from '@angular/common';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-detalles-aplicacion',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,MatCardModule],
   templateUrl: './detalles-aplicacion.component.html',
   styleUrl: './detalles-aplicacion.component.css'
 })
 
 export class DetallesAplicacionComponent implements OnInit {
+
   aplicacion!: Aplicacion;
   situacion!: Situacion;
+  datosComentario: ComentarioSituacion[]=[];
   cod!: string;
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
   params: any;
@@ -39,7 +42,13 @@ export class DetallesAplicacionComponent implements OnInit {
         console.log(this.situacion)
       });
 
-      
+      this.datosService.obtenerComentariosSituacion(this.cod).subscribe((datos: ComentarioSituacion[]) =>{
+        this.datosComentario=datos;
+        console.log(this.datosComentario)
+      });
     });
+  }
+  volver() {
+    this.router.navigate(['/aplicaciones']);
   }
 }
