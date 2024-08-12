@@ -51,6 +51,7 @@ public class AplicacionService {
 	}
 	
 	public Aplicacion updateAplicacion(Aplicacion ap) {
+		ap.setId(repository.getIdAplicacionByCod(ap.getCodAplic()));
 		return repository.save(ap);
 	}
 

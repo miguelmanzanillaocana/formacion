@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DatosService } from '../../../services/datos.service';
 import { Aplicacion, Area, Criticidad, Responsable, Subarea, Tecnologia, TecnologiaInterfaz, Tipo, VolumenEvolutivo, VolumenUsuarios } from '../../../models/aplicaciones';
 import { Despliegue, Documentacion, Informes, Maven, Pruebas, ServicioTerceros, Situacion, Testing } from '../../../models/situaciones';
-import { delay, pipe } from 'rxjs';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-formulario-editar',
@@ -92,13 +92,28 @@ export class FormularioComponent {
       tecInt: this.state.data.tecInt.id
     })
     
-    console.log(this.state.data.codAplic)
-    this.datosService.obtenerSituacionPorCod(this.state.data.codAplic).subscribe(situacion => {
-      this.situ = situacion as Situacion;
-    })
-
-    console.log(this.situ)
-
+    this.datosService.obtenerSituacionPorCod(this.state.data.codAplic).pipe(
+      tap(situacion => {
+        this.situ = situacion as Situacion;
+        this.situacionForm.setValue({
+          prosa: this.situ.pro,
+          gruGit: this.situ.gruGit,
+          master: this.situ.master,
+          develop: this.situ.develop,
+          actualizado: this.situ.actualizado,
+          produccion: this.situ.produccion,
+          desp: this.situ.despl.id,
+          was: this.situ.was,
+          maven: this.situ.maven.id,
+          doc: this.situ.doc.id,
+          pruebas: this.situ.pruebas.id,
+          test: this.situ.test.id,
+          inf: this.situ.inf.id,
+          serv: this.situ.terc.id
+        });
+      })
+    ).subscribe();
+  
     this.situacionForm = this.fb.group({
       prosa: new FormControl(this.situ.pro),
       gruGit: new FormControl(this.situ.gruGit),
@@ -115,23 +130,6 @@ export class FormularioComponent {
       inf: new FormControl(this.situ.inf),
       serv: new FormControl(this.situ.terc)
     });
-
-  //   this.situacionForm.setValue({
-  //     prosa: this.situ.pro,
-  //     gruGit: this.situ.gruGit,
-  //     master: this.situ.master,
-  //     develop: this.situ.develop,
-  //     actualizado: this.situ.actualizado,
-  //     produccion: this.situ.produccion,
-  //     desp: this.situ.despl,
-  //     was: this.situ.was,
-  //     maven: this.situ.maven,
-  //     doc: this.situ.doc,
-  //     pruebas: this.situ.pruebas,
-  //     test: this.situ.test,
-  //     inf: this.situ.inf,
-  //     serv: this.situ.terc
-  //   })
   }
 
   ngOnInit() {
