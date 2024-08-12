@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Despliegue } from '../../../../models/situaciones/despliegue';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { DatosService } from '../../../../services/datos.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Despliegue } from '../../../../models/situaciones';
+import { DatosService } from '../../../../services/datos.service';
 import { InsertDespliegueDialogComponent } from './insert-despliegue-dialog/insert-despliegue-dialog.component';
 
 

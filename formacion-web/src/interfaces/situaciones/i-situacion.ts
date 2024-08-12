@@ -1,10 +1,4 @@
-import { Despliegue } from "../../models/situaciones/despliegue";
-import { Documentacion } from "../../models/situaciones/documentacion";
-import { Informes } from "../../models/situaciones/informes";
-import { Maven } from "../../models/situaciones/maven";
-import { Pruebas } from "../../models/situaciones/pruebas";
-import { ServicioTerceros } from "../../models/situaciones/servicio-terceros";
-import { Testing } from "../../models/situaciones/testing";
+import { Despliegue, Documentacion, Informes, Maven, Pruebas, ServicioTerceros, Testing } from "../../models/situaciones";
 
 export interface ISituacion {
     id: number;

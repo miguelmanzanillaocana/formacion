@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogActions, MatDialogClose, MatDialogContent } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { DatosService } from '../../../../../services/datos.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Area } from '../../../../../models/aplicaciones/area';
+import { Area } from '../../../../../models/aplicaciones';
  
 @Component({
   selector: 'app-insert-area-dialog',

@@ -1,27 +1,27 @@
-import {Component, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import { Situacion } from '../../../models/situaciones/situacion';
-import { DatosService } from '../../../services/datos.service';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { Situacion, SituacionString } from '../../../models/situaciones';
+import { DatosService } from '../../../services/datos.service';
 import { Comun } from '../../../models/comun';
-import { SituacionString } from '../../../models/situaciones/situacion-string';
-import { CommonModule } from '@angular/common';
- 
+
 @Component({
   selector: 'app-tabla-situaciones',
   standalone: true,
-  imports: [MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, RouterLink, RouterOutlet,CommonModule],
+  imports: [MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, RouterLink, RouterOutlet, CommonModule],
   templateUrl: './tabla-situaciones.component.html',
   styleUrl: './tabla-situaciones.component.css'
 })
+
 export class TablaSituacionesComponent {
-  datosSituacion: SituacionString[]=[];
+  datosSituacion: SituacionString[] = [];
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
-  displayedColumns = ['codApli', 'pro', 'gruGit', 'master', 'develop', 'actualizado', 'produccion', 'despl', 'was', 'maven', 'doc', 'pruebas', 'test', 'inf', 'terc','editar'];
+  displayedColumns = ['codApli', 'pro', 'gruGit', 'master', 'develop', 'actualizado', 'produccion', 'despl', 'was', 'maven', 'doc', 'pruebas', 'test', 'inf', 'terc', 'editar'];
   dataSource: MatTableDataSource<SituacionString> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
@@ -50,6 +50,7 @@ export class TablaSituacionesComponent {
           situacion.terc.serviciosTerceros
         );
       });
+
       this.dataSource = new MatTableDataSource(this.datosSituacion);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -59,7 +60,7 @@ export class TablaSituacionesComponent {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-   }
+  }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();

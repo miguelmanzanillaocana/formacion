@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Tecnologia } from '../../../../models/aplicaciones/tecnologia';
-import { DatosService } from '../../../../services/datos.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DatosService } from '../../../../services/datos.service';
 import { InsertTecnologiaDialogComponent } from './insert-tecnologia-dialog/insert-tecnologia-dialog.component';
+import { Tecnologia } from '../../../../models/aplicaciones';
 
 
 @Component({ 
@@ -15,6 +15,7 @@ import { InsertTecnologiaDialogComponent } from './insert-tecnologia-dialog/inse
   templateUrl: './tabla-tecnologia.component.html',
   styleUrl: './tabla-tecnologia.component.css'
 })
+
 export class TablaTecnologiaComponent {
 
   datosTecnologia: Tecnologia[]=[];
@@ -43,6 +44,7 @@ export class TablaTecnologiaComponent {
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
+  
   abrirDialogoInsertTecnologia() {
     const dialogRef = this.dialog.open(InsertTecnologiaDialogComponent, {
       width: '500px'

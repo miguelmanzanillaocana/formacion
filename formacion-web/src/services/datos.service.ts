@@ -1,24 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Responsable } from '../models/aplicaciones/responsable';
-import { Criticidad } from '../models/aplicaciones/criticidad';
-import { Tecnologia } from '../models/aplicaciones/tecnologia';
-import { VolumenUsuarios } from '../models/aplicaciones/volumen-usuarios';
-import { VolumenEvolutivo } from '../models/aplicaciones/volumen-evolutivo';
-import { Tipo } from '../models/aplicaciones/tipo';
-import { TecnologiaInterfaz } from '../models/aplicaciones/tecnologia-interfaz';
-import { Aplicacion } from '../models/aplicaciones/aplicacion';
-import { Situacion } from '../models/situaciones/situacion';
-import { Area } from '../models/aplicaciones/area';
-import { Subarea } from '../models/aplicaciones/subarea';
-import { Despliegue } from '../models/situaciones/despliegue';
-import { Maven } from '../models/situaciones/maven';
-import { Documentacion } from '../models/situaciones/documentacion';
-import { Pruebas } from '../models/situaciones/pruebas';
-import { Testing } from '../models/situaciones/testing';
-import { Informes } from '../models/situaciones/informes';
-import { ServicioTerceros } from '../models/situaciones/servicio-terceros';
+import { Aplicacion, Area, Subarea, Responsable, Criticidad, TecnologiaInterfaz, Tecnologia, Tipo, VolumenEvolutivo, VolumenUsuarios } from '../models/aplicaciones';
+import { Situacion, Despliegue, Maven, Documentacion, Pruebas, Testing, Informes, ServicioTerceros } from '../models/situaciones';
 
 @Injectable({
   providedIn: 'root'

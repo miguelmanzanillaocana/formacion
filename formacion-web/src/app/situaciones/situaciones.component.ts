@@ -8,6 +8,7 @@ import { TablaSituacionesComponent } from "./tabla-situaciones/tabla-situaciones
   templateUrl: './situaciones.component.html',
   styleUrl: './situaciones.component.css'
 })
+
 export class SituacionesComponent {
 
 }

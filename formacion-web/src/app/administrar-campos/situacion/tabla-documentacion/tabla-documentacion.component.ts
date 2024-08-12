@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Documentacion } from '../../../../models/situaciones/documentacion';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { DatosService } from '../../../../services/datos.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Documentacion } from '../../../../models/situaciones';
+import { DatosService } from '../../../../services/datos.service';
 import { InsertDocumentDialogComponent } from './insert-document-dialog/insert-document-dialog.component';
 
 
@@ -42,6 +42,7 @@ export class TablaDocumentacionComponent {
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
+  
   abrirDialogoInsertDocumentacion() {
     const dialogRef = this.dialog.open(InsertDocumentDialogComponent, {
       width: '500px'

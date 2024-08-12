@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Responsable } from '../../../../../models/aplicaciones/responsable';
+import { Responsable } from '../../../../../models/aplicaciones';
 import { DatosService } from '../../../../../services/datos.service';
 
 @Component({

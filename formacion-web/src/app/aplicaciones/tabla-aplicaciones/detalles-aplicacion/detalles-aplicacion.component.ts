@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DatosService } from '../../../../services/datos.service';
-import { Aplicacion } from '../../../../models/aplicaciones/aplicacion';
-import { Situacion } from '../../../../models/situaciones/situacion';
+import { Aplicacion } from '../../../../models/aplicaciones';
+import { Situacion } from '../../../../models/situaciones';
 import { Comun } from '../../../../models/comun';
 
 @Component({
@@ -12,6 +12,7 @@ import { Comun } from '../../../../models/comun';
   templateUrl: './detalles-aplicacion.component.html',
   styleUrl: './detalles-aplicacion.component.css'
 })
+
 export class DetallesAplicacionComponent implements OnInit {
   aplicacion!: Aplicacion;
   situacion!: Situacion;
@@ -23,12 +24,15 @@ export class DetallesAplicacionComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.cod = params['cod'];
+
       this.datosService.obtenerAplicacionPorCod(this.cod).subscribe(aplicacion => {
         this.aplicacion = aplicacion as Aplicacion;
       });
+
       this.datosService.obtenerSituacionPorCod(this.cod).subscribe(situacion => {
         this.situacion = situacion as Situacion;
       });
+      
     });
   }
 }

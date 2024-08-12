@@ -1,13 +1,5 @@
 import { IAplicacion } from "../../interfaces/aplicaciones/i-aplicacion";
-import { Area } from "./area";
-import { Criticidad } from "./criticidad";
-import { Responsable } from "./responsable";
-import { Subarea } from "./subarea";
-import { Tecnologia } from "./tecnologia";
-import { TecnologiaInterfaz } from "./tecnologia-interfaz";
-import { Tipo } from "./tipo";
-import { VolumenEvolutivo } from "./volumen-evolutivo";
-import { VolumenUsuarios } from "./volumen-usuarios";
+import { Area, Criticidad, Responsable, Subarea, Tecnologia, TecnologiaInterfaz, Tipo, VolumenEvolutivo, VolumenUsuarios } from "./";
 
 export class Aplicacion implements IAplicacion {
 

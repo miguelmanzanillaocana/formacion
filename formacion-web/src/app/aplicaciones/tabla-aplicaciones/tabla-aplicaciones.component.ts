@@ -1,15 +1,13 @@
-import { Aplicacion } from '../../../models/aplicaciones/aplicacion';
-import { AplicacionString } from '../../../models/aplicaciones/aplicacion-string';
-import { Observable } from 'rxjs';
 import { Component, ViewChild } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { DatosService } from '../../../services/datos.service';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DatosService } from '../../../services/datos.service';
+import { Aplicacion, AplicacionString } from '../../../models/aplicaciones';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
  
 @Component({
   selector: 'app-tabla-aplicaciones',
@@ -52,6 +50,7 @@ export class TablaAplicacionesComponent {
       this.dataSource.sort = this.sort;
     });
   }
+  
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

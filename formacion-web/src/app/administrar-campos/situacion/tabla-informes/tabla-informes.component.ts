@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Informes } from '../../../../models/situaciones/informes';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { DatosService } from '../../../../services/datos.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Informes } from '../../../../models/situaciones';
+import { DatosService } from '../../../../services/datos.service';
 import { InsertInformesDialogComponent } from './insert-informes-dialog/insert-informes-dialog.component';
 
 
@@ -42,6 +42,7 @@ export class TablaInformesComponent {
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
+  
   abrirDialogoInsertInforme() {
      const dialogRef = this.dialog.open(InsertInformesDialogComponent, {
        width: '500px'

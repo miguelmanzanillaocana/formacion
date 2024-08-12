@@ -2,10 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Responsable } from '../../../../models/aplicaciones/responsable';
+import { MatDialog } from '@angular/material/dialog';
+import { Responsable } from '../../../../models/aplicaciones';
 import { DatosService } from '../../../../services/datos.service';
 import { InsertResponsableDialogComponent } from './insert-responsable-dialog/insert-responsable-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-tabla-responsable',

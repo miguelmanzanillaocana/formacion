@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Tecnologia } from '../../../../../models/aplicaciones/tecnologia';
+import { Tecnologia } from '../../../../../models/aplicaciones';
 import { DatosService } from '../../../../../services/datos.service';
+
 @Component({
   selector: 'app-insert-tecnologia-dialog',
   standalone: true,
@@ -11,6 +12,7 @@ import { DatosService } from '../../../../../services/datos.service';
   templateUrl: './insert-tecnologia-dialog.component.html',
   styleUrl: './insert-tecnologia-dialog.component.css'
 })
+
 export class InsertTecnologiaDialogComponent {
   tecnologiaForm: FormGroup;
   tecnologia: Tecnologia = new Tecnologia(0, "");

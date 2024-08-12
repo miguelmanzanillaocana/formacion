@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { Subarea } from '../../../../models/aplicaciones/subarea';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { DatosService } from '../../../../services/datos.service';
-import { CommonModule } from '@angular/common';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { CommonModule } from '@angular/common';
+import { DatosService } from '../../../../services/datos.service';
 import { InsertSubareaDialogComponent } from './insert-subarea-dialog/insert-subarea-dialog.component';
+import { Subarea } from '../../../../models/aplicaciones';
 
 @Component({ 
   selector: 'app-tabla-subarea',

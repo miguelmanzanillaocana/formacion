@@ -9,6 +9,7 @@ import { TablaAplicacionesComponent } from "./tabla-aplicaciones/tabla-aplicacio
   templateUrl: './aplicaciones.component.html',
   styleUrl: './aplicaciones.component.css'
 })
+
 export class AplicacionesComponent {
 
 }

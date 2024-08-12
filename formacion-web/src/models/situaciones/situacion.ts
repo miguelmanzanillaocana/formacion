@@ -1,11 +1,5 @@
 import { ISituacion } from "../../interfaces/situaciones/i-situacion";
-import { Despliegue } from "./despliegue";
-import { Documentacion } from "./documentacion";
-import { Informes } from "./informes";
-import { Maven } from "./maven";
-import { Pruebas } from "./pruebas";
-import { ServicioTerceros } from "./servicio-terceros";
-import { Testing } from "./testing";
+import { Despliegue, Documentacion, Informes, Maven, Pruebas, ServicioTerceros, Testing } from "./";
 
 export class Situacion implements ISituacion{
     id: number;

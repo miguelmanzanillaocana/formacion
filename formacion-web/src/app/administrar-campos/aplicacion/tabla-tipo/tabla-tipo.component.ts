@@ -1,11 +1,10 @@
-
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { DatosService } from '../../../../services/datos.service';
 import { MatDialog } from '@angular/material/dialog';
-import { Tipo } from '../../../../models/aplicaciones/tipo';
+import { DatosService } from '../../../../services/datos.service';
+import { Tipo } from '../../../../models/aplicaciones';
 import { InsertTipoDialogComponent } from './insert-tipo-dialog/insert-tipo-dialog.component';
 
 @Component({
@@ -15,6 +14,7 @@ import { InsertTipoDialogComponent } from './insert-tipo-dialog/insert-tipo-dial
   templateUrl: './tabla-tipo.component.html',
   styleUrl: './tabla-tipo.component.css'
 })
+
 export class TablaTipoComponent {
   datosTipo: Tipo[]=[];
   displayedColumns = ['id','tipo'];
@@ -41,6 +41,7 @@ export class TablaTipoComponent {
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
+  
   abrirDialogoInsertTipo() {
     const dialogRef = this.dialog.open(InsertTipoDialogComponent, {
       width: '500px'
