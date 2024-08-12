@@ -6,11 +6,12 @@ import { ComentarioSituacion, Situacion } from '../../../../models/situaciones';
 import { Comun } from '../../../../models/comun';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-detalles-aplicacion',
   standalone: true,
-  imports: [CommonModule,MatCardModule],
+  imports: [CommonModule,MatCardModule,FormsModule],
   templateUrl: './detalles-aplicacion.component.html',
   styleUrl: './detalles-aplicacion.component.css'
 })
@@ -23,7 +24,7 @@ export class DetallesAplicacionComponent implements OnInit {
   cod!: string;
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
   params: any;
-
+  nuevoComentario: string = '';
   constructor(private route: ActivatedRoute, private router: Router, private datosService: DatosService) {
     this.params = this.router.getCurrentNavigation()?.extras.state;
    }

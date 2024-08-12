@@ -1,4 +1,4 @@
-<div class="container m-2">
+<div class="container-fluid mx-auto">
     <div class="row">
         <div class="col-6">
             <h2>Aplicacion:</h2>
@@ -184,16 +184,35 @@
             </ng-template>
         </div>
     </div>
-    <div class="row">
-        <h2 class="m-2">Comentarios:</h2>
-        <mat-card appearance="outlined" *ngFor="let com of datosComentario">
-            <mat-card-content>
-                <p>
-                    {{com.com}}
-                </p>
-            </mat-card-content>
-        </mat-card>
+    <div class="row mb-3">
+        <h2 class="col-md-12 mb-2">Comentarios:</h2>
+        <div class="col-md-12">
+            <div *ngIf="datosComentario.length > 0; else noComentarios">
+                <div class="card mb-3" *ngFor="let com of datosComentario">
+                    <div class="card-body">
+                        <p class="card-text">{{ com.com }}</p>
+                    </div>
+                </div>
+            </div>
+            <ng-template #noComentarios>
+                <p>Sin comentarios.</p>
+            </ng-template>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+          <label>Nuevo comentario</label>
+          <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="nuevoComentario" placeholder="Escribe un comentario...">
+            <div class="input-group-append d-flex align-items-center">
+              <button class="btn btn-primary btn-sm" type="button">
+                <i class="bi bi-plus-circle"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     <div class="row">
         <button class="btn  btn-outline-primary m-2 " (click)="volver()">Volver</button>
     </div>
