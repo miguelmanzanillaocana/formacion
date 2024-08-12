@@ -47,7 +47,7 @@
                 </p>
             </ng-template>
             <ng-template #elseSubarea>
-                <p> 
+                <p>
                     <span class="fw-bold">Subarea:</span> Sin subarea
                 </p>
             </ng-template>
@@ -185,6 +185,16 @@
         </div>
     </div>
     <div class="row">
-        
+        <h2 class="m-2">Comentarios:</h2>
+        <mat-card appearance="outlined" *ngFor="let com of datosComentario">
+            <mat-card-content>
+                <p>
+                    {{com.com}}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="row">
+        <button class="btn  btn-outline-primary m-2 " (click)="volver()">Volver</button>
     </div>
 </div>
