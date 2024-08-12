@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 import es.seg_social.formacion.claseId.ComentarioSituacionId;
 import es.seg_social.formacion.model.situacion.ComentarioSituacion;
 import es.seg_social.formacion.repository.situacion.IComentarioSituacionRepository;
+import es.seg_social.formacion.repository.situacion.ISituacionRepository;
 
 @Service
 public class ComentarioSituacionService {
 	
 	@Autowired
 	IComentarioSituacionRepository repository;
+	
+	@Autowired
+	ISituacionRepository SituacionRepository;
 	
 	public ArrayList<ComentarioSituacion> getAllComentarioSituacion(){
 		return (ArrayList<ComentarioSituacion>) repository.findAll();

@@ -36,6 +36,8 @@ export class DetallesAplicacionComponent implements OnInit {
         console.log(this.situacion)
       });
       
+      
+
     });
   }
 }
