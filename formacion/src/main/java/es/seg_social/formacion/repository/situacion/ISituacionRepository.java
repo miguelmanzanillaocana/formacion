@@ -12,6 +12,6 @@ public interface ISituacionRepository extends JpaRepository<Situacion, Integer>{
 	Integer getLastId();
 	
 
-		@Query(value = "SELECT ID_Situacion FROM situacion_aplicaciones WHERE Codigo_Aplicacion = ?1",nativeQuery = true)
-		Integer getIdSituacionByCod(String codApp);
+	@Query(value = "SELECT ID_Situacion FROM situacion_aplicaciones WHERE Codigo_Aplicacion = ?1",nativeQuery = true)
+	Integer getIdSituacionByCod(String codApp);
 }
