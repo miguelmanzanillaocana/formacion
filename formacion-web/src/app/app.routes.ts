@@ -3,8 +3,8 @@ import { AplicacionesComponent } from './aplicaciones';
 import { SituacionesComponent } from './situaciones';
 import { CrearAplicacionComponent } from './crear-aplicacion';
 import { AdministrarCamposComponent } from './administrar-campos';
-import { DetallesAplicacionComponent } from './aplicaciones';
 import { EditarAplicacionesComponent } from './editar-aplicaciones';
+import { DetallesAplicacionComponent } from './detalles-aplicacion';
 
 export const routes: Routes = [
     { path: 'aplicaciones', component: AplicacionesComponent },

@@ -184,7 +184,7 @@
             </ng-template>
         </div>
     </div>
-    <div class="row mb-3">
+    <div class="row my-3">
         <h2 class="col-md-12 mb-2">Comentarios:</h2>
         <div class="col-md-12">
             <div *ngIf="datosComentario.length > 0; else noComentarios">
@@ -194,27 +194,42 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="card-text">
+                        <form [formGroup]="comentarioForm">
+                            <div class="row">
+                                <div class="col-10">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" formControlName="comentario" id="comentario" placeholder="test">
+                                        <label for="comentario">Nuevo Comentario</label>
+                                    </div>
+                                </div>
+                                <div class="col-2 d-flex justify-content-center align-items-center">
+                                    <div class="text-center">
+                                        <button class="btn btn-success" type="button" [disabled]="!comentarioForm.valid">
+                                            Añadir comentario
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <ng-template #noComentarios>
-                <p>Sin comentarios.</p>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p class="card-text">Sin comentarios</p>
+                    </div>
+                </div>
             </ng-template>
         </div>
     </div>
-    <div class="row mb-3">
-        <div class="col-md-12">
-          <label for="comentario-text">Nuevo comentario</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="comentario-text" formControlName="comentario"
-              placeholder="Escribe un comentario..." />
-            <div class="input-group-append d-flex align-items-center ms-2">
-              <button class="btn btn-primary btn-sm" type="button" [disabled]="!comentarioForm.valid">
-                <i class="bi bi-plus-circle"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    <div class="row">
-        <button class="btn  btn-outline-primary m-2 " (click)="volver()">Volver</button>
+
+    <div class="text-center">
+        <button class="btn  btn-primary m-2 " (click)="volver()">Volver</button>
     </div>
 </div>

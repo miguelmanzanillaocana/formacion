@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DatosService } from '../../../../services/datos.service';
-import { Aplicacion } from '../../../../models/aplicaciones';
-import { ComentarioSituacion, Situacion } from '../../../../models/situaciones';
-import { Comun } from '../../../../models/comun';
+import { DatosService } from '../../services/datos.service';
+import { Aplicacion } from '../../models/aplicaciones';
+import { ComentarioSituacion, Situacion } from '../../models/situaciones';
+import { Comun } from '../../models/comun';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
