@@ -3,7 +3,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet, RouterState } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DatosService } from '../../../services/datos.service';
 import { Aplicacion, AplicacionString } from '../../../models/aplicaciones';
@@ -20,6 +20,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 export class TablaAplicacionesComponent {
 
   datosAplicacion: AplicacionString[] = [];
+  aplicaciones: Aplicacion[] = [];
   displayedColumns = ['codAplic', 'nombAplic', 'area', 'subArea', 'resp', 'tecn', 'criti', 'volEvol', 'volUsu', 'tipo', 'tecInt','acciones'];
   dataSource: MatTableDataSource<AplicacionString> = new MatTableDataSource();
 
@@ -30,6 +31,7 @@ export class TablaAplicacionesComponent {
  
   ngOnInit() {
     this.datosService.obtenerAplicaciones().subscribe((datos: Aplicacion[]) => {
+      this.aplicaciones = datos as Aplicacion[];
       this.datosAplicacion = datos.map((aplicacion: Aplicacion) => {
         return new AplicacionString(
           aplicacion.codAplic,
@@ -89,6 +91,19 @@ export class TablaAplicacionesComponent {
         data: cod
       }
      });
+  }
+
+  editarAplicacion(dat: any) {
+    this.router.navigate(['/editar-aplicacion'], {
+      state: {
+        key: 'aplicacion',
+        data: this.buscarAplicacion(dat)
+      }
+    })
+  }
+
+  buscarAplicacion(cod: string){
+    return this.aplicaciones.find(element => element.codAplic === cod);
   }
   
 }
