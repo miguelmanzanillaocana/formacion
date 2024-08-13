@@ -39,7 +39,8 @@ export class DatosService {
   private insert = 'insert';
   private update = 'update';
   private delete = 'delete/';
-  private consulta = 'cod/'
+  private codigo = 'cod/';
+  private idByCod = 'idByCod/';
   
   constructor(private http: HttpClient) { }
 
@@ -53,7 +54,7 @@ export class DatosService {
   }
 
   obtenerAplicacionPorCod(cod: string): Observable<Aplicacion> {
-    return this.http.get<Aplicacion>(this.urlBase + this.aplicacion + this.consulta + cod);
+    return this.http.get<Aplicacion>(this.urlBase + this.aplicacion + this.codigo + cod);
   }
 
   //Formulario aplicaciones
@@ -104,7 +105,7 @@ export class DatosService {
   }
 
   obtenerSituacionPorCod(cod: string): Observable<Situacion> {
-    return this.http.get<Situacion>(this.urlBase + this.situacion + this.consulta + cod);
+    return this.http.get<Situacion>(this.urlBase + this.situacion + this.codigo + cod);
   }
 
   obtenerDespliegues(): Observable<Despliegue[]> {
@@ -135,8 +136,16 @@ export class DatosService {
     return this.http.get<ServicioTerceros[]>(this.urlBase + this.serviciosTerceros);
   }
 
+  obtenerIdSitByCod(cod: string): Observable<Number>{
+    return this.http.get<Number>(this.urlBase + this.situacion + this.idByCod + cod);
+  }
+
   obtenerComentariosSituacion(cod: string): Observable<ComentarioSituacion[]> {
-    return this.http.get<ComentarioSituacion[]>(this.urlBase + this.comentarioSituacion + this.consulta + cod)
+    return this.http.get<ComentarioSituacion[]>(this.urlBase + this.comentarioSituacion + this.codigo + cod);
+  }
+
+  insertarComentarioSituacion(comSit: ComentarioSituacion): Observable<ComentarioSituacion>{
+    return this.http.post<ComentarioSituacion>(this.urlBase + this.comentarioSituacion + this.insert, comSit);
   }
 
   //Administración
