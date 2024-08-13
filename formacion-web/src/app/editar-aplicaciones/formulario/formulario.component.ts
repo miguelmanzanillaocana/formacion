@@ -251,11 +251,11 @@ export class FormularioComponent {
       this.serv
     );
 
-    this.datosService.insertarAplicacion(this.apl).subscribe(aplicacion => {
+    this.datosService.actualizarAplicacion(this.apl).subscribe(aplicacion => {
       this.aplicacion = aplicacion;
-      this.datosService.insertarSituacion(this.situ).subscribe(situ => this.situ = situ);
+      this.datosService.actualizarSituacion(this.situ).subscribe(situ => this.situ = situ);
       this.router.navigate(['/aplicaciones']);
-      this.snackBar.open('Aplicacion ' + this.apl.codAplic + ' creada', '', {
+      this.snackBar.open('Aplicacion ' + this.apl.codAplic + ' actualizada', '', {
         duration: 2500
       })
     });

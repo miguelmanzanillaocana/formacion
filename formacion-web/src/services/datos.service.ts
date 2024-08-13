@@ -62,10 +62,17 @@ export class DatosService {
     return this.http.post<Aplicacion>(this.urlBase + this.aplicacion + this.insert, apl);
   }
 
+  actualizarAplicacion(apl: Aplicacion): Observable<Aplicacion>{
+    return this.http.put<Aplicacion>(this.urlBase + this.aplicacion + this.update, apl)
+  }
+
   insertarSituacion(situ: Situacion): Observable<Situacion> {
     return this.http.post<Situacion>(this.urlBase + this.situacion + this.insert, situ);
   }
 
+  actualizarSituacion(situ: Situacion): Observable<Situacion> {
+    return this.http.put<Situacion>(this.urlBase + this.situacion + this.update, situ);
+  }
   obtenerAreas(): Observable<Area[]> {
     return this.http.get<Area[]>(this.urlBase + this.area);
   }
