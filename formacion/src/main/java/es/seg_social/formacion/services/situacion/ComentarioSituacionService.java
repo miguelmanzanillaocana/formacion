@@ -59,12 +59,17 @@ public class ComentarioSituacionService {
 	}
 	
 	public ComentarioSituacion insertComentarioSituacion(ComentarioSituacion comSit) {
-		comSit.setIdCom(repository.getLastId(comSit.getIdSit()) + 1);
+		Integer lastId = repository.getComentarioSituacionByIdSit(comSit.getIdSit()).size() + 1;
+		comSit.setIdCom(lastId);
 		return repository.save(comSit);
 	}
 
 	public ArrayList<ComentarioSituacion> getComentarioSituacionByCodAplic(String cod) {
 		return repository.getComentarioSituacionByIdSit(sitService.findIdByCod(cod));
+	}
+	
+	public Integer getLastId(Integer id) {
+		return repository.getLastId(id);
 	}
 
 }

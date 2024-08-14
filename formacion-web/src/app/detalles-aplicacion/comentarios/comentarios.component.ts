@@ -13,7 +13,7 @@ import { ComentarioService } from '../../../services/comentario.service';
   styleUrl: './comentarios.component.css'
 })
 export class ComentariosComponent {
-  comSit = new ComentarioSituacion(0, 1, "")
+  comSit: ComentarioSituacion; 
   datosComentario: ComentarioSituacion[] = [];
   codAplic: string = "";
   comentarioForm: FormGroup;
@@ -23,9 +23,7 @@ export class ComentariosComponent {
       comentario: new FormControl('', Validators.required)
     })
 
-    this.datosService.obtenerIdSitByCod(this.codAplic).subscribe(idSit => {
-      this.comSit.idSit = idSit as number;
-    })
+    this.comSit = new ComentarioSituacion(comentarioService.getIdAplic(), 1, "")
   }
 
   ngOnInit() {
@@ -35,7 +33,6 @@ export class ComentariosComponent {
 
   insertarComentario() {
     this.comSit.com = this.comentarioForm.get('comentario')?.value;
-    console.log(this.comSit)
 
     this.datosService.insertarComentarioSituacion(this.comSit).subscribe(comentario => {
       location.reload();

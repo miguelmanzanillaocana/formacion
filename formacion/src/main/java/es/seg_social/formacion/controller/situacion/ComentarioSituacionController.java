@@ -59,5 +59,10 @@ public class ComentarioSituacionController {
 	public ComentarioSituacion insertComentarioSituacion(@RequestBody ComentarioSituacion comSit) {
 		return service.insertComentarioSituacion(comSit);
 	}
+	
+	@GetMapping("/getLastId/{id}")
+	public Integer getLastId(@PathVariable("id") Integer id) {
+		return service.getLastId(id);
+	}
 
 }

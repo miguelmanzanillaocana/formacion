@@ -8,6 +8,7 @@ import { ComentarioSituacion } from '../models/situaciones';
 export class ComentarioService {
 
   comentarios: ComentarioSituacion[] = [];
+  idAplic = 0;
   codAplic: string = '';
 
   getComentarios(): ComentarioSituacion[]{
@@ -16,6 +17,14 @@ export class ComentarioService {
 
   setComentarios(comSit: ComentarioSituacion[]){
     this.comentarios = comSit;
+  }
+
+  getIdAplic(): number{
+    return this.idAplic;
+  }
+
+  setIdAplic(idAplic: number){
+    this.idAplic = idAplic;
   }
 
   getcodAplic(): string{
