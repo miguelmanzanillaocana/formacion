@@ -51,7 +51,7 @@ public class SituacionService {
 	}
 
 	public Situacion updateSituacion(Situacion situ) {
-		situ.setId(findIdByCod(situ.getCodApli()));
+		situ.setId(repository.getIdSituacionByCod(situ.getCodApli()));
 		return repository.save(situ);
 	}
 
