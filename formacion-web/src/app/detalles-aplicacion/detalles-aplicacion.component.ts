@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatosService } from '../../services/datos.service';
-import { Aplicacion } from '../../models/aplicaciones';
+import { Aplicacion, Area, Criticidad, Responsable, Subarea, Tecnologia, TecnologiaInterfaz, Tipo, VolumenEvolutivo, VolumenUsuarios } from '../../models/aplicaciones';
 import { ComentarioSituacion, Situacion } from '../../models/situaciones';
 import { Comun } from '../../models/comun';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ComentarioService } from '../../services/comentario.service';
 import { ComentariosComponent } from "./comentarios/comentarios.component";
 
@@ -19,7 +19,16 @@ import { ComentariosComponent } from "./comentarios/comentarios.component";
 })
 
 export class DetallesAplicacionComponent implements OnInit {
-  aplicacion!: Aplicacion;
+  area!: Area;
+  subarea!: Subarea;
+  resp!: Responsable;
+  tecn!: Tecnologia;
+  criti!: Criticidad;
+  volEvol!: VolumenEvolutivo;
+  volUsu!: VolumenUsuarios;
+  tipo!: Tipo;
+  tecInt!: TecnologiaInterfaz;
+  aplicacion: Aplicacion = new Aplicacion('', '', this.area, this.subarea, this.resp, this.tecn, this.criti, this.volEvol, this.volUsu, this.tipo, this.tecInt);
   situacion!: Situacion;
   cod!: string;
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
@@ -32,7 +41,6 @@ export class DetallesAplicacionComponent implements OnInit {
   ngOnInit(): void {
       this.cod = this.params.data;
       this.comentarioService.setCodAplic(this.cod);
-      
       this.datosService.obtenerAplicacionPorCod(this.cod).subscribe(aplicacion => {
         this.aplicacion = aplicacion as Aplicacion;
         this.comentarioService.setIdAplic(this.aplicacion.id)

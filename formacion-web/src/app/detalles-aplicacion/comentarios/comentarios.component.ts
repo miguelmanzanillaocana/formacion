@@ -22,7 +22,6 @@ export class ComentariosComponent {
     this.comentarioForm = this.fb.group({
       comentario: new FormControl('', Validators.required)
     })
-
     this.comSit = new ComentarioSituacion(comentarioService.getIdAplic(), 1, "")
   }
 
@@ -33,7 +32,7 @@ export class ComentariosComponent {
 
   insertarComentario() {
     this.comSit.com = this.comentarioForm.get('comentario')?.value;
-
+    this.comSit.idSit=this.comentarioService.getIdAplic();
     this.datosService.insertarComentarioSituacion(this.comSit).subscribe(comentario => {
       location.reload();
     });
