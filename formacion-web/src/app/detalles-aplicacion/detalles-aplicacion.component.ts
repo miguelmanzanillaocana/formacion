@@ -30,12 +30,12 @@ export class DetallesAplicacionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
       this.cod = this.params.data;
       this.comentarioService.setCodAplic(this.cod);
-
+      
       this.datosService.obtenerAplicacionPorCod(this.cod).subscribe(aplicacion => {
         this.aplicacion = aplicacion as Aplicacion;
+        this.comentarioService.setIdAplic(this.aplicacion.id)
       });
 
       this.datosService.obtenerSituacionPorCod(this.cod).subscribe(situacion => {
@@ -45,8 +45,8 @@ export class DetallesAplicacionComponent implements OnInit {
       this.datosService.obtenerComentariosSituacion(this.cod).subscribe((datos: ComentarioSituacion[]) => {
         this.comentarioService.setComentarios(datos);
       });
-    });
   }
+
 
   volver() {
     this.router.navigate(['/aplicaciones']);

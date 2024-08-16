@@ -908,7 +908,7 @@ ALTER TABLE `aplicaciones`
   ADD CONSTRAINT `Aplicaciones_ibfk_6` FOREIGN KEY (`Tipo_ID`) REFERENCES `tipo_aplicacion` (`ID_Tipo`),
   ADD CONSTRAINT `Aplicaciones_ibfk_7` FOREIGN KEY (`Tecnologia_Interfaz_ID`) REFERENCES `tecnologiainterfaz_aplicacion` (`ID_Tecnologia_Interfaz`),
   ADD CONSTRAINT `Aplicaciones_ibfk_8` FOREIGN KEY (`Area_ID`) REFERENCES `area_aplicacion` (`ID_Area`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `Aplicaciones_ibfk_9` FOREIGN KEY (`Subarea_ID`) REFERENCES `subarea_aplicacion` (`ID_Subrea`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `Aplicaciones_ibfk_9` FOREIGN KEY (`Subarea_ID`) REFERENCES `subarea_aplicacion` (`ID_Subarea`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Filtros para la tabla `cer_aplicacion`

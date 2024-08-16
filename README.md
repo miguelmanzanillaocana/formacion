@@ -7,10 +7,11 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - [ ] [Empezar seguridad web (inicio sesion, tipos de cuenta...)](https://github.com/miguelmanzanillaocana/formacion/issues/4)
   - [X] [Cambiar id responsable, id tecnologia... por su equivalente en texto](https://github.com/miguelmanzanillaocana/formacion/issues/3)
   - [X] [Mejorar formulario aplicaciones](https://github.com/miguelmanzanillaocana/formacion/issues/6)
-  - [ ] [Modificar formulario aplicaciones con situaciones](https://github.com/miguelmanzanillaocana/formacion/issues/8)
+  - [X] [Modificar formulario aplicaciones con situaciones](https://github.com/miguelmanzanillaocana/formacion/issues/8)
   - [ ] [Mejorar formulario 2.0](https://github.com/miguelmanzanillaocana/formacion/issues/11)
   - [X] [Crear administración aplicaciones](https://github.com/miguelmanzanillaocana/formacion/issues/9)
   - [X] [Cambiar interfaces por objetos](https://github.com/miguelmanzanillaocana/formacion/issues/10)
+  - [ ] [Arreglar insertar comentarios](https://github.com/miguelmanzanillaocana/formacion/issues/12)
 
 > [!WARNING]
 > Encontrar host prioridad
