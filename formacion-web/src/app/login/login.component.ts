@@ -18,21 +18,18 @@ import { MatInputModule } from '@angular/material/input';
 
 export class LoginComponent {
   loginForm: FormGroup;
-  username: string = "";
-  password: string = "";
   message: string = "";
 
   constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar, private fb: FormBuilder) {
     this.loginForm = this.fb.group({
       username: new FormControl(''),
-      pass: new FormControl('')
+      password: new FormControl('')
     })
   }
 
   public login(): void {
     sessionStorage.removeItem("app.token");
-
-    this.authService.login(this.username, this.password)
+    this.authService.login(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value)
       .subscribe({
         next: (token) => {
           sessionStorage.setItem("app.token", token);
@@ -41,8 +38,11 @@ export class LoginComponent {
           // @ts-ignore
           sessionStorage.setItem("app.roles", decodedToken.scope);
           console.log(token);
+          this.router.navigateByUrl('/aplicaciones');
         },
-        error: (error) => this.snackBar.open(`Login failed: ${error.status}`, "OK")
+        error: (error) => this.snackBar.open(`Login failed: ${error.status}`, "OK",{
+          duration: 2500
+        })
       });
   }
 }

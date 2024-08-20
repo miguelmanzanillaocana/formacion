@@ -22,7 +22,7 @@ public class AuthController {
 		this.encoder = encoder;
 	}
 	
-	@PostMapping
+	@PostMapping("")
 	public String auth(Authentication authentication) {
 		Instant now = Instant.now();
 		long expiry = 36000L;
