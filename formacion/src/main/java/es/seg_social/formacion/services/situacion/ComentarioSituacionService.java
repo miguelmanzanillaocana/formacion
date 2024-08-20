@@ -59,8 +59,7 @@ public class ComentarioSituacionService {
 	}
 	
 	public ComentarioSituacion insertComentarioSituacion(ComentarioSituacion comSit) {
-		Integer lastId = repository.getLastId(comSit.getIdSit());
-		comSit.setIdCom(lastId);
+		comSit.setIdCom(repository.getLastId(comSit.getIdSit()) + 1);
 		return repository.save(comSit);
 	}
 
