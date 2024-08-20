@@ -5,13 +5,13 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - [X] Probar mat-table para situaciones
   - [ ] [Encontrar host](https://github.com/miguelmanzanillaocana/formacion/issues/5)
   - [ ] [Empezar seguridad web (inicio sesion, tipos de cuenta...)](https://github.com/miguelmanzanillaocana/formacion/issues/4)
+  - [ ] [Recibir e insertar usuarios en base de datos](https://github.com/miguelmanzanillaocana/formacion/issues/13)
+  - [ ] [Diferenciar usuarios por roles](https://github.com/miguelmanzanillaocana/formacion/issues/14)
+  - [X] [Encriptar contraseñas](https://github.com/miguelmanzanillaocana/formacion/issues/15)
   - [X] [Cambiar id responsable, id tecnologia... por su equivalente en texto](https://github.com/miguelmanzanillaocana/formacion/issues/3)
   - [X] [Mejorar formulario aplicaciones](https://github.com/miguelmanzanillaocana/formacion/issues/6)
   - [X] [Modificar formulario aplicaciones con situaciones](https://github.com/miguelmanzanillaocana/formacion/issues/8)
   - [X] [Mejorar formulario 2.0](https://github.com/miguelmanzanillaocana/formacion/issues/11)
-  - [ ] ROLES DE USUARIOS
-  - [ ] INSERTAR USUARIOS A LA BASE DE DATOS
-  - [ ] ENCRIPTAR LAS CONTRASEÑAS
   - [X] [Crear administración aplicaciones](https://github.com/miguelmanzanillaocana/formacion/issues/9)
   - [X] [Cambiar interfaces por objetos](https://github.com/miguelmanzanillaocana/formacion/issues/10)
   - [X] [Arreglar insertar comentarios](https://github.com/miguelmanzanillaocana/formacion/issues/12)
