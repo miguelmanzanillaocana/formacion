@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configurers.oauth2.ser
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
@@ -67,7 +69,12 @@ public class RestApiConfig {
     
     @Bean
     UserDetailsService users() {
-    	return new InMemoryUserDetailsManager(User.withUsername("user").password("{noop}pass").roles("user").build());
+    	return new InMemoryUserDetailsManager(User.withUsername("user").password(passwordEncoder().encode("pass")).roles("user").build());
+    }
+    
+    @Bean
+    PasswordEncoder passwordEncoder() {
+    	return new BCryptPasswordEncoder();
     }
     
     @Bean
