@@ -6,6 +6,7 @@ import { AdministrarCamposComponent } from './administrar-campos';
 import { EditarAplicacionesComponent } from './editar-aplicaciones';
 import { DetallesAplicacionComponent } from './detalles-aplicacion';
 import { LoginComponent } from './login';
+import { AuthGuard } from './auth/auth-guard.service';
 
 export const routes: Routes = [
     { path: 'aplicaciones', component: AplicacionesComponent },
@@ -14,6 +15,6 @@ export const routes: Routes = [
     { path: 'detalles-aplicacion', component: DetallesAplicacionComponent },
     { path: 'administracion', component: AdministrarCamposComponent },
     { path: 'editar-aplicacion', component: EditarAplicacionesComponent },
-    {path: 'login', component: LoginComponent},
+    { path: 'login', component: LoginComponent },
     { path: '', redirectTo: '/aplicaciones', pathMatch: 'full' }
 ];

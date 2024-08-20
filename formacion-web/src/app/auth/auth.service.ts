@@ -20,7 +20,7 @@ export class AuthService {
           },
           responseType: 'text' as 'text',
       };
-      return this.http.post("/api/auth", null, httpOptions);
+      return this.http.post("localhost:8080/auth", null, httpOptions);
   }
 
   logout() {

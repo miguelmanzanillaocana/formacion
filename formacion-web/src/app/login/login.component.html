@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<!-- <h1>Login</h1>
 
 <form (ngSubmit)="login()" class="form-horizontal" #loginForm="ngForm">
     <p>
@@ -18,4 +18,17 @@
     </p>
 </form>
 
-<p>{{message}}</p>
+<p>{{message}}</p> -->
+
+<div class="container-fluid">
+    <h1>Inicia Sesión</h1>
+
+    <form class="mx-2 my-2 pt-2" [formGroup]="loginForm">
+        <div class="row">
+            <div class="form-floating">
+                <input type="text" class="form-control" formControlName="username" id="username" placeholder="" required>
+                <label for="username">Nombre de Usuarios</label>
+            </div>
+        </div>
+    </form>
+</div>

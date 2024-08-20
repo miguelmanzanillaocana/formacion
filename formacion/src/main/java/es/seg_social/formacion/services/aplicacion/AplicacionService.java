@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.seg_social.formacion.model.aplicacion.Aplicacion;
-import es.seg_social.formacion.model.situacion.Situacion;
 import es.seg_social.formacion.repository.aplicacion.IAplicacionRepository;
 import es.seg_social.formacion.services.situacion.SituacionService;
 
