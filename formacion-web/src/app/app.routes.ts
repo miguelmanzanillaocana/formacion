@@ -5,6 +5,7 @@ import { CrearAplicacionComponent } from './crear-aplicacion';
 import { AdministrarCamposComponent } from './administrar-campos';
 import { EditarAplicacionesComponent } from './editar-aplicaciones';
 import { DetallesAplicacionComponent } from './detalles-aplicacion';
+import { LoginComponent } from './login';
 
 export const routes: Routes = [
     { path: 'aplicaciones', component: AplicacionesComponent },
@@ -13,5 +14,6 @@ export const routes: Routes = [
     { path: 'detalles-aplicacion', component: DetallesAplicacionComponent },
     { path: 'administracion', component: AdministrarCamposComponent },
     { path: 'editar-aplicacion', component: EditarAplicacionesComponent },
+    {path: 'login', component: LoginComponent},
     { path: '', redirectTo: '/aplicaciones', pathMatch: 'full' }
 ];
