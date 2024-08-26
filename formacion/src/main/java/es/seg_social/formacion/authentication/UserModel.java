@@ -41,6 +41,22 @@ public class UserModel implements UserDetails{
     @Column(name="aceptado")
     private Boolean aceptado;
 
+	public UserModel(Integer id, String fullName, String email, String password, Date createdAt, Date updatedAt,
+			Boolean aceptado) {
+		super();
+		this.id = id;
+		this.fullName = fullName;
+		this.email = email;
+		this.password = password;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.aceptado = aceptado;
+	}
+
+	public UserModel() {
+		
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -94,16 +110,8 @@ public class UserModel implements UserDetails{
 		return fullName;
 	}
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
 	public String getEmail() {
 		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public Date getCreatedAt() {
@@ -130,8 +138,19 @@ public class UserModel implements UserDetails{
 		this.aceptado = aceptado;
 	}
 
-	public void setPassword(String password) {
+	public UserModel setPassword(String password) {
 		this.password = password;
+		return this;
+	}
+
+	public UserModel setFullName(String fullName) {
+		this.fullName = fullName;
+		return this;
+	}
+	
+	public UserModel setEmail(String email) {
+		this.email = email;
+		return this;
 	}
     
     

@@ -22,7 +22,8 @@ public class AuthService {
 	}
 	
 	public UserModel signup(RegisterUserDto input) {
-		UserModel user=new UserModel().setFullName(input.getFullName()).setEmail(input.getEmail()).setPassword(passwordEncoder.encode(input.getPassword()));
+		UserModel user = new UserModel().setFullName(input.getFullName()).setEmail(input.getEmail()).setPassword(passwordEncoder.encode(input.getPassword()));
+		
 		return userRepository.save(user);
 	}
 	
