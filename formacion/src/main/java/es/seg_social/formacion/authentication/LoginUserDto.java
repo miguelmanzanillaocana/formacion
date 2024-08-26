@@ -1,16 +1,16 @@
 package es.seg_social.formacion.authentication;
 
-public class UserLoginDto {
+public class LoginUserDto {
 	
 	private String email;
     private String password;
     
-    public UserLoginDto(String email, String password) {
+    public LoginUserDto(String email, String password) {
 		this.email = email;
 		this.password = password;
 	}
     
-    public UserLoginDto() {	}
+    public LoginUserDto() {	}
     
 	public String getEmail() {
 		return email;
