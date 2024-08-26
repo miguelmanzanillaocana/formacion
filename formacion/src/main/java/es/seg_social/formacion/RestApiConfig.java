@@ -3,15 +3,19 @@ package es.seg_social.formacion;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationManagerResolver;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
@@ -34,14 +38,23 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 
+import es.seg_social.formacion.authentication.UserRepository;
+
 @Configuration
 public class RestApiConfig {
+	private final UserRepository userRepository;
+	
 	KeyGenerator gen = new KeyGenerator();
 	
 	RSAPublicKey pubKey = gen.getPublic();
 	RSAPrivateKey priKey = gen.getPrivate();
 
-    @Bean
+	
+    public RestApiConfig(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
+	@Bean
     WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
@@ -69,7 +82,7 @@ public class RestApiConfig {
     
     @Bean
     UserDetailsService users() {
-    	return new InMemoryUserDetailsManager(User.withUsername("user").password(passwordEncoder().encode("pass")).roles("user").build());
+    	return username -> userRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
     
     @Bean
@@ -99,4 +112,8 @@ public class RestApiConfig {
     	return jwtAuthenticationConverter;
     }
 
+    @Bean
+    AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+    	return config.getAuthenticationManager();
+    }
 }

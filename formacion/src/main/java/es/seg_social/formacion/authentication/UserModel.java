@@ -21,7 +21,7 @@ public class UserModel implements UserDetails{
     @Column(name="id")
     private Integer id;
 
-    @Column(name="fullName")
+    @Column(name="fullname")
     private String fullName;
 
     @Column(name = "email")
@@ -31,11 +31,11 @@ public class UserModel implements UserDetails{
     private String password;
 
     @CreationTimestamp
-    @Column(name = "createdAt")
+    @Column(name = "createdat")
     private Date createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updatedAt")
+    @Column(name = "updatedat")
     private Date updatedAt;
     
     @Column(name="aceptado")
