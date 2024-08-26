@@ -43,19 +43,18 @@ import es.seg_social.formacion.authentication.UserRepository;
 @Configuration
 public class RestApiConfig {
 	private final UserRepository userRepository;
-	
+
 	KeyGenerator gen = new KeyGenerator();
-	
+
 	RSAPublicKey pubKey = gen.getPublic();
 	RSAPrivateKey priKey = gen.getPrivate();
 
-	
-    public RestApiConfig(UserRepository userRepository) {
+	public RestApiConfig(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 
 	@Bean
-    WebMvcConfigurer corsConfigurer() {
+	WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
@@ -64,56 +63,60 @@ public class RestApiConfig {
 		};
 	}
 
-    @Bean
-    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    	http.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
-    	.csrf((csrf) -> csrf.ignoringRequestMatchers("/auth"))
-    	.httpBasic(Customizer.withDefaults())
-    	.oauth2ResourceServer((oauth) -> oauth.jwt(Customizer.withDefaults()))
-    	.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-    	.exceptionHandling(
-    			(exceptions) -> exceptions
-    			.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
-    			.accessDeniedHandler(new BearerTokenAccessDeniedHandler())
-    			);
-    	
-    	return http.build();
-    }
-    
-    @Bean
-    UserDetailsService users() {
-    	return username -> userRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
-    }
-    
-    @Bean
-    PasswordEncoder passwordEncoder() {
-    	return new BCryptPasswordEncoder();
-    }
-    
-    @Bean
-    JwtDecoder decoder() {
-    	return NimbusJwtDecoder.withPublicKey(this.pubKey).build();
-    }
-    
-    @Bean
-    JwtEncoder encoder() {
-    	JWK jwk = new RSAKey.Builder(this.pubKey).privateKey(this.priKey).build();
-    	JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
-    	return new NimbusJwtEncoder(jwks);
-    }
-    
-    @Bean
-    JwtAuthenticationConverter jwtAuthenticationConverter() {
-    	JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-    	grantedAuthoritiesConverter.setAuthorityPrefix("");
-    	
-    	JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
-    	jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
-    	return jwtAuthenticationConverter;
-    }
+	@Bean
+	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//    	http.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
+//    	.csrf((csrf) -> csrf.ignoringRequestMatchers("/auth/**"))
+//    	.httpBasic(Customizer.withDefaults())
+//    	.oauth2ResourceServer((oauth) -> oauth.jwt(Customizer.withDefaults()))
+//    	.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//    	.exceptionHandling(
+//    			(exceptions) -> exceptions
+//    			.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
+//    			.accessDeniedHandler(new BearerTokenAccessDeniedHandler())
+//    			);
+		http.oauth2ResourceServer((oauth) -> oauth.jwt(Customizer.withDefaults())).csrf().disable()
+				.authorizeHttpRequests().requestMatchers("/auth/**").permitAll().anyRequest().authenticated().and()
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-    @Bean
-    AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-    	return config.getAuthenticationManager();
-    }
+		return http.build();
+	}
+
+	@Bean
+	UserDetailsService users() {
+		return username -> userRepository.findByEmail(username)
+				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+	}
+
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	JwtDecoder decoder() {
+		return NimbusJwtDecoder.withPublicKey(this.pubKey).build();
+	}
+
+	@Bean
+	JwtEncoder encoder() {
+		JWK jwk = new RSAKey.Builder(this.pubKey).privateKey(this.priKey).build();
+		JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+		return new NimbusJwtEncoder(jwks);
+	}
+
+	@Bean
+	JwtAuthenticationConverter jwtAuthenticationConverter() {
+		JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
+		grantedAuthoritiesConverter.setAuthorityPrefix("");
+
+		JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
+		jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
+		return jwtAuthenticationConverter;
+	}
+
+	@Bean
+	AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+		return config.getAuthenticationManager();
+	}
 }

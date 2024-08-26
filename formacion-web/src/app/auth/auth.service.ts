@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { LoginDto } from '../../models/autentificacion/login-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,8 @@ export class AuthService {
       return sessionStorage.getItem("app.token") != null;
   }
 
-  login(username: string, password: string): Observable<string> {
-      const httpOptions = {
-          headers: {
-              Authorization: 'Basic ' + window.btoa(username + ':' + password)
-          },
-          responseType: 'text' as 'text',
-      };
-      return this.http.post("http://localhost:8080/auth", null, httpOptions);
+  login(logi: LoginDto): Observable<string> {
+      return this.http.post<string>("http://localhost:8080/auth/login", logi);
   }
 
   logout() {

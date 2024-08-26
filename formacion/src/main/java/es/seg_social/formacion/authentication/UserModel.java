@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -18,6 +20,7 @@ import jakarta.persistence.Table;
 @Entity
 public class UserModel implements UserDetails{
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer id;
 
@@ -41,8 +44,7 @@ public class UserModel implements UserDetails{
     @Column(name="aceptado")
     private Boolean aceptado;
 
-	public UserModel(Integer id, String fullName, String email, String password, Date createdAt, Date updatedAt,
-			Boolean aceptado) {
+	public UserModel(Integer id, String fullName, String email, String password, Date createdAt, Date updatedAt) {
 		super();
 		this.id = id;
 		this.fullName = fullName;
@@ -50,7 +52,7 @@ public class UserModel implements UserDetails{
 		this.password = password;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
-		this.aceptado = aceptado;
+		this.aceptado = false;
 	}
 
 	public UserModel() {
@@ -134,8 +136,9 @@ public class UserModel implements UserDetails{
 		return aceptado;
 	}
 
-	public void setAceptado(Boolean aceptado) {
+	public UserModel setAceptado(Boolean aceptado) {
 		this.aceptado = aceptado;
+		return this;
 	}
 
 	public UserModel setPassword(String password) {
