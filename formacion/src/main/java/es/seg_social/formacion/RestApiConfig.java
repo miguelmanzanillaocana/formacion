@@ -56,7 +56,7 @@ public class RestApiConfig {
     	http.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
     	.csrf((csrf) -> csrf.ignoringRequestMatchers("/auth"))
     	.httpBasic(Customizer.withDefaults())
-    	.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
+    	.oauth2ResourceServer((oauth) -> oauth.jwt(Customizer.withDefaults()))
     	.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
     	.exceptionHandling(
     			(exceptions) -> exceptions
