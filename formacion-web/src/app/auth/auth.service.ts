@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import { LoginDto } from '../../models/autentificacion/login-dto';
+import { LoginUserDto } from '../../models/autentificacion/login-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class AuthService {
       return sessionStorage.getItem("app.token") != null;
   }
 
-  login(logi: LoginDto): Observable<string> {
+  login(logi: LoginUserDto): Observable<string> {
       return this.http.post<string>("http://localhost:8080/auth/login", logi);
   }
 

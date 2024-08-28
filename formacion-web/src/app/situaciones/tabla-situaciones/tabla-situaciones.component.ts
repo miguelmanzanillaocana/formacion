@@ -47,7 +47,7 @@ export class TablaSituacionesComponent {
           situacion.pruebas.planPruebas,
           situacion.test.testing,
           situacion.inf.informes,
-          situacion.terc.serviciosTerceros
+          situacion.terc.serviciosTerceros 
         );
       });
 

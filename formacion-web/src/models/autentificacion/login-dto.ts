@@ -1,6 +1,6 @@
-import { IloginDto } from "../../interfaces/autentificacion/i-login";
+import { IloginUserDto } from "../../interfaces/autentificacion/i-login";
 
-export class LoginDto implements IloginDto{
+export class LoginUserDto implements IloginUserDto{
     email: string;
     password: string;
 
