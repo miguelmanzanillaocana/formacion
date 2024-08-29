@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 	
 	private final JwtEncoder encoder;
+	
+	@Autowired
+	AuthService service;
+	
 	
 	public AuthController(JwtEncoder encoder) {
 		this.encoder = encoder;
@@ -42,5 +47,10 @@ public class AuthController {
 		String token = this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
 		return new ResponseEntity<>(token, HttpStatus.OK);
 	}
-
+	
+	@PostMapping("/signup")
+	public UserModel register(@RequestBody RegisterUserDto registerUserDto) {
+		UserModel user=service.signup(registerUserDto);
+		return user;
+	}
 }

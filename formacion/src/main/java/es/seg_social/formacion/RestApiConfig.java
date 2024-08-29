@@ -47,14 +47,13 @@ import es.seg_social.formacion.authentication.UserRepository;
 @Configuration
 public class RestApiConfig {
 	private final UserRepository userRepository;
-	
+
 	KeyGenerator gen = new KeyGenerator();
-	
+
 	RSAPublicKey pubKey = gen.getPublic();
 	RSAPrivateKey priKey = gen.getPrivate();
 
-	
-    public RestApiConfig(UserRepository userRepository) {
+	public RestApiConfig(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 
