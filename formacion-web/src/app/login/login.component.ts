@@ -36,14 +36,13 @@ export class LoginComponent {
     this.logi.email = this.loginForm.get('username')?.value;
     this.logi.password = this.loginForm.get('password')?.value
     this.authService.login(this.logi)
-      .subscribe({
-        next: (token) => {
-          console.log('Token recibido:', token);
-        },
-        error: (error) => {
-          console.error('Error al autenticar:', error);
-          this.snackBar.open(`Login failed: ${error.status}`, "OK")
-        }
-      });
+  .subscribe((token: string) => {
+    this.tok = token;
+    console.log('Token recibido:', this.tok);
+  }, (error) => {
+    console.error('Error al autenticar:', error);
+    this.snackBar.open(`Login failed: ${error.status}`, "OK")
+  });
+
   }
 }
