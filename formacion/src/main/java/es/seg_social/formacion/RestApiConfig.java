@@ -2,6 +2,7 @@ package es.seg_social.formacion;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +29,9 @@ import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthen
 import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -55,27 +59,38 @@ public class RestApiConfig {
 	}
 
 	@Bean
-    WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedMethods("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS");
-			}
-		};
+    CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration config = new CorsConfiguration();
+		config.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+		config.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS", "HEAD"));
+		
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", config);
+		return source;
 	}
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    	http.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
-    	.csrf((csrf) -> csrf.ignoringRequestMatchers("/auth"))
-    	.httpBasic(Customizer.withDefaults())
-    	.oauth2ResourceServer((oauth) -> oauth.jwt(Customizer.withDefaults()))
-    	.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-    	.exceptionHandling(
-    			(exceptions) -> exceptions
-    			.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
-    			.accessDeniedHandler(new BearerTokenAccessDeniedHandler())
-    			);
+        http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+                .cors(cors -> cors.configurationSource(corsConfigurationSource())).csrf(csrf -> csrf.disable())
+                .httpBasic(Customizer.withDefaults())
+                .oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults()))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(exceptions -> exceptions
+                                .accessDeniedHandler(new BearerTokenAccessDeniedHandler())
+                                .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
+                );
+    	
+//    	http.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
+//    	.csrf((csrf) -> csrf.ignoringRequestMatchers("/auth/**"))
+//    	.httpBasic(Customizer.withDefaults())
+//    	.oauth2ResourceServer((oauth) -> oauth.jwt(Customizer.withDefaults()))
+//    	.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//    	.exceptionHandling(
+//    			(exceptions) -> exceptions
+//    			.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
+//    			.accessDeniedHandler(new BearerTokenAccessDeniedHandler())
+//    			);
     	
     	return http.build();
     }
