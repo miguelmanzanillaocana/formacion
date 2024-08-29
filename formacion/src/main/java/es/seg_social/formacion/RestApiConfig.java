@@ -2,6 +2,7 @@ package es.seg_social.formacion;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +29,9 @@ import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthen
 import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -54,17 +58,31 @@ public class RestApiConfig {
 	}
 
 	@Bean
-	WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedMethods("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS");
-			}
-		};
+	CorsConfigurationSource corsConfigurationSource() {
+		CorsConfiguration config = new CorsConfiguration();
+		config.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+		config.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS", "HEAD"));
+		config.setAllowCredentials(true);
+		
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", config);
+		return source;
 	}
 
-	@Bean
-	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+        		.csrf(csrf -> csrf.disable())
+        		.authorizeHttpRequests(auth -> auth.requestMatchers("/auth/**").permitAll()
+        				.anyRequest().authenticated())
+                .httpBasic(Customizer.withDefaults())
+                .oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults()))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(exceptions -> exceptions
+                                .accessDeniedHandler(new BearerTokenAccessDeniedHandler())
+                                .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
+                );
+    	
 //    	http.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
 //    	.csrf((csrf) -> csrf.ignoringRequestMatchers("/auth/**"))
 //    	.httpBasic(Customizer.withDefaults())
@@ -75,48 +93,44 @@ public class RestApiConfig {
 //    			.authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
 //    			.accessDeniedHandler(new BearerTokenAccessDeniedHandler())
 //    			);
-		http.oauth2ResourceServer((oauth) -> oauth.jwt(Customizer.withDefaults())).csrf().disable()
-				.authorizeHttpRequests().requestMatchers("/auth/**").permitAll().anyRequest().authenticated().and()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    	
+    	return http.build();
+    }
+    
+    @Bean
+    UserDetailsService users() {
+    	return username -> userRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
+    
+    @Bean
+    PasswordEncoder passwordEncoder() {
+    	return new BCryptPasswordEncoder();
+    }
+    
+    @Bean
+    JwtDecoder decoder() {
+    	return NimbusJwtDecoder.withPublicKey(this.pubKey).build();
+    }
+    
+    @Bean
+    JwtEncoder encoder() {
+    	JWK jwk = new RSAKey.Builder(this.pubKey).privateKey(this.priKey).build();
+    	JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
+    	return new NimbusJwtEncoder(jwks);
+    }
+    
+    @Bean
+    JwtAuthenticationConverter jwtAuthenticationConverter() {
+    	JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
+    	grantedAuthoritiesConverter.setAuthorityPrefix("");
+    	
+    	JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
+    	jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
+    	return jwtAuthenticationConverter;
+    }
 
-		return http.build();
-	}
-
-	@Bean
-	UserDetailsService users() {
-		return username -> userRepository.findByEmail(username)
-				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
-	}
-
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-
-	@Bean
-	JwtDecoder decoder() {
-		return NimbusJwtDecoder.withPublicKey(this.pubKey).build();
-	}
-
-	@Bean
-	JwtEncoder encoder() {
-		JWK jwk = new RSAKey.Builder(this.pubKey).privateKey(this.priKey).build();
-		JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
-		return new NimbusJwtEncoder(jwks);
-	}
-
-	@Bean
-	JwtAuthenticationConverter jwtAuthenticationConverter() {
-		JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-		grantedAuthoritiesConverter.setAuthorityPrefix("");
-
-		JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
-		jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
-		return jwtAuthenticationConverter;
-	}
-
-	@Bean
-	AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-		return config.getAuthenticationManager();
-	}
+    @Bean
+    AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+    	return config.getAuthenticationManager();
+    }
 }
