@@ -4,8 +4,8 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - [X] [Navegacion de la web](https://github.com/miguelmanzanillaocana/formacion/issues/2)
   - [X] Probar mat-table para situaciones
   - [ ] [Encontrar host](https://github.com/miguelmanzanillaocana/formacion/issues/5)
-  - [ ] [Empezar seguridad web (inicio sesion, tipos de cuenta...)](https://github.com/miguelmanzanillaocana/formacion/issues/4)
-  - [ ] [Recibir e insertar usuarios en base de datos](https://github.com/miguelmanzanillaocana/formacion/issues/13)
+  - [X] [Empezar seguridad web (inicio sesion, tipos de cuenta...)](https://github.com/miguelmanzanillaocana/formacion/issues/4)
+  - [X] [Recibir e insertar usuarios en base de datos](https://github.com/miguelmanzanillaocana/formacion/issues/13)
   - [ ] [Diferenciar usuarios por roles](https://github.com/miguelmanzanillaocana/formacion/issues/14)
   - [X] [Encriptar contraseñas](https://github.com/miguelmanzanillaocana/formacion/issues/15)
   - [X] [Cambiar id responsable, id tecnologia... por su equivalente en texto](https://github.com/miguelmanzanillaocana/formacion/issues/3)
@@ -37,7 +37,7 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - **/subarea/update (PUT)** => actualiza una subarea, la subarea a actualizar se pasa en el body del request
 ## Criticidad
   - **/criticidad/ (GET)** => recibe un array en JSON con todas las criticidades
-  - **/criticidad/{id} (GET)** => recibe un JSOn con la criticidad que tenga ese id
+  - **/criticidad/{id} (GET)** => recibe un JSON con la criticidad que tenga ese id
   - **/criticidad/insert (POST)** => inserta una nueva criticidad, la criticidad se pasa en el body del request
   - **/criticidad/update (PUT)** => atualiza una criticidad, la criticidad a actualizar se pasa en el body del request
 ## Responsable
@@ -47,27 +47,27 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - **/responsable/update (PUT)** = actualiza un responsable, el responsable a actualizar se pasa en el body del request
 ## Tecnologia
   - **/tecnologia/ (GET)** => recibe un array en JSON con todas las tecnologias
-  - **/tecnologia/ (GET)** =>
+  - **/tecnologia/ (GET)** => recibe un JSON con la tecnologia que tenga ese id
   - **/tecnologia/insert (POST)** => inserta una nueva tecnologia, la tecnologia se pasa en el body del request
   - **/tecnologia/update (PUT)** => actualiza una teconologia, la tecnologia a actualizar se pasa en el body del request
 ## Tecnologia Interfaz
   - **/tecnologiaInterfaz/ (GET)** => recibe un array en JSON con todas las tecnologiasInterfaz
-  - **/tecnologiaInterfaz/{id} (GET)** =>
+  - **/tecnologiaInterfaz/{id} (GET)** => recibe un JSON con la tecnologia de interfaz que tenga ese id
   - **/tecnologiaInterfaz/insert (POST)** => inserta una nueva tecnologia de interfaz, la tecnologia de interfaz se pasa en el body del request
   - **/tecnologiaInterfaz/update (PUT)** => actuliza una tecnologia de interfaz, la tecnologia de interfaz a atualizar se pasa en el body del request
 ## Tipo
   - **/tipo/ (GET)** => recibe un array en JSON con todos los tipos
-  - **/tipo/{id} (GET)** =>
+  - **/tipo/{id} (GET)** => recibe un JSON con el tipo que tenga ese id
   - **/tipo/insert (POST)** => inserta un nuevo tipo, el tipo se pasa en el body del request
   - **/tipo/update (PUT)** => actualiza un tipo, el tipo a actualizar se pasa en el body del request
 ## Volumen Evolutivo
   - **/volumenEvolutivo/ (GET)** => recibe un array en JSON con todos los volumenes evolutivos
-  - **/volumenEvolutivo({id} (GET)** =>
+  - **/volumenEvolutivo/{id} (GET)** => recibe un JSON con el volumen evolutivo que tenga ese id
   - **/volumenEvolutivo/insert (POST)** => inserta un nuevo volumen-evolutivo, el volumen evolutivo se pasa en el body del request
   - **/volumenEvolutivo/update (PUT)** => actuliza un volumen-evolutivo, el volumen evolutivo a actualizar se pasa en el body del request
 ## Volumen Usuarios
   - **/volumenUsuarios/ (GET)** => recibe un array en JSON con todos los volumenes de usuario
-  - **/volumenUsuarios/{id} (GET)** =>
+  - **/volumenUsuarios/{id} (GET)** => recibe un JSON con el volumen de usuarios que tenga ese id
   - **/volumenUsuarios/insert (POST)** => inserta un nuevo volumen-usuarios, el volumen-usuarios se pasa en el body del request
   - **/volumenUsuarios/update (PUT)** => actualiza un volumen de usuarios, el volumen de usuarios se pasa en el body del request
 
@@ -117,3 +117,7 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - **/serviciosTerceros/{id} (GET)** => recibe un JSON con el tipo de servicio de terceros que tenga ese id
   - **/serviciosTerceros/insert (POST)** => inserta un nuevo tipo de servicio de terceros, el tipo de servicio de terceros se pasa en el body del request
   - **/serviciosTerceros/update (PUT)** => actualiza un tipo de servicio de terceros, el tipo de servicio de terceros a actualizar se pasa en el body del request
+
+# Endpoints String Autenticacion
+  - **/auth/login (POST)** => recibe un JSON con el JWT generado, en el cuerpo se pasa el usuario/email y la contraseña
+  - **/auth/signup (POST)** => devuelve un objeto "Usuario" despues de crearlo en la base de datos, en el cuerpo se pasa el usuario/email, la contraseña y el nombre completo
