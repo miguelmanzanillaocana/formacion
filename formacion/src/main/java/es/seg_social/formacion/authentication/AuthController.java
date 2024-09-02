@@ -4,17 +4,20 @@ import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/auth")
 public class AuthController {
 	
@@ -28,8 +31,11 @@ public class AuthController {
 		this.encoder = encoder;
 	}
 	
-	@PostMapping("/login")
-	public ResponseEntity<String> auth(Authentication authentication) {
+	@PostMapping(
+			value = "/login",
+			produces = MediaType.APPLICATION_JSON_VALUE
+	)
+	public ResponseEntity<String> auth(@RequestBody LoginUserDto loginUserDTO) {
 		Instant now = Instant.now();
 		long expiry = 36000L;
 		
@@ -37,15 +43,19 @@ public class AuthController {
 //				.map(GrantedAuthority::getAuthority)
 //				.collect(Collectors.joining(","));
 		
+		UserModel usuario = service.authenticate(loginUserDTO);
+		
 		JwtClaimsSet claims = JwtClaimsSet.builder()
 				.issuer("self")
 				.issuedAt(now)
 				.expiresAt(now.plusSeconds(expiry))
-				.subject(authentication.getName())
+				.subject(usuario.getFullName())
 //				.claim("scope", scope)
 				.build();
 		
 		String token = this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+		token = "{ \"token\": \"" + token + "\"}";
+		
 		return new ResponseEntity<>(token, HttpStatus.OK);
 	}
 	

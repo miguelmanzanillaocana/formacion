@@ -15,13 +15,7 @@ export class AuthService {
   }
 
   login(logi: LoginUserDto): Observable<string> {
-      return this.http.post<string>("http://localhost:8080/auth/login", logi, {
-        headers: new HttpHeaders({
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
-            'Access-Control-Allow-Headers': 'Content-Type, Accept, Accept-Language, Origin, User-Agent'
-          })
-      });
+      return this.http.post<string>("http://localhost:8080/auth/login", logi);
   }
 
   logout() {

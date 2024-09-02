@@ -16,5 +16,5 @@ export const routes: Routes = [
     { path: 'administracion', component: AdministrarCamposComponent  },
     { path: 'editar-aplicacion', component: EditarAplicacionesComponent },
     { path: 'login', component: LoginComponent },
-    { path: '', redirectTo: '/aplicaciones', pathMatch: 'full' }
+    { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];

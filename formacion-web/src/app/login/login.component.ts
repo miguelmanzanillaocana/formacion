@@ -9,6 +9,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angul
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LoginUserDto } from '../../models/autentificacion/login-dto';
+import { Token } from '../../models/autentificacion/token';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -21,7 +22,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   message: string = "";
   logi: LoginUserDto = new LoginUserDto("", "");
-  tok!: string
+  tok!: Token;
 
 
   constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar, private fb: FormBuilder) {
@@ -39,6 +40,11 @@ export class LoginComponent {
       .subscribe({
         next: (token) => {
           console.log('Token recibido:', token);
+          token = JSON.stringify(token)
+          this.tok = JSON.parse(token);
+
+          sessionStorage.setItem("app.token", this.tok.token)
+          this.router.navigateByUrl("/aplicaciones")
         },
         error: (error) => {
           console.error('Error al autenticar:', error);
