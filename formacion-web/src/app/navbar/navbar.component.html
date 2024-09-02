@@ -6,7 +6,8 @@
     <a class="navbar-brand me-4 fw-bold" routerLink="/"> Formación </a>
     <a class="nav-link" aria-current="page" routerLink="/aplicaciones" routerLinkActive="active" ariaCurrentWhenActive="page"> Aplicaciones </a>
     <a class="nav-link ms-3" routerLink="/situaciones" routerLinkActive="active" ariaCurrentWhenActive="page"> Situaciones </a>
-    <a class="nav-link ms-auto" routerLink="/administracion" routerLinkActive="active" ariaCurrentWhenActive="page">Administración</a>
+    <a class="nav-link ms-auto me-3" routerLink="/administracion" routerLinkActive="active" ariaCurrentWhenActive="page">Administración</a>
+    <a class="nav-link" (click)="cerrarSesion()">Cerrar sesión</a>
   </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>

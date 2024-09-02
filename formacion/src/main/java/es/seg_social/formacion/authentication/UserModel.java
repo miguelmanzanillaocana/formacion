@@ -43,8 +43,11 @@ public class UserModel implements UserDetails{
     
     @Column(name="aceptado")
     private Boolean aceptado;
+    
+    @Column(name="role")
+    private String role;
 
-	public UserModel(Integer id, String fullName, String email, String password, Date createdAt, Date updatedAt) {
+	public UserModel(Integer id, String fullName, String email, String password, Date createdAt, Date updatedAt,String role) {
 		super();
 		this.id = id;
 		this.fullName = fullName;
@@ -53,6 +56,7 @@ public class UserModel implements UserDetails{
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 		this.aceptado = false;
+		this.role = role;
 	}
 
 	public UserModel() {
@@ -153,6 +157,15 @@ public class UserModel implements UserDetails{
 	
 	public UserModel setEmail(String email) {
 		this.email = email;
+		return this;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public UserModel setRole(String role) {
+		this.role = role;
 		return this;
 	}
     

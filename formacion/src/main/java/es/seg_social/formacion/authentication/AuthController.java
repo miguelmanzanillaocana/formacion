@@ -1,6 +1,8 @@
 package es.seg_social.formacion.authentication;
 
 import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +37,7 @@ public class AuthController {
 			value = "/login",
 			produces = MediaType.APPLICATION_JSON_VALUE
 	)
-	public ResponseEntity<String> auth(@RequestBody LoginUserDto loginUserDTO) {
+	public ResponseEntity<Map<String, Object>> auth(@RequestBody LoginUserDto loginUserDTO) {
 		Instant now = Instant.now();
 		long expiry = 36000L;
 		
@@ -54,9 +56,10 @@ public class AuthController {
 				.build();
 		
 		String token = this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
-		token = "{ \"token\": \"" + token + "\"}";
-		
-		return new ResponseEntity<>(token, HttpStatus.OK);
+		Map<String, Object> response = new HashMap<>();
+	    response.put("token", token);
+	    response.put("role", usuario.getRole());
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
 	@PostMapping("/signup")
