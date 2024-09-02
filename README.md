@@ -4,8 +4,8 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - [X] [Navegacion de la web](https://github.com/miguelmanzanillaocana/formacion/issues/2)
   - [X] Probar mat-table para situaciones
   - [ ] [Encontrar host](https://github.com/miguelmanzanillaocana/formacion/issues/5)
-  - [ ] [Empezar seguridad web (inicio sesion, tipos de cuenta...)](https://github.com/miguelmanzanillaocana/formacion/issues/4)
-  - [ ] [Recibir e insertar usuarios en base de datos](https://github.com/miguelmanzanillaocana/formacion/issues/13)
+  - [X] [Empezar seguridad web (inicio sesion, tipos de cuenta...)](https://github.com/miguelmanzanillaocana/formacion/issues/4)
+  - [X] [Recibir e insertar usuarios en base de datos](https://github.com/miguelmanzanillaocana/formacion/issues/13)
   - [ ] [Diferenciar usuarios por roles](https://github.com/miguelmanzanillaocana/formacion/issues/14)
   - [X] [Encriptar contraseñas](https://github.com/miguelmanzanillaocana/formacion/issues/15)
   - [X] [Cambiar id responsable, id tecnologia... por su equivalente en texto](https://github.com/miguelmanzanillaocana/formacion/issues/3)
