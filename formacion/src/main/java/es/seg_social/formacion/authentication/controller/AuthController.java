@@ -24,7 +24,6 @@ import es.seg_social.formacion.authentication.dto.RegisterUserDto;
 import es.seg_social.formacion.authentication.services.AuthService;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/auth")
 public class AuthController {
 
