@@ -37,15 +37,15 @@
         </ng-container>
 
         <!-- updateAt Column -->
-        <ng-container matColumnDef="updateAt">
+        <ng-container matColumnDef="updatedAt">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha ultima de modificacion</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.updateAt}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.updatedAt}} </mat-cell>
         </ng-container>
 
         <!-- enabled Column -->
         <ng-container matColumnDef="enabled">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Habilitado</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{datosComunes[row.enabled].valor}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{ row.enabled ? 'Sí' : 'No' }} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

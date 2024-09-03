@@ -20,7 +20,7 @@ import { DatosService } from '../../../services/datos.service';
 export class TablaUserComponent {
   datosUser: UserModel[]=[];
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
-  displayedColumns = ['fullName','email','role','createdAt','updateAt','enabled'];
+  displayedColumns = ['fullName','email','role','createdAt','updatedAt','enabled'];
   dataSource: MatTableDataSource<UserModel> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
@@ -37,7 +37,7 @@ export class TablaUserComponent {
           user.email,
           user.password,
           user.createdAt,
-          user.updateAt,
+          user.updatedAt,
           user.aceptado,
           user.role,
           user.enabled,

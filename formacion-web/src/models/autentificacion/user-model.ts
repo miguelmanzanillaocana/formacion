@@ -7,7 +7,7 @@ export class UserModel implements IUserModel {
     email: string;
     password: string;
     createdAt: string;
-    updateAt: string;
+    updatedAt: string;
     aceptado: boolean;
     role: string;
     enabled: boolean;
@@ -23,7 +23,7 @@ export class UserModel implements IUserModel {
         email: string,
         password: string,
         createdAt: string,
-        updateAt: string,
+        updatedAt: string,
         aceptado: boolean,
         role: string,
         enabled: boolean,
@@ -38,7 +38,7 @@ export class UserModel implements IUserModel {
         this.email = email;
         this.password = password;
         this.createdAt = createdAt;
-        this.updateAt = updateAt;
+        this.updatedAt = updatedAt;
         this.aceptado = aceptado;
         this.role = role;
         this.enabled = enabled;

@@ -6,7 +6,7 @@ export interface IUserModel{
     email:string,
     password:string,
     createdAt:string,
-    updateAt:string,
+    updatedAt:string,
     aceptado:boolean,
     role:string,
     enabled: boolean,
