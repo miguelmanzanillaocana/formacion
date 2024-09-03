@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { jwtDecode, JwtPayload } from 'jwt-decode';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -42,13 +41,12 @@ export class LoginComponent {
           console.log('Token recibido:', token);
           token = JSON.stringify(token)
           this.tok = JSON.parse(token);
-
           sessionStorage.setItem("app.token", this.tok.token)
           this.router.navigateByUrl("/aplicaciones")
         },
         error: (error) => {
           console.error('Error al autenticar:', error);
-          this.snackBar.open(`Login failed: ${error.status}`, "OK")
+          this.snackBar.open(`Login failed: ${error.status}`, "OK",{duration:2000})
         }
       });
   }

@@ -1,6 +1,8 @@
 package es.seg_social.formacion.authentication;
 
 import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -56,10 +58,9 @@ public class AuthController {
 		Token token = new Token(this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue());
 		
 		return new ResponseEntity<>(token, HttpStatus.OK);
-	}
-	
-	@PostMapping("/signup")
-	public UserModel register(@RequestBody RegisterUserDto registerUserDto) {
+		String token = this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+		Map<String, Object> response = new HashMap<>();
+	    response.put("token", token);
 		UserModel user=service.signup(registerUserDto);
 		return user;
 	}
