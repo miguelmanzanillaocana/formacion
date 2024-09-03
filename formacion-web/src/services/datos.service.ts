@@ -25,6 +25,7 @@ export class DatosService {
   private volumenEvolutivo = 'volumenEvolutivo/';
   private tipo = 'tipo/';
   private tecnologiaInterfaz = 'tecnologiaInterfaz/';
+  private usuarios= 'user/';
 
   // Endpoints Situaciones
   private situacion = 'situacion/';
@@ -230,6 +231,6 @@ export class DatosService {
     return this.http.put<Informes>(this.urlBase + this.informes + this.update, inf);
   }
   obtenerUsuarios() : Observable<UserModel[]>{
-    return this.http.get<UserModel[]>(this.urlBase)
+    return this.http.get<UserModel[]>(this.urlBase+this.usuarios)
   }
 }
