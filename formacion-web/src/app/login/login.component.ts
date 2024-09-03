@@ -32,7 +32,9 @@ export class LoginComponent {
   }
 
   public login(): void {
-    sessionStorage.removeItem("app.token");
+    if (this.authService.isLoggedIn()){
+      localStorage.removeItem("app.token");
+    }
     this.logi.email = this.loginForm.get('username')?.value;
     this.logi.password = this.loginForm.get('password')?.value
     this.authService.login(this.logi)
@@ -41,7 +43,7 @@ export class LoginComponent {
           console.log('Token recibido:', token);
           token = JSON.stringify(token)
           this.tok = JSON.parse(token);
-          sessionStorage.setItem("app.token", this.tok.token)
+          localStorage.setItem("app.token", this.tok.token)
           this.router.navigateByUrl("/aplicaciones")
         },
         error: (error) => {

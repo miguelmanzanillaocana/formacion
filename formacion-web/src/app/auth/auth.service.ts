@@ -11,7 +11,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-      return sessionStorage.getItem("app.token") != null;
+      return localStorage.getItem("app.token") != null;
   }
 
   login(logi: LoginUserDto): Observable<string> {
@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   logout() {
-      sessionStorage.removeItem("app.token");
+      localStorage.removeItem("app.token");
       sessionStorage.removeItem("app.roles");
   }
 
