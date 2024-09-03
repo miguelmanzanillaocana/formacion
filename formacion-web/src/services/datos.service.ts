@@ -23,7 +23,6 @@ export class DatosService {
   private volumenEvolutivo = 'volumenEvolutivo/';
   private tipo = 'tipo/';
   private tecnologiaInterfaz = 'tecnologiaInterfaz/';
-  private usuarios= 'user/';
 
   // Endpoints Situaciones
   private situacion = 'situacion/';
@@ -35,6 +34,9 @@ export class DatosService {
   private informes = 'informes/';
   private serviciosTerceros = 'serviciosTerceros/'
   private comentarioSituacion= 'comentarioSituacion/'
+
+  //Endpoints usuario
+  private usuarios= 'user/';
 
   // Endpoints Comunes
   private insert = 'insert';
