@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: bxyjqpgv8ih0ltqnutnk-mysql.services.clever-cloud.com:3306
--- Tiempo de generación: 30-07-2024 a las 08:26:20
+-- Tiempo de generación: 03-09-2024 a las 08:50:33
 -- Versión del servidor: 8.0.22-13
 -- Versión de PHP: 8.2.21
 
@@ -47,7 +47,7 @@ CREATE TABLE `aplicaciones` (
 --
 
 INSERT INTO `aplicaciones` (`ID_Aplicacion`, `Codigo_Aplicacion`, `Nombre_Aplicacion`, `Area_ID`, `Subarea_ID`, `Responsable_ID`, `Tecnologia_ID`, `Criticidad_ID`, `Vol_Evol_ID`, `Vol_Usu_ID`, `Tipo_ID`, `Tecnologia_Interfaz_ID`) VALUES
-(1, 'ACBA', 'Procesos Batch de Accion Social', 1, 1, 1, 1, 1, 3, 3, 1, 5),
+(1, 'ACBA', 'Procesos Batch de Accion Social', 1, 1, 1, 1, 3, 3, 3, 4, 5),
 (2, 'ACDC', 'Gestión de los Expedientes de Accion Socal', 1, 1, 1, 1, 1, 1, 1, 4, 1),
 (3, 'ACSP', 'Sistema de Presentación de Solicitudes de Accion Social', 1, 1, 1, 2, 1, 3, 3, 3, 1),
 (4, 'BASC', 'Consulta Bases de Cotización', 1, 1, 1, 1, 3, 3, 3, 3, 1),
@@ -110,7 +110,8 @@ INSERT INTO `aplicaciones` (`ID_Aplicacion`, `Codigo_Aplicacion`, `Nombre_Aplica
 (61, 'GEAP', 'Abogados Apoderados', 3, 0, 5, 2, 2, 2, 2, 2, 1),
 (62, 'GINF', 'Consultivo', 3, 0, 5, 2, 2, 2, 2, 2, 1),
 (63, 'SEJU', 'Gestión de Expedietntes Servicio Juridico', 3, 0, 5, 2, 1, 1, 1, 2, 1),
-(64, 'SJCO', 'Común', 3, 0, 5, 2, 1, 3, 3, 2, 1);
+(64, 'SJCO', 'Común', 3, 0, 5, 2, 1, 3, 3, 2, 1),
+(65, 'MAMA', '', 0, 0, 0, 0, 4, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -172,14 +173,30 @@ CREATE TABLE `comentarios_situacion` (
 --
 
 INSERT INTO `comentarios_situacion` (`Situacion_Id`, `ID_Comentario`, `Comentario`) VALUES
+(1, 1, 'prueba 1'),
+(1, 2, 'prueba 2'),
+(1, 3, 'aaaa'),
+(1, 4, 'holAa'),
+(1, 5, 'dada'),
+(1, 6, 'holAa'),
+(1, 7, 'aaaaaa'),
+(1, 8, 'nuevo comentario '),
+(2, 1, 'test'),
+(2, 2, 'test2'),
+(3, 1, 'aaaaaa'),
 (4, 1, 'Migrada a 2. PCOT'),
+(4, 2, 'holAa'),
+(4, 3, 'aaaaaa'),
 (5, 1, 'Se va a decomisionar'),
+(5, 2, 'test'),
 (6, 1, 'Se va a decomisionar'),
 (7, 1, 'Aplicación bloqueada por funcionaria'),
 (7, 2, 'Problema con como mostrar los tooltip'),
 (8, 1, 'En develop está la versión mavenizada'),
 (8, 2, 'Se va a gestionar la subidaa PRO de la versión sin avenizar empezando por INT. Solicitada la subida a PRE 06.02.00.01.00'),
+(8, 3, 'test'),
 (9, 1, 'Se ha solicitado la actualización del enlace a la nueva versión'),
+(9, 2, 'aaaa'),
 (10, 1, 'Migrada a 2. PMOP'),
 (12, 1, 'Se va a decomisionar'),
 (13, 1, 'Se ha solicitado la creación del enlace en INT y PRE para Internet'),
@@ -219,7 +236,8 @@ INSERT INTO `comentarios_situacion` (`Situacion_Id`, `ID_Comentario`, `Comentari
 (61, 1, 'No tiene estructura correcta. Todo dentro de SJSS'),
 (62, 1, 'No tiene estructura correcta. Todo dentro de SJSS'),
 (63, 1, 'No tiene estructura correcta. Todo dentro de SJSS'),
-(64, 1, 'No tiene estructura correcta. Todo dentro de SJSS');
+(64, 1, 'No tiene estructura correcta. Todo dentro de SJSS'),
+(65, 1, 'holAa');
 
 -- --------------------------------------------------------
 
@@ -490,7 +508,7 @@ CREATE TABLE `situacion_aplicaciones` (
 --
 
 INSERT INTO `situacion_aplicaciones` (`ID_Situacion`, `Codigo_Aplicacion`, `Prosa`, `Grupo_GIT`, `Version_Master`, `Version_Develop`, `Actualizado_GIT`, `Version_Produccion`, `Despliegue_ID`, `Version_WAS`, `Maven_Id`, `Documentacion_ID`, `Plan_Pruebas_ID`, `Testing_ID`, `Informes_ID`, `Servicios_Terceros_ID`) VALUES
-(1, 'ACBA', 0, 1, '01.00.00.17.00', '', 0, '01.00.00.22.00', 2, 9, 0, 0, 0, 0, 0, 0),
+(1, 'ACBA', 0, 1, '01.00.00.17.00', '', 0, '01.00.00.22.00', 2, 9, 0, 2, 0, 2, 0, 0),
 (2, 'ACDC', 0, 1, '02.01.00.01.00', '02.02.00.02.00', 1, '', 3, 9, 2, 0, 0, 0, 0, 0),
 (3, 'ACSP', 1, 1, '01.01.00.02.00', '01.03.02.02.00', 0, '01.03.02.02.00', 0, 8, 0, 0, 0, 0, 1, 0),
 (4, 'BASC', 0, 0, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
@@ -553,7 +571,8 @@ INSERT INTO `situacion_aplicaciones` (`ID_Situacion`, `Codigo_Aplicacion`, `Pros
 (61, 'GEAP', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
 (62, 'GINF', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
 (63, 'SEJU', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
-(64, 'SJCO', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0);
+(64, 'SJCO', 1, 1, '', '', 0, '', 0, 8, 0, 0, 0, 0, 0, 0),
+(65, 'MAMA', 0, 0, '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -664,6 +683,31 @@ INSERT INTO `tipo_aplicacion` (`ID_Tipo`, `Tipo`) VALUES
 (3, 'Intranet'),
 (4, 'Intranet(Kiosko)'),
 (5, 'Internet e Intranet');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `fullName` varchar(150) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `createdAt` date NOT NULL,
+  `updatedAt` date NOT NULL,
+  `aceptado` tinyint(1) NOT NULL,
+  `role` varchar(150) NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `fullName`, `email`, `password`, `createdAt`, `updatedAt`, `aceptado`, `role`) VALUES
+(1, 'miguelmanza', 'miguel@gmail.com', '$2a$10$5uWC0RcP0ADvzM9jeV/c9Owcv1tGULFlQkQrdrFAqAWEfHFxX6HPG', '2024-08-26', '2024-08-26', 0, 'user'),
+(2, 'Daniel Gomez', 'daniel@admin.es', '$2a$10$Ym5W/BI3IL6b8HkfC.PViOeHcWDNsbCEy7QfWAdGLnkMvS.A.uEvO', '2024-09-02', '2024-09-02', 0, 'user');
 
 -- --------------------------------------------------------
 
@@ -881,6 +925,12 @@ ALTER TABLE `tipo_aplicacion`
   ADD PRIMARY KEY (`ID_Tipo`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `volumenevolutivo_aplicacion`
 --
 ALTER TABLE `volumenevolutivo_aplicacion`
@@ -891,6 +941,16 @@ ALTER TABLE `volumenevolutivo_aplicacion`
 --
 ALTER TABLE `volumenusuarios_aplicacion`
   ADD PRIMARY KEY (`ID_Volumen_Usuarios`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
