@@ -6,9 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { Situacion, SituacionString } from '../../../models/situaciones';
+import { Situacion, SituacionString, Comun } from '../../../models';
 import { DatosService } from '../../../services/datos.service';
-import { Comun } from '../../../models/comun';
 
 @Component({
   selector: 'app-tabla-situaciones',

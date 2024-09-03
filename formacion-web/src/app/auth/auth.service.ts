@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import { LoginUserDto } from '../../models/autentificacion/login-dto';
-import { RegisterDto } from '../../models/autentificacion/register-dto';
-import { UserModel } from '../../models/autentificacion/user-model';
+import { LoginUserDto, RegisterDto, UserModel } from '../../models';
 
 @Injectable({
   providedIn: 'root'

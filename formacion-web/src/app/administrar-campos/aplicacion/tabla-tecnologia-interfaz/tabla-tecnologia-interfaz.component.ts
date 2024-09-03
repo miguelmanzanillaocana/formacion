@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { DatosService } from '../../../../services/datos.service';
-import { TecnologiaInterfaz } from '../../../../models/aplicaciones';
+import { TecnologiaInterfaz } from '../../../../models';
 import { InsertTecnologiaInterfazDialogComponent } from './insert-tecnologia-interfaz-dialog/insert-tecnologia-interfaz-dialog.component';
  
 @Component({

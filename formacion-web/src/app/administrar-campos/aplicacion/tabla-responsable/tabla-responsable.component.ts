@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Responsable } from '../../../../models/aplicaciones';
+import { Responsable } from '../../../../models';
 import { DatosService } from '../../../../services/datos.service';
 import { InsertResponsableDialogComponent } from './insert-responsable-dialog/insert-responsable-dialog.component';
 

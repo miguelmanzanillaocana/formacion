@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ComentarioSituacion } from '../models/situaciones';
+import { ComentarioSituacion } from '../models';
 
 @Injectable({
   providedIn: 'root'

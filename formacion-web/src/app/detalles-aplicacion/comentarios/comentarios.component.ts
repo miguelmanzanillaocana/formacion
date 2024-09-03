@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ComentarioSituacion } from '../../../models/situaciones';
+import { ComentarioSituacion } from '../../../models';
 import { DatosService } from '../../../services/datos.service';
 import { CommonModule } from '@angular/common';
 import { ComentarioService } from '../../../services/comentario.service';

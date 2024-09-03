@@ -3,7 +3,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogActions, MatDialogClose, MatDialogContent } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DatosService } from '../../../../../services/datos.service';
-import { Subarea } from '../../../../../models/aplicaciones';
+import { Subarea } from '../../../../../models';
 
 @Component({
   selector: 'app-insert-subarea-dialog',

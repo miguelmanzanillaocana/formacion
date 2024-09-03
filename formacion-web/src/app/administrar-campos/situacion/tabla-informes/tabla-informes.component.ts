@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Informes } from '../../../../models/situaciones';
+import { Informes } from '../../../../models';
 import { DatosService } from '../../../../services/datos.service';
 import { InsertInformesDialogComponent } from './insert-informes-dialog/insert-informes-dialog.component';
 

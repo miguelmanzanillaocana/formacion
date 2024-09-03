@@ -1,4 +1,4 @@
-import { Authority } from "../../models/autentificacion/authority"
+import { Authority } from "../../models"
 
 export interface IUserModel{
     id: number,

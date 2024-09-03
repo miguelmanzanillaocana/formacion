@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RegisterDto } from '../../../models/autentificacion/register-dto';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RegisterDto, UserModel, Rol } from '../../../models';
 import { AuthService } from '../../auth/auth.service';
-import { UserModel } from '../../../models/autentificacion/user-model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Rol } from '../../../models/autentificacion/rol';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -25,7 +23,7 @@ export class FormularioUserComponent {
 
   constructor(private auth: AuthService, private snackBar: MatSnackBar, private fb: FormBuilder) {
     this.usuarioForm = this.fb.group({
-      email: new FormControl(this.register.email),
+      email: new FormControl(this.register.email, Validators.pattern('^(([^<>().,;:s@"]+(.[^<>().,;:s@"]+)*)|.(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$')),
       pass: new FormControl(this.register.password),
       nombre: new FormControl(this.register.fullName),
       roles: new FormControl(null)

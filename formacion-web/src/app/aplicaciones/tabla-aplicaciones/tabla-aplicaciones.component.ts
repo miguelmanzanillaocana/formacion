@@ -6,7 +6,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router, RouterLink, RouterOutlet, RouterState } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DatosService } from '../../../services/datos.service';
-import { Aplicacion, AplicacionString } from '../../../models/aplicaciones';
+import { Aplicacion, AplicacionString } from '../../../models';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
  
 @Component({

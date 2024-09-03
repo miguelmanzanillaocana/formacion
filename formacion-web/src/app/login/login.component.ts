@@ -3,13 +3,12 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {jwtDecode,JwtPayload} from 'jwt-decode';
-
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { LoginUserDto } from '../../models/autentificacion/login-dto';
-import { Token } from '../../models/autentificacion/token';
+import { LoginUserDto, Token } from '../../models';
+
 @Component({
   selector: 'app-login',
   standalone: true,

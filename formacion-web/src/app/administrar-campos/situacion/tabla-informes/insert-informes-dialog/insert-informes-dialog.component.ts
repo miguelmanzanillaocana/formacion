@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Informes } from '../../../../../models/situaciones';
+import { Informes } from '../../../../../models';
 import { DatosService } from '../../../../../services/datos.service';
 @Component({
   selector: 'app-insert-informes-dialog',

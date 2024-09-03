@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Documentacion } from '../../../../models/situaciones';
+import { Documentacion } from '../../../../models';
 import { DatosService } from '../../../../services/datos.service';
 import { InsertDocumentDialogComponent } from './insert-document-dialog/insert-document-dialog.component';
 

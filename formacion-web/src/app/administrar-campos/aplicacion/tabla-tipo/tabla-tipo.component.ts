@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { DatosService } from '../../../../services/datos.service';
-import { Tipo } from '../../../../models/aplicaciones';
+import { Tipo } from '../../../../models';
 import { InsertTipoDialogComponent } from './insert-tipo-dialog/insert-tipo-dialog.component';
 
 @Component({

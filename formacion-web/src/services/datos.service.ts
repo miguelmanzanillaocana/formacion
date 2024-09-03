@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Aplicacion, Area, Subarea, Responsable, Criticidad, TecnologiaInterfaz, Tecnologia, Tipo, VolumenEvolutivo, VolumenUsuarios } from '../models/aplicaciones';
-import { Situacion, Despliegue, Maven, Documentacion, Pruebas, Testing, Informes, ServicioTerceros, ComentarioSituacion } from '../models/situaciones';
-import { UserModel } from '../models/autentificacion/user-model';
+import { Aplicacion, Area, Subarea, Responsable, Criticidad, TecnologiaInterfaz, Tecnologia, Tipo, VolumenEvolutivo, VolumenUsuarios, Situacion, Despliegue, Maven, Documentacion, Pruebas, Testing, Informes, ServicioTerceros, ComentarioSituacion, UserModel } from '../models';
 
 @Injectable({
   providedIn: 'root'

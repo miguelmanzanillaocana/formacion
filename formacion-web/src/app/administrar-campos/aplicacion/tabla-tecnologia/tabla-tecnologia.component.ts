@@ -5,7 +5,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { DatosService } from '../../../../services/datos.service';
 import { InsertTecnologiaDialogComponent } from './insert-tecnologia-dialog/insert-tecnologia-dialog.component';
-import { Tecnologia } from '../../../../models/aplicaciones';
+import { Tecnologia } from '../../../../models';
 
 
 @Component({ 

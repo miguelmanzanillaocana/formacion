@@ -5,8 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DatosService } from '../../../services/datos.service';
-import { Aplicacion, Area, Criticidad, Responsable, Subarea, Tecnologia, TecnologiaInterfaz, Tipo, VolumenEvolutivo, VolumenUsuarios } from '../../../models/aplicaciones';
-import { Despliegue, Documentacion, Informes, Maven, Pruebas, ServicioTerceros, Situacion, Testing } from '../../../models/situaciones';
+import { Aplicacion, Area, Criticidad, Responsable, Subarea, Tecnologia, TecnologiaInterfaz, Tipo, VolumenEvolutivo, VolumenUsuarios, Despliegue, Documentacion, Informes, Maven, Pruebas, ServicioTerceros, Situacion, Testing } from '../../../models';
 
 @Component({
   selector: 'app-formulario-crear',

@@ -1,4 +1,4 @@
-import { Despliegue, Documentacion, Informes, Maven, Pruebas, ServicioTerceros, Testing } from "../../models/situaciones";
+import { Despliegue, Documentacion, Informes, Maven, Pruebas, ServicioTerceros, Testing } from "../../models";
 
 export interface ISituacion {
     id: number;

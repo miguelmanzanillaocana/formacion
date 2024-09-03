@@ -6,8 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { UserModel } from '../../../models/autentificacion/user-model';
-import { Comun } from '../../../models/comun';
+import { UserModel, Comun } from '../../../models';
 import { DatosService } from '../../../services/datos.service';
 
 @Component({

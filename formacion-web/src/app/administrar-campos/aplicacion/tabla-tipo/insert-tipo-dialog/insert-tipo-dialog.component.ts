@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Tipo } from '../../../../../models/aplicaciones';
+import { Tipo } from '../../../../../models';
 import { DatosService } from '../../../../../services/datos.service';
 @Component({
   selector: 'app-insert-tipo-dialog',
