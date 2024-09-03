@@ -35,7 +35,7 @@ public class AuthController {
 			value = "/login",
 			produces = MediaType.APPLICATION_JSON_VALUE
 	)
-	public ResponseEntity<String> auth(@RequestBody LoginUserDto loginUserDTO) {
+	public ResponseEntity<Token> auth(@RequestBody LoginUserDto loginUserDTO) {
 		Instant now = Instant.now();
 		long expiry = 36000L;
 		
@@ -53,8 +53,7 @@ public class AuthController {
 //				.claim("scope", scope)
 				.build();
 		
-		String token = this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
-		token = "{ \"token\": \"" + token + "\"}";
+		Token token = new Token(this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue());
 		
 		return new ResponseEntity<>(token, HttpStatus.OK);
 	}
