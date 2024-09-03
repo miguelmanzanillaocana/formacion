@@ -6,7 +6,7 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
   - [ ] [Encontrar host](https://github.com/miguelmanzanillaocana/formacion/issues/5)
   - [X] [Empezar seguridad web (inicio sesion, tipos de cuenta...)](https://github.com/miguelmanzanillaocana/formacion/issues/4)
   - [X] [Recibir e insertar usuarios en base de datos](https://github.com/miguelmanzanillaocana/formacion/issues/13)
-  - [ ] [Diferenciar usuarios por roles](https://github.com/miguelmanzanillaocana/formacion/issues/14)
+  - [X] [Diferenciar usuarios por roles](https://github.com/miguelmanzanillaocana/formacion/issues/14)
   - [X] [Encriptar contraseñas](https://github.com/miguelmanzanillaocana/formacion/issues/15)
   - [X] [Cambiar id responsable, id tecnologia... por su equivalente en texto](https://github.com/miguelmanzanillaocana/formacion/issues/3)
   - [X] [Mejorar formulario aplicaciones](https://github.com/miguelmanzanillaocana/formacion/issues/6)
@@ -121,3 +121,7 @@ Aplicación de formación para el GISS desarrollada por Daniel Gómez Galán y M
 # Endpoints String Autenticacion
   - **/auth/login (POST)** => recibe un JSON con el JWT generado, en el cuerpo se pasa el usuario/email y la contraseña
   - **/auth/signup (POST)** => devuelve un objeto "Usuario" despues de crearlo en la base de datos, en el cuerpo se pasa el usuario/email, la contraseña y el nombre completo
+
+## Usuarios
+  - **/user/ (GET)** => recibe un array en JSON con todos los usuarios
+  - **/user/update (POST)** => actualiza el usuario, el usuario a actualizar se pasa en el body del request
