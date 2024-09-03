@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {jwtDecode,JwtPayload} from 'jwt-decode';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -33,17 +34,19 @@ export class LoginComponent {
 
   public login(): void {
     if (this.authService.isLoggedIn()){
-      localStorage.removeItem("app.token");
+      sessionStorage.removeItem("app.token");
     }
     this.logi.email = this.loginForm.get('username')?.value;
     this.logi.password = this.loginForm.get('password')?.value
     this.authService.login(this.logi)
       .subscribe({
         next: (token) => {
-          console.log('Token recibido:', token);
           token = JSON.stringify(token)
           this.tok = JSON.parse(token);
-          localStorage.setItem("app.token", this.tok.token)
+          sessionStorage.setItem("app.token", this.tok.token)
+          const decodedToken = jwtDecode<JwtPayload>(this.tok.token);
+          // @ts-ignore
+          sessionStorage.setItem("app.roles",  decodedToken.scope);
           this.router.navigateByUrl("/aplicaciones")
         },
         error: (error) => {

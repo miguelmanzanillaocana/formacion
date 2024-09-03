@@ -6,23 +6,22 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { Situacion, SituacionString } from '../../../models/situaciones';
-import { DatosService } from '../../../services/datos.service';
+import { UserModel } from '../../../models/autentificacion/user-model';
 import { Comun } from '../../../models/comun';
+import { DatosService } from '../../../services/datos.service';
 
 @Component({
-  selector: 'app-tabla-situaciones',
+  selector: 'app-tabla-user',
   standalone: true,
   imports: [MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, RouterLink, RouterOutlet, CommonModule],
-  templateUrl: './tabla-situaciones.component.html',
-  styleUrl: './tabla-situaciones.component.css'
-}) 
-
-export class TablaSituacionesComponent {
-  datosSituacion: SituacionString[] = [];
+  templateUrl: './tabla-user.component.html',
+  styleUrl: './tabla-user.component.css'
+})
+export class TablaUserComponent {
+  datosUser: UserModel[]=[];
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
-  displayedColumns = ['codApli', 'pro', 'gruGit', 'master', 'develop', 'actualizado', 'produccion', 'despl', 'was', 'maven', 'doc', 'pruebas', 'test', 'inf', 'terc'];
-  dataSource: MatTableDataSource<SituacionString> = new MatTableDataSource();
+  displayedColumns = ['fullName','email','role','createdAt','updateAt','enabled'];
+  dataSource: MatTableDataSource<UserModel> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
@@ -30,28 +29,27 @@ export class TablaSituacionesComponent {
   constructor(private datosService: DatosService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.datosService.obtenerSituaciones().subscribe((datos: Situacion[]) => {
-      this.datosSituacion = datos.map((situacion: Situacion) => {
-        return new SituacionString(
-          situacion.codApli,
-          situacion.pro,
-          situacion.gruGit,
-          situacion.master,
-          situacion.develop,
-          situacion.actualizado,
-          situacion.produccion,
-          situacion.despl.despliegue,
-          situacion.was,
-          situacion.maven.maven,
-          situacion.doc.documentacion,
-          situacion.pruebas.planPruebas,
-          situacion.test.testing,
-          situacion.inf.informes,
-          situacion.terc.serviciosTerceros 
+    this.datosService.obtenerUsuarios().subscribe((datos: UserModel[]) => {
+      this.datosUser = datos.map((user: UserModel) => {
+        return new UserModel(
+          user.id,
+          user.fullName,
+          user.email,
+          user.password,
+          user.createdAt,
+          user.updateAt,
+          user.aceptado,
+          user.role,
+          user.enabled,
+          user.authorities,
+          user.username,
+          user.accountNonExpired,
+          user.credentialsNonExpired,
+          user.accountNonLocked
         );
       });
 
-      this.dataSource = new MatTableDataSource(this.datosSituacion);
+      this.dataSource = new MatTableDataSource(this.datosUser);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -67,4 +65,4 @@ export class TablaSituacionesComponent {
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
-}
+} 

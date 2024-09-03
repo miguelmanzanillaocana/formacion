@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Aplicacion, Area, Subarea, Responsable, Criticidad, TecnologiaInterfaz, Tecnologia, Tipo, VolumenEvolutivo, VolumenUsuarios } from '../models/aplicaciones';
 import { Situacion, Despliegue, Maven, Documentacion, Pruebas, Testing, Informes, ServicioTerceros, ComentarioSituacion } from '../models/situaciones';
+import { UserModel } from '../models/autentificacion/user-model';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DatosService {
+  
 
   private urlBase = 'http://localhost:8080/';
 
@@ -226,5 +228,8 @@ export class DatosService {
 
   actualizarInformes(inf: Informes): Observable<Informes> {
     return this.http.put<Informes>(this.urlBase + this.informes + this.update, inf);
+  }
+  obtenerUsuarios() : Observable<UserModel[]>{
+    return this.http.get<UserModel[]>(this.urlBase)
   }
 }

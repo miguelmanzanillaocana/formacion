@@ -1,10 +1,15 @@
-package es.seg_social.formacion.authentication;
+package es.seg_social.formacion.authentication.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import es.seg_social.formacion.authentication.UserModel;
+import es.seg_social.formacion.authentication.dto.LoginUserDto;
+import es.seg_social.formacion.authentication.dto.RegisterUserDto;
+import es.seg_social.formacion.authentication.repository.UserRepository;
 
 @Service
 public class AuthService {
@@ -27,6 +32,7 @@ public class AuthService {
 				.setFullName(input.getFullName())
 				.setEmail(input.getEmail())
 				.setPassword(passwordEncoder.encode(input.getPassword()))
+				.setRole(input.getRole())
 				.setAceptado(false);
 	
 		return userRepository.save(user);

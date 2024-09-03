@@ -1,14 +1,17 @@
 package es.seg_social.formacion.authentication;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import es.seg_social.formacion.Constantes;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -65,8 +68,10 @@ public class UserModel implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return List.of();
+		String ROLE_PREFIX = "ROLE_";
+		List<GrantedAuthority> list=new ArrayList<GrantedAuthority>();
+		list.add(new SimpleGrantedAuthority(ROLE_PREFIX + role));
+		return list;
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package es.seg_social.formacion.authentication;
+package es.seg_social.formacion.authentication.controller;
 
 import java.time.Instant;
 import java.util.stream.Collectors;
@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import es.seg_social.formacion.authentication.Token;
+import es.seg_social.formacion.authentication.UserModel;
+import es.seg_social.formacion.authentication.dto.LoginUserDto;
+import es.seg_social.formacion.authentication.dto.RegisterUserDto;
+import es.seg_social.formacion.authentication.services.AuthService;
 
 @RestController
 @CrossOrigin
@@ -43,7 +49,7 @@ public class AuthController {
 				.map(GrantedAuthority::getAuthority)
 				.collect(Collectors.joining(","));
 
-		JwtClaimsSet claims = JwtClaimsSet.builder().issuer("self").issuedAt(now).expiresAt(now.plusSeconds(expiry))
+		JwtClaimsSet claims = JwtClaimsSet.builder().issuer(usuario.getEmail()).issuedAt(now).expiresAt(now.plusSeconds(expiry))
 				.subject(usuario.getFullName())
 				.claim("scope", scope)
 				.build();

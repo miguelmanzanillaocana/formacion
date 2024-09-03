@@ -44,7 +44,7 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 
-import es.seg_social.formacion.authentication.UserRepository;
+import es.seg_social.formacion.authentication.repository.UserRepository;
 
 @Configuration
 public class RestApiConfig {

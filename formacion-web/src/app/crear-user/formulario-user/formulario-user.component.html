@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <h1 class="mt-4 mx-2 pb-2">Crear nuevo Usuario</h1>
+    <form class="mx-2 my-2 pt-2" [formGroup]="usuarioForm">
+        <div class="row ">
+            <div class="col-md-3">
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="email-user" formControlName="email"
+                        placeholder="test" required
+                        [class.is-invalid]="usuarioForm.get('email')?.invalid && (usuarioForm.get('email')?.dirty || usuarioForm.get('email')?.touched)" />
+                    <label for="email-user">Email del usuario</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control" id="pass-user" formControlName="pass"
+                        placeholder="test" required
+                        [class.is-invalid]="usuarioForm.get('pass')?.invalid && (usuarioForm.get('pass')?.dirty || usuarioForm.get('pass')?.touched)" />
+                    <label for="pass-user">Contraseña del usuario</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="nombre-user" formControlName="nombre"
+                        placeholder="test" required
+                        [class.is-invalid]="usuarioForm.get('nombre')?.invalid && (usuarioForm.get('nombre')?.dirty || usuarioForm.get('nombre')?.touched)" />
+                    <label for="nombre-user">Nombre del usuario</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-floating mb-2">
+                    <select class="form-select" id="cb-role" formControlName="roles">
+                        <option *ngFor="let roles of rolesArray" [value]="roles.id">{{ roles.nombre }}</option>
+                      </select>
+                    <label for="cb-role">Rol del usuario</label>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+    <div class="text-center mb-4">
+        <button class="btn btn-success my-2" (click)="onSubmit()" [disabled]="!usuarioForm.valid">Crear Usuario</button>
+      </div>

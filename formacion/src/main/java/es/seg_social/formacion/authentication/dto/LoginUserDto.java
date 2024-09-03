@@ -1,4 +1,4 @@
-package es.seg_social.formacion.authentication;
+package es.seg_social.formacion.authentication.dto;
 
 public class LoginUserDto {
 	
