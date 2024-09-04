@@ -50,6 +50,7 @@ export class FormularioUserComponent {
       this.snackBar.open('Usuario ' + this.user.fullName + ' creado', '', {
         duration: 2500
       })
+      location.reload();
     })
   }
 

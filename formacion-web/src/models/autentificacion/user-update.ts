@@ -10,11 +10,11 @@ export class UserUpdate implements IUserUpdate{
     aceptado: boolean;
     role: string;
     
-    constructor(fullName: string, email: string, createdAt: string, updatedAt: string, aceptado: boolean, role: string){
-        this.id = 0,
+    constructor(id: number, fullName: string, email: string, pass: string, createdAt: string, updatedAt: string, aceptado: boolean, role: string){
+        this.id = id,
         this.fullName = fullName,
         this.email = email,
-        this.password = "",
+        this.password = pass,
         this.createdAt = createdAt,
         this.updatedAt = updatedAt,
         this.aceptado = aceptado,

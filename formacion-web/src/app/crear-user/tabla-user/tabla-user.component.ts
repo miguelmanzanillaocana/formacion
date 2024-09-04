@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { UserModel, Comun } from '../../../models';
+import { UserModel, Comun, UserUpdate } from '../../../models';
 import { DatosService } from '../../../services/datos.service';
 
 @Component({
@@ -17,9 +17,10 @@ import { DatosService } from '../../../services/datos.service';
   styleUrl: './tabla-user.component.css'
 })
 export class TablaUserComponent {
-  datosUser: UserModel[]=[];
+  user!: UserUpdate;
+  datosUser: UserModel[] = [];
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
-  displayedColumns = ['fullName','email','role','createdAt','updatedAt','enabled'];
+  displayedColumns = ['id', 'fullName', 'email', 'role', 'createdAt', 'updatedAt', 'enabled', 'acciones'];
   dataSource: MatTableDataSource<UserModel> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
@@ -63,5 +64,21 @@ export class TablaUserComponent {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
+  }
+
+  deshabilitar(row: UserModel) {
+    this.user = new UserUpdate(row.id, row.fullName, row.email, row.password, row.createdAt, row.updatedAt, false, row.role);
+    this.datosService.actualizarUsuario(this.user).subscribe((res: UserModel)=>{
+      console.log(res);
+      location.reload();
+    });
+  }
+
+  habilitar(row: UserModel) {
+    this.user = new UserUpdate(row.id, row.fullName, row.email, row.password, row.createdAt, row.updatedAt, true, row.role);
+    this.datosService.actualizarUsuario(this.user).subscribe((res: UserModel)=>{
+      console.log(res);
+      location.reload();
+    });
   }
 } 

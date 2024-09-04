@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +24,7 @@ public class UserController {
 		return service.getAllUsers();
 	}
 	
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public UserModel updateUser(@RequestBody UserModel usuario) {
 		return service.updateUser(usuario);
 	}

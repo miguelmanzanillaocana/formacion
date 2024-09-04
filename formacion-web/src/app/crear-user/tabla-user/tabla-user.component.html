@@ -12,40 +12,63 @@
 
 <div class="mt-2 mx-2">
     <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- id Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id Usuario</mat-header-cell>
+            <mat-cell *matCellDef="let id"> {{id.id}} </mat-cell>
+        </ng-container>
+
         <!-- fullName Column -->
         <ng-container matColumnDef="fullName">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Usuario</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.fullName}} </mat-cell>
+            <mat-cell *matCellDef="let fullName"> {{fullName.fullName}} </mat-cell>
         </ng-container>
 
         <!-- email Column -->
         <ng-container matColumnDef="email">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+            <mat-cell *matCellDef="let email"> {{email.email}} </mat-cell>
         </ng-container>
 
         <!-- role Column -->
         <ng-container matColumnDef="role">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Rol de usuario</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.role}} </mat-cell>
+            <mat-cell *matCellDef="let role"> {{role.role}} </mat-cell>
         </ng-container>
 
         <!-- createdAt Column -->
         <ng-container matColumnDef="createdAt">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de creacion</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.createdAt}} </mat-cell>
+            <mat-cell *matCellDef="let createdAt"> {{createdAt.createdAt}} </mat-cell>
         </ng-container>
 
         <!-- updateAt Column -->
         <ng-container matColumnDef="updatedAt">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha ultima de modificacion</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.updatedAt}} </mat-cell>
+            <mat-cell *matCellDef="let updatedAt"> {{updatedAt.updatedAt}} </mat-cell>
         </ng-container>
 
         <!-- enabled Column -->
         <ng-container matColumnDef="enabled">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Habilitado</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{ row.enabled ? 'Sí' : 'No' }} </mat-cell>
+            <mat-cell *matCellDef="let enabled"> {{ enabled.enabled ? 'Sí' : 'No' }} </mat-cell>
+        </ng-container>
+
+        <!-- Acciones Column -->
+        <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef class="d-flex justify-content-center">Habilitar/Deshabilitar</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="d-flex justify-content-center">
+                @if (row.enabled) {
+                    <button type="button" class="btn btn-outline-danger" (click)="deshabilitar(row)">
+                        <i class="bi bi-lock-fill"></i>
+                    </button>  
+                }@else {
+                    <button type="button" class="btn btn-outline-success" (click)="habilitar(row)">
+                        <i class="bi bi-unlock-fill"></i>
+                    </button> 
+                }
+            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

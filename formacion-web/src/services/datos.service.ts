@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Aplicacion, Area, Subarea, Responsable, Criticidad, TecnologiaInterfaz, Tecnologia, Tipo, VolumenEvolutivo, VolumenUsuarios, Situacion, Despliegue, Maven, Documentacion, Pruebas, Testing, Informes, ServicioTerceros, ComentarioSituacion, UserModel } from '../models';
+import { Aplicacion, Area, Subarea, Responsable, Criticidad, TecnologiaInterfaz, Tecnologia, Tipo, VolumenEvolutivo, VolumenUsuarios, Situacion, Despliegue, Maven, Documentacion, Pruebas, Testing, Informes, ServicioTerceros, ComentarioSituacion, UserModel, UserUpdate } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -230,7 +230,13 @@ export class DatosService {
   actualizarInformes(inf: Informes): Observable<Informes> {
     return this.http.put<Informes>(this.urlBase + this.informes + this.update, inf);
   }
+
+  //Metodos Usuarios
   obtenerUsuarios() : Observable<UserModel[]>{
     return this.http.get<UserModel[]>(this.urlBase+this.usuarios)
+  }
+
+  actualizarUsuario(user: UserUpdate): Observable<UserModel> {
+    return this.http.put<UserModel>(this.urlBase + this.usuarios + this.update, user);
   }
 }
