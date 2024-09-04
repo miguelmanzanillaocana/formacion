@@ -14,7 +14,7 @@ export const routes: Routes = [
     { path: 'situaciones', component: SituacionesComponent,canActivate:[AuthGuard], data:{role:["ROLE_user","ROLE_admin"]} },
     { path: 'crear-aplicacion', component: CrearAplicacionComponent,canActivate:[AuthGuard], data:{role:["ROLE_user","ROLE_admin"]} },
     { path: 'detalles-aplicacion', component: DetallesAplicacionComponent,canActivate:[AuthGuard], data:{role:["ROLE_user","ROLE_admin"]} },
-    { path: 'crear-user', component: CrearUserComponent,canActivate:[AuthGuard], data:{role:["ROLE_admin"]} },
+    { path: 'usuarios', component: CrearUserComponent,canActivate:[AuthGuard], data:{role:["ROLE_admin"]} },
     { path: 'administracion', component: AdministrarCamposComponent,canActivate:[AuthGuard], data:{role:["ROLE_admin"]}  },
     { path: 'editar-aplicacion', component: EditarAplicacionesComponent,canActivate:[AuthGuard], data:{role:["ROLE_user","ROLE_admin"]}},
     { path: 'login', component: LoginComponent },

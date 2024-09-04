@@ -1,3 +1,6 @@
+<div class="container-fluid">
+    <h2 class="mt-4 mx-2 pb-2">Tabla de usuarios</h2>
+</div>
 <div class="container-fluid mt-2">
     <div class="row">
         <div class="col-3 my-auto">
@@ -49,27 +52,16 @@
             <mat-cell *matCellDef="let updatedAt"> {{updatedAt.updatedAt}} </mat-cell>
         </ng-container>
 
-        <!-- enabled Column -->
-        <ng-container matColumnDef="enabled">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Habilitado</mat-header-cell>
-            <mat-cell *matCellDef="let enabled"> {{ enabled.enabled ? 'Sí' : 'No' }} </mat-cell>
-        </ng-container>
-
         <!-- Acciones Column -->
         <ng-container matColumnDef="acciones">
-            <mat-header-cell *matHeaderCellDef class="d-flex justify-content-center">Habilitar/Deshabilitar</mat-header-cell>
-            <mat-cell *matCellDef="let row" class="d-flex justify-content-center">
-                @if (row.enabled) {
-                    <button type="button" class="btn btn-outline-danger" (click)="deshabilitar(row)">
-                        <i class="bi bi-lock-fill"></i>
-                    </button>  
-                }@else {
-                    <button type="button" class="btn btn-outline-success" (click)="habilitar(row)">
-                        <i class="bi bi-unlock-fill"></i>
-                    </button> 
-                }
+            <mat-header-cell *matHeaderCellDef class="d-flex justify-content-center">Habilitado</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="d-flex justify-content-center ">
+                <mat-slide-toggle (change)="row.enabled ? deshabilitar(row) : habilitar(row)" [checked]="row.enabled">
+                </mat-slide-toggle>
             </mat-cell>
         </ng-container>
+
+
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;">

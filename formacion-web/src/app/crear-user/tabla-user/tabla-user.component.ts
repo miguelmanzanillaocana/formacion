@@ -8,19 +8,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { UserModel, Comun, UserUpdate } from '../../../models';
 import { DatosService } from '../../../services/datos.service';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-tabla-user',
   standalone: true,
-  imports: [MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, RouterLink, RouterOutlet, CommonModule],
+  imports: [MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, RouterLink, RouterOutlet, CommonModule,MatSlideToggleModule],
   templateUrl: './tabla-user.component.html',
   styleUrl: './tabla-user.component.css'
 })
 export class TablaUserComponent {
+[x: string]: any;
   user!: UserUpdate;
   datosUser: UserModel[] = [];
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
-  displayedColumns = ['id', 'fullName', 'email', 'role', 'createdAt', 'updatedAt', 'enabled', 'acciones'];
+  displayedColumns = ['id', 'fullName', 'email', 'role', 'createdAt', 'updatedAt', 'acciones'];
   dataSource: MatTableDataSource<UserModel> = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
