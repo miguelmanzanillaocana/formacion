@@ -41,6 +41,10 @@ public class Historial {
 		this.fecha = fecha;
 	}
 
+	public Historial() {
+		super();
+	}
+
 	public Integer getId_cambio() {
 		return id_cambio;
 	}

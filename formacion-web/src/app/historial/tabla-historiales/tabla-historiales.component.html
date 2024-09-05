@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <h2 class="mt-4 mx-2 pb-2">Tabla de usuarios</h2>
+</div>
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col-3 my-auto">
+            <div class="form-floating my-auto">
+                <input type="text" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)"
+                    id="filtro">
+                <label for="filtro">Filtrar por...</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-2 mx-2">
+    <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- id_cambio Column -->
+        <ng-container matColumnDef="id_cambio">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id Cambio</mat-header-cell>
+            <mat-cell *matCellDef="let id"> {{id.id_cambio}} </mat-cell>
+        </ng-container>
+
+        <!-- usuario Column -->
+        <ng-container matColumnDef="usuario">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Usuario</mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.usuario.email}} </mat-cell>
+        </ng-container>
+
+        <!-- cambio Column -->
+        <ng-container matColumnDef="cambio">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Cambio</mat-header-cell>
+            <mat-cell *matCellDef="let cambio"> {{cambio.cambio}} </mat-cell>
+        </ng-container>
+
+        <!-- fecha Column -->
+        <ng-container matColumnDef="fecha">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
+            <mat-cell *matCellDef="let fecha"> {{fecha.fecha}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+
+
+
+    <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+</div>

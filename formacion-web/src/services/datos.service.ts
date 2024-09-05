@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Aplicacion, Area, Subarea, Responsable, Criticidad, TecnologiaInterfaz, Tecnologia, Tipo, VolumenEvolutivo, VolumenUsuarios, Situacion, Despliegue, Maven, Documentacion, Pruebas, Testing, Informes, ServicioTerceros, ComentarioSituacion, UserModel, UserUpdate } from '../models';
+import { Aplicacion, Area, Subarea, Responsable, Criticidad, TecnologiaInterfaz, Tecnologia, Tipo, VolumenEvolutivo, VolumenUsuarios, Situacion, Despliegue, Maven, Documentacion, Pruebas, Testing, Informes, ServicioTerceros, ComentarioSituacion, UserModel, UserUpdate, Historial } from '../models';
 
 @Injectable({
   providedIn: 'root'
 })
-
+ 
 export class DatosService {
-  
+
 
   private urlBase = 'http://localhost:8080/';
 
@@ -33,10 +33,11 @@ export class DatosService {
   private testing = 'testing/';
   private informes = 'informes/';
   private serviciosTerceros = 'serviciosTerceros/'
-  private comentarioSituacion= 'comentarioSituacion/'
+  private comentarioSituacion = 'comentarioSituacion/'
 
   //Endpoints usuario
-  private usuarios= 'user/';
+  private usuarios = 'user/';
+  private historial = 'historial/'
 
   // Endpoints Comunes
   private insert = 'insert';
@@ -44,7 +45,7 @@ export class DatosService {
   private delete = 'delete/';
   private codigo = 'cod/';
   private idByCod = 'idByCod/';
-  
+
   constructor(private http: HttpClient) { }
 
   //Aplicaciones
@@ -65,7 +66,7 @@ export class DatosService {
     return this.http.post<Aplicacion>(this.urlBase + this.aplicacion + this.insert, apl);
   }
 
-  actualizarAplicacion(apl: Aplicacion): Observable<Aplicacion>{
+  actualizarAplicacion(apl: Aplicacion): Observable<Aplicacion> {
     return this.http.put<Aplicacion>(this.urlBase + this.aplicacion + this.update, apl)
   }
 
@@ -87,7 +88,7 @@ export class DatosService {
   obtenerResponsables(): Observable<Responsable[]> {
     return this.http.get<Responsable[]>(this.urlBase + this.responsable);
   }
-  
+
   obtenerCriticidades(): Observable<Criticidad[]> {
     return this.http.get<Criticidad[]>(this.urlBase + this.criticidad);
   }
@@ -146,7 +147,7 @@ export class DatosService {
     return this.http.get<ServicioTerceros[]>(this.urlBase + this.serviciosTerceros);
   }
 
-  obtenerIdSitByCod(cod: string): Observable<Number>{
+  obtenerIdSitByCod(cod: string): Observable<Number> {
     return this.http.get<Number>(this.urlBase + this.situacion + this.idByCod + cod);
   }
 
@@ -154,7 +155,7 @@ export class DatosService {
     return this.http.get<ComentarioSituacion[]>(this.urlBase + this.comentarioSituacion + this.codigo + cod);
   }
 
-  insertarComentarioSituacion(comSit: ComentarioSituacion): Observable<ComentarioSituacion>{
+  insertarComentarioSituacion(comSit: ComentarioSituacion): Observable<ComentarioSituacion> {
     return this.http.post<ComentarioSituacion>(this.urlBase + this.comentarioSituacion + this.insert, comSit);
   }
 
@@ -168,7 +169,7 @@ export class DatosService {
   }
 
   insertarSubarea(sa: Subarea): Observable<Subarea> {
-    return this.http.post<Subarea>(this.urlBase + this.subarea + this.insert,sa);
+    return this.http.post<Subarea>(this.urlBase + this.subarea + this.insert, sa);
   }
 
   actualizarSubarea(sa: Subarea): Observable<Subarea> {
@@ -232,11 +233,15 @@ export class DatosService {
   }
 
   //Metodos Usuarios
-  obtenerUsuarios() : Observable<UserModel[]>{
-    return this.http.get<UserModel[]>(this.urlBase+this.usuarios)
+  obtenerUsuarios(): Observable<UserModel[]> {
+    return this.http.get<UserModel[]>(this.urlBase + this.usuarios)
   }
 
   actualizarUsuario(user: UserUpdate): Observable<UserModel> {
     return this.http.put<UserModel>(this.urlBase + this.usuarios + this.update, user);
+  }
+
+  obtenerHistoriales(): Observable<Historial[]> {
+    return this.http.get<Historial[]>(this.urlBase + this.historial)
   }
 }

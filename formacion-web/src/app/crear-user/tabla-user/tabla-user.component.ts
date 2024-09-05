@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterLink, RouterOutlet } from '@angular/router';
@@ -18,7 +17,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
   styleUrl: './tabla-user.component.css'
 })
 export class TablaUserComponent {
-[x: string]: any;
   user!: UserUpdate;
   datosUser: UserModel[] = [];
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
@@ -28,7 +26,7 @@ export class TablaUserComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  constructor(private datosService: DatosService, private dialog: MatDialog) { }
+  constructor(private datosService: DatosService) { }
 
   ngOnInit() {
     this.datosService.obtenerUsuarios().subscribe((datos: UserModel[]) => {

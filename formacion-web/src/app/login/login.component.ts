@@ -46,6 +46,7 @@ export class LoginComponent {
           const decodedToken = jwtDecode<JwtPayload>(this.tok.token);
           // @ts-ignore
           sessionStorage.setItem("app.roles",  decodedToken.scope);
+          sessionStorage.setItem("app.email", this.logi.email);
           this.router.navigateByUrl("/aplicaciones")
         },
         error: (error) => {

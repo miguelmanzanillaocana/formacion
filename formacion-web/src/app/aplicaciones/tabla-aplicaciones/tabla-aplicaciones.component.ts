@@ -47,7 +47,7 @@ export class TablaAplicacionesComponent {
           aplicacion.tipo.tipo,
           aplicacion.tecInt.tecnologiaInterfaz
         );
-      });
+      }); 
       this.dataSource = new MatTableDataSource(this.datosAplicacion);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

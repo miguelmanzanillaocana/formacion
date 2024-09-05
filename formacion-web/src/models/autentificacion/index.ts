@@ -5,3 +5,4 @@ export * from "./rol";
 export * from "./token";
 export * from "./user-model";
 export * from "./user-update";
+export * from "./historial";

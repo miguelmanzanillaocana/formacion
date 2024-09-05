@@ -8,6 +8,7 @@ import { DetallesAplicacionComponent } from './detalles-aplicacion';
 import { LoginComponent } from './login';
 import { AuthGuard } from './auth/auth-guard.service';
 import { CrearUserComponent } from './crear-user';
+import { HistorialComponent } from './historial';
 
 export const routes: Routes = [
     { path: 'aplicaciones', component: AplicacionesComponent,canActivate:[AuthGuard], data:{role:["ROLE_user","ROLE_admin"]} },
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'detalles-aplicacion', component: DetallesAplicacionComponent,canActivate:[AuthGuard], data:{role:["ROLE_user","ROLE_admin"]} },
     { path: 'usuarios', component: CrearUserComponent,canActivate:[AuthGuard], data:{role:["ROLE_admin"]} },
     { path: 'administracion', component: AdministrarCamposComponent,canActivate:[AuthGuard], data:{role:["ROLE_admin"]}  },
+    { path: 'historial', component: HistorialComponent,canActivate:[AuthGuard], data:{role:["ROLE_admin"]}  },
     { path: 'editar-aplicacion', component: EditarAplicacionesComponent,canActivate:[AuthGuard], data:{role:["ROLE_user","ROLE_admin"]}},
     { path: 'login', component: LoginComponent },
     { path: '', redirectTo: '/login', pathMatch: 'full' }
