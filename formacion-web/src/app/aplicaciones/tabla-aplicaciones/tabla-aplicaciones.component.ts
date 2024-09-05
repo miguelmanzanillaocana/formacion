@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DatosService } from '../../../services/datos.service';
 import { Aplicacion, AplicacionString } from '../../../models';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
  
 @Component({
   selector: 'app-tabla-aplicaciones',
@@ -27,7 +28,7 @@ export class TablaAplicacionesComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  constructor(private datosService: DatosService, private dialog: MatDialog,private router: Router) { }
+  constructor(private datosService: DatosService, private dialog: MatDialog,private router: Router,private snackBar: MatSnackBar) { }
  
   ngOnInit() {
     this.datosService.obtenerAplicaciones().subscribe((datos: Aplicacion[]) => {
@@ -64,24 +65,30 @@ export class TablaAplicacionesComponent {
     this.dataSource.filter = filterValue;
   }
 
-  borrarAplicacion(cod: string) {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '500px',
-      data: { codigo: cod }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.datosService.borrarAplicacion(cod).subscribe((resultado) => {
-          if (resultado) {
-            console.log('Aplicación eliminada con éxito');
-            location.reload();
-          } else {
-            console.log('Error al eliminar la aplicación');
-          }
-        });
-      }
-    });
+  borrarAplicacion(cod: string) { 
+    if (sessionStorage.getItem('app.roles')=="ROLE_admin") {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '500px',
+        data: { codigo: cod }
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.datosService.borrarAplicacion(cod).subscribe((resultado) => {
+            if (resultado) {
+              console.log('Aplicación eliminada con éxito');
+              location.reload();
+            } else {
+              console.log('Error al eliminar la aplicación');
+            }
+          });
+        }
+      });
+    }else{
+      this.snackBar.open('No tienes suficientes permisos', '', {
+        duration: 2500
+      })
+    }
   }
 
   informacionAplicacion(cod: string) {
