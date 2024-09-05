@@ -83,7 +83,7 @@ export class TablaAplicacionesComponent {
               this.historialService.insertarBorradoApliacion(this.email,cod).subscribe((res) => {
                 console.log(res)
               })
-              location.reload();
+              // location.reload();
             } else {
               console.log('Error al eliminar la aplicación');
             }
