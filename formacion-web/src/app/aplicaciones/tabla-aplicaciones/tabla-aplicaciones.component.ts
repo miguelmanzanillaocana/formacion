@@ -9,6 +9,7 @@ import { DatosService } from '../../../services/datos.service';
 import { Aplicacion, AplicacionString } from '../../../models';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HistorialService } from '../../../services/historial.service';
  
 @Component({
   selector: 'app-tabla-aplicaciones',
@@ -24,11 +25,12 @@ export class TablaAplicacionesComponent {
   aplicaciones: Aplicacion[] = [];
   displayedColumns = ['codAplic', 'nombAplic', 'area', 'subArea', 'resp', 'tecn', 'criti', 'volEvol', 'volUsu', 'tipo', 'tecInt','acciones'];
   dataSource: MatTableDataSource<AplicacionString> = new MatTableDataSource();
+  email?: string;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  constructor(private datosService: DatosService, private dialog: MatDialog,private router: Router,private snackBar: MatSnackBar) { }
+  constructor(private datosService: DatosService,private historialService: HistorialService, private dialog: MatDialog,private router: Router,private snackBar: MatSnackBar) { }
  
   ngOnInit() {
     this.datosService.obtenerAplicaciones().subscribe((datos: Aplicacion[]) => {
@@ -77,6 +79,10 @@ export class TablaAplicacionesComponent {
           this.datosService.borrarAplicacion(cod).subscribe((resultado) => {
             if (resultado) {
               console.log('Aplicación eliminada con éxito');
+              this.email=sessionStorage.getItem('app.email') || "";
+              this.historialService.insertarBorradoApliacion(this.email,cod).subscribe((res) => {
+                console.log(res)
+              })
               location.reload();
             } else {
               console.log('Error al eliminar la aplicación');
