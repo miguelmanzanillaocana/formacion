@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.seg_social.formacion.authentication.Historial;
 import es.seg_social.formacion.authentication.services.HistorialService;
-import es.seg_social.formacion.model.aplicacion.Aplicacion;
 
 @RestController
 @RequestMapping("/historial")
