@@ -4,6 +4,7 @@ import { ComentarioSituacion } from '../../../models';
 import { DatosService } from '../../../services/datos.service';
 import { CommonModule } from '@angular/common';
 import { ComentarioService } from '../../../services/comentario.service';
+import { HistorialService } from '../../../services/historial.service';
 
 @Component({
   selector: 'app-comentarios',
@@ -17,8 +18,9 @@ export class ComentariosComponent {
   datosComentario: ComentarioSituacion[] = [];
   codAplic: string = "";
   comentarioForm: FormGroup;
+  email?:string;
 
-  constructor(private datosService: DatosService, private comentarioService: ComentarioService, private fb: FormBuilder) {
+  constructor(private datosService: DatosService, private comentarioService: ComentarioService, private fb: FormBuilder, private historialService: HistorialService) {
     this.comentarioForm = this.fb.group({
       comentario: new FormControl('', Validators.required)
     })
@@ -34,6 +36,10 @@ export class ComentariosComponent {
     this.comSit.com = this.comentarioForm.get('comentario')?.value;
     this.comSit.idSit=this.comentarioService.getIdAplic();
     this.datosService.insertarComentarioSituacion(this.comSit).subscribe(comentario => {
+      this.email=sessionStorage.getItem('app.email') || "";
+      this.historialService.insertarCreadoComentarioAplicacion(this.email,this.codAplic,this.comSit.com).subscribe((res) => {
+          console.log(res)
+      })
       location.reload();
     });
   }

@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
+import { HistorialService } from '../../../services/historial.service';
 
 @Component({
   selector: 'app-cerrar-session-component',
@@ -13,7 +14,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class CerrarSessionComponentComponent {
 
-  constructor(private authService: AuthService,private dialogRef: MatDialogRef<CerrarSessionComponentComponent>,  private router: Router,) { }
+  constructor(private authService: AuthService,private dialogRef: MatDialogRef<CerrarSessionComponentComponent>,  private router: Router) { }
 
   onClose(confirm: boolean) {
     this.dialogRef.close(confirm);

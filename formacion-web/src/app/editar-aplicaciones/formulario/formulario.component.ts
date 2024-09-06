@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DatosService } from '../../../services/datos.service';
 import { Aplicacion, Area, Criticidad, Responsable, Subarea, Tecnologia, TecnologiaInterfaz, Tipo, VolumenEvolutivo, VolumenUsuarios, Despliegue, Documentacion, Informes, Maven, Pruebas, ServicioTerceros, Situacion, Testing } from '../../../models';
 import { tap } from 'rxjs';
+import { HistorialService } from '../../../services/historial.service';
 
 @Component({
   selector: 'app-formulario-editar',
@@ -18,6 +19,7 @@ import { tap } from 'rxjs';
 
 export class FormularioComponent {
   state: any;
+  email?: string;
 
   aplicacionForm: FormGroup;
   datosArea: Area[] = []
@@ -60,7 +62,7 @@ export class FormularioComponent {
   serv!: ServicioTerceros;
   situ: Situacion = new Situacion('', 0, 0, '', '', 0, '', this.desp, 0, this.mav, this.doc, this.pruebas, this.test, this.inf, this.serv)
 
-  constructor(private datosService: DatosService, private dialog: MatDialog, private router: Router, private snackBar: MatSnackBar, private fb: FormBuilder) {
+  constructor(private datosService: DatosService, private dialog: MatDialog, private router: Router, private snackBar: MatSnackBar, private fb: FormBuilder, private historialService: HistorialService) {
     this.state = this.router.getCurrentNavigation()?.extras.state;
 
     this.aplicacionForm = this.fb.group({
@@ -256,6 +258,11 @@ export class FormularioComponent {
       this.router.navigate(['/aplicaciones']);
       this.snackBar.open('Aplicacion ' + this.apl.codAplic + ' actualizada', '', {
         duration: 2500
+        
+      })
+      this.email=sessionStorage.getItem('app.email') || "";
+      this.historialService.insertarEditadoApliacion(this.email,this.apl.codAplic).subscribe((res) => {
+          console.log(res)
       })
     });
 

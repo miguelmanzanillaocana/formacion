@@ -8,6 +8,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { UserModel, Comun, UserUpdate } from '../../../models';
 import { DatosService } from '../../../services/datos.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { HistorialService } from '../../../services/historial.service';
 
 @Component({
   selector: 'app-tabla-user',
@@ -18,6 +19,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 })
 export class TablaUserComponent {
   user!: UserUpdate;
+  email?: string;
   datosUser: UserModel[] = [];
   datosComunes: Comun[] = [new Comun(0, 'No'), new Comun(1, 'Sí')];
   displayedColumns = ['id', 'fullName', 'email', 'role', 'createdAt', 'updatedAt', 'acciones'];
@@ -26,7 +28,7 @@ export class TablaUserComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   @ViewChild(MatSort) sort: MatSort | null = null;
 
-  constructor(private datosService: DatosService) { }
+  constructor(private datosService: DatosService,private historialService: HistorialService) { }
 
   ngOnInit() {
     this.datosService.obtenerUsuarios().subscribe((datos: UserModel[]) => {
@@ -69,7 +71,10 @@ export class TablaUserComponent {
   deshabilitar(row: UserModel) {
     this.user = new UserUpdate(row.id, row.fullName, row.email, row.password, row.createdAt, row.updatedAt, false, row.role);
     this.datosService.actualizarUsuario(this.user).subscribe((res: UserModel)=>{
-      console.log(res);
+      this.email = sessionStorage.getItem('app.email') || "";
+      this.historialService.insertardeshabilitadoUser(this.email,res).subscribe((res) => {
+        console.log(res)
+      })
       location.reload();
     });
   }
@@ -77,7 +82,10 @@ export class TablaUserComponent {
   habilitar(row: UserModel) {
     this.user = new UserUpdate(row.id, row.fullName, row.email, row.password, row.createdAt, row.updatedAt, true, row.role);
     this.datosService.actualizarUsuario(this.user).subscribe((res: UserModel)=>{
-      console.log(res);
+      this.email = sessionStorage.getItem('app.email') || "";
+      this.historialService.insertarhabilitadoUser(this.email,res).subscribe((res) => {
+        console.log(res)
+      })
       location.reload();
     });
   }

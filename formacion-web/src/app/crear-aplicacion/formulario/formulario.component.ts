@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DatosService } from '../../../services/datos.service';
 import { Aplicacion, Area, Criticidad, Responsable, Subarea, Tecnologia, TecnologiaInterfaz, Tipo, VolumenEvolutivo, VolumenUsuarios, Despliegue, Documentacion, Informes, Maven, Pruebas, ServicioTerceros, Situacion, Testing } from '../../../models';
+import { HistorialService } from '../../../services/historial.service';
 
 @Component({
   selector: 'app-formulario-crear',
@@ -16,6 +17,8 @@ import { Aplicacion, Area, Criticidad, Responsable, Subarea, Tecnologia, Tecnolo
 })
 
 export class FormularioComponent {
+  email?: string;
+
   aplicacionForm: FormGroup;
   datosArea: Area[] = []
   datosSubarea: Subarea[] = []
@@ -57,7 +60,7 @@ export class FormularioComponent {
   serv!: ServicioTerceros;
   situ: Situacion = new Situacion('', 0, 0, '', '', 0, '', this.desp, 0, this.mav, this.doc, this.pruebas, this.test, this.inf, this.serv)
 
-  constructor(private datosService: DatosService, private dialog: MatDialog, private router: Router, private snackBar: MatSnackBar, private fb: FormBuilder) {
+  constructor(private datosService: DatosService, private dialog: MatDialog, private router: Router, private snackBar: MatSnackBar, private fb: FormBuilder,private historialService: HistorialService) {
     this.aplicacionForm = this.fb.group({
       codAplic: new FormControl(this.apl.codAplic, Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(4)])),
       nombAplic: new FormControl(this.apl.nombAplic),
@@ -215,6 +218,10 @@ export class FormularioComponent {
       this.router.navigate(['/aplicaciones']);
       this.snackBar.open('Aplicacion ' + this.apl.codAplic + ' creada', '', {
         duration: 2500
+      })
+      this.email=sessionStorage.getItem('app.email') || "";
+      this.historialService.insertarCreadoApliacion(this.email,this.apl.codAplic).subscribe((res) => {
+          console.log(res)
       })
     });
 

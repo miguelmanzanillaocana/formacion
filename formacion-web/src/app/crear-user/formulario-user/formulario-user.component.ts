@@ -4,6 +4,7 @@ import { RegisterDto, UserModel, Rol } from '../../../models';
 import { AuthService } from '../../auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
+import { HistorialService } from '../../../services/historial.service';
 
 @Component({
   selector: 'app-formulario-user',
@@ -17,11 +18,11 @@ export class FormularioUserComponent {
   register: RegisterDto = new RegisterDto("", "", "", "");
   rolUser: string = "";
   user!: UserModel;
-
+  email?:string;
   rolesArray: Rol[] = [];
   rolesString = ["user", "admin"]
 
-  constructor(private auth: AuthService, private snackBar: MatSnackBar, private fb: FormBuilder) {
+  constructor(private auth: AuthService, private snackBar: MatSnackBar, private fb: FormBuilder,private historialService: HistorialService) {
     this.usuarioForm = this.fb.group({
       email: new FormControl(this.register.email, Validators.pattern('^(([^<>().,;:s@"]+(.[^<>().,;:s@"]+)*)|.(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$')),
       pass: new FormControl(this.register.password),
@@ -49,6 +50,10 @@ export class FormularioUserComponent {
       console.log(user);
       this.snackBar.open('Usuario ' + this.user.fullName + ' creado', '', {
         duration: 2500
+      })
+      this.email = sessionStorage.getItem('app.email') || "";
+      this.historialService.insertarCreadoUsario(this.email,this.register).subscribe((res) => {
+        console.log(res)
       })
       location.reload();
     })

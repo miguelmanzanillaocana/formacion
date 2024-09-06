@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {jwtDecode,JwtPayload} from 'jwt-decode';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LoginUserDto, Token } from '../../models';
+import { HistorialService } from '../../services/historial.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent {
   tok!: Token;
 
 
-  constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar, private fb: FormBuilder) {
+  constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar, private fb: FormBuilder, private historialService: HistorialService) {
     this.loginForm = this.fb.group({
       username: new FormControl(''),
       password: new FormControl('')
@@ -32,7 +33,7 @@ export class LoginComponent {
   }
 
   public login(): void {
-    if (this.authService.isLoggedIn()){
+    if (this.authService.isLoggedIn()) {
       sessionStorage.removeItem("app.token");
     }
     this.logi.email = this.loginForm.get('username')?.value;
@@ -45,13 +46,16 @@ export class LoginComponent {
           sessionStorage.setItem("app.token", this.tok.token)
           const decodedToken = jwtDecode<JwtPayload>(this.tok.token);
           // @ts-ignore
-          sessionStorage.setItem("app.roles",  decodedToken.scope);
+          sessionStorage.setItem("app.roles", decodedToken.scope);
           sessionStorage.setItem("app.email", this.logi.email);
+          this.historialService.insertarInicioSesion(this.logi.email).subscribe((res) => {
+            console.log(res)
+          })
           this.router.navigateByUrl("/aplicaciones")
         },
         error: (error) => {
           console.error('Error al autenticar:', error);
-          this.snackBar.open(`Login failed: ${error.status}`, "OK",{duration:2000})
+          this.snackBar.open(`Login failed: ${error.status}`, "OK", { duration: 2000 })
         }
       });
   }

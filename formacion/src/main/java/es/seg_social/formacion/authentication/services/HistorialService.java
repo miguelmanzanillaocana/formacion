@@ -24,6 +24,7 @@ public class HistorialService {
 
 	public Historial insertHistorial(Historial historial) {
 		historial.setUsuario(userRepository.findByEmail(historial.getUsuario().getEmail()).get());
+		historial.setId_cambio(repository.getLastId()+1);
 		return repository.save(historial);
 	}
 }
