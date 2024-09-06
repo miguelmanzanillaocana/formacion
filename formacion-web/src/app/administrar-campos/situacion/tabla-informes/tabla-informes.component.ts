@@ -46,9 +46,7 @@ export class TablaInformesComponent {
   abrirDialogoInsertInforme() {
      const dialogRef = this.dialog.open(InsertInformesDialogComponent, {
        width: '500px'
-     }).afterClosed().subscribe((res) => {
-       location.reload();
-     });
+     })
   }
 }
  

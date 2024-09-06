@@ -46,8 +46,6 @@ export class TablaDocumentacionComponent {
   abrirDialogoInsertDocumentacion() {
     const dialogRef = this.dialog.open(InsertDocumentDialogComponent, {
       width: '500px'
-    }).afterClosed().subscribe((res) => {
-      location.reload();
-    });
+    })
   }
 }

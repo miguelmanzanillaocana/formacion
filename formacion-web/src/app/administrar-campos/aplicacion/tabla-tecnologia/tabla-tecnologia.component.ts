@@ -48,8 +48,6 @@ export class TablaTecnologiaComponent {
   abrirDialogoInsertTecnologia() {
     const dialogRef = this.dialog.open(InsertTecnologiaDialogComponent, {
       width: '500px'
-    }).afterClosed().subscribe((res) => {
-      location.reload();
-    });
+    })
   }
 }

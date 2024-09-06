@@ -72,7 +72,7 @@ export class TablaUserComponent {
     this.user = new UserUpdate(row.id, row.fullName, row.email, row.password, row.createdAt, row.updatedAt, false, row.role);
     this.datosService.actualizarUsuario(this.user).subscribe((res: UserModel)=>{
       this.email = sessionStorage.getItem('app.email') || "";
-      this.historialService.insertardeshabilitadoUser(this.email,res).subscribe((res) => {
+      this.historialService.insertarDeshabilitadoUser(this.email,res).subscribe((res) => {
         console.log(res)
       })
       location.reload();
@@ -83,7 +83,7 @@ export class TablaUserComponent {
     this.user = new UserUpdate(row.id, row.fullName, row.email, row.password, row.createdAt, row.updatedAt, true, row.role);
     this.datosService.actualizarUsuario(this.user).subscribe((res: UserModel)=>{
       this.email = sessionStorage.getItem('app.email') || "";
-      this.historialService.insertarhabilitadoUser(this.email,res).subscribe((res) => {
+      this.historialService.insertarHabilitadoUser(this.email,res).subscribe((res) => {
         console.log(res)
       })
       location.reload();

@@ -4,6 +4,7 @@ import { MatDialogActions, MatDialogClose, MatDialogContent } from '@angular/mat
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { DatosService } from '../../../../../services/datos.service';
 import { Subarea } from '../../../../../models';
+import { HistorialService } from '../../../../../services/historial.service';
 
 @Component({
   selector: 'app-insert-subarea-dialog',
@@ -16,7 +17,8 @@ import { Subarea } from '../../../../../models';
 export class InsertSubareaDialogComponent {
   subareaForm: FormGroup;
   subarea: Subarea = new Subarea(0,"");
-  constructor(private datosService: DatosService,private fb:FormBuilder){
+  email?:string;
+  constructor(private datosService: DatosService,private fb:FormBuilder,private historialService:HistorialService){
     this.subareaForm = this.fb.group({
       nombreSubArea:new FormControl("")
     });
@@ -24,6 +26,13 @@ export class InsertSubareaDialogComponent {
   
   insertarSubarea() {
     this.subarea = new Subarea(0, this.subareaForm.get('nombreSubArea')?.value);
-    this.datosService.insertarSubarea(this.subarea).subscribe(subarea => this.subarea = subarea);
+    this.datosService.insertarSubarea(this.subarea).subscribe(subarea =>{
+      this.subarea = subarea
+      this.email = sessionStorage.getItem('app.email') || "";
+      this.historialService.insertarCreadoAdministracion(this.email,this.subarea.subarea,"subarea").subscribe((res) => {
+        console.log(res)
+      })
+      location.reload();
+    } );
   }
 }

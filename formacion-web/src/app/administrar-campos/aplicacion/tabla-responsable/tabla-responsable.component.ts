@@ -46,8 +46,6 @@ export class TablaResponsableComponent {
   abrirDialogoInsertResponsable() {
     const dialogRef = this.dialog.open(InsertResponsableDialogComponent, {
       width: '500px'
-    }).afterClosed().subscribe((res) => {
-      location.reload();
-    });
+    })
   }
 }

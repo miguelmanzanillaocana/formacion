@@ -45,8 +45,6 @@ export class TablaTipoComponent {
   abrirDialogoInsertTipo() {
     const dialogRef = this.dialog.open(InsertTipoDialogComponent, {
       width: '500px'
-    }).afterClosed().subscribe((res) => {
-      location.reload();
-    });
+    })
   }
 }

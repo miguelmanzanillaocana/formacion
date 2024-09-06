@@ -4,6 +4,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Tipo } from '../../../../../models';
 import { DatosService } from '../../../../../services/datos.service';
+import { HistorialService } from '../../../../../services/historial.service';
 @Component({
   selector: 'app-insert-tipo-dialog',
   standalone: true,
@@ -14,8 +15,8 @@ import { DatosService } from '../../../../../services/datos.service';
 export class InsertTipoDialogComponent {
   tipoForm: FormGroup;
   tipo: Tipo = new Tipo(0, "");
-
-  constructor(private datosService: DatosService, private fb: FormBuilder) {
+  email?:string
+  constructor(private datosService: DatosService, private fb: FormBuilder,private historialService:HistorialService) {
     this.tipoForm = this.fb.group({
       nombreTipo: new FormControl("")
     });
@@ -23,6 +24,13 @@ export class InsertTipoDialogComponent {
 
   insertarTipo() {
     this.tipo = new Tipo(0, this.tipoForm.get('nombreTipo')?.value);
-    this.datosService.insertarTipo(this.tipo).subscribe(tipo => this.tipo = this.tipo);
+    this.datosService.insertarTipo(this.tipo).subscribe(tipo => {
+      this.tipo = this.tipo
+      this.email = sessionStorage.getItem('app.email') || "";
+      this.historialService.insertarCreadoAdministracion(this.email,this.tipo.tipo,"tipo").subscribe((res) => {
+        console.log(res)
+      })
+      location.reload();
+    });
   }
 }

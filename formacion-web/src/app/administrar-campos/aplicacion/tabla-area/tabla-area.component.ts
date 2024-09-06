@@ -46,8 +46,6 @@ export class TablaAreaComponent {
   abrirDialogoInsertArea() {
     const dialogRef = this.dialog.open(InsertAreaDialogComponent, {
       width: '500px'
-    }).afterClosed().subscribe((res) => {
-      location.reload();
-    });
+    })
   }
 }

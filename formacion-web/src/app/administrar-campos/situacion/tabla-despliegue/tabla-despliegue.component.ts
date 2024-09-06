@@ -45,8 +45,6 @@ export class TablaDespliegueComponent {
   abrirDialogoInsertDespliegue() {
     const dialogRef = this.dialog.open(InsertDespliegueDialogComponent, {
       width: '500px'
-    }).afterClosed().subscribe((res) => {
-      location.reload();
-    });
+    })
   }
 }

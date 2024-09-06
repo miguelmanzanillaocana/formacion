@@ -4,6 +4,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Informes } from '../../../../../models';
 import { DatosService } from '../../../../../services/datos.service';
+import { HistorialService } from '../../../../../services/historial.service';
 @Component({
   selector: 'app-insert-informes-dialog',
   standalone: true,
@@ -14,8 +15,9 @@ import { DatosService } from '../../../../../services/datos.service';
 export class InsertInformesDialogComponent {
   informesForm: FormGroup;
   informes: Informes = new Informes(0, "");
+  email?:string;
 
-  constructor(private datosService: DatosService, private fb: FormBuilder) {
+  constructor(private datosService: DatosService, private fb: FormBuilder,private historialService:HistorialService) {
     this.informesForm = this.fb.group({
       nombreInformes: new FormControl("")
     });
@@ -23,6 +25,13 @@ export class InsertInformesDialogComponent {
 
   insertarInformes() {
     this.informes = new Informes(0, this.informesForm.get('nombreInformes')?.value);
-    this.datosService.insertarInformes(this.informes).subscribe(informes => this.informes = informes);
+    this.datosService.insertarInformes(this.informes).subscribe(informes => {
+      this.informes = informes
+      this.email = sessionStorage.getItem('app.email') || "";
+      this.historialService.insertarCreadoAdministracion(this.email,this.informes.informes,"informes").subscribe((res) => {
+        console.log(res)
+      })
+      location.reload();
+    });
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Historial, RegisterDto, UserModel, UserUpdate } from '../models';
+import { Area, Historial, RegisterDto, UserModel, UserUpdate } from '../models';
 import { HistorialIns } from '../models/autentificacion/historial-ins';
 
 
@@ -69,15 +69,21 @@ export class HistorialService {
     return this.http.post<Historial>(this.urlBase, this.hist);
   }
 
-  insertarhabilitadoUser(email: string, user: UserModel): Observable<Historial> {
+  insertarHabilitadoUser(email: string, user: UserModel): Observable<Historial> {
     this.user = new UserUpdate(1, "", email, "", "", "", false, "");
     this.hist = new HistorialIns(1, this.user, "Usuario habilitado: " + user.fullName+" email: "+user.email, this.fechaActual);
     return this.http.post<Historial>(this.urlBase, this.hist);
   }
 
-  insertardeshabilitadoUser(email: string, user: UserModel): Observable<Historial> {
+  insertarDeshabilitadoUser(email: string, user: UserModel): Observable<Historial> {
     this.user = new UserUpdate(1, "", email, "", "", "", false, "");
     this.hist = new HistorialIns(1, this.user, "Usuario deshabilitado: " + user.fullName+" email: "+user.email, this.fechaActual);
+    return this.http.post<Historial>(this.urlBase, this.hist);
+  }
+
+  insertarCreadoAdministracion(email: string, nombre:string,tipo:string): Observable<Historial> {
+    this.user = new UserUpdate(1, "", email, "", "", "", false, "");
+    this.hist = new HistorialIns(1, this.user, "Creado "+tipo+": " + nombre, this.fechaActual);
     return this.http.post<Historial>(this.urlBase, this.hist);
   }
 }
