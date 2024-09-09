@@ -1,18 +1,39 @@
-<div class="container-fluid mt-2">
-  <div class="row">
-    <div class="col my-auto">
-      <div class="form-floating my-auto">
-        <input type="text" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)" id="filtro">
-        <label for="filtro">Filtrar por...</label>
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Filtro Basico</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="container-fluid mt-2">
+      <div class="row">
+        <div class="col my-auto">
+          <div class="form-floating my-auto">
+            <input type="text" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)" id="filtro">
+            <label for="filtro">Filtrar por...</label>
+          </div>
+        </div>
+
       </div>
     </div>
-    <div class="col-9 my-auto text-end">
-      <button type="button" routerLink='/crear-aplicacion' class="btn btn-success my-auto mx-4">Crear nueva Aplicacion</button>
-      <router-outlet></router-outlet>
-    </div>
-  </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Filtro Avanzado</mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field appearance="fill" *ngFor="let empfilter of empFilters">
+      <mat-label>{{ empfilter.name }}</mat-label>
+      <mat-select [(value)]="empfilter.defaultValue" (selectionChange)="applyEmpFilter($event, empfilter)">
+        <mat-option *ngFor="let op of empfilter.options" [value]="op">
+          {{ op }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-expansion-panel>
+</mat-accordion>
+<div class="col-9 my-auto text-end">
+  <button type="button" routerLink='/crear-aplicacion' class="btn btn-success my-auto mx-4">Crear nueva
+    Aplicacion</button>
+  <router-outlet></router-outlet>
 </div>
-
 <div class="table-responsive mt-2 mx-2">
   <mat-table [dataSource]="dataSource" matSort>
 
@@ -79,7 +100,7 @@
     <!-- tecInt Column -->
     <ng-container matColumnDef="tecInt">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Tecnologia Interfaz</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.tecInt}} </mat-cell> 
+      <mat-cell *matCellDef="let row"> {{row.tecInt}} </mat-cell>
     </ng-container>
 
     <!-- Acciones Column -->
