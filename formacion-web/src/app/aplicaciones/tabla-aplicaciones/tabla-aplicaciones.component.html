@@ -19,9 +19,9 @@
     <mat-expansion-panel-header>
       <mat-panel-title>Filtro Avanzado</mat-panel-title>
     </mat-expansion-panel-header>
-    <mat-form-field appearance="fill" *ngFor="let empfilter of empFilters">
+    <mat-form-field appearance="fill" *ngFor="let empfilter of applicationFilters">
       <mat-label>{{ empfilter.name }}</mat-label>
-      <mat-select [(value)]="empfilter.defaultValue" (selectionChange)="applyEmpFilter($event, empfilter)">
+      <mat-select [(value)]="empfilter.defaultValue" (selectionChange)="applyApplicationFilter($event, empfilter)">
         <mat-option *ngFor="let op of empfilter.options" [value]="op">
           {{ op }}
         </mat-option>

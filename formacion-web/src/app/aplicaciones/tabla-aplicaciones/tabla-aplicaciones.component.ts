@@ -6,14 +6,14 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router, RouterLink, RouterOutlet, RouterState } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DatosService } from '../../../services/datos.service';
-import { Aplicacion, AplicacionString, Area, Subarea } from '../../../models';
+import { Aplicacion, AplicacionString, Area, Criticidad, Responsable, Subarea, Tecnologia, TecnologiaInterfaz, Tipo, VolumenEvolutivo, VolumenUsuarios } from '../../../models';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HistorialService } from '../../../services/historial.service';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ChangeDetectionStrategy, signal } from '@angular/core';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
-import { EmpFilter } from '../../../interfaces/aplicaciones/empfilter';
+import { ApplicationFilter } from '../../../interfaces/aplicaciones/empfilter';
 
 @Component({
   selector: 'app-tabla-aplicaciones',
@@ -27,9 +27,9 @@ export class TablaAplicacionesComponent {
   readonly panelOpenState = signal(false);
 
   filterDictionary = new Map<string, string>();
-  defaultValue = "All";
-  dataSourceFilters: MatTableDataSource<AplicacionString> = new MatTableDataSource();
-  empFilters: EmpFilter[] = [];
+  defaultValue = "Todo";
+  applicationFilters: ApplicationFilter[] = [];
+
   datosArea: string[] = []
   datosSubarea: string[] = []
   datosResp: string[] = [];
@@ -39,11 +39,12 @@ export class TablaAplicacionesComponent {
   datosVEvo: string[] = [];
   datosTipo: string[] = [];
   datosTecInt: string[] = [];
-
+  
   datosAplicacion: AplicacionString[] = [];
   aplicaciones: Aplicacion[] = [];
   displayedColumns = ['codAplic', 'nombAplic', 'area', 'subArea', 'resp', 'tecn', 'criti', 'volEvol', 'volUsu', 'tipo', 'tecInt', 'acciones'];
   dataSource: MatTableDataSource<AplicacionString> = new MatTableDataSource();
+  dataSourceFilters: MatTableDataSource<AplicacionString> = new MatTableDataSource();
 
   email?: string;
 
@@ -76,19 +77,17 @@ export class TablaAplicacionesComponent {
       this.dataSource.sort = this.sort;
     });
 
-    //APLICACIONES
     this.datosService.obtenerAreas().subscribe((datosArea: Area[]) => {
-      this.datosArea.push("All");
+      this.datosArea.push("Todo");
       datosArea.forEach(a => {
         if (a.area!="") {
           this.datosArea.push(a.area);
         }
-        
       });
     })
 
      this.datosService.obtenerSubareas().subscribe((datosSubarea: Subarea[]) => {
-      this.datosSubarea.push("All");
+      this.datosSubarea.push("Todo");
       datosSubarea.forEach(a => {
         if (a.subarea!="") {
           this.datosSubarea.push(a.subarea);
@@ -96,36 +95,80 @@ export class TablaAplicacionesComponent {
       });
    })
 
-    // this.datosService.obtenerResponsables().subscribe((datosResp: Responsable[]) => {
-    //   this.datosResp = datosResp as Responsable[];
-    // })
+    this.datosService.obtenerResponsables().subscribe((datosResp: Responsable[]) => {
+      this.datosResp.push("Todo")
+      datosResp.forEach(resp => {
+        if (resp.responsable != ""){
+          this.datosResp.push(resp.responsable);
+        }
+      })
+    })
 
-    // this.datosService.obtenerCriticidades().subscribe((datosCriti: Criticidad[]) => {
-    //   this.datosCriti = datosCriti as Criticidad[];
-    // })
+    this.datosService.obtenerCriticidades().subscribe((datosCriti: Criticidad[]) => {
+      this.datosCriti.push("Todo");
+      datosCriti.forEach(crit => {
+        if (crit.criticidad != ""){
+          this.datosCriti.push(crit.criticidad);
+        }
+      })
+    })
 
-    // this.datosService.obtenerTecnologias().subscribe((datosTecno: Tecnologia[]) => {
-    //   this.datosTecn = datosTecno as Tecnologia[];
-    // })
+    this.datosService.obtenerTecnologias().subscribe((datosTecno: Tecnologia[]) => {
+      this.datosTecn.push("Todo");
+      datosTecno.forEach(tecn => {
+        if (tecn.tecnologia != ""){
+          this.datosTecn.push(tecn.tecnologia);
+        }
+      })
+    })
 
-    // this.datosService.obtenerVolumenesUsuarios().subscribe((datosVUsu: VolumenUsuarios[]) => {
-    //   this.datosVUsu = datosVUsu as VolumenUsuarios[];
-    // })
+    this.datosService.obtenerVolumenesUsuarios().subscribe((datosVUsu: VolumenUsuarios[]) => {
+      this.datosVUsu.push("Todo");
+      datosVUsu.forEach(volUsu => {
+        if (volUsu.volumenUsuarios != ""){
+          this.datosVUsu.push(volUsu.volumenUsuarios)
+        }
+      })
+    })
 
-    // this.datosService.obtenerVolumenesEvolutivo().subscribe((datosVEvo: VolumenEvolutivo[]) => {
-    //   this.datosVEvo = datosVEvo as VolumenEvolutivo[];
-    // })
+    this.datosService.obtenerVolumenesEvolutivo().subscribe((datosVEvo: VolumenEvolutivo[]) => {
+      this.datosVEvo.push("Todo");
+      datosVEvo.forEach(volEvo => {
+        if (volEvo.volumenEvolutivo != ""){
+          this.datosVEvo.push(volEvo.volumenEvolutivo)
+        } 
+      })
+    })
 
-    // this.datosService.obtenerTipos().subscribe((datosTipo: Tipo[]) => {
-    //   this.datosTipo = datosTipo as Tipo[];
-    // })
+    this.datosService.obtenerTipos().subscribe((datosTipo: Tipo[]) => {
+      this.datosTipo.push("Todo");
+      datosTipo.forEach(tipo => {
+        if (tipo.tipo != ""){
+          this.datosTipo.push(tipo.tipo);
+        } 
+      })
+    })
 
-    // this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: TecnologiaInterfaz[]) => {
-    //   this.datosTecInt = datosTecnoInt as TecnologiaInterfaz[];
-    // })
+    this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: TecnologiaInterfaz[]) => {
+      this.datosTecInt.push("Todo");
+      datosTecnoInt.forEach(tecnInt => {
+        if (tecnInt.tecnologiaInterfaz != ""){
+          this.datosTecInt.push(tecnInt.tecnologiaInterfaz)
+        }
+      })
+    })
+
+    this.applicationFilters.push({name:'Area', options: this.datosArea, defaultValue: this.defaultValue})
+    this.applicationFilters.push({name: 'Subarea', options: this.datosSubarea, defaultValue: this.defaultValue})
+    this.applicationFilters.push({name: 'Responsable', options: this.datosResp, defaultValue: this.defaultValue})
+    this.applicationFilters.push({name: 'Criticidad', options: this.datosCriti, defaultValue: this.defaultValue})
+    this.applicationFilters.push({name: 'Tecnologia', options: this.datosTecn, defaultValue: this.defaultValue})
+    this.applicationFilters.push({name: 'Volumen Usuarios', options: this.datosVUsu, defaultValue: this.defaultValue})
+    this.applicationFilters.push({name: 'Volumen Evolutivo', options: this.datosVEvo, defaultValue: this.defaultValue})
+    this.applicationFilters.push({name: 'Tipo', options: this.datosTipo, defaultValue: this.defaultValue})
+    this.applicationFilters.push({name: 'Tecnologia Interfaz', options: this.datosTecInt, defaultValue: this.defaultValue})
 
     this.dataSourceFilters.filterPredicate = function (record, filter) {
-      debugger;
       var map = new Map(JSON.parse(filter));
       let isMatch = false;
       for (let [key, value] of map) {
@@ -147,9 +190,8 @@ export class TablaAplicacionesComponent {
     this.dataSource.filter = filterValue;
   }
 
-  applyEmpFilter(ob: MatSelectChange, empfilter: EmpFilter) {
-
-    this.filterDictionary.set(empfilter.name, ob.value);
+  applyApplicationFilter(ob: MatSelectChange, applicationFilter: ApplicationFilter) {
+    this.filterDictionary.set(applicationFilter.name, ob.value);
 
 
     var jsonString = JSON.stringify(Array.from(this.filterDictionary.entries()));
