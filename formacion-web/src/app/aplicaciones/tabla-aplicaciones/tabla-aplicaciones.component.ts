@@ -14,11 +14,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ChangeDetectionStrategy, signal } from '@angular/core';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { ApplicationFilter } from '../../../interfaces/aplicaciones/empfilter';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tabla-aplicaciones',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatExpansionModule, MatSelectModule],
+  imports: [RouterLink, RouterOutlet, MatSortModule, MatPaginatorModule, MatTableModule, MatFormFieldModule, MatExpansionModule, MatSelectModule,CommonModule],
   templateUrl: './tabla-aplicaciones.component.html',
   styleUrl: './tabla-aplicaciones.component.css'
 })
@@ -39,12 +40,11 @@ export class TablaAplicacionesComponent {
   datosVEvo: string[] = [];
   datosTipo: string[] = [];
   datosTecInt: string[] = [];
-  
+
   datosAplicacion: AplicacionString[] = [];
   aplicaciones: Aplicacion[] = [];
   displayedColumns = ['codAplic', 'nombAplic', 'area', 'subArea', 'resp', 'tecn', 'criti', 'volEvol', 'volUsu', 'tipo', 'tecInt', 'acciones'];
   dataSource: MatTableDataSource<AplicacionString> = new MatTableDataSource();
-  dataSourceFilters: MatTableDataSource<AplicacionString> = new MatTableDataSource();
 
   email?: string;
 
@@ -72,7 +72,6 @@ export class TablaAplicacionesComponent {
         );
       });
       this.dataSource = new MatTableDataSource(this.datosAplicacion);
-      this.dataSourceFilters = new MatTableDataSource(this.datosAplicacion)
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -80,25 +79,25 @@ export class TablaAplicacionesComponent {
     this.datosService.obtenerAreas().subscribe((datosArea: Area[]) => {
       this.datosArea.push("Todo");
       datosArea.forEach(a => {
-        if (a.area!="") {
+        if (a.area != "") {
           this.datosArea.push(a.area);
         }
       });
     })
 
-     this.datosService.obtenerSubareas().subscribe((datosSubarea: Subarea[]) => {
+    this.datosService.obtenerSubareas().subscribe((datosSubarea: Subarea[]) => {
       this.datosSubarea.push("Todo");
       datosSubarea.forEach(a => {
-        if (a.subarea!="") {
+        if (a.subarea != "") {
           this.datosSubarea.push(a.subarea);
         }
       });
-   })
+    })
 
     this.datosService.obtenerResponsables().subscribe((datosResp: Responsable[]) => {
       this.datosResp.push("Todo")
       datosResp.forEach(resp => {
-        if (resp.responsable != ""){
+        if (resp.responsable != "") {
           this.datosResp.push(resp.responsable);
         }
       })
@@ -107,7 +106,7 @@ export class TablaAplicacionesComponent {
     this.datosService.obtenerCriticidades().subscribe((datosCriti: Criticidad[]) => {
       this.datosCriti.push("Todo");
       datosCriti.forEach(crit => {
-        if (crit.criticidad != ""){
+        if (crit.criticidad != "") {
           this.datosCriti.push(crit.criticidad);
         }
       })
@@ -116,7 +115,7 @@ export class TablaAplicacionesComponent {
     this.datosService.obtenerTecnologias().subscribe((datosTecno: Tecnologia[]) => {
       this.datosTecn.push("Todo");
       datosTecno.forEach(tecn => {
-        if (tecn.tecnologia != ""){
+        if (tecn.tecnologia != "") {
           this.datosTecn.push(tecn.tecnologia);
         }
       })
@@ -125,7 +124,7 @@ export class TablaAplicacionesComponent {
     this.datosService.obtenerVolumenesUsuarios().subscribe((datosVUsu: VolumenUsuarios[]) => {
       this.datosVUsu.push("Todo");
       datosVUsu.forEach(volUsu => {
-        if (volUsu.volumenUsuarios != ""){
+        if (volUsu.volumenUsuarios != "") {
           this.datosVUsu.push(volUsu.volumenUsuarios)
         }
       })
@@ -134,45 +133,46 @@ export class TablaAplicacionesComponent {
     this.datosService.obtenerVolumenesEvolutivo().subscribe((datosVEvo: VolumenEvolutivo[]) => {
       this.datosVEvo.push("Todo");
       datosVEvo.forEach(volEvo => {
-        if (volEvo.volumenEvolutivo != ""){
+        if (volEvo.volumenEvolutivo != "") {
           this.datosVEvo.push(volEvo.volumenEvolutivo)
-        } 
+        }
       })
     })
 
     this.datosService.obtenerTipos().subscribe((datosTipo: Tipo[]) => {
       this.datosTipo.push("Todo");
       datosTipo.forEach(tipo => {
-        if (tipo.tipo != ""){
+        if (tipo.tipo != "") {
           this.datosTipo.push(tipo.tipo);
-        } 
+        }
       })
     })
 
     this.datosService.obtenerTecnologiaInterfaz().subscribe((datosTecnoInt: TecnologiaInterfaz[]) => {
       this.datosTecInt.push("Todo");
       datosTecnoInt.forEach(tecnInt => {
-        if (tecnInt.tecnologiaInterfaz != ""){
+        if (tecnInt.tecnologiaInterfaz != "") {
           this.datosTecInt.push(tecnInt.tecnologiaInterfaz)
         }
       })
     })
 
-    this.applicationFilters.push({name:'Area', options: this.datosArea, defaultValue: this.defaultValue})
-    this.applicationFilters.push({name: 'Subarea', options: this.datosSubarea, defaultValue: this.defaultValue})
-    this.applicationFilters.push({name: 'Responsable', options: this.datosResp, defaultValue: this.defaultValue})
-    this.applicationFilters.push({name: 'Criticidad', options: this.datosCriti, defaultValue: this.defaultValue})
-    this.applicationFilters.push({name: 'Tecnologia', options: this.datosTecn, defaultValue: this.defaultValue})
-    this.applicationFilters.push({name: 'Volumen Usuarios', options: this.datosVUsu, defaultValue: this.defaultValue})
-    this.applicationFilters.push({name: 'Volumen Evolutivo', options: this.datosVEvo, defaultValue: this.defaultValue})
-    this.applicationFilters.push({name: 'Tipo', options: this.datosTipo, defaultValue: this.defaultValue})
-    this.applicationFilters.push({name: 'Tecnologia Interfaz', options: this.datosTecInt, defaultValue: this.defaultValue})
+    this.applicationFilters.push({ name: 'Area', options: this.datosArea, defaultValue: this.defaultValue })
+    this.applicationFilters.push({ name: 'Subarea', options: this.datosSubarea, defaultValue: this.defaultValue })
+    this.applicationFilters.push({ name: 'Responsable', options: this.datosResp, defaultValue: this.defaultValue })
+    this.applicationFilters.push({ name: 'Criticidad', options: this.datosCriti, defaultValue: this.defaultValue })
+    this.applicationFilters.push({ name: 'Tecnologia', options: this.datosTecn, defaultValue: this.defaultValue })
+    this.applicationFilters.push({ name: 'Volumen Usuarios', options: this.datosVUsu, defaultValue: this.defaultValue })
+    this.applicationFilters.push({ name: 'Volumen Evolutivo', options: this.datosVEvo, defaultValue: this.defaultValue })
+    this.applicationFilters.push({ name: 'Tipo', options: this.datosTipo, defaultValue: this.defaultValue })
+    this.applicationFilters.push({ name: 'Tecnologia Interfaz', options: this.datosTecInt, defaultValue: this.defaultValue })
 
-    this.dataSourceFilters.filterPredicate = function (record, filter) {
+
+    this.dataSource.filterPredicate = function (record, filter) {
       var map = new Map(JSON.parse(filter));
       let isMatch = false;
       for (let [key, value] of map) {
-        isMatch = (value == "All") || (record[key as keyof AplicacionString] == value);
+        isMatch = (value == "Todo") || (record[key as keyof AplicacionString] == value);
         if (!isMatch) return false;
       }
       return isMatch;
@@ -190,14 +190,10 @@ export class TablaAplicacionesComponent {
     this.dataSource.filter = filterValue;
   }
 
-  applyApplicationFilter(ob: MatSelectChange, applicationFilter: ApplicationFilter) {
-    this.filterDictionary.set(applicationFilter.name, ob.value);
-
-
+  applyApplicationFilter(ob: any, applicationFilter: ApplicationFilter) {
+    this.filterDictionary.set(applicationFilter.name, ob.target.value);
     var jsonString = JSON.stringify(Array.from(this.filterDictionary.entries()));
-
-    this.dataSourceFilters.filter = jsonString;
-    //console.log(this.filterValues);
+    this.dataSource.filter = jsonString;
   }
 
 

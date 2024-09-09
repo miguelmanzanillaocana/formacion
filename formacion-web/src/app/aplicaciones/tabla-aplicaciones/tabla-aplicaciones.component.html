@@ -19,14 +19,14 @@
     <mat-expansion-panel-header>
       <mat-panel-title>Filtro Avanzado</mat-panel-title>
     </mat-expansion-panel-header>
-    <mat-form-field appearance="fill" *ngFor="let empfilter of applicationFilters">
-      <mat-label>{{ empfilter.name }}</mat-label>
-      <mat-select [(value)]="empfilter.defaultValue" (selectionChange)="applyApplicationFilter($event, empfilter)">
-        <mat-option *ngFor="let op of empfilter.options" [value]="op">
-          {{ op }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="row">
+      <div class="form-floating col-4 mb-3" *ngFor="let appFilter of applicationFilters">
+        <select class="form-select" id="cb-area" formControlName="area" [value]="appFilter.defaultValue" (change)="applyApplicationFilter($event,appFilter)">
+          <option *ngFor="let op of appFilter.options" [value]="op" >{{ op }}</option>
+        </select>
+        <label for="cb-area">{{appFilter.name}}</label>
+      </div>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>
 <div class="col-9 my-auto text-end">
