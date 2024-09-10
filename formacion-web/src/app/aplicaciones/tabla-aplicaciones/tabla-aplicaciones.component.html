@@ -1,39 +1,20 @@
-<mat-accordion>
-  <mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>Filtro Basico</mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="container-fluid mt-2">
-      <div class="row">
-        <div class="col my-auto">
-          <div class="form-floating my-auto">
-            <input type="text" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)" id="filtro">
-            <label for="filtro">Filtrar por...</label>
-          </div>
-        </div>
-
+<div class="container-fluid mt-2">
+  <div class="row">
+    <div class="col my-auto">
+      <div class="form-floating my-auto">
+        <input type="text" class="form-control" #filterInput (keyup)="applyFilter(filterInput.value)" id="filtro">
+        <label for="filtro">Filtrar por...</label>
       </div>
+      
     </div>
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>Filtro Avanzado</mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="row">
-      <div class="form-floating col-4 mb-3" *ngFor="let appFilter of applicationFilters">
-        <select class="form-select" id="cb-area" formControlName="area" [value]="appFilter.defaultValue" (change)="applyApplicationFilter($event,appFilter)">
-          <option *ngFor="let op of appFilter.options" [value]="op" >{{ op }}</option>
-        </select>
-        <label for="cb-area">{{appFilter.name}}</label>
-      </div>
+    <div class="col-7 my-auto text-end">
+      <button type="button" routerLink='/crear-aplicacion' class="btn btn-success my-auto mx-4">Crear nueva
+        Aplicacion</button>
+      <router-outlet></router-outlet>
     </div>
-  </mat-expansion-panel>
-</mat-accordion>
-<div class="col-9 my-auto text-end">
-  <button type="button" routerLink='/crear-aplicacion' class="btn btn-success my-auto mx-4">Crear nueva
-    Aplicacion</button>
-  <router-outlet></router-outlet>
+  </div>
 </div>
+
 <div class="table-responsive mt-2 mx-2">
   <mat-table [dataSource]="dataSource" matSort>
 
